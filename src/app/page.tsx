@@ -3,7 +3,7 @@ import CarCard from "@/components/CarCard";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col space-y-6 px-24 py-8">
+    <main className="flex min-h-screen flex-col space-y-6 px-16 py-8">
       <ActionsHeader />
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <CarCard
