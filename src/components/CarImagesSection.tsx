@@ -82,8 +82,8 @@ const CarImagesSection: React.FC<{ images: any[] }> = ({ images }) => {
   return (
     <>
       <CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={60}
+        naturalSlideWidth={windowWidth ? windowWidth : 100}
+        naturalSlideHeight={windowHeight ? windowHeight * 1.2 : 60}
         totalSlides={images ? images.length : 0}
         className="w-full flex space-x-2"
       >

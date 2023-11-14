@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import * as React from "react";
 
 interface ICarCardProps {
@@ -7,7 +8,10 @@ interface ICarCardProps {
 
 const CarCard: React.FunctionComponent<ICarCardProps> = ({ img }) => {
   return (
-    <div className="relative rounded-lg overflow-hidden shadow-lg">
+    <Link
+      href={"/cars/car_id"}
+      className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer hover:bg-gray-100"
+    >
       <div className="absolute right-0 bottom-0 bg-black bg-opacity-50 text-white p-2 rounded-bl-lg">
         <svg
           className=" h-4 w-4 mr-1 inline-block"
@@ -26,7 +30,13 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ img }) => {
         </svg>
         <span>5h left</span>
       </div>
-      <Image src={img} alt="Landscape picture" width={712} height={468} />
+      <Image
+        src={img}
+        alt="Landscape picture"
+        width={712}
+        height={468}
+        className="block"
+      />
       <div className="p-4">
         <h3 className="font-semibold text-lg md:text-xl">Ford Mustang</h3>
         <p className="text-sm text-zinc-500">2018, New York</p>
@@ -35,7 +45,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ img }) => {
         </p>
         <h4 className="font-semibold text-base md:text-lg">$25,000</h4>
       </div>
-    </div>
+    </Link>
   );
 };
 
