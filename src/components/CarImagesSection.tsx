@@ -83,9 +83,11 @@ const CarImagesSection: React.FC<{ images: any[] }> = ({ images }) => {
     <>
       <CarouselProvider
         naturalSlideWidth={windowWidth ? windowWidth : 100}
-        naturalSlideHeight={windowHeight ? windowHeight * 1.2 : 60}
+        naturalSlideHeight={
+          windowHeight ? (windowWidth! < 500 ? 300 : windowHeight * 1.2) : 60
+        }
         totalSlides={images ? images.length : 0}
-        className="w-full flex space-x-2"
+        className="w-full flex flex-col sm:flex-row space-x-2"
       >
         <div
           style={{
@@ -121,13 +123,13 @@ const CarImagesSection: React.FC<{ images: any[] }> = ({ images }) => {
           </Slider>
         </div>
         <div
-          className="relative overflow-y-scroll w-40 md:w-72 lg:w-96"
+          className="relative overflow-y-scroll overflow-x-scroll w-full sm:w-40 md:w-72 lg:w-96"
           ref={(el) => (carouselContainerRef.current = el)}
           style={{
             maxHeight: "calc(100vh - 200px)",
           }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-1.5 justify-center">
+          <div className="flex sm:grid grid-cols-1 lg:grid-cols-2 gap-1.5 justify-center">
             {images &&
               images.map((image, idx) => (
                 <Dot
@@ -141,7 +143,7 @@ const CarImagesSection: React.FC<{ images: any[] }> = ({ images }) => {
                       paddingBottom: "60%",
                     }}
                     className={cn(
-                      "relative h-0 w-full border-2 border-gray-50",
+                      "relative h-0 w-40 sm:w-full border-2 border-gray-50",
                       "bg-center bg-no-repeat bg-cover",
                       selectedImageIndex === idx && "border-green-400"
                     )}
