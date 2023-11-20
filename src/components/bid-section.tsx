@@ -50,8 +50,8 @@ export function BidSection() {
                 Place a Bid Now
               </h2>
               <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                Enter your phone number and we'll contact you on WhatsApp to
-                confirm your bid.
+                Enter your phone number and we&apos;ll contact you on WhatsApp
+                to confirm your bid.
               </p>
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
@@ -69,7 +69,7 @@ export function BidSection() {
                   value={phone}
                   onChange={handleChange}
                 />
-                <Button type="submit" size="lg" disabled={loading}>
+                <Button type="submit" disabled={loading}>
                   {loading && (
                     <svg
                       width="20"
@@ -93,7 +93,7 @@ export function BidSection() {
               Thank you!
             </h2>
             <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-              We'll contact you on WhatsApp to confirm your bid.
+              We&apos;ll contact you on WhatsApp to confirm your bid.
             </p>
           </>
         )}
