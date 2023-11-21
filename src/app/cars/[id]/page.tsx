@@ -4,7 +4,7 @@ import CarImagesSection from "@/components/CarImagesSection";
 import Footer from "@/components/Footer";
 import { BidSection } from "@/components/bid-section";
 import cn from "classnames";
-
+import { previewImages, fullImages } from "./images";
 import * as React from "react";
 
 interface ICarPageProps {}
@@ -25,9 +25,7 @@ const history = [
   },
 ];
 
-const CarPage: React.FunctionComponent<ICarPageProps> = (props) => {
-  const targetRef = React.useRef<HTMLDivElement>(null);
-
+const CarPage: React.FunctionComponent<ICarPageProps> = () => {
   const scrollToTarget = () => {
     var targetSection = document.getElementById("bid-section");
 
@@ -38,7 +36,18 @@ const CarPage: React.FunctionComponent<ICarPageProps> = (props) => {
   return (
     <>
       <section className="flex flex-col px-2 md:px-16 py-4">
-        <div className="flex space-x-2">
+        <div className="flex sm:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-0 bg-white border-b">
+          <AutionStatusBar />
+          <button
+            className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"
+            onClick={scrollToTarget}
+          >
+            <span className="hidden sm:block">Place Bid</span>
+            <span className="block sm:hidden">Bid</span>
+          </button>
+        </div>
+        <CarImagesSection images={fullImages} previewImages={previewImages} />
+        <div className="flex space-x-2 mt-2">
           <h1 className="text-xl font-bold">2022 Porsche 911 GT3</h1>
           <div className="flex items-center">
             <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
@@ -49,30 +58,11 @@ const CarPage: React.FunctionComponent<ICarPageProps> = (props) => {
               >
                 <path d="M10 15l-3.5-3.5 1.6-1.6L10 12l4.9-5 1.6 1.6L10 15z" />
               </svg>
-              verified <span className="hidden sm:block">by NoLemons</span>
+              verified <span className="hidden sm:block"> by NoLemons</span>
             </span>
           </div>
         </div>
-        <p className="text-md">
-          ~2,100 Miles, 6-Speed Manual, 502-hp Flat-6, Carbon Fiber Bucket Seats
-        </p>
-        <CarImagesSection
-          images={[
-            "https://nolemons.ae/wp-content/uploads/2022/12/mclaren_senna_2019_cover.jpg",
-            "https://nolemons.ae/wp-content/uploads/2023/01/mclaren_senna_2019_11.jpg",
-            "https://nolemons.ae/wp-content/uploads/2023/01/mclaren_senna_2019_0.jpg",
-            "https://nolemons.ae/wp-content/uploads/2023/01/mclaren_senna_2019_26.jpg",
-            "https://nolemons.ae/wp-content/uploads/2022/12/mclaren_senna_2019_cover.jpg",
-            "https://nolemons.ae/wp-content/uploads/2023/01/mclaren_senna_2019_11.jpg",
-            "https://nolemons.ae/wp-content/uploads/2023/01/mclaren_senna_2019_0.jpg",
-            "https://nolemons.ae/wp-content/uploads/2023/01/mclaren_senna_2019_26.jpg",
-            "https://nolemons.ae/wp-content/uploads/2022/12/mclaren_senna_2019_cover.jpg",
-            "https://nolemons.ae/wp-content/uploads/2023/01/mclaren_senna_2019_11.jpg",
-            "https://nolemons.ae/wp-content/uploads/2023/01/mclaren_senna_2019_0.jpg",
-            "https://nolemons.ae/wp-content/uploads/2023/01/mclaren_senna_2019_26.jpg",
-          ]}
-        />
-        <div className="flex mt-4 z-10 space-x-4 sticky top-4">
+        <div className="hidden sm:flex mt-4 z-10 space-x-4 sticky top-4">
           <AutionStatusBar />
           <button
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"

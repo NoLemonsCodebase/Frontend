@@ -15,10 +15,13 @@ import cn from "classnames";
 import { useWindowSize } from "@uidotdev/usehooks";
 import ImageViewer from "./ReactSimpleImageViewer";
 
-const CarImagesSection: React.FC<{ images: any[] }> = ({ images }) => {
+const CarImagesSection: React.FC<{
+  images: string[];
+  previewImages: string[];
+}> = ({ images, previewImages }) => {
   const { width: windowWidth, height: windowHeight } = useWindowSize();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [selectedImage, setSelectedImage] = useState();
+  const [selectedImage, setSelectedImage] = useState<string>();
   const carouselItemsRef = useRef<HTMLDivElement[] | null[]>([]);
   const carouselContainerRef = useRef<HTMLDivElement | null>(null);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
@@ -130,8 +133,8 @@ const CarImagesSection: React.FC<{ images: any[] }> = ({ images }) => {
           }}
         >
           <div className="flex sm:grid grid-cols-1 lg:grid-cols-2 gap-1.5 justify-center">
-            {images &&
-              images.map((image, idx) => (
+            {previewImages &&
+              previewImages.map((image, idx) => (
                 <Dot
                   slide={idx}
                   onClick={() => handleSelectedImageChange(idx)}
