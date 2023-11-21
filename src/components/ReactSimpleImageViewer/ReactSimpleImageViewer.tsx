@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 
 interface IProps {
@@ -87,7 +88,7 @@ const ReactSimpleImageViewer = (props: IProps) => {
   return (
     <div
       id="ReactSimpleImageViewer"
-      className="fixed inset-0 z-10 flex items-center px-12 bg-black"
+      className="fixed inset-0 z-10 flex items-center bg-black"
       style={props.backgroundStyle}
       onKeyDown={handleKeyDown}
       onClick={handleClick}
@@ -106,9 +107,7 @@ const ReactSimpleImageViewer = (props: IProps) => {
           className="absolute left-0 h-4/5 text-black cursor-pointer text-3xl leading-60 font-bold flex items-center opacity-70 hover:opacity-100 user-select-none"
           onClick={() => changeImage(-1)}
         >
-          <div className="bg-white border border-gray-200 py-2 px-3 h-24 flex items-center">
-            &#10094;
-          </div>
+          <div className="py-2 pr-6 h-24 flex items-center">&#10094;</div>
         </div>
       )}
 
@@ -117,15 +116,15 @@ const ReactSimpleImageViewer = (props: IProps) => {
           className="absolute right-0 h-4/5 text-black cursor-pointer text-3xl leading-60 font-bold flex items-center opacity-70 hover:opacity-100 user-select-none"
           onClick={() => changeImage(1)}
         >
-          <div className="bg-white border border-gray-200 py-2 px-3 h-24 flex items-center">
-            &#10095;
-          </div>
+          <div className="py-2 pl-6 h-24 flex items-center">&#10095;</div>
         </div>
       )}
 
-      <div className="m-auto p-0 w-11/12 h-full text-center">
+      <div className="m-auto p-0 w-full h-full text-center">
         <div className="h-full flex items-center justify-center">
-          <img
+          <Image
+            width={500}
+            height={330}
             src={props.src[currentIndex]}
             alt=""
             className="max-h-full max-w-full user-select-none"
