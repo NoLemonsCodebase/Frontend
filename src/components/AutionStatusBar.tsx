@@ -13,8 +13,10 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = (
 ) => {
   const [secondsLeft, setSecondsLeft] = React.useState(0);
   const [lastBid, setLastBid] = React.useState(0);
+  const [loading, setLoading] = React.useState(true);
 
   const fetchAuctionInfo = async () => {
+    setLoading(true);
     const res = await fetch(
       "https://nolemons2.onrender.com/bot/current-max-auction-bid/"
     );
@@ -27,6 +29,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = (
         data.time_left[3]
     );
     setLastBid(data.max_bid);
+    setLoading(false);
   };
 
   React.useEffect(() => {
@@ -73,25 +76,30 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = (
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ClockIcon className="w-5 h-5" />
           <p className="hidden sm:block opacity-70">Time Left</p>
-          <p className="font-semibold whitespace-nowrap">{timeLeftText()[0]}</p>
-          <p className="hidden sm:block font-semibold whitespace-nowrap">
-            {timeLeftText()[1]}
-          </p>
+          {loading ? (
+            <p className="font-semibold">--:--:--</p>
+          ) : (
+            <>
+              <p className="font-semibold whitespace-nowrap">
+                {timeLeftText()[0]}
+              </p>
+              <p className="hidden sm:block font-semibold whitespace-nowrap">
+                {timeLeftText()[1]}
+              </p>
+            </>
+          )}
         </li>
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ArrowUpIcon className="w-5 h-5 hidden sm:block" />
           <p className="opacity-7 hidden sm:block">High bid</p>
-          <p className="font-semibold">SAR {lastBid}</p>
+          <p className="font-semibold whitespace-nowrap">
+            SAR {loading ? "..." : lastBid}
+          </p>
         </li>
         <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
           <FrameIcon className="w-5 h-5" />
           <p className="opacity-70">Bids</p>
           <p className="font-semibold">8</p>
-        </li>
-        <li className="basis-auto items-center space-x-2 text-white hidden lg:flex">
-          <ChatBubbleIcon className="w-5 h-5" />
-          <p className="opacity-70">Comments</p>
-          <p className="font-semibold">12</p>
         </li>
       </ul>
     </div>
