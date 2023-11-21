@@ -1,51 +1,18 @@
 import * as React from "react";
-import {
-  ClockIcon,
-  ArrowUpIcon,
-  FrameIcon,
-  ChatBubbleIcon,
-} from "@radix-ui/react-icons";
+import { ClockIcon, ArrowUpIcon, FrameIcon } from "@radix-ui/react-icons";
 
-interface IAutionStatusBarProps {}
-
-const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = (
-  props
-) => {
-  const [secondsLeft, setSecondsLeft] = React.useState(0);
-  const [lastBid, setLastBid] = React.useState(0);
-  const [loading, setLoading] = React.useState(true);
-
-  const fetchAuctionInfo = async () => {
-    setLoading(true);
-    const res = await fetch(
-      "https://nolemons2.onrender.com/bot/current-max-auction-bid/"
-    );
-
-    const data = await res.json();
-    setSecondsLeft(
-      data.time_left[0] * 24 * 60 * 60 +
-        data.time_left[1] * 60 * 60 +
-        data.time_left[2] * 60 +
-        data.time_left[3]
-    );
-    setLastBid(data.max_bid);
-    setLoading(false);
+interface IAutionStatusBarProps {
+  auctionInfo: {
+    lastBid: number;
+    secondsLeft: number;
   };
+  loading: boolean;
+}
 
-  React.useEffect(() => {
-    fetchAuctionInfo();
-  }, []);
-
-  React.useEffect(() => {
-    if (secondsLeft) {
-      const interval = setInterval(() => {
-        if (secondsLeft > 0) setSecondsLeft(secondsLeft - 1);
-      }, 1000);
-
-      return () => clearInterval(interval);
-    }
-  }, [secondsLeft]);
-
+const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
+  auctionInfo: { lastBid, secondsLeft },
+  loading,
+}) => {
   // X days/day if X > 1, else h:MM:SS format
   const timeLeftText = () => {
     const days = Math.floor(secondsLeft / (24 * 60 * 60));

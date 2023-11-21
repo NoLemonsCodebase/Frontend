@@ -26,6 +26,13 @@ const history = [
 ];
 
 const CarPage: React.FunctionComponent<ICarPageProps> = () => {
+  const [auctionInfo, setAuctionInfo] = React.useState({
+    secondsLeft: 0,
+    lastBid: 0,
+  });
+  const [loading, setLoading] = React.useState(true);
+  const [endDatetime, setEndDatetime] = React.useState<Date>();
+
   const scrollToTarget = () => {
     var targetSection = document.getElementById("bid-section");
 
@@ -33,11 +40,55 @@ const CarPage: React.FunctionComponent<ICarPageProps> = () => {
     targetSection?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const fetchAuctionInfo = async () => {
+    setLoading(true);
+    const res = await fetch(
+      "https://nolemons2.onrender.com/bot/current-max-auction-bid/"
+    );
+
+    const data = await res.json();
+    const secondsLeft =
+      data.time_left[0] * 24 * 60 * 60 +
+      data.time_left[1] * 60 * 60 +
+      data.time_left[2] * 60 +
+      data.time_left[3];
+    console.log("secondsLeft", secondsLeft);
+
+    setAuctionInfo({
+      secondsLeft,
+      lastBid: data.max_bid,
+    });
+    setLoading(false);
+  };
+
+  React.useEffect(() => {
+    fetchAuctionInfo();
+  }, []);
+
+  React.useEffect(() => {
+    if (auctionInfo.secondsLeft) {
+      const interval = setInterval(() => {
+        if (auctionInfo.secondsLeft > 0)
+          setAuctionInfo({
+            ...auctionInfo,
+            secondsLeft: auctionInfo.secondsLeft - 1,
+          });
+      }, 1000);
+
+      //calculate end date
+      const now = new Date();
+      const end = new Date(now.getTime() + auctionInfo.secondsLeft * 1000);
+      setEndDatetime(end);
+
+      return () => clearInterval(interval);
+    }
+  }, [auctionInfo.secondsLeft]);
+
   return (
     <>
-      <section className="flex flex-col px-2 md:px-16 py-4">
+      <section className="flex flex-col px-4 md:px-16 py-4">
         <div className="flex sm:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-0 bg-white border-b">
-          <AutionStatusBar />
+          <AutionStatusBar loading={loading} auctionInfo={auctionInfo} />
           <button
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"
             onClick={scrollToTarget}
@@ -46,13 +97,13 @@ const CarPage: React.FunctionComponent<ICarPageProps> = () => {
             <span className="block sm:hidden">Bid</span>
           </button>
         </div>
-        <CarImagesSection images={fullImages} previewImages={previewImages} />
+        <CarImagesSection images={fullImages} previewImages={fullImages} />
         <div className="flex space-x-2 mt-2">
           <h1 className="text-xl font-bold">2022 Porsche 911 GT3</h1>
           <div className="flex items-center">
             <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
               <svg
-                className="w-4 h-4 mr-2 fill-current text-green-600"
+                className="w-4 h-4 mr-1 fill-current text-green-600"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
               >
@@ -62,8 +113,22 @@ const CarPage: React.FunctionComponent<ICarPageProps> = () => {
             </span>
           </div>
         </div>
+        <p className="text-sm">
+          1 Owner, Dual-Motor AWD, Texas-Owned, Reviewed by Alanis King
+        </p>
+        <p className="text-sm text-gray-500">
+          Ending{" "}
+          {endDatetime?.toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          })}
+        </p>
         <div className="hidden sm:flex mt-4 z-10 space-x-4 sticky top-4">
-          <AutionStatusBar />
+          <AutionStatusBar loading={loading} auctionInfo={auctionInfo} />
           <button
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"
             onClick={scrollToTarget}
@@ -71,6 +136,9 @@ const CarPage: React.FunctionComponent<ICarPageProps> = () => {
             <span className="hidden sm:block">Place Bid</span>
             <span className="block sm:hidden">Bid</span>
           </button>
+        </div>
+        <div className="block md:hidden">
+          <CarDetailList />
         </div>
         <div className="flex space-x-8 mt-8">
           <div className="flex-1 flex flex-col">
@@ -163,41 +231,76 @@ const CarPage: React.FunctionComponent<ICarPageProps> = () => {
             </div>
           </div>
           <section className="hidden lg:block sticky top-20 self-start w-96">
-            <div className="shadow bg-white p-4 flex flex-col space-y-2">
-              <p>
-                <strong>Location:</strong> Dubai, UAE
-              </p>
-              <p>
-                <strong>VIN (Chassis #):</strong> Dubai, UAE
-              </p>
-              <p>
-                <strong>Engine:</strong> Dubai, UAE
-              </p>
-              <p>
-                <strong>Drivetrain:</strong> Dubai, UAE
-              </p>
-              <p>
-                <strong>Transmission:</strong> Dubai, UAE
-              </p>
-              <p>
-                <strong>Mileage:</strong> 5 km
-              </p>
-              <p>
-                <strong>Exterior Color:</strong> Victory Grey
-              </p>
-              <p>
-                <strong>Interior Color:</strong> Victory Grey
-              </p>
-              <p>
-                <strong>Registration Status:</strong> Registered, Dubai
-              </p>
-            </div>
+            <CarDetailList isCard />
           </section>
         </div>
         <BidSection />
       </section>
       <Footer />
     </>
+  );
+};
+
+const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
+  const sections = [
+    {
+      title: "Location",
+      value: "Dubai, UAE",
+    },
+    {
+      title: "VIN (Chassis #)",
+      value: "SBM15ACB8KW800044",
+    },
+    {
+      title: "Engine",
+      value: "Twin-Turbo 4.0L V8",
+    },
+    {
+      title: "Drivetrain",
+      value: "RWD",
+    },
+    {
+      title: "Transmission",
+      value: "Automatic",
+    },
+    {
+      title: "Mileage",
+      value: "5",
+    },
+    {
+      title: "Mileage Type",
+      value: "km",
+    },
+    {
+      title: "Exterior Color",
+      value: "Victory Grey",
+    },
+    {
+      title: "Interior Color",
+      value: "Black Alc/Orange Perf",
+    },
+    {
+      title: "Registration Status",
+      value: "Registered, Dubai",
+    },
+  ];
+  return (
+    <div className={cn("flex flex-col", isCard && "shadow bg-white p-4")}>
+      <table className="min-w-full divide-y divide-gray-200">
+        <tbody className="divide-y divide-gray-200">
+          {sections.map((section, index) => (
+            <tr key={index}>
+              <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                {section.title}:
+              </td>
+              <td className="py-2 whitespace-nowrap text-sm text-gray-500">
+                {section.value}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
