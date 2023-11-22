@@ -6,6 +6,8 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 export function BidSection() {
   const [phone, setPhone] = useState("");
@@ -32,16 +34,12 @@ export function BidSection() {
     setLoading(false);
   };
 
-  const handleChange = (event: any) => {
-    const value = event.target.value;
-    // Ensure the input always starts with '+'
-    if (value.match(/^\+?/)) {
-      setPhone("+" + value.replace(/[^\d]/g, ""));
-    }
-  };
-
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32" id="bid-section">
+    <section
+      className="w-full md:py-24 lg:py-32 h-96 md:h-full"
+      id="bid-section"
+    >
+      <div className="h-1 bg-gray-500 bg-opacity-40 w-9/12 my-12 md:mb-12 mx-auto" />
       <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
         {!sent ? (
           <>
@@ -62,13 +60,13 @@ export function BidSection() {
                   onSubmit();
                 }}
               >
-                <Input
-                  className="max-w-lg flex-1"
-                  placeholder="Enter your phone number"
-                  type="tel"
+                <PhoneInput
+                  preferredCountries={["sa", "ae", "qa", "kz"]}
+                  country={"ae"}
                   value={phone}
-                  onChange={handleChange}
+                  onChange={setPhone}
                 />
+                {phone}
                 <Button type="submit" disabled={loading}>
                   {loading && (
                     <svg
