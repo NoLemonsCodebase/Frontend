@@ -82,10 +82,7 @@ const CarPage: React.FunctionComponent<ICarPageProps> = () => {
           (width > 640 ? (
             <CarImagesSection images={fullImages} previewImages={fullImages} />
           ) : (
-            <ImageCarousel
-              images={fullImages.slice(0, 10)}
-              previewImages={previewImages}
-            />
+            <ImageCarousel images={fullImages} previewImages={previewImages} />
           ))}
         <div className="flex space-x-2 mt-2">
           <h1 className="text-xl font-bold">2022 Porsche 911 GT3</h1>
