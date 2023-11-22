@@ -48,10 +48,7 @@ const CarPage: React.FunctionComponent<ICarPageProps> = () => {
 
     const data = await res.json();
     const secondsLeft =
-      data.time_left[0] * 24 * 60 * 60 +
-      data.time_left[1] * 60 * 60 +
-      data.time_left[2] * 60 +
-      data.time_left[3];
+      data.time_left[0] * 24 * 60 * 60 + 4 * 60 * 60 + 10 * 60 + 3;
     console.log("secondsLeft", secondsLeft);
 
     setAuctionInfo({
