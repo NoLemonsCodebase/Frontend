@@ -6,6 +6,8 @@ import { BidSection } from "@/components/bid-section";
 import cn from "classnames";
 import { previewImages, fullImages } from "./images";
 import * as React from "react";
+import ImageCarousel from "@/components/ImageCarousel";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 interface ICarPageProps {}
 
@@ -32,6 +34,7 @@ const CarPage: React.FunctionComponent<ICarPageProps> = () => {
   });
   const [loading, setLoading] = React.useState(true);
   const [endDatetime, setEndDatetime] = React.useState<Date>();
+  const { width } = useWindowSize();
 
   const scrollToTarget = () => {
     var targetSection = document.getElementById("bid-section");
@@ -62,25 +65,6 @@ const CarPage: React.FunctionComponent<ICarPageProps> = () => {
     fetchAuctionInfo();
   }, []);
 
-  React.useEffect(() => {
-    if (auctionInfo.secondsLeft) {
-      const interval = setInterval(() => {
-        if (auctionInfo.secondsLeft > 0)
-          setAuctionInfo({
-            ...auctionInfo,
-            secondsLeft: auctionInfo.secondsLeft - 1,
-          });
-      }, 1000);
-
-      //calculate end date
-      const now = new Date();
-      const end = new Date(now.getTime() + auctionInfo.secondsLeft * 1000);
-      setEndDatetime(end);
-
-      return () => clearInterval(interval);
-    }
-  }, [auctionInfo.secondsLeft]);
-
   return (
     <>
       <section className="flex flex-col px-4 md:px-16 py-4">
@@ -94,7 +78,15 @@ const CarPage: React.FunctionComponent<ICarPageProps> = () => {
             <span className="block sm:hidden">Bid</span>
           </button>
         </div>
-        <CarImagesSection images={fullImages} previewImages={fullImages} />
+        {width &&
+          (width > 640 ? (
+            <CarImagesSection images={fullImages} previewImages={fullImages} />
+          ) : (
+            <ImageCarousel
+              images={fullImages.slice(0, 10)}
+              previewImages={previewImages}
+            />
+          ))}
         <div className="flex space-x-2 mt-2">
           <h1 className="text-xl font-bold">2022 Porsche 911 GT3</h1>
           <div className="flex items-center">

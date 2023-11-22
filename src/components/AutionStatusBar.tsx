@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ClockIcon, ArrowUpIcon, FrameIcon } from "@radix-ui/react-icons";
+import { useSecondsLeft } from "@/lib/hooks/useSecondsLeft";
 
 interface IAutionStatusBarProps {
   auctionInfo: {
@@ -10,9 +11,11 @@ interface IAutionStatusBarProps {
 }
 
 const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
-  auctionInfo: { lastBid, secondsLeft },
+  auctionInfo: { lastBid, secondsLeft: initialSecondsLeft },
   loading,
 }) => {
+  const secondsLeft = useSecondsLeft(initialSecondsLeft) || 0;
+
   // X days/day if X > 1, else h:MM:SS format
   const timeLeftText = () => {
     const days = Math.floor(secondsLeft / (24 * 60 * 60));
@@ -43,7 +46,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ClockIcon className="w-5 h-5" />
           <p className="hidden sm:block opacity-70">Time Left</p>
-          {loading ? (
+          {loading || secondsLeft == 0 ? (
             <p className="font-semibold">--:--:--</p>
           ) : (
             <>
