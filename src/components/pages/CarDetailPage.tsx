@@ -317,7 +317,7 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
                 className="text-blue-500 hover:text-blue-700"
               >
                 <ExternalLinkIcon className="w-4 h-4 inline-block mr-1" />
-                ملف مفتوح
+                افتح الملف
               </a>
             </td>
           </tr>
