@@ -7,14 +7,12 @@ interface IAutionStatusBarProps {
     lastBid: number;
     secondsLeft: number;
   };
-  loading: boolean;
 }
 
 const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
   auctionInfo: { lastBid, secondsLeft: initialSecondsLeft },
-  loading,
 }) => {
-  const secondsLeft = useSecondsLeft(initialSecondsLeft) || 0;
+  const secondsLeft = useSecondsLeft(initialSecondsLeft);
 
   // X days/day if X > 1, else h:MM:SS format
   const timeLeftText = () => {
@@ -46,7 +44,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ClockIcon className="w-5 h-5" />
           <p className="hidden sm:block opacity-70">Time Left</p>
-          {loading || secondsLeft == 0 ? (
+          {secondsLeft == 0 ? (
             <p className="font-semibold">--:--:--</p>
           ) : (
             <>
@@ -62,9 +60,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ArrowUpIcon className="w-5 h-5 hidden sm:block" />
           <p className="opacity-7 hidden sm:block">High bid</p>
-          <p className="font-semibold whitespace-nowrap">
-            SAR {loading ? "..." : lastBid}
-          </p>
+          <p className="font-semibold whitespace-nowrap">SAR {lastBid}</p>
         </li>
         <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
           <FrameIcon className="w-5 h-5" />
