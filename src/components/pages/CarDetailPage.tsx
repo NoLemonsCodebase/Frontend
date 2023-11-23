@@ -308,7 +308,7 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
           </tr>
           <tr>
             <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-              النسخة العربية
+              الوصف (باللغة العربية)
             </td>
             <td className="py-2 whitespace-nowrap text-sm text-gray-500">
               <a
