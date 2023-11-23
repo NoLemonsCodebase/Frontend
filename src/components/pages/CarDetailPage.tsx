@@ -8,6 +8,7 @@ import { previewImages, fullImages } from "./images";
 import * as React from "react";
 import ImageCarousel from "@/components/ImageCarousel";
 import { useWindowSize } from "@uidotdev/usehooks";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 interface ICarPageProps {
   auctionInfo: {
@@ -250,8 +251,19 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
       value: "Registered, Dubai",
     },
   ];
+
+  const inspectionPDF =
+    "https://nolemons.ae/wp-content/uploads/2022/08/Inspection_1989_BMW_635CSi_66333.pdf";
+  const reportHistoryPDF =
+    "https://nolemons.ae/wp-content/uploads/2022/08/History_1989_BMW_635CSi_66333.pdf";
+
   return (
-    <div className={cn("flex flex-col", isCard && "shadow bg-white p-4")}>
+    <div
+      className={cn(
+        "flex flex-col mt-2",
+        isCard && "sm:mt-0 shadow bg-white p-4"
+      )}
+    >
       <table className="min-w-full divide-y divide-gray-200">
         <tbody className="divide-y divide-gray-200">
           {sections.map((section, index) => (
@@ -264,6 +276,51 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
               </td>
             </tr>
           ))}
+          <tr>
+            <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+              Inspection report
+            </td>
+            <td className="py-2 whitespace-nowrap text-sm text-gray-500">
+              <a
+                href={inspectionPDF}
+                target="_blank"
+                className="text-blue-500 hover:text-blue-700"
+              >
+                Open report
+                <ExternalLinkIcon className="w-4 h-4 inline-block ml-1" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+              History Report
+            </td>
+            <td className="py-2 whitespace-nowrap text-sm text-gray-500">
+              <a
+                href={reportHistoryPDF}
+                target="_blank"
+                className="text-blue-500 hover:text-blue-700"
+              >
+                Open report
+                <ExternalLinkIcon className="w-4 h-4 inline-block ml-1" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+              النسخة العربية
+            </td>
+            <td className="py-2 whitespace-nowrap text-sm text-gray-500">
+              <a
+                href={reportHistoryPDF}
+                target="_blank"
+                className="text-blue-500 hover:text-blue-700"
+              >
+                <ExternalLinkIcon className="w-4 h-4 inline-block mr-1" />
+                ملف مفتوح
+              </a>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
