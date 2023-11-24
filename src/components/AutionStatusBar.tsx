@@ -4,15 +4,15 @@ import { useSecondsLeft } from "@/lib/hooks/useSecondsLeft";
 
 interface IAutionStatusBarProps {
   auctionInfo: {
+    endDate: string;
     lastBid: number;
-    secondsLeft: number;
   };
 }
 
 const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
-  auctionInfo: { lastBid, secondsLeft: initialSecondsLeft },
+  auctionInfo: { lastBid, endDate },
 }) => {
-  const secondsLeft = useSecondsLeft(initialSecondsLeft);
+  const secondsLeft = useSecondsLeft(endDate);
 
   // X days/day if X > 1, else h:MM:SS format
   const timeLeftText = () => {

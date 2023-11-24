@@ -12,7 +12,7 @@ import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 interface ICarPageProps {
   auctionInfo: {
-    secondsLeft: number;
+    endDate: string;
     lastBid: number;
   };
 }
@@ -36,7 +36,7 @@ const history = [
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   auctionInfo,
 }) => {
-  const endDatetime = new Date(Date.now() + auctionInfo.secondsLeft * 1000);
+  const endDatetime = new Date(auctionInfo.endDate);
   const { width } = useWindowSize();
 
   const scrollToTarget = () => {

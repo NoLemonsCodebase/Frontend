@@ -3,16 +3,14 @@ import * as React from "react";
 
 const CarPage: React.FunctionComponent<{}> = async () => {
   const res = await fetch(
-    "https://nolemons2.onrender.com/bot/current-max-auction-bid/"
+    "https://nolemons2.onrender.com/bot/current-max-auction-bid/",
+    { next: { revalidate: 0 } }
   );
 
   const data = await res.json();
-  const secondsLeft =
-    data.time_left[0] * 24 * 60 * 60 + 4 * 60 * 60 + 10 * 60 + 3;
-  console.log("secondsLeft", secondsLeft);
 
   const auctionInfo = {
-    secondsLeft,
+    endDate: data.end_time,
     lastBid: data.max_bid,
   };
 
