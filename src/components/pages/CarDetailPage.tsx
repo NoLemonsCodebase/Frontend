@@ -66,7 +66,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             <ImageCarousel images={fullImages} previewImages={previewImages} />
           ))}
         <div className="flex space-x-2 mt-2">
-          <h1 className="text-xl font-bold">2022 Porsche 911 GT3</h1>
+          <h1 className="text-xl font-bold">1996 Toyota LandCruiser VX</h1>
           <div className="flex items-center">
             <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
               <svg
@@ -80,9 +80,9 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             </span>
           </div>
         </div>
-        <p className="text-sm">
+        {/* <p className="text-sm">
           1 Owner, Dual-Motor AWD, Texas-Owned, Reviewed by Alanis King
-        </p>
+        </p> */}
         <p className="text-sm text-gray-500">
           Ending{" "}
           {endDatetime?.toLocaleString("en-US", {
@@ -109,12 +109,11 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         </div>
         <div className="flex space-x-8 mt-8">
           <div className="flex-1 flex flex-col">
-            <h2 className="text-2xl font-bold">Highlights</h2>
+            {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
             <div className="mt-2">
-              The Senna is the lightest, most powerful and most capable hypercar
-              to ever be built for road by McLaren. Limited to a production of
-              only 500 globally.
-              <ul className="list-disc ml-10">
+              This is a 1996 Toyota LandCruiser VX equipped with a 4.5L
+              inline-six producing 212 horsepower mated to a 4 speed automatic.
+              {/* <ul className="list-disc ml-10">
                 <li>
                   In excellent condition with only 5 km (3 mi) on the odometer
                 </li>
@@ -123,32 +122,75 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
                   Comes with an extended McLaren global warranty and full
                   service history
                 </li>
-              </ul>
+              </ul> */}
             </div>
-            <h2 className="text-2xl font-bold mt-8">Overview</h2>
+            <h2 className="text-2xl font-bold mt-8">Factory equipment</h2>
+            <ul className="list-disc ml-6">
+              <li>Hydraulic steering</li>
+              <li>Front and rear air condition and heating</li>
+              <li>Electric chairs, window, door locks and mirrors</li>
+              <li>AM/FM stereo with cassette</li>
+              <li>Sunroof </li>
+            </ul>
+            <h2 className="text-2xl font-bold mt-8">Aftermarket additions</h2>
+            <ul className="list-disc ml-6">
+              <li>Dual USB/USB-C charger port</li>
+              <li>Remote locking and opening</li>
+            </ul>
+            <h2 className="text-2xl font-bold mt-8">Good to know</h2>
             <p className="mt-2">
-              This Senna is #34 of only 500 produced globally by McLaren. This
-              one owner’s vehicle was delivered new to McLaren Dubai and has
-              since remained in a private collection. The car is stored at an
-              enclosed and staffed car storage facility in Dubai, UAE. At the
-              facility the car is regularly started, cleaned and remains under a
-              cover on a battery tender. Moreover, the Senna comes with full
-              dealer service history with all maintenance complete at McLaren
-              Dubai.
+              The owner reports that the car does not have differential lockers.
+              It is believed that a previous owner installed normal
+              differentials without locks. As such please note the switch on the
+              dashboard does not operate.
+              <br />
+              <br />
+              There are no traffic records of previous accidents. However the
+              owner reports a minor accident where the grill, bumper, headlight
+              and bonnet were damaged. All items were replaced or repaired. The
+              owner reports there was no damage to the engine or chassis.
             </p>
-            <h2 className="text-2xl font-bold mt-8">Overview</h2>
-            <p className="mt-2">
-              This Senna is #34 of only 500 produced globally by McLaren. This
-              one owner’s vehicle was delivered new to McLaren Dubai and has
-              since remained in a private collection. The car is stored at an
-              enclosed and staffed car storage facility in Dubai, UAE. At the
-              facility the car is regularly started, cleaned and remains under a
-              cover on a battery tender. Moreover, the Senna comes with full
-              dealer service history with all maintenance complete at McLaren
-              Dubai.
+            <h2 className="text-2xl font-bold mt-8">
+              A mobile inspection service by Mysyara found the following:
+            </h2>
+            <ul className="list-disc ml-6">
+              <li>A/C works well</li>
+              <li>Head and tail lamps are working </li>
+              <li>Battery and connectors are in good condition</li>
+              <li>Brakes work well and the brake fluid is topped up</li>
+              <li>Filters are in good condition</li>
+              <li>
+                Tires are in good condition with the exception of the spare tire
+                which will need to be replaced
+              </li>
+              <li>Comes with one key only (not original)</li>
+            </ul>
+
+            <h2 className="text-2xl font-bold mt-8">Exterior findings:</h2>
+            <ul className="list-disc ml-6">
+              <li>
+                This vehicle has been fully repainted (paint thickness gauge
+                readings can be found at the end of the report)
+              </li>
+              <li>There are some spots with rust (please review the photos)</li>
+              <li>Scratches on the running boards (side step)</li>
+              <li>Scratches on the edge of the rear left side door</li>
+              <li>Scratches on the graphics on the bottom of the right side</li>
+            </ul>
+            <h2 className="text-2xl font-bold mt-8">Interior findings:</h2>
+            <ul className="list-disc ml-6">
+              <li>
+                There is an issue with the fridge and icebox buttons. They work
+                but require that you press and hold them.
+              </li>
+              <li>There are small cracks on the dashboard</li>
+            </ul>
+
+            <p className="mt-4">
+              *Please review the photos for all the findings.
             </p>
-            <h2 className="text-2xl font-bold mt-8">Service history</h2>
-            <section className="text-gray-600 body-font">
+
+            {/* <section className="text-gray-600 body-font">
               <div className="container mx-auto flex flex-wrap">
                 {history.map((item, index) => (
                   <div
@@ -176,7 +218,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
                   </div>
                 ))}
               </div>
-            </section>
+            </section> */}
             <h2 className="text-2xl font-bold mt-8">Videos</h2>
             <h2 className="text-xl font-bold mt-4">• WALK-AROUND</h2>
             <div className="aspect-w-16 aspect-h-10 md:mr-20">
@@ -216,15 +258,15 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
     },
     {
       title: "VIN (Chassis #)",
-      value: "SBM15ACB8KW800044",
+      value: "FZJ800143914",
     },
     {
       title: "Engine",
-      value: "Twin-Turbo 4.0L V8",
+      value: "4.5L Inline-6",
     },
     {
       title: "Drivetrain",
-      value: "RWD",
+      value: "4WD",
     },
     {
       title: "Transmission",
@@ -232,7 +274,7 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
     },
     {
       title: "Mileage",
-      value: "5",
+      value: "233,745",
     },
     {
       title: "Mileage Type",
@@ -240,15 +282,11 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
     },
     {
       title: "Exterior Color",
-      value: "Victory Grey",
+      value: "White",
     },
     {
       title: "Interior Color",
-      value: "Black Alc/Orange Perf",
-    },
-    {
-      title: "Registration Status",
-      value: "Registered, Dubai",
+      value: "Dark Blue",
     },
   ];
 

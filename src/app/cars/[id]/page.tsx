@@ -1,5 +1,11 @@
 import CarDetailPage from "@/components/pages/CarDetailPage";
+import { Metadata } from "next";
 import * as React from "react";
+
+export const metadata: Metadata = {
+  title: "NoLemons.ae - The online auction for car people, by car people",
+  description: "1996 Toyota LandCruiser VX",
+};
 
 const CarPage: React.FunctionComponent<{}> = async () => {
   const res = await fetch(
