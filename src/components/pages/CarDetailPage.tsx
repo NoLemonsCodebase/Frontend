@@ -66,7 +66,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             <ImageCarousel images={fullImages} previewImages={previewImages} />
           ))}
         <div className="flex space-x-2 mt-2">
-          <h1 className="text-xl font-bold">1996 Toyota LandCruiser VX</h1>
+          <h1 className="text-xl font-bold">1996 Toyota Land Cruiser VX</h1>
           <div className="flex items-center">
             <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
               <svg
@@ -76,14 +76,15 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
               >
                 <path d="M10 15l-3.5-3.5 1.6-1.6L10 12l4.9-5 1.6 1.6L10 15z" />
               </svg>
-              verified <span className="hidden sm:block"> by NoLemons</span>
+              verified{" "}
+              <span className="hidden sm:block ml-0.5"> by NoLemons</span>
             </span>
           </div>
         </div>
         {/* <p className="text-sm">
           1 Owner, Dual-Motor AWD, Texas-Owned, Reviewed by Alanis King
         </p> */}
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 font-semibold">
           Ending{" "}
           {endDatetime?.toLocaleString("en-US", {
             month: "short",
@@ -110,7 +111,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
           <div className="flex-1 flex flex-col">
             {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
             <div className="mt-2">
-              This is a 1996 Toyota LandCruiser VX equipped with a 4.5L
+              This is a 1996 Toyota Land Cruiser VX equipped with a 4.5L
               inline-six producing 212 horsepower mated to a 4 speed automatic.
               {/* <ul className="list-disc ml-10">
                 <li>

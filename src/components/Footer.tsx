@@ -9,7 +9,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
       <p className="mb-4">&copy; 2023 NoLemons</p>
       <div className="flex justify-center space-x-4">
         <a
-          href="https://wa.me/77073003931?text=Hi%21%20I%20am%20from%20NoLemons%20website.%20Could%20you%20please%20tell%20me%3A"
+          href="https://wa.me/971564404640?text=Hi%21%20I%20am%20from%20NoLemons%20website.%20Could%20you%20please%20tell%20me%3A"
           target="_blank"
           aria-label="Phone"
         >

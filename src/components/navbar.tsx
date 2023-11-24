@@ -21,13 +21,7 @@ export function Navbar() {
             className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
             href="https://nolemons.ae/faq/"
           >
-            FAQ
-          </a>
-          <a
-            className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
-            href="https://nolemons.ae/blog/"
-          >
-            Blog
+            How it works?
           </a>
         </div>
       </div>

@@ -4,9 +4,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "NoLemons.ae - The online auction for car people, by car people",
-  description: "1996 Toyota LandCruiser VX",
+  description: "1996 Toyota Land Cruiser VX",
   openGraph: {
-    images: ["https://nolemons.ae/wp-content/uploads/2023/11/LC80.jpg"],
+    images: ["/images/land-cruiser/social.jpeg"],
   },
   metadataBase: new URL("https://nolemons.co"),
 };
