@@ -61,7 +61,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ArrowUpIcon className="w-5 h-5 hidden sm:block" />
           <p className="opacity-7 hidden sm:block">High bid</p>
-          <p className="font-semibold whitespace-nowrap">SAR {lastBid}</p>
+          <p className="font-semibold whitespace-nowrap">AED {lastBid}</p>
         </li>
         <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
           <FrameIcon className="w-5 h-5" />
