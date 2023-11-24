@@ -94,7 +94,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             hour12: true,
           })}
         </p>
-        <div className="hidden sm:flex mt-4 z-10 space-x-4 sticky top-4">
+        <div className="hidden sm:flex mt-4 space-x-4">
           <AutionStatusBar auctionInfo={auctionInfo} />
           <button
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"

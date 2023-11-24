@@ -1,5 +1,15 @@
 import { ActionsHeader } from "@/components/actions-header";
 import CarCard from "@/components/CarCard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "NoLemons.ae - The online auction for car people, by car people",
+  description: "1996 Toyota LandCruiser VX",
+  openGraph: {
+    images: ["https://nolemons.ae/wp-content/uploads/2023/11/LC80.jpg"],
+  },
+  metadataBase: new URL("https://nolemons.co"),
+};
 
 export default function Home() {
   return (
