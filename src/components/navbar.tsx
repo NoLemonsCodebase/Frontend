@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   return (
-    <nav className="flex items-center justify-between px-4 md:px-16 py-4 bg-white  shadow">
+    <nav className="sticky top-0 z-10 flex items-center justify-between px-4 md:px-16 py-4 bg-white  shadow">
       <div className="flex items-center space-x-4">
         <span className="font-bold text-lg md:text-xl">Nolemons</span>
         <div className="border-l border-gray-300 h-5 mx-4" />
@@ -17,6 +17,18 @@ export function Navbar() {
           >
             Auctions
           </a>
+          <a
+            className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+            href="https://nolemons.ae/faq/"
+          >
+            FAQ
+          </a>
+          <a
+            className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+            href="https://nolemons.ae/blog/"
+          >
+            Blog
+          </a>
         </div>
       </div>
       <div className="flex items-center space-x-4">
@@ -26,9 +38,9 @@ export function Navbar() {
           placeholder="Search..."
           type="search"
         /> */}
-        <Button className="hover:bg-gray-200 " variant="outline">
+        {/* <Button className="hover:bg-gray-200 " variant="outline">
           Sign Up
-        </Button>
+        </Button> */}
       </div>
     </nav>
   );

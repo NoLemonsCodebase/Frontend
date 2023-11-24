@@ -6,11 +6,12 @@ interface IAutionStatusBarProps {
   auctionInfo: {
     endDate: string;
     lastBid: number;
+    numBids: number;
   };
 }
 
 const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
-  auctionInfo: { lastBid, endDate },
+  auctionInfo: { lastBid, endDate, numBids },
 }) => {
   const secondsLeft = useSecondsLeft(endDate);
 
@@ -65,7 +66,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
         <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
           <FrameIcon className="w-5 h-5" />
           <p className="opacity-70">Bids</p>
-          <p className="font-semibold">8</p>
+          <p className="font-semibold">{numBids}</p>
         </li>
       </ul>
     </div>

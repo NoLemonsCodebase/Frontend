@@ -16,6 +16,7 @@ export function BidSection() {
   const [sent, setSent] = useState(false);
 
   const onSubmit = async () => {
+    setError("");
     setLoading(true);
     const res = await fetch("https://nolemons2.onrender.com/bot/webhook/", {
       method: "POST",
@@ -28,7 +29,9 @@ export function BidSection() {
     if (res.ok) {
       setSent(true);
     } else {
-      setError("Something went wrong. Please try again later.");
+      setError(
+        "Please enter your Whatsapp number to submit a bid or follow the auction."
+      );
     }
 
     setLoading(false);
@@ -45,11 +48,10 @@ export function BidSection() {
           <>
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                Place a Bid Now
+                Bid Now
               </h2>
               <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                Enter your phone number and we&apos;ll contact you on WhatsApp
-                to confirm your bid.
+                Enter your Whatsapp number to place a bid (offer)
               </p>
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
@@ -66,7 +68,6 @@ export function BidSection() {
                   value={phone}
                   onChange={setPhone}
                 />
-                {phone}
                 <Button type="submit" disabled={loading}>
                   {loading && (
                     <svg
@@ -91,7 +92,7 @@ export function BidSection() {
               Thank you!
             </h2>
             <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-              We&apos;ll contact you on WhatsApp to confirm your bid.
+              You will receive a message on WhatsApp to place your bid.
             </p>
           </>
         )}

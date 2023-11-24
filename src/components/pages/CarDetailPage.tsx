@@ -14,6 +14,7 @@ interface ICarPageProps {
   auctionInfo: {
     endDate: string;
     lastBid: number;
+    numBids: number;
   };
 }
 
@@ -49,14 +50,13 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   return (
     <>
       <section className="flex flex-col px-4 md:px-16 py-4">
-        <div className="flex sm:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-0 bg-white border-b">
+        <div className="flex sm:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-14 bg-white border-b">
           <AutionStatusBar auctionInfo={auctionInfo} />
           <button
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"
             onClick={scrollToTarget}
           >
-            <span className="hidden sm:block">Place Bid</span>
-            <span className="block sm:hidden">Bid</span>
+            Bid
           </button>
         </div>
         {width &&
@@ -100,8 +100,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"
             onClick={scrollToTarget}
           >
-            <span className="hidden sm:block">Place Bid</span>
-            <span className="block sm:hidden">Bid</span>
+            Bid
           </button>
         </div>
         <div className="block md:hidden">
@@ -125,7 +124,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
               </ul> */}
             </div>
             <h2 className="text-2xl font-bold mt-8">Factory equipment</h2>
-            <ul className="list-disc ml-6">
+            <ul className="list-disc ml-6 mt-2">
               <li>Hydraulic steering</li>
               <li>Front and rear air condition and heating</li>
               <li>Electric chairs, window, door locks and mirrors</li>
@@ -133,7 +132,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
               <li>Sunroof </li>
             </ul>
             <h2 className="text-2xl font-bold mt-8">Aftermarket additions</h2>
-            <ul className="list-disc ml-6">
+            <ul className="list-disc ml-6 mt-2">
               <li>Dual USB/USB-C charger port</li>
               <li>Remote locking and opening</li>
             </ul>
@@ -153,7 +152,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             <h2 className="text-2xl font-bold mt-8">
               A mobile inspection service by Mysyara found the following:
             </h2>
-            <ul className="list-disc ml-6">
+            <ul className="list-disc ml-6 mt-2">
               <li>A/C works well</li>
               <li>Head and tail lamps are working </li>
               <li>Battery and connectors are in good condition</li>
@@ -167,7 +166,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             </ul>
 
             <h2 className="text-2xl font-bold mt-8">Exterior findings:</h2>
-            <ul className="list-disc ml-6">
+            <ul className="list-disc ml-6 mt-2">
               <li>
                 This vehicle has been fully repainted (paint thickness gauge
                 readings can be found at the end of the report)
@@ -178,7 +177,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
               <li>Scratches on the graphics on the bottom of the right side</li>
             </ul>
             <h2 className="text-2xl font-bold mt-8">Interior findings:</h2>
-            <ul className="list-disc ml-6">
+            <ul className="list-disc ml-6 mt-2">
               <li>
                 There is an issue with the fridge and icebox buttons. They work
                 but require that you press and hold them.
@@ -220,20 +219,45 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
               </div>
             </section> */}
             <h2 className="text-2xl font-bold mt-8">Videos</h2>
-            <h2 className="text-xl font-bold mt-4">• WALK-AROUND</h2>
+            <h2 className="text-xl font-bold mt-4">WALK-AROUND</h2>
             <div className="aspect-w-16 aspect-h-10 md:mr-20">
               <iframe
-                src="https://www.youtube.com/embed/rlw0y1MPKT4"
-                title="McLaren Senna Auction, nolemons.ae [Walk-Around]"
+                src="https://www.youtube.com/embed/1symtRnKPNI"
+                width="800"
+                title="1996 Toyota Land Cruiser VX (Walk-around)"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
             </div>
-            <h2 className="text-xl font-bold mt-4">• Interior</h2>
+            <h2 className="text-xl font-bold mt-4">Interior</h2>
+            <div className="aspect-w-4 aspect-h-7 md:mr-20">
+              <iframe
+                width="416"
+                height="740"
+                src="https://www.youtube.com/embed/ZgZsLtdUi6A"
+                title="1996 Toyota Land Cruiser VX (Interior 1)"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <h2 className="text-xl font-bold mt-4">Interior II</h2>
+            <div className="aspect-w-4 aspect-h-7 md:mr-20">
+              <iframe
+                width="416"
+                height="740"
+                src="https://www.youtube.com/embed/npb6ytzTrSs"
+                title="1996 Toyota Land Cruiser VX (Interior 2)"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <h2 className="text-xl font-bold mt-4">Engine start front</h2>
             <div className="aspect-w-16 aspect-h-10 md:mr-20">
               <iframe
-                src="https://www.youtube.com/embed/HgOUWGy6iLk"
-                title="McLaren Senna Auction, nolemons.ae [Interior]"
+                width="1159"
+                height="652"
+                src="https://www.youtube.com/embed/OLmgFhWlWKQ"
+                title="1996 Toyota Land Cruiser VX (Engine start front)"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
@@ -291,9 +315,11 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
   ];
 
   const inspectionPDF =
-    "https://nolemons.ae/wp-content/uploads/2022/08/Inspection_1989_BMW_635CSi_66333.pdf";
+    "https://nolemons.ae/wp-content/uploads/2023/11/Inspection-Report_FZJ800143914.pdf";
   const reportHistoryPDF =
-    "https://nolemons.ae/wp-content/uploads/2022/08/History_1989_BMW_635CSi_66333.pdf";
+    "https://nolemons.ae/wp-content/uploads/2023/11/History_Report_Paint_FZJ800143914.pdf";
+  const arabicDescPDF =
+    "https://nolemons.ae/wp-content/uploads/2023/11/FZJ800143914_Post_Arabic_Description_2.pdf";
 
   return (
     <div
@@ -350,7 +376,7 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
             </td>
             <td className="py-2 whitespace-nowrap text-sm text-gray-500">
               <a
-                href={reportHistoryPDF}
+                href={arabicDescPDF}
                 target="_blank"
                 className="text-blue-500 hover:text-blue-700"
               >
