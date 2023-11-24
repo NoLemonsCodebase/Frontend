@@ -149,6 +149,11 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
               owner reports a minor accident where the grill, bumper, headlight
               and bonnet were damaged. All items were replaced or repaired. The
               owner reports there was no damage to the engine or chassis.
+              <br />
+              <br />
+              The owner has spent AED 23,814 ($6,488) in recent maintenance and
+              repairs at Al Qalaed Garage in Dubai. The receipts and paint
+              thickness readings can be reviewed in the History Report.
             </p>
             <h2 className="text-2xl font-bold mt-8">
               A mobile inspection service by Mysyara found the following:
@@ -329,7 +334,7 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
   const inspectionPDF =
     "https://nolemons.ae/wp-content/uploads/2023/11/Inspection-Report_FZJ800143914.pdf";
   const reportHistoryPDF =
-    "https://nolemons.ae/wp-content/uploads/2023/11/History_Report_Paint_FZJ800143914.pdf";
+    "https://nolemons.ae/wp-content/uploads/2023/11/History_Report_FZJ800143914.pdf";
   const arabicDescPDF =
     "https://nolemons.ae/wp-content/uploads/2023/11/FZJ800143914_Post_Arabic_Description_2.pdf";
 
