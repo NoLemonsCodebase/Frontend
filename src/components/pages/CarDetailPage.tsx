@@ -327,7 +327,7 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
     },
     {
       title: "Interior Color",
-      value: "Dark Blue",
+      value: "Grey",
     },
   ];
 
