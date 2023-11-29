@@ -3,12 +3,13 @@
  * @see https://v0.dev/t/PS6Xy6PWdOo
  */
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function Navbar() {
   return (
     <nav className="sticky top-0 z-10 flex items-center justify-between px-4 md:px-16 py-4 bg-white  shadow">
       <div className="flex items-center space-x-4">
-        <span className="font-bold text-lg md:text-xl">Nolemons</span>
+        <Image src="/logo.png" width={90} height={16} alt="logo" />
         <div className="border-l border-gray-300 h-5 mx-4" />
         <div className="flex items-center space-x-4">
           <a
