@@ -12,7 +12,7 @@ export const useSecondsLeft = (endDate: string) => {
           return currentSecondsLeft - 1;
         } else {
           clearInterval(interval);
-          return 0;
+          return -1;
         }
       });
     }, 1000);
