@@ -46,7 +46,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
           <ClockIcon className="w-5 h-5" />
           <p className="hidden sm:block opacity-70">Time Left</p>
           {secondsLeft < 0 ? (
-            <p className="font-semibold">Ended</p>
+            <p className="font-semibold">For sale</p>
           ) : secondsLeft == 0 ? (
             <p className="font-semibold">--:--:--</p>
           ) : (
