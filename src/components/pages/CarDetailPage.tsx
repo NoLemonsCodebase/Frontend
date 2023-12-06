@@ -4,7 +4,6 @@ import CarImagesSection from "@/components/CarImagesSection";
 import Footer from "@/components/Footer";
 import { BidSection } from "@/components/bid-section";
 import cn from "classnames";
-import { previewImages, fullImages } from "./images";
 import * as React from "react";
 import ImageCarousel from "@/components/ImageCarousel";
 import { useWindowSize } from "@uidotdev/usehooks";
@@ -16,6 +15,7 @@ interface ICarPageProps {
     lastBid: number;
     numBids: number;
   };
+  carDetail: any;
 }
 
 const history = [
@@ -36,6 +36,7 @@ const history = [
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   auctionInfo,
+  carDetail,
 }) => {
   const endDatetime = new Date(auctionInfo.endDate);
   const { width } = useWindowSize();
@@ -61,12 +62,20 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         </div>
         {width &&
           (width > 640 ? (
-            <CarImagesSection images={fullImages} previewImages={fullImages} />
+            <CarImagesSection
+              images={carDetail.car_image.map((car: any) => car.image)}
+              previewImages={carDetail.car_image.map((car: any) => car.image)}
+            />
           ) : (
-            <ImageCarousel images={fullImages} previewImages={previewImages} />
+            <ImageCarousel
+              images={carDetail.car_image.map((car: any) => car.image)}
+              previewImages={carDetail.car_image.map((car: any) => car.image)}
+            />
           ))}
         <div className="flex space-x-2 mt-2">
-          <h1 className="text-xl font-bold">1996 Toyota Land Cruiser VX</h1>
+          <h1 className="text-xl font-bold">
+            {carDetail.year} {carDetail.title}
+          </h1>
           <div className="flex items-center">
             <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
               <svg
@@ -105,14 +114,13 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
           </button>
         </div>
         <div className="block md:hidden">
-          <CarDetailList />
+          <CarDetailList carDetail={carDetail} />
         </div>
         <div className="flex space-x-8 mt-8">
           <div className="flex-1 flex flex-col">
             {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
             <div className="mt-2">
-              This is a 1996 Toyota Land Cruiser VX equipped with a 4.5L
-              inline-six producing 212 horsepower mated to a 4 speed automatic.
+              {carDetail.description}
               {/* <ul className="list-disc ml-10">
                 <li>
                   In excellent condition with only 5 km (3 mi) on the odometer
@@ -124,72 +132,15 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
                 </li>
               </ul> */}
             </div>
-            <h2 className="text-2xl font-bold mt-8">Factory equipment</h2>
-            <ul className="list-disc ml-6 mt-2">
-              <li>Hydraulic steering</li>
-              <li>Front and rear air condition and heating</li>
-              <li>Electric chairs, window, door locks and mirrors</li>
-              <li>AM/FM stereo with cassette</li>
-              <li>Sunroof </li>
-            </ul>
-            <h2 className="text-2xl font-bold mt-8">Aftermarket additions</h2>
-            <ul className="list-disc ml-6 mt-2">
-              <li>Dual USB/USB-C charger port</li>
-              <li>Remote locking and opening</li>
-            </ul>
-            <h2 className="text-2xl font-bold mt-8">Good to know</h2>
-            <p className="mt-2">
-              The owner reports that the car does not have differential lockers.
-              It is believed that a previous owner installed normal
-              differentials without locks. As such please note the switch on the
-              dashboard does not operate.
-              <br />
-              <br />
-              There are no traffic records of previous accidents. However the
-              owner reports a minor accident where the grill, bumper, headlight
-              and bonnet were damaged. All items were replaced or repaired. The
-              owner reports there was no damage to the engine or chassis.
-              <br />
-              <br />
-              The owner has spent AED 23,814 ($6,488) in recent maintenance and
-              repairs at Al Qalaed Garage in Dubai. The receipts and paint
-              thickness readings can be reviewed in the History Report.
-            </p>
-            <h2 className="text-2xl font-bold mt-8">
-              A mobile inspection service by Mysyara found the following:
-            </h2>
-            <ul className="list-disc ml-6 mt-2">
-              <li>A/C works well</li>
-              <li>Head and tail lamps are working </li>
-              <li>Battery and connectors are in good condition</li>
-              <li>Brakes work well and the brake fluid is topped up</li>
-              <li>Filters are in good condition</li>
-              <li>
-                Tires are in good condition with the exception of the spare tire
-                which will need to be replaced
-              </li>
-              <li>Comes with one key only (not original)</li>
-            </ul>
-
-            <h2 className="text-2xl font-bold mt-8">Exterior findings:</h2>
-            <ul className="list-disc ml-6 mt-2">
-              <li>
-                This vehicle has been fully repainted (paint thickness gauge
-                readings can be found at the end of the report)
-              </li>
-              <li>There are some spots with rust (please review the photos)</li>
-              <li>Scratches on the running boards (side step)</li>
-              <li>Scratches on the edge of the rear left side door</li>
-              <li>Scratches on the graphics on the bottom of the right side</li>
-            </ul>
-            <h2 className="text-2xl font-bold mt-8">Interior findings:</h2>
-            <ul className="list-disc ml-6 mt-2">
-              <li>
-                There is an issue with the fridge and icebox buttons. They work
-                but require that you press and hold them.
-              </li>
-              <li>There are small cracks on the dashboard</li>
-            </ul>
+            {carDetail.car_text_section.map((section: any, index: number) => (
+              <>
+                <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
+                <p
+                  className="mt-2"
+                  dangerouslySetInnerHTML={{ __html: section.content }}
+                />
+              </>
+            ))}
 
             <p className="mt-4">
               *Please review the photos for all the findings.
@@ -224,64 +175,32 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
                 ))}
               </div>
             </section> */}
-            <h2 className="text-2xl font-bold mt-8">Videos</h2>
-            <h2 className="text-xl font-bold mt-4">Walk-around</h2>
-            <div className="aspect-w-16 aspect-h-10 md:mr-20">
-              <iframe
-                src="https://www.youtube.com/embed/1symtRnKPNI"
-                width="800"
-                title="1996 Toyota Land Cruiser VX (Walk-around)"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <h2 className="text-xl font-bold mt-4">Interior</h2>
-            <div className="aspect-w-4 aspect-h-7 md:mr-20">
-              <iframe
-                width="416"
-                height="740"
-                src="https://www.youtube.com/embed/ZgZsLtdUi6A"
-                title="1996 Toyota Land Cruiser VX (Interior 1)"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <h2 className="text-xl font-bold mt-4">Interior II</h2>
-            <div className="aspect-w-4 aspect-h-7 md:mr-20">
-              <iframe
-                width="416"
-                height="740"
-                src="https://www.youtube.com/embed/npb6ytzTrSs"
-                title="1996 Toyota Land Cruiser VX (Interior 2)"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <h2 className="text-xl font-bold mt-4">Engine start front</h2>
-            <div className="aspect-w-16 aspect-h-10 md:mr-20">
-              <iframe
-                width="1159"
-                height="652"
-                src="https://www.youtube.com/embed/OLmgFhWlWKQ"
-                title="1996 Toyota Land Cruiser VX (Engine start front)"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <h2 className="text-xl font-bold mt-4">Engine start rear</h2>
-            <div className="aspect-w-16 aspect-h-10 md:mr-20">
-              <iframe
-                width="1159"
-                height="652"
-                src="https://www.youtube.com/embed/5SKa5oDBaaw"
-                title="1996 Toyota Land Cruiser VX (Engine start rear)"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              ></iframe>
-            </div>
+            {carDetail.car_video?.length > 0 && (
+              <h2 className="text-2xl font-bold mt-8">Videos</h2>
+            )}
+            {carDetail.car_video?.map((video: any, index: number) => (
+              <>
+                <h2 className="text-xl font-bold mt-4">{video.title}</h2>
+                <div
+                  className={cn(
+                    "md:mr-20",
+                    video.aspect_ratio == "16:9"
+                      ? "aspect-w-16 aspect-h-10"
+                      : "aspect-w-4 aspect-h-7 max-h-64"
+                  )}
+                >
+                  <iframe
+                    src={video.video}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </>
+            ))}
           </div>
           <section className="hidden lg:block sticky top-20 self-start w-96">
-            <CarDetailList isCard />
+            <CarDetailList isCard carDetail={carDetail} />
           </section>
         </div>
         <BidSection />
@@ -291,23 +210,26 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   );
 };
 
-const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
+const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
+  isCard,
+  carDetail,
+}) => {
   const sections = [
     {
       title: "Location",
-      value: "Dubai, UAE",
+      value: carDetail.location,
     },
     {
       title: "VIN (Chassis #)",
-      value: "FZJ800143914",
+      value: carDetail.vin,
     },
     {
       title: "Engine",
-      value: "4.5L Inline-6",
+      value: carDetail.engine,
     },
     {
       title: "Drivetrain",
-      value: "4WD",
+      value: carDetail.drivetrain,
     },
     {
       title: "Transmission",
@@ -315,28 +237,26 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
     },
     {
       title: "Mileage",
-      value: "233,745",
+      value: carDetail.mileage,
     },
     {
       title: "Mileage Type",
-      value: "km",
+      value: carDetail.mileage_type,
     },
     {
       title: "Exterior Color",
-      value: "White",
+      value: carDetail.exterior_color,
     },
     {
       title: "Interior Color",
-      value: "Grey",
+      value: carDetail.interior_color,
     },
   ];
 
-  const inspectionPDF =
-    "https://nolemons.ae/wp-content/uploads/2023/11/Inspection-Report_FZJ800143914.pdf";
-  const reportHistoryPDF =
-    "https://nolemons.ae/wp-content/uploads/2023/11/History_Report_FZJ800143914.pdf";
-  const arabicDescPDF =
-    "https://nolemons.ae/wp-content/uploads/2023/11/FZJ800143914_Post_Arabic_Description_2.pdf";
+  const inspectionPDF = carDetail.inspection_report_link;
+  const reportHistoryPDF = carDetail.history_report_link;
+
+  const arabicDescPDF = carDetail.arabic_description_link;
 
   return (
     <div
@@ -357,51 +277,57 @@ const CarDetailList: React.FC<{ isCard?: boolean }> = ({ isCard }) => {
               </td>
             </tr>
           ))}
-          <tr>
-            <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-              Inspection report
-            </td>
-            <td className="py-2 whitespace-nowrap text-sm text-gray-500">
-              <a
-                href={inspectionPDF}
-                target="_blank"
-                className="text-blue-500 hover:text-blue-700"
-              >
-                Open report
-                <ExternalLinkIcon className="w-4 h-4 inline-block ml-1" />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-              History Report
-            </td>
-            <td className="py-2 whitespace-nowrap text-sm text-gray-500">
-              <a
-                href={reportHistoryPDF}
-                target="_blank"
-                className="text-blue-500 hover:text-blue-700"
-              >
-                Open report
-                <ExternalLinkIcon className="w-4 h-4 inline-block ml-1" />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-              الوصف (باللغة العربية)
-            </td>
-            <td className="py-2 whitespace-nowrap text-sm text-gray-500">
-              <a
-                href={arabicDescPDF}
-                target="_blank"
-                className="text-blue-500 hover:text-blue-700"
-              >
-                <ExternalLinkIcon className="w-4 h-4 inline-block mr-1" />
-                افتح الملف
-              </a>
-            </td>
-          </tr>
+          {inspectionPDF && (
+            <tr>
+              <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                Inspection report
+              </td>
+              <td className="py-2 whitespace-nowrap text-sm text-gray-500">
+                <a
+                  href={inspectionPDF}
+                  target="_blank"
+                  className="text-blue-500 hover:text-blue-700"
+                >
+                  Open report
+                  <ExternalLinkIcon className="w-4 h-4 inline-block ml-1" />
+                </a>
+              </td>
+            </tr>
+          )}
+          {reportHistoryPDF && (
+            <tr>
+              <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                History Report
+              </td>
+              <td className="py-2 whitespace-nowrap text-sm text-gray-500">
+                <a
+                  href={reportHistoryPDF}
+                  target="_blank"
+                  className="text-blue-500 hover:text-blue-700"
+                >
+                  Open report
+                  <ExternalLinkIcon className="w-4 h-4 inline-block ml-1" />
+                </a>
+              </td>
+            </tr>
+          )}
+          {arabicDescPDF && (
+            <tr>
+              <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                الوصف (باللغة العربية)
+              </td>
+              <td className="py-2 whitespace-nowrap text-sm text-gray-500">
+                <a
+                  href={arabicDescPDF}
+                  target="_blank"
+                  className="text-blue-500 hover:text-blue-700"
+                >
+                  <ExternalLinkIcon className="w-4 h-4 inline-block mr-1" />
+                  افتح الملف
+                </a>
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

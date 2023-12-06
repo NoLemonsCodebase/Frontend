@@ -1,18 +1,70 @@
+import { useSecondsLeft } from "@/lib/hooks/useSecondsLeft";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
+import cn from "classnames";
 
 interface ICarCardProps {
-  img: string;
+  carDetails: any;
 }
 
-const CarCard: React.FunctionComponent<ICarCardProps> = ({ img }) => {
+const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
+  const secondsLeft = useSecondsLeft(carDetails.end_time);
+
+  const timeLeftText = () => {
+    if (secondsLeft <= 0) return ["Auction ended", ""];
+    const days = Math.floor(secondsLeft / (24 * 60 * 60));
+    let hours: string | number = Math.floor(
+      (secondsLeft % (24 * 60 * 60)) / (60 * 60)
+    );
+    let minutes: string | number = Math.floor((secondsLeft % (60 * 60)) / 60);
+    let seconds: string | number = Math.floor(secondsLeft % 60);
+
+    if (hours < 10) hours = "0" + hours;
+    if (minutes < 10) minutes = "0" + minutes;
+    if (seconds < 10) seconds = "0" + seconds;
+
+    const hourPart = `${hours}:${minutes}:${seconds}`;
+
+    if (days > 1) {
+      return `${days} days ${hourPart}`;
+    }
+    if (days == 1) {
+      return `${days} day ${hourPart}`;
+    }
+    return hourPart;
+  };
+
   return (
     <Link
-      href={"/cars/car_id"}
-      className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer hover:bg-gray-100"
+      href={`/cars/${carDetails.id}`}
+      className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer hover:bg-gray-100 flex flex-col"
     >
-      <div className="absolute right-0 bottom-0 bg-black bg-opacity-50 text-white p-2 rounded-bl-lg">
+      <Image
+        src={carDetails.main_image}
+        alt="Landscape picture"
+        width={712}
+        height={468}
+        className="block"
+      />
+      <div className="p-4 pb-2 flex-1 flex flex-col">
+        <h3 className="font-semibold text-lg">{carDetails.title}</h3>
+        <p className="text-sm text-zinc-500 mt-0.5">
+          {carDetails.year}, {carDetails.location}
+        </p>
+        {/* <p className="text-sm text-zinc-500 mt-2">
+          {carDetails.short_description}
+        </p> */}
+        <h4 className="font-semibold text-base mt-auto">
+          {carDetails.current_bid} {carDetails.currency}{" "}
+        </h4>
+      </div>
+      <div
+        className={cn(
+          "text-white w-full p-2 rounded-b-lg flex items-center justify-center",
+          secondsLeft <= 0 ? "bg-black bg-opacity-50" : "bg-green-700"
+        )}
+      >
         <svg
           className=" h-4 w-4 mr-1 inline-block"
           fill="none"
@@ -28,22 +80,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ img }) => {
           <circle cx="12" cy="12" r="10" />
           <polyline points="12 6 12 12 16 14" />
         </svg>
-        <span>5h left</span>
-      </div>
-      <Image
-        src={img}
-        alt="Landscape picture"
-        width={712}
-        height={468}
-        className="block"
-      />
-      <div className="p-4">
-        <h3 className="font-semibold text-lg md:text-xl">Ford Mustang</h3>
-        <p className="text-sm text-zinc-500">2018, New York</p>
-        <p className="text-sm text-zinc-500">
-          A beautiful red Ford Mustang in excellent condition.
-        </p>
-        <h4 className="font-semibold text-base md:text-lg">$25,000</h4>
+        <span>{timeLeftText()}</span>
       </div>
     </Link>
   );

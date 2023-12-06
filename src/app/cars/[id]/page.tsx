@@ -11,9 +11,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://nolemons.co"),
 };
 
-const CarPage: React.FunctionComponent<{}> = async () => {
+const CarPage: React.FunctionComponent<{ params: any }> = async ({
+  params,
+}) => {
   const res = await fetch(
-    "https://nolemons2.onrender.com/bot/current-max-auction-bid/",
+    `https://nolemons2.onrender.com/api/v2/cars/${params.id}/`,
     { next: { revalidate: 0 } }
   );
 
@@ -21,11 +23,11 @@ const CarPage: React.FunctionComponent<{}> = async () => {
 
   const auctionInfo = {
     endDate: data.end_time,
-    lastBid: data.max_bid,
-    numBids: data.number_of_bids,
+    lastBid: data.current_bid || data.starting_bid,
+    numBids: 31,
   };
 
-  return <CarDetailPage auctionInfo={auctionInfo} />;
+  return <CarDetailPage auctionInfo={auctionInfo} carDetail={data} />;
 };
 
 export default CarPage;
