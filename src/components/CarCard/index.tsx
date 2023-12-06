@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import cn from "classnames";
+import numeral from "numeral";
 
 interface ICarCardProps {
   carDetails: any;
@@ -56,7 +57,9 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
           {carDetails.short_description}
         </p> */}
         <h4 className="font-semibold text-base mt-auto">
-          {carDetails.current_bid} {carDetails.currency}{" "}
+          {`${carDetails.currency} ${numeral(carDetails.current_bid).format(
+            "0,0"
+          )}`}
         </h4>
       </div>
       <div
