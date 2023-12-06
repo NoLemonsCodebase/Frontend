@@ -119,19 +119,10 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         <div className="flex space-x-8 mt-8">
           <div className="flex-1 flex flex-col">
             {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
-            <div className="mt-2">
-              {carDetail.description}
-              {/* <ul className="list-disc ml-10">
-                <li>
-                  In excellent condition with only 5 km (3 mi) on the odometer
-                </li>
-                <li>#44 of only 500 produced globally</li>
-                <li>
-                  Comes with an extended McLaren global warranty and full
-                  service history
-                </li>
-              </ul> */}
-            </div>
+            <div
+              className="mt-2"
+              dangerouslySetInnerHTML={{ __html: carDetail.description }}
+            />
             {carDetail.car_text_section.map((section: any, index: number) => (
               <>
                 <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
