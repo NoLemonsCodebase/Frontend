@@ -14,7 +14,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
   const secondsLeft = useSecondsLeft(carDetails.end_time);
 
   const timeLeftText = () => {
-    if (secondsLeft <= 0) return ["Auction ended", ""];
+    if (secondsLeft <= 0) return "Auction ended";
     const days = Math.floor(secondsLeft / (24 * 60 * 60));
     let hours: string | number = Math.floor(
       (secondsLeft % (24 * 60 * 60)) / (60 * 60)
@@ -66,27 +66,38 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
           )}`}
         </h4>
       </div>
+      {carDetails.for_sale && (
+        <div
+          className={cn(
+            "absolute top-0 right-0 text-white p-2 flex items-center justify-center bg-green-700"
+          )}
+        >
+          <span>For sale</span>
+        </div>
+      )}
       <div
         className={cn(
           "text-white w-full p-2 rounded-b-lg flex items-center justify-center",
           secondsLeft <= 0 ? "bg-black bg-opacity-50" : "bg-green-700"
         )}
       >
-        <svg
-          className=" h-4 w-4 mr-1 inline-block"
-          fill="none"
-          height="24"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          width="24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <polyline points="12 6 12 12 16 14" />
-        </svg>
+        {secondsLeft > 0 && (
+          <svg
+            className=" h-4 w-4 mr-1 inline-block"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+        )}
         <span>{timeLeftText()}</span>
       </div>
     </Link>
