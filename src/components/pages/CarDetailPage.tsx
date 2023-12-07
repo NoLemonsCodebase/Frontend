@@ -18,21 +18,10 @@ interface ICarPageProps {
   carDetail: any;
 }
 
-const history = [
-  {
-    title: "Aug 2021",
-    description: "New battery installed",
-  },
-  {
-    title: "Nov 2020",
-    description:
-      "Repair of oil leaks from the front main seal, cam seals (x2), and valve cover seals gasket. Replaced rear differential bushings at Al Rashid Auto Mechanic in Dubai, UAE. ",
-  },
-  {
-    title: "Nov 2020",
-    description: "Gear bushing purchased at Rukn Al Badei in Sharjah, UAE",
-  },
-];
+const convertToHTML = (text: string) => {
+  return text.replace(/\n/g, "<br/>");
+  // .replace(/\t/g, '<span style="white-space: pre;">\t</span>');
+};
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   auctionInfo,
@@ -121,14 +110,18 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
             <div
               className="mt-2"
-              dangerouslySetInnerHTML={{ __html: carDetail.description }}
+              dangerouslySetInnerHTML={{
+                __html: convertToHTML(carDetail.description),
+              }}
             />
             {carDetail.car_text_section.map((section: any, index: number) => (
               <>
                 <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
                 <p
                   className="mt-2"
-                  dangerouslySetInnerHTML={{ __html: section.content }}
+                  dangerouslySetInnerHTML={{
+                    __html: convertToHTML(section.content),
+                  }}
                 />
               </>
             ))}
