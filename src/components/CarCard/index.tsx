@@ -4,6 +4,7 @@ import Link from "next/link";
 import * as React from "react";
 import cn from "classnames";
 import numeral from "numeral";
+import { MapPinIcon } from "lucide-react";
 
 interface ICarCardProps {
   carDetails: any;
@@ -49,10 +50,13 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
         className="block"
       />
       <div className="p-4 pb-2 flex-1 flex flex-col">
-        <h3 className="font-semibold text-lg">{carDetails.title}</h3>
-        <p className="text-sm text-zinc-500 mt-0.5">
-          {carDetails.year}, {carDetails.location}
-        </p>
+        <h3 className="font-semibold text-lg">
+          {carDetails.year} {carDetails.title}
+        </h3>
+        <div className="flex items-center mt-0.5">
+          <MapPinIcon size={16} className="text-zinc-500" />
+          <p className="text-sm text-zinc-500">{carDetails.location}</p>
+        </div>
         {/* <p className="text-sm text-zinc-500 mt-2">
           {carDetails.short_description}
         </p> */}

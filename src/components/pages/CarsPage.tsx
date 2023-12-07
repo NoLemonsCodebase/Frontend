@@ -2,6 +2,7 @@
 
 import CarCard from "../CarCard";
 import * as React from "react";
+import UpcomingCarCard from "../UpcomingCarCard";
 
 interface ICarsPageProps {
   cars: any[];
@@ -13,6 +14,18 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars }) => {
       <div className="flex flex-col">
         <p className="text-2xl font-bold mb-4">Auctions</p>
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <UpcomingCarCard
+            title="Mercedes  SLR"
+            location="Dubai, UAE"
+            year="2009"
+            mainImage="https://i.postimg.cc/90ZCdL3K/HD1A9944.jpg"
+          />
+          <UpcomingCarCard
+            title="BMW i8"
+            location="Dubai, UAE"
+            year="2016"
+            mainImage="https://i.postimg.cc/PxGbY6kG/GR3-0862.jpg"
+          />
           {cars.map((car) => {
             return <CarCard key={car.id} carDetails={car} />;
           })}
