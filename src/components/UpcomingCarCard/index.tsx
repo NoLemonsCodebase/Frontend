@@ -49,7 +49,7 @@ const UpcomingCarCard: React.FunctionComponent<ICarCardProps> = ({
           "text-white w-full p-2 rounded-b-lg flex items-center justify-center bg-black bg-opacity-50"
         )}
       >
-        Cooming soon
+        Coming soon
       </div>
     </div>
   );
