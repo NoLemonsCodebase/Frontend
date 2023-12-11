@@ -75,6 +75,15 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
           <span>For sale</span>
         </div>
       )}
+      {!carDetails.for_sale && secondsLeft <= 0 && (
+        <div
+          className={cn(
+            "absolute top-0 right-0 text-white p-2 flex items-center justify-center bg-[#6E52A2]"
+          )}
+        >
+          <span>SOLD</span>
+        </div>
+      )}
       <div
         className={cn(
           "text-white w-full p-2 rounded-b-lg flex items-center justify-center",
