@@ -28,7 +28,7 @@ const UpcomingCarCard: React.FunctionComponent<ICarCardProps> = ({
   };
   return (
     <div
-      className="relative rounded-lg overflow-hidden shadow-lg flex flex-col"
+      className="relative rounded-lg overflow-hidden shadow-lg flex flex-col cursor-pointer"
       onClick={onClick}
     >
       <Image
