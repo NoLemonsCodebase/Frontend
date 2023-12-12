@@ -66,28 +66,12 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
           )}`}
         </h4>
       </div>
-      {carDetails.for_sale && (
-        <div
-          className={cn(
-            "absolute top-0 right-0 text-white p-2 flex items-center justify-center bg-green-700"
-          )}
-        >
-          <span>For sale</span>
-        </div>
-      )}
-      {!carDetails.for_sale && secondsLeft <= 0 && (
-        <div
-          className={cn(
-            "absolute top-0 right-0 text-white p-2 flex items-center justify-center bg-[#6E52A2]"
-          )}
-        >
-          <span>SOLD</span>
-        </div>
-      )}
       <div
         className={cn(
           "text-white w-full p-2 rounded-b-lg flex items-center justify-center",
-          secondsLeft <= 0 ? "bg-black bg-opacity-50" : "bg-green-700"
+          secondsLeft >= 0 || carDetails.for_sale
+            ? "bg-green-700"
+            : "bg-[#6E52A2]"
         )}
       >
         {secondsLeft > 0 && (
@@ -107,7 +91,13 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
             <polyline points="12 6 12 12 16 14" />
           </svg>
         )}
-        <span>{timeLeftText()}</span>
+        <span>
+          {secondsLeft >= 0
+            ? timeLeftText()
+            : carDetails.for_sale
+            ? "For sale"
+            : "Sold"}
+        </span>
       </div>
     </Link>
   );

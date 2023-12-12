@@ -19,8 +19,18 @@ const UpcomingCarCard: React.FunctionComponent<ICarCardProps> = ({
   location,
   mainImage,
 }) => {
+  const onClick = () => {
+    const text = encodeURIComponent(`Hello! I'm interested in ${title}`);
+    window.open(
+      `https://api.whatsapp.com/send/?phone=19563001993&text=${text}`,
+      "_blank"
+    );
+  };
   return (
-    <div className="relative rounded-lg overflow-hidden shadow-lg flex flex-col">
+    <div
+      className="relative rounded-lg overflow-hidden shadow-lg flex flex-col"
+      onClick={onClick}
+    >
       <Image
         src={mainImage}
         alt="Landscape picture"
@@ -49,7 +59,7 @@ const UpcomingCarCard: React.FunctionComponent<ICarCardProps> = ({
           "text-white w-full p-2 rounded-b-lg flex items-center justify-center bg-black bg-opacity-50"
         )}
       >
-        Coming soon
+        Ask details
       </div>
     </div>
   );
