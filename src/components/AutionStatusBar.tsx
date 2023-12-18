@@ -70,11 +70,13 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
             AED {numeral(lastBid).format("0,0")}
           </p>
         </li>
-        <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
-          <FrameIcon className="w-5 h-5" />
-          <p className="opacity-70">Bids</p>
-          <p className="font-semibold">{numBids}</p>
-        </li>
+        {numBids > 0 && (
+          <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
+            <FrameIcon className="w-5 h-5" />
+            <p className="opacity-70">Bids</p>
+            <p className="font-semibold">{numBids}</p>
+          </li>
+        )}
       </ul>
     </div>
   );

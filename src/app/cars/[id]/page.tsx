@@ -21,10 +21,12 @@ const CarPage: React.FunctionComponent<{ params: any }> = async ({
 
   const data = await res.json();
 
+  const lastAuction = data.auction?.[0];
+
   const auctionInfo = {
-    endDate: data.end_time,
+    endDate: lastAuction?.time_ending,
     lastBid: data.current_bid || data.starting_bid,
-    numBids: 31,
+    numBids: 0,
   };
 
   return <CarDetailPage auctionInfo={auctionInfo} carDetail={data} />;

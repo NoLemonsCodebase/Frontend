@@ -28,6 +28,9 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   carDetail,
 }) => {
   const endDatetime = new Date(auctionInfo.endDate);
+
+  const auctionEnded = endDatetime < new Date();
+
   const { width } = useWindowSize();
 
   const scrollToTarget = () => {
@@ -82,17 +85,19 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         {/* <p className="text-sm">
           1 Owner, Dual-Motor AWD, Texas-Owned, Reviewed by Alanis King
         </p> */}
-        <p className="text-sm text-gray-500 font-semibold">
-          Ending{" "}
-          {endDatetime?.toLocaleString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-            hour12: true,
-          })}
-        </p>
+        {!auctionEnded && (
+          <p className="text-sm text-gray-500 font-semibold">
+            Ending{" "}
+            {endDatetime?.toLocaleString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true,
+            })}
+          </p>
+        )}
         <div className="hidden sm:flex mt-4 space-x-4">
           <AutionStatusBar auctionInfo={auctionInfo} />
           <button
@@ -115,7 +120,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
               }}
             />
             {carDetail.car_text_section.map((section: any, index: number) => (
-              <>
+              <React.Fragment key={index}>
                 <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
                 <p
                   className="mt-2"
@@ -123,7 +128,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
                     __html: convertToHTML(section.content),
                   }}
                 />
-              </>
+              </React.Fragment>
             ))}
 
             <p className="mt-4">
@@ -163,7 +168,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
               <h2 className="text-2xl font-bold mt-8">Videos</h2>
             )}
             {carDetail.car_video?.map((video: any, index: number) => (
-              <>
+              <React.Fragment key={index}>
                 <h2 className="text-xl font-bold mt-4">{video.title}</h2>
                 <div
                   className={cn(
@@ -180,7 +185,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
                     allowFullScreen
                   ></iframe>
                 </div>
-              </>
+              </React.Fragment>
             ))}
           </div>
           <section className="hidden lg:block sticky top-20 self-start w-96">
