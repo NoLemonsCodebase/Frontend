@@ -22,7 +22,7 @@ export function Navbar() {
           </a>
           <a
             className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
-            href="https://nolemons.ae/faq/"
+            href="/how-it-works"
           >
             How it works?
           </a>
