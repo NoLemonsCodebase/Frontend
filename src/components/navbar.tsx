@@ -16,15 +16,15 @@ export function Navbar() {
         <div className="flex items-center space-x-4">
           <a
             className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
-            href="/"
-          >
-            Auctions
-          </a>
-          <a
-            className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
             href="/how-it-works"
           >
             How it works?
+          </a>
+          <a
+            className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+            href="/sell-your-car"
+          >
+            Sell your car
           </a>
         </div>
       </div>
