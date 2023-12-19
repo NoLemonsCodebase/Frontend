@@ -192,7 +192,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             <CarDetailList isCard carDetail={carDetail} />
           </section>
         </div>
-        <BidSection />
+        <BidSection carDetail={carDetail} />
       </section>
       <Footer />
     </>

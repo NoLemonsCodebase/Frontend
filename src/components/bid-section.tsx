@@ -9,7 +9,7 @@ import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
-export function BidSection() {
+export function BidSection({ carDetail }: { carDetail: any }) {
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -18,13 +18,21 @@ export function BidSection() {
   const onSubmit = async () => {
     setError("");
     setLoading(true);
-    const res = await fetch("https://nolemons2.onrender.com/bot/webhook/", {
-      method: "POST",
-      body: JSON.stringify({
-        phone,
-        message: `I want to bid on the NFT: ${window.location.href}`,
-      }),
-    });
+    if (carDetail.auction?.length === 0) {
+      setError("This car is not currently in an auction. Contact us for help.");
+      setLoading(false);
+      return;
+    }
+    const res = await fetch(
+      "https://nolemons2.onrender.com/auction-following/",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          phone,
+          auction_id: carDetail.auction[0].id,
+        }),
+      }
+    );
 
     if (res.ok) {
       setSent(true);
