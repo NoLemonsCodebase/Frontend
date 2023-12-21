@@ -56,6 +56,14 @@ const CarImagesSection: React.FC<{
             </div>
           </a>
         ))}
+        {images.slice(8).map((image, idx) => (
+          <a
+            key={idx}
+            data-fancybox="gallery"
+            data-src={image}
+            className="hidden"
+          />
+        ))}
       </div>
       {/* <ButtonBack
           className="fixed top-1/2 bg-white p-1 rounded-full left-0 transform -translate-y-1/2 bg-opacity-60"
