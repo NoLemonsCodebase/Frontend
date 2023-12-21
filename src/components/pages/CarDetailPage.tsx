@@ -19,8 +19,10 @@ interface ICarPageProps {
 }
 
 const convertToHTML = (text: string) => {
-  return text.replace(/\n/g, "<br/>");
-  // .replace(/\t/g, '<span style="white-space: pre;">\t</span>');
+  return text
+    .replace(/<\/li>\r\n<li>/g, "</li><li>")
+    .replace(/<\/p>\r\n<ul>/g, "</p><ul>")
+    .replace(/\n/g, "<br/>");
 };
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
@@ -42,7 +44,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
 
   return (
     <>
-      <section className="flex flex-col px-4 md:px-16 py-4">
+      <section className="flex flex-col px-4 md:px-16 py-4 car-description">
         <div className="flex sm:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-14 bg-white border-b">
           <AutionStatusBar auctionInfo={auctionInfo} />
           <button

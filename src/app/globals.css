@@ -6,3 +6,7 @@ ul {
   list-style: disc;
 }
 
+.car-description ul {
+  padding-left: 12px;
+}
+
