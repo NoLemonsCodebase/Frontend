@@ -31,13 +31,15 @@ const UpcomingCarCard: React.FunctionComponent<ICarCardProps> = ({
       className="relative rounded-lg overflow-hidden shadow-lg flex flex-col cursor-pointer"
       onClick={onClick}
     >
-      <Image
-        src={mainImage}
-        alt="Landscape picture"
-        width={712}
-        height={468}
-        className="block"
-      />
+      <div className="aspect-w-16 aspect-h-10">
+        <Image
+          src={mainImage}
+          alt="Landscape picture"
+          layout={"fill"}
+          objectFit={"cover"}
+          className="block"
+        />
+      </div>
       <div className="p-4 pb-2 flex-1 flex flex-col">
         <h3 className="font-semibold text-lg">
           {year} {title}

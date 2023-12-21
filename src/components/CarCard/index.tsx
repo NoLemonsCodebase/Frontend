@@ -42,13 +42,15 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
       href={`/cars/${carDetails.id}`}
       className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer hover:bg-gray-100 flex flex-col"
     >
-      <Image
-        src={carDetails.main_image}
-        alt="Landscape picture"
-        width={712}
-        height={468}
-        className="block"
-      />
+      <div className="aspect-w-16 aspect-h-10">
+        <Image
+          src={carDetails.main_image}
+          alt="Landscape picture"
+          layout={"fill"}
+          objectFit={"cover"}
+          className="block"
+        />
+      </div>
       <div className="p-4 pb-2 flex-1 flex flex-col">
         <h3 className="font-semibold text-lg">
           {carDetails.year} {carDetails.title}
