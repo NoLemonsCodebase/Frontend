@@ -8,6 +8,7 @@ import type { OptionsType } from "@fancyapps/ui/types/Fancybox/options";
 interface Props {
   delegate?: string;
   options?: Partial<OptionsType>;
+  className?: string;
 }
 
 function Fancybox(props: PropsWithChildren<Props>) {
@@ -27,7 +28,11 @@ function Fancybox(props: PropsWithChildren<Props>) {
     };
   });
 
-  return <div ref={containerRef}>{props.children}</div>;
+  return (
+    <div ref={containerRef} className={props.className}>
+      {props.children}
+    </div>
+  );
 }
 
 export default Fancybox;
