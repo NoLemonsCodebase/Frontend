@@ -18,7 +18,7 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars }) => {
             title="Porsche Cayman GT4"
             location="Dubai, UAE"
             year="2016"
-            mainImage="https://i.postimg.cc/VNBNsYnY/PHOTO-2023-12-16-00-29-04.jpg"
+            mainImage="https://i.postimg.cc/x8XKgrf2/IMG-9065.jpg"
           />
           {/* <UpcomingCarCard
             title="Mercedes  SLR"
