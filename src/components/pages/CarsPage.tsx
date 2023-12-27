@@ -14,12 +14,12 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars }) => {
       <div className="flex flex-col">
         <p className="text-2xl font-bold mb-4">Auctions</p>
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <UpcomingCarCard
+          {/* <UpcomingCarCard
             title="Porsche Cayman GT4"
             location="Dubai, UAE"
             year="2016"
             mainImage="https://i.postimg.cc/x8XKgrf2/IMG-9065.jpg"
-          />
+          /> */}
           {/* <UpcomingCarCard
             title="Mercedes  SLR"
             location="Dubai, UAE"
