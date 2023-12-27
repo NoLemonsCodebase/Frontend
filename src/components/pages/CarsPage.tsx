@@ -8,12 +8,36 @@ interface ICarsPageProps {
   cars: any[];
 }
 
-const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars }) => {
+const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
+  const activeAuctions = cars
+    .filter(
+      (item: any) =>
+        item.auction &&
+        item.auction.length > 0 &&
+        new Date(item.auction[0].time_ending).getTime() > new Date().getTime()
+    )
+    .sort(
+      (a: any, b: any) =>
+        new Date(b.auction[0].time_ending).getTime() -
+        new Date(a.auction[0].time_ending).getTime()
+    );
+
+  // Filter items without an auction
+  const pastAuctions = cars.filter(
+    (item: any) =>
+      !item.auction ||
+      item.auction.length === 0 ||
+      new Date(item.auction[0].time_ending).getTime() <= new Date().getTime()
+  );
+
   return (
     <main className="flex min-h-screen space-x-6 px-8 sm:px-16 py-4">
       <div className="flex flex-col">
         <p className="text-2xl font-bold mb-4">Auctions</p>
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {activeAuctions.map((car) => {
+            return <CarCard key={car.id} carDetails={car} />;
+          })}
           {/* <UpcomingCarCard
             title="Porsche Cayman GT4"
             location="Dubai, UAE"
@@ -56,7 +80,7 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars }) => {
             year="2017"
             mainImage="https://i.postimg.cc/vmMQNpjC/PHOTO-2023-02-17-19-09-02.jpg"
           />
-          {cars.map((car) => {
+          {pastAuctions.map((car) => {
             return <CarCard key={car.id} carDetails={car} />;
           })}
         </section>
