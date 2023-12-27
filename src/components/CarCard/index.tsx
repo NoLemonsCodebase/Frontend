@@ -11,7 +11,7 @@ interface ICarCardProps {
 }
 
 const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
-  const secondsLeft = useSecondsLeft(carDetails.end_time);
+  const secondsLeft = useSecondsLeft(carDetails?.auction[0]?.time_ending || 0);
 
   const timeLeftText = () => {
     if (secondsLeft <= 0) return "Auction ended";
@@ -46,8 +46,8 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
         <Image
           src={carDetails.main_image}
           alt="Landscape picture"
-          layout={"fill"}
-          objectFit={"cover"}
+          fill
+          style={{ objectFit: "cover" }}
           className="block"
         />
       </div>
