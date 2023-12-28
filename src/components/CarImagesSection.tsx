@@ -10,7 +10,7 @@ const CarImagesSection: React.FC<{
   images: string[];
   previewImages: string[];
 }> = ({ images }) => {
-  const previewImages = images.slice(0, 8);
+  const previewImages = images.slice(1, 9);
 
   return (
     <Fancybox className="w-full flex space-x-2">
@@ -56,7 +56,7 @@ const CarImagesSection: React.FC<{
             </div>
           </a>
         ))}
-        {images.slice(8).map((image, idx) => (
+        {images.slice(9).map((image, idx) => (
           <a
             key={idx}
             data-fancybox="gallery"
