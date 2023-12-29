@@ -71,7 +71,7 @@ export function BidSection({ carDetail }: { carDetail: any }) {
                 }}
               >
                 <PhoneInput
-                  preferredCountries={["sa", "ae", "qa", "kz"]}
+                  preferredCountries={["sa", "ae", "qa", "kw", "bh", "om"]}
                   country={"ae"}
                   value={phone}
                   onChange={setPhone}
