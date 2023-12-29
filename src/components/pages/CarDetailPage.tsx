@@ -29,9 +29,17 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   auctionInfo,
   carDetail,
 }) => {
-  const endDatetime = new Date(auctionInfo.endDate);
+  const lastAuction =
+    carDetail.auction.length > 0
+      ? carDetail.auction?.[carDetail.auction.length - 1]
+      : undefined;
 
-  const auctionEnded = endDatetime < new Date();
+  const auctionEnded = lastAuction
+    ? new Date(lastAuction.time_ending) < new Date()
+    : true;
+  const endDatetime = lastAuction
+    ? new Date(lastAuction.time_ending)
+    : undefined;
 
   const { width } = useWindowSize();
 
