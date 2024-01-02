@@ -232,7 +232,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     },
     {
       title: "Transmission",
-      value: "Automatic",
+      value: carDetail.transmission,
     },
     {
       title: "Mileage",
