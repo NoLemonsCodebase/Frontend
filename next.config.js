@@ -8,7 +8,12 @@ const nextConfig = {
       {
         source: "/cayman-gt4",
         destination: "/cars/22",
-        permanent: true,
+        permanent: false,
+      },
+      {
+        source: "/cars/auction",
+        destination: "/cars/22",
+        permanent: false,
       },
     ];
   },
