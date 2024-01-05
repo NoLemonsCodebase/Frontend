@@ -29,3 +29,11 @@ export const TrackBidViaWA = async (phone) => {
     console.error(e);
   }
 };
+
+export const TrackGetEarlyAccessClick = async () => {
+  try {
+    trackWithData("CUSTOM_EVENT_1");
+  } catch (e) {
+    console.error(e);
+  }
+};

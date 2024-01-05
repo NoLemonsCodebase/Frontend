@@ -5,6 +5,7 @@ import * as React from "react";
 import cn from "classnames";
 import numeral from "numeral";
 import { MapPinIcon } from "lucide-react";
+import { TrackGetEarlyAccessClick } from "@/lib/services/snapPixels";
 
 interface ICarCardProps {
   title: string;
@@ -21,6 +22,7 @@ const UpcomingCarCard: React.FunctionComponent<ICarCardProps> = ({
 }) => {
   const onClick = () => {
     const text = encodeURIComponent(`Hello! I'm interested in ${title}`);
+    TrackGetEarlyAccessClick();
     window.open(
       `https://api.whatsapp.com/send/?phone=19563001993&text=${text}`,
       "_blank"
