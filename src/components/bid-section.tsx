@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { TrackBidViaWA } from "@/lib/services/snapPixels";
 
 export function BidSection({ carDetail }: { carDetail: any }) {
   const [phone, setPhone] = useState("");
@@ -23,6 +24,9 @@ export function BidSection({ carDetail }: { carDetail: any }) {
       setLoading(false);
       return;
     }
+
+    TrackBidViaWA(phone);
+
     const res = await fetch(
       "https://nolemons2.onrender.com/auction-following/",
       {

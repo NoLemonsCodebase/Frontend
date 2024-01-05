@@ -36,7 +36,7 @@ const UpcomingCarCard: React.FunctionComponent<ICarCardProps> = ({
           src={mainImage}
           alt="Landscape picture"
           layout={"fill"}
-          objectFit={"cover"}
+          style={{ objectFit: "cover" }}
           className="block"
         />
       </div>

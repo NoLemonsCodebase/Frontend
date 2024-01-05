@@ -31,6 +31,16 @@ export default function RootLayout({
           gtag('config', 'G-5LKFJ76994');
         `}
       </Script>
+      <Script id="snap-pixels">{`{
+        (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
+          {a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
+          a.queue=[];var s='script';r=t.createElement(s);r.async=!0;
+          r.src=n;var u=t.getElementsByTagName(s)[0];
+          u.parentNode.insertBefore(r,u);})(window,document,
+          'https://sc-static.net/scevent.min.js');
+          
+          snaptr('init', '89acb1a3-d93c-4de1-a78d-72168a70fdba');
+      }`}</Script>
       <body className={inter.className}>
         <Navbar />
         <a
