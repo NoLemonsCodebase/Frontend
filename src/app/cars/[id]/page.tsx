@@ -15,9 +15,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const data: ICar = await res.json();
 
+  const carDescription =
+    data.auction?.length > 0
+      ? `For sale: ${data.year} ${data.title};\nAuction ends on ${new Date(
+          data.auction[0].time_ending
+        ).toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        })}`
+      : data.status == "created"
+      ? `Coming soon: ${data.year} ${data.title}`
+      : `For sale: ${data.year} ${data.title}`;
+
   return {
-    title: "NoLemons.ae - The online auction for car people, by car people",
-    description: `${data.year} ${data.title}`,
+    title: "NoLemons Online Auction",
+    description: carDescription,
     openGraph: {
       images: [data.main_image],
     },
