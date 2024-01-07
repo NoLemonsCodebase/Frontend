@@ -1,4 +1,5 @@
 import CarDetailPage from "@/components/pages/CarDetailPage";
+import { ICar } from "@/lib/types";
 import { Metadata } from "next";
 import * as React from "react";
 
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     { next: { revalidate: 0 } }
   );
 
-  const data = await res.json();
+  const data: ICar = await res.json();
 
   return {
     title: "NoLemons.ae - The online auction for car people, by car people",
@@ -32,17 +33,9 @@ const CarPage: React.FunctionComponent<{ params: any }> = async ({
     { next: { revalidate: 0 } }
   );
 
-  const data = await res.json();
+  const data: ICar = await res.json();
 
-  const lastAuction = data.auction?.[0];
-
-  const auctionInfo = {
-    endDate: lastAuction?.time_ending,
-    lastBid: data.current_bid || data.starting_bid,
-    numBids: 0,
-  };
-
-  return <CarDetailPage auctionInfo={auctionInfo} carDetail={data} />;
+  return <CarDetailPage carDetail={data} />;
 };
 
 export default CarPage;

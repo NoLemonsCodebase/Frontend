@@ -8,13 +8,9 @@ import * as React from "react";
 import ImageCarousel from "@/components/ImageCarousel";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { TrackGetEarlyAccessClick } from "@/lib/services/snapPixels";
 
 interface ICarPageProps {
-  auctionInfo: {
-    endDate: string;
-    lastBid: number;
-    numBids: number;
-  };
   carDetail: any;
 }
 
@@ -26,7 +22,6 @@ const convertToHTML = (text: string) => {
 };
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
-  auctionInfo,
   carDetail,
 }) => {
   const lastAuction =
@@ -44,6 +39,17 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   const { width } = useWindowSize();
 
   const scrollToTarget = () => {
+    if (carDetail.status == "created") {
+      const text = encodeURIComponent(
+        `Hello! I'm interested in ${carDetail.title} ${carDetail.year}`
+      );
+      TrackGetEarlyAccessClick();
+      window.open(
+        `https://api.whatsapp.com/send/?phone=971564404640&text=${text}`,
+        "_blank"
+      );
+    }
+
     var targetSection = document.getElementById("bid-section");
 
     // Scroll to the target section
@@ -54,12 +60,12 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
     <>
       <section className="flex flex-col px-4 md:px-16 py-4 car-description">
         <div className="flex sm:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-14 bg-white border-b">
-          <AutionStatusBar auctionInfo={auctionInfo} />
+          <AutionStatusBar carDetail={carDetail} />
           <button
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"
             onClick={scrollToTarget}
           >
-            Bid
+            {carDetail.status == "created" ? "Contact us" : "Bid"}
           </button>
         </div>
         {width &&
@@ -109,12 +115,12 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
           </p>
         )}
         <div className="hidden sm:flex mt-4 space-x-4">
-          <AutionStatusBar auctionInfo={auctionInfo} />
+          <AutionStatusBar carDetail={carDetail} />
           <button
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"
             onClick={scrollToTarget}
           >
-            Bid
+            {carDetail.status == "created" ? "Contact us" : "Bid"}
           </button>
         </div>
         <div className="block md:hidden">

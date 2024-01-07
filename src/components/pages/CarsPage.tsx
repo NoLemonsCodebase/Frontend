@@ -3,32 +3,34 @@
 import CarCard from "../CarCard";
 import * as React from "react";
 import UpcomingCarCard from "../UpcomingCarCard";
+import { ICar } from "@/lib/types";
 
 interface ICarsPageProps {
-  cars: any[];
+  cars: ICar[];
 }
 
 const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
   const activeAuctions = cars
     .filter(
-      (item: any) =>
+      (item: ICar) =>
+        item.status == "live" &&
         item.auction &&
         item.auction.length > 0 &&
         new Date(item.auction[0].time_ending).getTime() > new Date().getTime()
     )
     .sort(
-      (a: any, b: any) =>
+      (a: ICar, b: ICar) =>
         new Date(b.auction[0].time_ending).getTime() -
         new Date(a.auction[0].time_ending).getTime()
     );
 
-  // Filter items without an auction
-  const pastAuctions = cars.filter(
-    (item: any) =>
-      !item.auction ||
-      item.auction.length === 0 ||
-      new Date(item.auction[0].time_ending).getTime() <= new Date().getTime()
+  const forSaleAuctions = cars.filter(
+    (item: ICar) => item.status == "for_sale"
   );
+
+  const createdCars = cars.filter((item: ICar) => item.status == "created");
+
+  const pastAuctions = cars.filter((item: ICar) => item.status == "sold");
 
   return (
     <main className="flex min-h-screen space-x-6 px-8 sm:px-16 py-4">
@@ -36,6 +38,12 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
         <p className="text-2xl font-bold mb-4">Auctions</p>
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {activeAuctions.map((car) => {
+            return <CarCard key={car.id} carDetails={car} />;
+          })}
+          {forSaleAuctions.map((car) => {
+            return <CarCard key={car.id} carDetails={car} />;
+          })}
+          {createdCars.map((car) => {
             return <CarCard key={car.id} carDetails={car} />;
           })}
           {/* <UpcomingCarCard

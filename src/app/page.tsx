@@ -1,6 +1,5 @@
 import CarsPage from "@/components/pages/CarsPage";
 import { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "NoLemons.co - The online auction for car people, by car people",

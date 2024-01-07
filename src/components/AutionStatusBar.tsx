@@ -2,19 +2,14 @@ import * as React from "react";
 import { ClockIcon, ArrowUpIcon, FrameIcon } from "@radix-ui/react-icons";
 import { useSecondsLeft } from "@/lib/hooks/useSecondsLeft";
 import numeral from "numeral";
+import { IAuction, ICar } from "@/lib/types";
 
 interface IAutionStatusBarProps {
-  auctionInfo: {
-    endDate: string;
-    lastBid: number;
-    numBids: number;
-  };
+  carDetail: ICar;
 }
 
-const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
-  auctionInfo: { lastBid, endDate, numBids },
-}) => {
-  const secondsLeft = useSecondsLeft(endDate);
+const TimeLeftText: React.FC<{ auction: IAuction }> = ({ auction }) => {
+  const secondsLeft = useSecondsLeft(auction.time_ending);
 
   // X days/day if X > 1, else h:MM:SS format
   const timeLeftText = () => {
@@ -41,40 +36,60 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
   };
 
   return (
+    <>
+      <p className="hidden sm:block opacity-70">Time Left</p>
+      <p className="font-semibold whitespace-nowrap">{timeLeftText()[0]}</p>
+      <p className="hidden sm:block font-semibold whitespace-nowrap">
+        {timeLeftText()[1]}
+      </p>
+    </>
+  );
+};
+
+const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
+  carDetail,
+}) => {
+  const currentAuction = carDetail.auction?.[0];
+
+  return (
     <div className="rounded bg-black bg-opacity-80 flex flex-grow items-center">
       <ul className="flex items-center justify-between space-x-6 px-4 py-2">
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ClockIcon className="w-5 h-5" />
-          {secondsLeft >= 0 && (
-            <p className="hidden sm:block opacity-70">Time Left</p>
+          {carDetail.status == "created" && (
+            <p className="font-semibold whitespace-nowrap">Cooming soon</p>
           )}
-          {secondsLeft < 0 ? (
+          {carDetail.status == "sold" && (
             <p className="font-semibold whitespace-nowrap">Sold</p>
-          ) : secondsLeft == 0 ? (
-            <p className="font-semibold">--:--:--</p>
-          ) : (
-            <>
-              <p className="font-semibold whitespace-nowrap">
-                {timeLeftText()[0]}
-              </p>
-              <p className="hidden sm:block font-semibold whitespace-nowrap">
-                {timeLeftText()[1]}
-              </p>
-            </>
+          )}
+          {carDetail.status == "for_sale" && (
+            <p className="font-semibold whitespace-nowrap">For sale</p>
+          )}
+          {carDetail.status == "live" && (
+            <TimeLeftText auction={currentAuction} />
           )}
         </li>
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ArrowUpIcon className="w-5 h-5 hidden sm:block" />
-          <p className="opacity-7 hidden sm:block">High bid</p>
+          <p className="opacity-7 hidden sm:block">
+            {carDetail.status == "for_sale" || carDetail.status == "created"
+              ? "Starting from"
+              : "High bid"}
+          </p>
           <p className="font-semibold whitespace-nowrap">
-            AED {numeral(lastBid).format("0,0")}
+            {carDetail.currency}{" "}
+            {numeral(
+              carDetail.status == "for_sale" || carDetail.status == "created"
+                ? carDetail.starting_price
+                : carDetail.current_bid
+            ).format("0,0")}
           </p>
         </li>
-        {numBids > 0 && (
+        {currentAuction && (
           <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
             <FrameIcon className="w-5 h-5" />
             <p className="opacity-70">Bids</p>
-            <p className="font-semibold">{numBids}</p>
+            <p className="font-semibold">{currentAuction.number_of_bids}</p>
           </li>
         )}
       </ul>

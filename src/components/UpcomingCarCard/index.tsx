@@ -21,10 +21,12 @@ const UpcomingCarCard: React.FunctionComponent<ICarCardProps> = ({
   mainImage,
 }) => {
   const onClick = () => {
-    const text = encodeURIComponent(`Hello! I'm interested in ${title}`);
+    const text = encodeURIComponent(
+      `Hello! I'm interested in ${title} ${year}`
+    );
     TrackGetEarlyAccessClick();
     window.open(
-      `https://api.whatsapp.com/send/?phone=19563001993&text=${text}`,
+      `https://api.whatsapp.com/send/?phone=971564404640&text=${text}`,
       "_blank"
     );
   };
@@ -37,7 +39,7 @@ const UpcomingCarCard: React.FunctionComponent<ICarCardProps> = ({
         <Image
           src={mainImage}
           alt="Landscape picture"
-          layout={"fill"}
+          fill
           style={{ objectFit: "cover" }}
           className="block"
         />
