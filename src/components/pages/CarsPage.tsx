@@ -4,6 +4,7 @@ import CarCard from "../CarCard";
 import * as React from "react";
 import UpcomingCarCard from "../UpcomingCarCard";
 import { ICar } from "@/lib/types";
+import { TrackPageView } from "@/lib/services/snapPixels";
 
 interface ICarsPageProps {
   cars: ICar[];
@@ -31,6 +32,10 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
   const createdCars = cars.filter((item: ICar) => item.status == "created");
 
   const pastAuctions = cars.filter((item: ICar) => item.status == "sold");
+
+  React.useEffect(() => {
+    TrackPageView();
+  }, []);
 
   return (
     <main className="flex min-h-screen space-x-6 px-8 sm:px-16 py-4">

@@ -8,7 +8,10 @@ import * as React from "react";
 import ImageCarousel from "@/components/ImageCarousel";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
-import { TrackGetEarlyAccessClick } from "@/lib/services/snapPixels";
+import {
+  TrackGetEarlyAccessClick,
+  TrackPageView,
+} from "@/lib/services/snapPixels";
 
 interface ICarPageProps {
   carDetail: any;
@@ -55,6 +58,10 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
     // Scroll to the target section
     targetSection?.scrollIntoView({ behavior: "smooth" });
   };
+
+  React.useEffect(() => {
+    TrackPageView();
+  }, []);
 
   return (
     <>

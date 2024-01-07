@@ -37,3 +37,11 @@ export const TrackGetEarlyAccessClick = async () => {
     console.error(e);
   }
 };
+
+export const TrackPageView = async () => {
+  try {
+    trackWithData("PAGE_VIEW");
+  } catch (e) {
+    console.error(e);
+  }
+};
