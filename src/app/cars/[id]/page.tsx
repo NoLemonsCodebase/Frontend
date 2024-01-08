@@ -32,12 +32,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       : `For sale: ${data.year} ${data.title}`;
 
   return {
-    title: "NoLemons Online Auction",
+    title: `${data.title} ${data.year} | NoLemons Online Auction`,
     description: carDescription,
     openGraph: {
-      images: [data.main_image],
+      title: "NoLemons Online Auction",
+      description: carDescription,
+      images: [
+        data.main_image,
+        ...data.car_image.slice(1, 4).map((img) => img.image),
+      ],
     },
-    metadataBase: new URL("https://nolemons.co"),
+    alternates: {
+      canonical: `/cars/${data.id}`,
+    },
   };
 }
 

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -20,6 +21,7 @@
     "firebase": "^10.7.1",
     "lucide-react": "^0.292.0",
     "next": "14.0.2",
+    "next-sitemap": "^4.2.3",
     "nextjs-google-analytics": "^2.3.3",
     "numeral": "^2.0.6",
     "pure-react-carousel": "^1.30.1",
