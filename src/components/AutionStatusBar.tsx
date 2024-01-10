@@ -13,6 +13,7 @@ const TimeLeftText: React.FC<{ auction: IAuction }> = ({ auction }) => {
 
   // X days/day if X > 1, else h:MM:SS format
   const timeLeftText = () => {
+    if (secondsLeft < 0) return ["00:00:00", ""];
     const days = Math.floor(secondsLeft / (24 * 60 * 60));
     let hours: string | number = Math.floor(
       (secondsLeft % (24 * 60 * 60)) / (60 * 60)
