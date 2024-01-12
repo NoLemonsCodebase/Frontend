@@ -12,9 +12,10 @@ import {
   TrackGetEarlyAccessClick,
   TrackPageView,
 } from "@/lib/services/snapPixels";
+import { ICar } from "@/lib/types";
 
 interface ICarPageProps {
-  carDetail: any;
+  carDetail: ICar;
 }
 
 const convertToHTML = (text: string) => {
@@ -27,10 +28,7 @@ const convertToHTML = (text: string) => {
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   carDetail,
 }) => {
-  const lastAuction =
-    carDetail.auction.length > 0
-      ? carDetail.auction?.[carDetail.auction.length - 1]
-      : undefined;
+  const lastAuction = carDetail.auction;
 
   const auctionEnded = lastAuction
     ? new Date(lastAuction.time_ending) < new Date()
