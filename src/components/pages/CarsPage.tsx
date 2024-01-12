@@ -16,13 +16,12 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
       (item: ICar) =>
         item.status == "live" &&
         item.auction &&
-        item.auction.length > 0 &&
-        new Date(item.auction[0].time_ending).getTime() > new Date().getTime()
+        new Date(item.auction.time_ending).getTime() > new Date().getTime()
     )
     .sort(
       (a: ICar, b: ICar) =>
-        new Date(b.auction[0].time_ending).getTime() -
-        new Date(a.auction[0].time_ending).getTime()
+        new Date(b.auction.time_ending).getTime() -
+        new Date(a.auction.time_ending).getTime()
     );
 
   const forSaleAuctions = cars.filter(

@@ -12,7 +12,7 @@ interface ICarCardProps {
 }
 
 const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
-  const secondsLeft = useSecondsLeft(carDetails?.auction[0]?.time_ending);
+  const secondsLeft = useSecondsLeft(carDetails?.auction?.time_ending);
 
   const timeLeftText = () => {
     if (secondsLeft <= 0) return "Auction ended";

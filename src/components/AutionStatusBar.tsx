@@ -50,7 +50,7 @@ const TimeLeftText: React.FC<{ auction: IAuction }> = ({ auction }) => {
 const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
   carDetail,
 }) => {
-  const currentAuction = carDetail.auction?.[0];
+  const currentAuction = carDetail.auction;
 
   return (
     <div className="rounded bg-black bg-opacity-80 flex flex-grow items-center">
@@ -66,7 +66,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
           {carDetail.status == "for_sale" && (
             <p className="font-semibold whitespace-nowrap">For sale</p>
           )}
-          {carDetail.status == "live" && (
+          {carDetail.status == "live" && currentAuction && (
             <TimeLeftText auction={currentAuction} />
           )}
         </li>

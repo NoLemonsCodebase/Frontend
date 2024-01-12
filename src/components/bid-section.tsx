@@ -23,7 +23,7 @@ export function BidSection({ carDetail }: { carDetail: ICar }) {
   const onSubmit = async () => {
     setError("");
     setLoading(true);
-    if (carDetail.auction?.length === 0) {
+    if (!carDetail.auction) {
       setError("This car is not currently in an auction. Contact us for help.");
       setLoading(false);
       return;
@@ -37,7 +37,7 @@ export function BidSection({ carDetail }: { carDetail: ICar }) {
         method: "POST",
         body: JSON.stringify({
           phone,
-          auction_id: carDetail.auction[0].id,
+          auction_id: carDetail.auction.id,
         }),
       }
     );

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
-export const useSecondsLeft = (endDate: string) => {
-  const endDateUTC = new Date(endDate).getTime();
+export const useSecondsLeft = (endDate?: string) => {
+  const endDateUTC = endDate
+    ? new Date(endDate).getTime()
+    : new Date().getTime();
   const seconds = Math.floor((endDateUTC - new Date().getTime()) / 1000);
   const [secondsLeft, setSecondsLeft] = useState<number>(seconds);
 

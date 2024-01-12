@@ -8,7 +8,7 @@ export type ICar = {
   car_image: Array<{
     image: string;
   }>;
-  auction: Array<IAuction>;
+  auction?: IAuction;
   title: string;
   short_description: string;
   brand: string;
