@@ -64,12 +64,6 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
             mainImage="https://i.postimg.cc/90ZCdL3K/HD1A9944.jpg"
           /> */}
           <UpcomingCarCard
-            title="BMW i8"
-            location="Dubai, UAE"
-            year="2016"
-            mainImage="https://i.postimg.cc/PxGbY6kG/GR3-0862.jpg"
-          />
-          <UpcomingCarCard
             title="Jaguar E Type Roadster"
             location="Dubai, UAE"
             year="1963"
