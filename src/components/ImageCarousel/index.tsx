@@ -34,7 +34,13 @@ const ImageCarousel: React.FunctionComponent<IImageCarouselProps> = ({
               data-thumb-src={previewImages[index]}
               key={index}
             >
-              <Image alt="" src={image} width="400" height="300" />
+              <Image
+                alt=""
+                src={image}
+                width="400"
+                height="300"
+                style={{ maxHeight: 280, objectFit: "contain" }}
+              />
             </div>
           ))}
         </Carousel>
