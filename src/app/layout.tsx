@@ -61,7 +61,6 @@ export default function RootLayout({
       </Script>
       <body className={inter.className}>
         <NextTopLoader />
-        <Navbar />
         <a
           className="fixed z-10 bottom-0 right-0 h-8 mr-8 text-white px-4 text-sm font-semibold flex items-center justify-center space-x-2"
           style={{ background: "#5a9e6f" }}
