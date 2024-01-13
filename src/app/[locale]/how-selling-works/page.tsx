@@ -1,126 +1,88 @@
 import * as React from "react";
+import { useTranslations } from "next-intl";
 
 interface IHowSellingWorksPageProps {}
 
 const HowSellingWorksPage: React.FunctionComponent<
   IHowSellingWorksPageProps
 > = (props) => {
+  const t = useTranslations("how_selling_works_page");
+
   return (
     <main className="p-4 h-screen w-full overflow-y-scroll pt-4 pb-8">
       <div className="flex flex-col mx-auto max-w-xl text-lg font-normal">
         <div className="text-4xl font-bold my-4 text-center">
-          How Selling Works
+          {t("how_selling_works")}
         </div>
-        <div className="text-3xl font-bold my-6">The NoLemons Approach</div>
-        <p>At NoLemons we want to help you:</p>
+        <div className="text-3xl font-bold my-6">{t("approach")}</div>
+        <p>{t("intro.list_title")}</p>
         <ol className="mt-3">
-          <li>1. Maximize the chance your car sells </li>
-          <li>2. Get you a great price for your car</li>
-          <li>3. Save you time and unnecessary stress</li>
+          <li>{t("intro.list_1")}</li>
+          <li>{t("intro.list_2")}</li>
+          <li>{t("intro.list_3")}</li>
         </ol>
-        <p className="my-3">
-          We aim to give as much information as possible upfront to buyers. That
-          way buyers are able to fully evaluate your car online.
-        </p>
+        <p className="my-3">{t("intro.text_1")}</p>
         <p>
-          We have{" "}
+          {t("intro.text_2_1")}{" "}
           <span
             style={{
               textDecoration: "underline",
             }}
           >
-            3 steps before your car can go live on auction.
+            {t("intro.text_2_2")}
           </span>
         </p>
 
         <div className="flex flex-col space-y-4 mt-10">
-          <div className="text-3xl font-bold">1. Garage Inspection</div>
-          <p>New vehicles under warranty do not require the inspection</p>
-          <p className="italic">
-            Most cars we list are used and well beyond the coverage of a factory
-            warranty. As such, we usually require a pre-purchase inspection at
-            one of our partner garages. Why?
-          </p>
+          <div className="text-3xl font-bold">{t("section_1.title")}</div>
+          <p>{t("section_1.text_1")}</p>
+          <p className="italic">{t("section_1.text_2")}</p>
           <ul className="list-disc ml-4">
-            <li>
-              Being honest and transparent. This actually increases the number
-              of offers you will receive.{" "}
-            </li>
-            <li>
-              Honesty is the only policy. We don’t require your car to be
-              perfect or fault-free. It’s perfectly fine to sell with NoLemons
-              even if the car needs some work.
-            </li>
-            <li>
-              Buyer’s deserve to know the full story. Sellers don’t want any
-              last minute negotiations or worse a buyer back out.
-            </li>
-            <li>
-              NoLemons works with multiple garages and we prefer specialists
-              whenever available.
-            </li>
-            <li>Vehicles with a valid warranty are usually exempt</li>
+            <li>{t("section_1.list_item_1")}</li>
+            <li>{t("section_1.list_item_2")}</li>
+            <li>{t("section_1.list_item_3")}</li>
+            <li>{t("section_1.list_item_4")}</li>
+            <li>{t("section_1.list_item_5")}</li>
           </ul>
         </div>
 
         <div className="flex flex-col space-y-4 mt-10">
-          <div className="text-3xl font-bold">2. Professional Photography</div>
-          <p className="italic">
-            We work with several automotive photographers who have experience
-            with shooting enthusiast cars. Your car will get up to 100 photos
-            and 4-5 videos. Why?
-          </p>
+          <div className="text-3xl font-bold">{t("section_2.title")}</div>
+          <p className="italic">{t("section_2.text_1")}</p>
           <ul className="list-disc ml-4">
-            <li>To show everything a buyer might want to know – online</li>
-            <li>
-              Our photographers can meet you at multiple locations. Sometimes we
-              can even shoot at your home (if you have a suitable location).
-            </li>
+            <li>{t("section_2.list_item_1")}</li>
+            <li>{t("section_2.list_item_2")}</li>
           </ul>
         </div>
 
         <div className="flex flex-col space-y-4 mt-10">
-          <div className="text-3xl font-bold">
-            3. Creating Your Vehicle Post
-          </div>
-          <p className="italic">
-            Our team of writers will prepare and organize your post from A to Z.
-            All you have to do is provide us the info and share documents.
-          </p>
+          <div className="text-3xl font-bold">{t("section_3.title")}</div>
+          <p className="italic">{t("section_3.text_1")}</p>
           <ul className="list-disc ml-4">
-            <li>
-              Your car’s story: How long you’ve had it, what you’ve done to it
-              and more
-            </li>
-            <li>
-              Ownership documents (vehicle registration card, title or similar)
-            </li>
-            <li>Past service and maintenance records (dealer and garage)</li>
-            <li>Warranty and service contract (if applicable)</li>
-            <li>Past repair and accident repair bills (if applicable)</li>
+            <li>{t("section_3.list_item_1")}</li>
+            <li>{t("section_3.list_item_2")}</li>
+            <li>{t("section_3.list_item_3")}</li>
+            <li>{t("section_3.list_item_4")}</li>
+            <li>{t("section_3.list_item_5")}</li>
           </ul>
-          <p className="underline">
-            Please share copies/photos of any of the above. The more the
-            merrier.
-          </p>
+          <p className="underline">{t("section_3.text_2")}</p>
         </div>
 
         <div className="flex flex-col space-y-4 mt-12">
-          <div className="text-3xl font-bold">How Do I Get Started?</div>
+          <div className="text-3xl font-bold">{t("section_4.title")}</div>
           <ul className="list-disc ml-4">
             <li>
-              We will send you contact details to set up appointments for your
-              garage inspection and photography session.
+              {t("section_4.list_item_1")}
               <ul className="list-disc ml-6">
-                <li>Choose the earliest date and time that works for you.</li>
+                <li>{t("section_4.list_item_1_1")}</li>
               </ul>
             </li>
             <li>
-              Send any information, documents (see Step 3) to{" "}
+              {t("section_4.list_item_2.1")}{" "}
               <a href="mailto:admin@nolemons.ae" className="underline">
                 admin@nolemons.ae
               </a>{" "}
-              or via Whatsapp at{" "}
+              {t("section_4.list_item_2.2")}{" "}
               <a
                 href="https://wa.me/971564404640"
                 className="underline"
@@ -129,21 +91,13 @@ const HowSellingWorksPage: React.FunctionComponent<
                 +971 56 440 4640
               </a>
             </li>
+            <li>{t("section_4.list_item_3")}</li>
             <li>
-              Remember, first come first served. The faster you complete these
-              steps the earlier your car goes live!
-            </li>
-            <li>
-              <p className="font-bold">Important</p>
+              <p className="font-bold">{t("section_4.list_item_4.title")}</p>
               <ol className="list-decimal ml-6">
-                <li>Your car cannot be sold externally during the auction.</li>
-                <li>
-                  Your car cannot be advertised on any websites, pages or
-                  channels. Any ads must be removed before proceeding.
-                </li>
-                <li>
-                  Our team will manage all buyer communication on your behalf
-                </li>
+                <li>{t("section_4.list_item_4.1")}</li>
+                <li>{t("section_4.list_item_4.2")}</li>
+                <li>{t("section_4.list_item_4.3")}</li>
               </ol>
             </li>
           </ul>

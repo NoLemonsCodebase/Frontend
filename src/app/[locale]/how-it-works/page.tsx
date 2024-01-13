@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useTranslations } from "next-intl";
 
 interface IHowItWorksPageProps {}
 
@@ -233,10 +234,11 @@ const secondSection = [
 const HowItWorksPage: React.FunctionComponent<IHowItWorksPageProps> = (
   props
 ) => {
+  const t = useTranslations("how_it_works_page");
   return (
     <main className="p-4 h-screen w-full overflow-y-scroll pt-4 pb-8">
       <div className="flex flex-col mx-auto items-center">
-        <div className="text-4xl font-bold my-4">I want to buy a car</div>
+        <div className="text-4xl font-bold my-4">{t("i_want_to_buy")}</div>
         <div className="bg-white w-full sm:w-1/2 lg:w-96 border border-gray-200 divide-y divide-gray-200">
           {firstSection.map((item, index) => (
             <details key={index}>
@@ -247,7 +249,9 @@ const HowItWorksPage: React.FunctionComponent<IHowItWorksPageProps> = (
             </details>
           ))}
         </div>
-        <div className="text-4xl font-bold mb-4 mt-6">I want to sell a car</div>
+        <div className="text-4xl font-bold mb-4 mt-6">
+          {t("i_want_to_sell")}
+        </div>
         <div className="bg-white w-full sm:w-1/2 lg:w-96 border border-gray-200 divide-y divide-gray-200">
           {secondSection.map((item, index) => (
             <details key={index}>

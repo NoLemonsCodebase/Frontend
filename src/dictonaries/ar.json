@@ -9,7 +9,7 @@
         "upcoming": "Upcoming",
         "sold": "Sold",
         "for_sale": "For sale",
-        "chat_with_us": "Chat with us (test)"
+        "chat_with_us": "Chat with us"
     },
     "car_page": {
         "time_left": "Time left",
@@ -40,16 +40,27 @@
         "history_report": "History report"
     },
     "statuses": {
-        "sold": "Sold AR",
-        "for_sale": "For sale AR",
-        "upcoming": "Upcoming AR",
-        "coming_soon": "Coming soon AR"
+        "sold": "Sold",
+        "for_sale": "For sale",
+        "upcoming": "Upcoming",
+        "coming_soon": "Coming soon"
     },
     "car_card": {
         "upcoming": "Upcoming",
         "days": "days",
         "day": "day",
-        "get_early_access": "Get early access AR",
-        "auction_ends_on": "Auction ends on"
+        "get_early_access": "Get early access"
+    },
+    "how_it_works_page": {
+        "i_want_to_buy": "I want to buy a car",
+        "i_want_to_sell": "I want to sell a car"
+    },
+    "sell_your_car_page": {
+        "sell_your_car": "بيع سيارتي",
+        "text_s_1": "لا توجد رسوم لعرض وبيع سيارتك مع نوليمنز (NoLemons)، والأفضل من هذا، وجود الفوائد التالية:",
+        "text_s_2": "هل لديك سيارة تريد بيعها مع نوليمنز (NoLemons)؟ املأ الاستمارة أدناه للتواصل معنا.Z",
+        "name": "الاسم",
+        "description": "نبذة عن سيارتك:",
+        "submit": "أرسل عبر الواتساب"
     }
 }
