@@ -58,7 +58,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ClockIcon className="w-5 h-5" />
           {carDetail.status == "created" && (
-            <p className="font-semibold whitespace-nowrap">Cooming soon</p>
+            <p className="font-semibold whitespace-nowrap">Coming soon</p>
           )}
           {carDetail.status == "sold" && (
             <p className="font-semibold whitespace-nowrap">Sold</p>
