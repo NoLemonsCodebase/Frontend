@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import Script from "next/script";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function RootLayout({
           snaptr('init', '89acb1a3-d93c-4de1-a78d-72168a70fdba');
       }`}</Script>
       <body className={inter.className}>
+        <NextTopLoader />
         <Navbar />
         <a
           className="fixed z-10 bottom-0 right-0 h-8 mr-8 text-white px-4 text-sm font-semibold flex items-center justify-center"
