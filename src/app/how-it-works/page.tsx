@@ -1,3 +1,6 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
 import * as React from "react";
 
 interface IHowItWorksPageProps {}
@@ -15,6 +18,7 @@ const firstSection = [
   },
   {
     title: "How much is the buyer’s fee?",
+    isFeeItem: true,
     content:
       "As a buyer, you pay a 5% buyer’s fee to NoLemons only if you win the auction. The minimum buyer fee is AED 1,000. The final vehicle purchase price is paid directly to the seller. There are no other additional charges by NoLemons.",
   },
@@ -233,13 +237,25 @@ const secondSection = [
 const HowItWorksPage: React.FunctionComponent<IHowItWorksPageProps> = (
   props
 ) => {
+  const showFee = useSearchParams().get("showFee");
+
   return (
     <main className="p-4 h-screen w-full overflow-y-scroll pt-4 pb-8">
       <div className="flex flex-col mx-auto items-center">
         <div className="text-4xl font-bold my-4">I want to buy a car</div>
         <div className="bg-white w-full sm:w-1/2 lg:w-96 border border-gray-200 divide-y divide-gray-200">
           {firstSection.map((item, index) => (
-            <details key={index}>
+            <details
+              key={index}
+              open={item.isFeeItem && !!showFee}
+              style={
+                item.isFeeItem && !!showFee
+                  ? {
+                      border: "1px solid #5a9e6f",
+                    }
+                  : {}
+              }
+            >
               <summary className="question py-3 px-4 cursor-pointer select-none w-full outline-none bg-[#fafafa]">
                 {item.title}
               </summary>

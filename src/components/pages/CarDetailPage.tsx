@@ -7,13 +7,15 @@ import cn from "classnames";
 import * as React from "react";
 import ImageCarousel from "@/components/ImageCarousel";
 import { useWindowSize } from "@uidotdev/usehooks";
-import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import { ExternalLinkIcon, InfoCircledIcon } from "@radix-ui/react-icons";
 import {
   TrackGetEarlyAccessClick,
   TrackPageView,
 } from "@/lib/services/snapPixels";
 import { ICar } from "@/lib/types";
 import RichText from "../RichText";
+import { Tooltip } from "react-tooltip";
+import Link from "next/link";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -322,6 +324,29 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
               </td>
             </tr>
           )}
+          <tr>
+            <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+              <Link
+                className="flex items-center space-x-1"
+                href="/how-it-works?showFee=true"
+              >
+                <p>NoLemons Buyer fee</p>
+                <ExternalLinkIcon className="w-4 h-4 inline-block text-blue-500" />
+              </Link>
+            </td>
+            <td className="py-2 whitespace-nowrap text-sm text-gray-500 flex">
+              <a
+                data-tooltip-id="my-tooltip"
+                className="flex items-center justify-start"
+              >
+                <strong>5%</strong>
+                <InfoCircledIcon className="w-4 h-4 inline-block ml-1" />
+              </a>
+              <Tooltip id="my-tooltip">
+                Service fee (5%) on final sale price
+              </Tooltip>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
