@@ -13,17 +13,11 @@ import {
   TrackPageView,
 } from "@/lib/services/snapPixels";
 import { ICar } from "@/lib/types";
+import RichText from "../RichText";
 
 interface ICarPageProps {
   carDetail: ICar;
 }
-
-const convertToHTML = (text: string) => {
-  return text
-    .replace(/<\/li>\r\n<li>/g, "</li><li>")
-    .replace(/<\/p>\r\n<ul>/g, "</p><ul>")
-    .replace(/\n/g, "<br/>");
-};
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   carDetail,
@@ -134,21 +128,11 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         <div className="flex space-x-8 mt-8">
           <div className="flex-1 flex flex-col">
             {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
-            <div
-              className="mt-2"
-              dangerouslySetInnerHTML={{
-                __html: convertToHTML(carDetail.description),
-              }}
-            />
+            <RichText className="mt-2" content={carDetail.description} />
             {carDetail.car_text_section.map((section: any, index: number) => (
               <React.Fragment key={index}>
                 <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
-                <p
-                  className="mt-2"
-                  dangerouslySetInnerHTML={{
-                    __html: convertToHTML(section.content),
-                  }}
-                />
+                <RichText className="mt-2" content={section.content} />
               </React.Fragment>
             ))}
 
