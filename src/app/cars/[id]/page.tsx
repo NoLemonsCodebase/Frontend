@@ -7,57 +7,88 @@ type Props = {
   params: { id: string };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const res = await fetch(
-    `https://nolemons2.onrender.com/api/v2/cars/${params.id}/`,
-    { next: { revalidate: 0 } }
-  );
+const fetchCar = async (id: string) => {
+  let reqUrl = "";
+
+  if (Number.isInteger(Number(id))) {
+    reqUrl = `https://nolemons2.onrender.com/api/v2/cars/${id}/`;
+  } else {
+    reqUrl = `https://nolemons2.onrender.com/cars/by-route/${id}/`;
+  }
+
+  const res = await fetch(reqUrl, { next: { revalidate: 0 } });
+
+  if (!res.status || res.status !== 200) {
+    throw new Error("Car not found");
+  }
 
   const data: ICar = await res.json();
 
-  const carDescription = data.auction
-    ? `For sale: ${data.year} ${data.title};\nAuction ends on ${new Date(
-        data.auction.time_ending
-      ).toLocaleString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      })}`
-    : data.status == "created"
-    ? `Coming soon: ${data.year} ${data.title}`
-    : `For sale: ${data.year} ${data.title}`;
+  return data;
+};
 
-  return {
-    title: `${data.title} ${data.year} | NoLemons Online Auction`,
-    description: carDescription,
-    openGraph: {
-      title: "NoLemons Online Auction",
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  try {
+    const data: ICar = await fetchCar(params.id);
+
+    const carDescription = data.auction
+      ? `For sale: ${data.year} ${data.title};\nAuction ends on ${new Date(
+          data.auction.time_ending
+        ).toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        })}`
+      : data.status == "created"
+      ? `Coming soon: ${data.year} ${data.title}`
+      : `For sale: ${data.year} ${data.title}`;
+
+    return {
+      title: `${data.title} ${data.year} | NoLemons Online Auction`,
       description: carDescription,
-      images: [
-        data.main_image,
-        ...data.car_image.slice(1, 4).map((img) => img.image),
-      ],
-    },
-    alternates: {
-      canonical: `/cars/${data.id}`,
-    },
-  };
+      openGraph: {
+        title: "NoLemons Online Auction",
+        description: carDescription,
+        images: [
+          data.main_image,
+          ...data.car_image.slice(1, 4).map((img) => img.image),
+        ],
+      },
+      alternates: {
+        canonical: `/cars/${data.id}`,
+      },
+    };
+  } catch (e) {
+    return {
+      title: `Car not found | NoLemons Online Auction`,
+      description: "Car not found",
+      openGraph: {
+        title: "NoLemons Online Auction",
+        description: "Car not found",
+        images: [],
+      },
+      alternates: {
+        canonical: `/cars/${params.id}`,
+      },
+    };
+  }
 }
 
 const CarPage: React.FunctionComponent<{ params: any }> = async ({
   params,
 }) => {
-  const res = await fetch(
-    `https://nolemons2.onrender.com/api/v2/cars/${params.id}/`,
-    { next: { revalidate: 0 } }
-  );
+  const id = params.id;
 
-  const data: ICar = await res.json();
+  try {
+    const data: ICar = await fetchCar(id);
 
-  return <CarDetailPage carDetail={data} />;
+    return <CarDetailPage carDetail={data} />;
+  } catch (e) {
+    return <div>Car not found</div>;
+  }
 };
 
 export default CarPage;
