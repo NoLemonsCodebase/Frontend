@@ -70,23 +70,23 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
             <TimeLeftText auction={currentAuction} />
           )}
         </li>
-        <li className="basis-auto flex items-center space-x-2 text-white">
-          <ArrowUpIcon className="w-5 h-5 hidden sm:block" />
-          <p className="opacity-7 hidden sm:block">
-            {carDetail.status == "for_sale" || carDetail.status == "created"
-              ? "Starting from"
-              : "High bid"}
-          </p>
-          <p className="font-semibold whitespace-nowrap">
-            {carDetail.currency}{" "}
-            {numeral(
-              carDetail.status == "for_sale" || carDetail.status == "created"
-                ? carDetail.starting_price
-                : carDetail.current_bid
-            ).format("0,0")}
-          </p>
-        </li>
-        {currentAuction && (
+        {(carDetail.status == "for_sale" || carDetail.status == "live") && (
+          <li className="basis-auto flex items-center space-x-2 text-white">
+            <ArrowUpIcon className="w-5 h-5 hidden sm:block" />
+            <p className="opacity-7 hidden sm:block">
+              {carDetail.status == "for_sale" ? "Starting from" : "High bid"}
+            </p>
+            <p className="font-semibold whitespace-nowrap">
+              {carDetail.currency}{" "}
+              {numeral(
+                carDetail.status == "for_sale"
+                  ? carDetail.sale_price
+                  : carDetail.auction?.latest_bid || 0
+              ).format("0,0")}
+            </p>
+          </li>
+        )}
+        {currentAuction && carDetail.status == "live" && (
           <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
             <FrameIcon className="w-5 h-5" />
             <p className="opacity-70">Bids</p>

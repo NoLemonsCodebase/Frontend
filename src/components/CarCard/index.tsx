@@ -72,9 +72,16 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
         {/* <p className="text-sm text-zinc-500 mt-2">
           {carDetails.short_description}
         </p> */}
-        {carDetails.status !== "created" && (
+        {carDetails.status == "live" && carDetails.auction?.latest_bid && (
           <h4 className="font-semibold text-base mt-auto">
-            {`${carDetails.currency} ${numeral(carDetails.current_bid).format(
+            {`${carDetails.currency} ${numeral(
+              carDetails.auction.latest_bid
+            ).format("0,0")}`}
+          </h4>
+        )}
+        {(carDetails.status == "for_sale" || carDetails.status == "sold") && (
+          <h4 className="font-semibold text-base mt-auto">
+            {`${carDetails.currency} ${numeral(carDetails.sale_price).format(
               "0,0"
             )}`}
           </h4>

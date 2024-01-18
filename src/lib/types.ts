@@ -32,9 +32,8 @@ export type ICar = {
   temp_url: string | null;
   year: number;
   description: string;
-  starting_price: number;
-  current_bid: number;
-  reserve_price: number;
+  sale_price: number;
+  buyers_fee: number;
   status: "created" | "live" | "for_sale" | "sold" | "deactivated";
   url_route: string | null;
   seller: number;
@@ -44,4 +43,5 @@ export type IAuction = {
   id: number;
   number_of_bids: number;
   time_ending: string;
+  latest_bid: number;
 };
