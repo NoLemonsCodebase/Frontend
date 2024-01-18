@@ -37,7 +37,7 @@ export function BidSection({ carDetail }: { carDetail: ICar }) {
         method: "POST",
         body: JSON.stringify({
           phone,
-          auction_id: carDetail.auction.id,
+          auction_id: 5,
         }),
       }
     );
@@ -71,13 +71,47 @@ export function BidSection({ carDetail }: { carDetail: ICar }) {
     >
       <div className="h-1 bg-gray-500 bg-opacity-40 w-9/12 my-12 md:mb-12 mx-auto" />
       <div className="container flex flex-col items-center justify-center gap-4 px-4 text-center md:px-6">
-        {carDetail.status == "created" ? (
+        {carDetail.status == "created" ||
+          (carDetail.status == "for_sale" && (
+            <>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                Get early access
+              </h2>
+              <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
+                Contact us to get early access to this car.
+              </p>
+
+              <Button
+                onClick={onEarlyAccessClick}
+                className="w-48 flex space-x-1"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="ml-2 icon icon-tabler icon-tabler-brand-whatsapp"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                  <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+                </svg>
+                <p>Get early access</p>
+              </Button>
+            </>
+          ))}
+        {carDetail.status == "sold" && (
           <>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-              Get early access
+              Wanna buy this car or similar?
             </h2>
             <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-              Contact us to get early access to this car.
+              Contact us, we will figure something out
             </p>
 
             <Button
@@ -100,61 +134,65 @@ export function BidSection({ carDetail }: { carDetail: ICar }) {
                 <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
                 <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
               </svg>
-              <p>Get early access</p>
+              <p>Go to whatsapp</p>
             </Button>
           </>
-        ) : !sent ? (
-          <>
-            <div className="space-y-3">
+        )}
+        {carDetail.status == "live" &&
+          (!sent ? (
+            <>
+              <div className="space-y-3">
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                  Bid Now
+                </h2>
+                <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
+                  Enter your Whatsapp number to place a bid (offer)
+                </p>
+              </div>
+              <div className="mx-auto w-full max-w-sm space-y-2">
+                <form
+                  className="flex flex-col items-center space-y-2"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    onSubmit();
+                  }}
+                >
+                  <PhoneInput
+                    preferredCountries={["sa", "ae", "qa", "kw", "bh", "om"]}
+                    country={"ae"}
+                    value={phone}
+                    onChange={setPhone}
+                  />
+                  <Button type="submit" disabled={loading}>
+                    {loading && (
+                      <svg
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        className="mr-2 animate-spin"
+                        viewBox="0 0 1792 1792"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
+                      </svg>
+                    )}
+                    Bid on WhatsApp{" "}
+                  </Button>
+                </form>
+              </div>
+            </>
+          ) : (
+            <>
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                Bid Now
+                Thank you!
               </h2>
               <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                Enter your Whatsapp number to place a bid (offer)
+                You will receive a message on WhatsApp to place your bid to this
+                number{" "}
+                <span className="font-semibold text-black">+{phone}</span>
               </p>
-            </div>
-            <div className="mx-auto w-full max-w-sm space-y-2">
-              <form
-                className="flex flex-col items-center space-y-2"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  onSubmit();
-                }}
-              >
-                <PhoneInput
-                  preferredCountries={["sa", "ae", "qa", "kw", "bh", "om"]}
-                  country={"ae"}
-                  value={phone}
-                  onChange={setPhone}
-                />
-                <Button type="submit" disabled={loading}>
-                  {loading && (
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="currentColor"
-                      className="mr-2 animate-spin"
-                      viewBox="0 0 1792 1792"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
-                    </svg>
-                  )}
-                  Bid on WhatsApp{" "}
-                </Button>
-              </form>
-            </div>
-          </>
-        ) : (
-          <>
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-              Thank you!
-            </h2>
-            <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-              You will receive a message on WhatsApp to place your bid.
-            </p>
-          </>
-        )}
+            </>
+          ))}
         {error && <div className="text-red-500">{error}</div>}
       </div>
     </section>
