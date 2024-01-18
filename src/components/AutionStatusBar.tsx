@@ -61,7 +61,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
             <p className="font-semibold whitespace-nowrap">Coming soon</p>
           )}
           {carDetail.status == "sold" && (
-            <p className="font-semibold whitespace-nowrap">Sold</p>
+            <p className="font-semibold whitespace-nowrap">Car was sold</p>
           )}
           {carDetail.status == "for_sale" && (
             <p className="font-semibold whitespace-nowrap">For sale</p>
