@@ -16,6 +16,7 @@ import { ICar } from "@/lib/types";
 import RichText from "../RichText";
 import { Tooltip } from "react-tooltip";
 import Link from "next/link";
+import WhatsappIcon from "../icons/whatsapp";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -63,10 +64,14 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         <div className="flex sm:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-14 bg-white border-b">
           <AutionStatusBar carDetail={carDetail} />
           <button
-            className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"
+            className="px-2 h-12 bg-green-400 rounded w-32 font-semibold flex items-center justify-center"
             onClick={scrollToTarget}
           >
-            {carDetail.status == "created" ? "Contact us" : "Bid"}
+            {carDetail.status == "live" ? (
+              "Bid"
+            ) : (
+              <WhatsappIcon className="text-white" />
+            )}
           </button>
         </div>
         {width &&
@@ -118,10 +123,14 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         <div className="hidden sm:flex mt-4 space-x-4">
           <AutionStatusBar carDetail={carDetail} />
           <button
-            className="px-2 h-12 bg-green-400 rounded w-32 font-semibold"
+            className="px-2 h-12 bg-green-400 rounded w-32 font-semibold flex items-center justify-center"
             onClick={scrollToTarget}
           >
-            {carDetail.status == "created" ? "Contact us" : "Bid"}
+            {carDetail.status == "live" ? (
+              "Bid"
+            ) : (
+              <WhatsappIcon className="text-white" />
+            )}
           </button>
         </div>
         <div className="block md:hidden">
