@@ -62,18 +62,18 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
             year="2009"
             mainImage="https://i.postimg.cc/90ZCdL3K/HD1A9944.jpg"
           /> */}
-          <UpcomingCarCard
+          {/* <UpcomingCarCard
             title="Jaguar E Type Roadster"
             location="Dubai, UAE"
             year="1963"
             mainImage="https://i.postimg.cc/d0L85jYR/d4690d0b-d3fc-4600-a8c8-d1c4513ad2f3.jpg"
-          />
-          <UpcomingCarCard
+          /> */}
+          {/* <UpcomingCarCard
             title="Porsche 911 Carrera Manual"
             location="Dubai, UAE"
             year="2008"
             mainImage="https://i.postimg.cc/764Z5qmC/6291873c-c0df-46f8-8d5a-2505449ed66c.jpg"
-          />
+          /> */}
           <UpcomingCarCard
             title="Mercedes 190SL"
             location="Dubai, UAE"
