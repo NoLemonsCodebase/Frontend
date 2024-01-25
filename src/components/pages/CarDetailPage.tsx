@@ -348,11 +348,11 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                 data-tooltip-id="my-tooltip"
                 className="flex items-center justify-start"
               >
-                <strong>5%</strong>
+                <strong>{carDetail.buyers_fee}</strong>
                 <InfoCircledIcon className="w-4 h-4 inline-block ml-1" />
               </a>
               <Tooltip id="my-tooltip">
-                Service fee (5%) on final sale price
+                Service fee ({carDetail.buyers_fee}) on final sale price
               </Tooltip>
             </td>
           </tr>
