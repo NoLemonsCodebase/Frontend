@@ -37,7 +37,7 @@ export function BidSection({ carDetail }: { carDetail: ICar }) {
         method: "POST",
         body: JSON.stringify({
           phone,
-          auction_id: 5,
+          auction_id: carDetail.auction?.id,
         }),
       }
     );
