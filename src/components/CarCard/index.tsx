@@ -1,5 +1,4 @@
 import { useSecondsLeft } from "@/lib/hooks/useSecondsLeft";
-import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import cn from "classnames";
@@ -44,10 +43,9 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
       className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer hover:bg-gray-100 flex flex-col"
     >
       <div className="aspect-w-16 aspect-h-10">
-        <Image
+        <img
           src={carDetails.main_image}
-          alt="Landscape picture"
-          fill
+          alt={carDetails.title}
           style={{ objectFit: "cover" }}
           className="block"
         />
