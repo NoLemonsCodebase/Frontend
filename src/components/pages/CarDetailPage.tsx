@@ -147,9 +147,11 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
               </React.Fragment>
             ))}
 
-            <p className="mt-4">
-              *Please review the photos for all the findings.
-            </p>
+            {carDetail.car_image.length > 0 && (
+              <p className="mt-4">
+                *Please review the photos for all the findings.
+              </p>
+            )}
 
             {/* <section className="text-gray-600 body-font">
               <div className="container mx-auto flex flex-wrap">
@@ -339,8 +341,9 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                 className="flex items-center space-x-1"
                 href="/how-it-works?showFee=true"
               >
-                <p>NoLemons Buyer fee</p>
+                <p>NoLemons Buyer Fee</p>
                 <ExternalLinkIcon className="w-4 h-4 inline-block text-blue-500" />
+                :
               </Link>
             </td>
             <td className="py-2 whitespace-nowrap text-sm text-gray-500 flex">
