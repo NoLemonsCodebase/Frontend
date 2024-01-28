@@ -39,7 +39,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
 
   return (
     <Link
-      href={`/cars/${carDetails.id}`}
+      href={`/cars/${carDetails.url_route || carDetails.id}`}
       className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer hover:bg-gray-100 flex flex-col"
     >
       <div className="aspect-w-16 aspect-h-10">
