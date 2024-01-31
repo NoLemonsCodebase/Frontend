@@ -5,7 +5,7 @@ import * as React from "react";
 import cn from "classnames";
 import numeral from "numeral";
 import { MapPinIcon } from "lucide-react";
-import { TrackGetEarlyAccessClick } from "@/lib/services/snapPixels";
+import { TrackGetEarlyAccessClick } from "@/lib/services/pixels";
 
 interface ICarCardProps {
   title: string;

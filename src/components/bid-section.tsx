@@ -8,10 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import {
-  TrackBidViaWA,
-  TrackGetEarlyAccessClick,
-} from "@/lib/services/snapPixels";
+import { TrackBidViaWA, TrackGetEarlyAccessClick } from "@/lib/services/pixels";
 import { ICar } from "@/lib/types";
 
 export function BidSection({ carDetail }: { carDetail: ICar }) {

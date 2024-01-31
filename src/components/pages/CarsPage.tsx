@@ -4,7 +4,7 @@ import CarCard from "../CarCard";
 import * as React from "react";
 import UpcomingCarCard from "../UpcomingCarCard";
 import { ICar } from "@/lib/types";
-import { TrackPageView } from "@/lib/services/snapPixels";
+import { TrackPageView } from "@/lib/services/pixels";
 
 interface ICarsPageProps {
   cars: ICar[];

@@ -2,6 +2,14 @@ function trackWithData(type, data) {
   snaptr("track", type, data);
 }
 
+function metaTrackPurchase() {
+  fbq("track", "Purchase");
+}
+
+function metaTrackPageView() {
+  fbq("track", "PageView");
+}
+
 async function sha256(message) {
   // encode as UTF-8
   const msgBuffer = new TextEncoder().encode(message);
@@ -25,6 +33,7 @@ export const TrackBidViaWA = async (phone) => {
       user_phone_number: phone,
       user_hashed_email: await sha256(phone),
     });
+    metaTrackPurchase();
   } catch (e) {
     console.error(e);
   }
@@ -33,6 +42,7 @@ export const TrackBidViaWA = async (phone) => {
 export const TrackGetEarlyAccessClick = async () => {
   try {
     trackWithData("CUSTOM_EVENT_1");
+    metaTrackPurchase();
   } catch (e) {
     console.error(e);
   }
@@ -41,6 +51,7 @@ export const TrackGetEarlyAccessClick = async () => {
 export const TrackPageView = async () => {
   try {
     trackWithData("PAGE_VIEW");
+    metaTrackPageView();
   } catch (e) {
     console.error(e);
   }
