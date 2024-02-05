@@ -11,26 +11,26 @@ interface ICarsPageProps {
 }
 
 const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
-  const activeAuctions = cars
-    .filter(
-      (item: ICar) =>
-        item.status == "live" &&
-        item.auction &&
-        new Date(item.auction.time_ending).getTime() > new Date().getTime()
-    )
-    .sort(
-      (a: ICar, b: ICar) =>
-        new Date(b.auction!.time_ending).getTime() -
-        new Date(a.auction!.time_ending).getTime()
-    );
+  // const activeAuctions = cars
+  //   .filter(
+  //     (item: ICar) =>
+  //       item.status == "live" &&
+  //       item.auction &&
+  //       new Date(item.auction.time_ending).getTime() > new Date().getTime()
+  //   )
+  //   .sort(
+  //     (a: ICar, b: ICar) =>
+  //       new Date(b.auction!.time_ending).getTime() -
+  //       new Date(a.auction!.time_ending).getTime()
+  //   );
 
-  const forSaleAuctions = cars.filter(
-    (item: ICar) => item.status == "for_sale"
-  );
+  // const forSaleAuctions = cars.filter(
+  //   (item: ICar) => item.status == "for_sale"
+  // );
 
-  const createdCars = cars.filter((item: ICar) => item.status == "created");
+  // const createdCars = cars.filter((item: ICar) => item.status == "created");
 
-  const pastAuctions = cars.filter((item: ICar) => item.status == "sold");
+  // const pastAuctions = cars.filter((item: ICar) => item.status == "sold");
 
   React.useEffect(() => {
     TrackPageView();
@@ -41,15 +41,15 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
       <div className="flex flex-col">
         <p className="text-2xl font-bold mb-4">Auctions</p>
         <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {activeAuctions.map((car) => {
+          {cars.map((car) => {
             return <CarCard key={car.id} carDetails={car} />;
           })}
-          {forSaleAuctions.map((car) => {
+          {/* {forSaleAuctions.map((car) => {
             return <CarCard key={car.id} carDetails={car} />;
           })}
           {createdCars.map((car) => {
             return <CarCard key={car.id} carDetails={car} />;
-          })}
+          })} */}
           {/* <UpcomingCarCard
             title="Porsche Cayman GT4"
             location="Dubai, UAE"
@@ -74,7 +74,7 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
             year="2008"
             mainImage="https://i.postimg.cc/764Z5qmC/6291873c-c0df-46f8-8d5a-2505449ed66c.jpg"
           /> */}
-          <UpcomingCarCard
+          {/* <UpcomingCarCard
             title="Mercedes 190SL"
             location="Dubai, UAE"
             year="1957"
@@ -85,10 +85,10 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
             location="Phoenix AZ, USA"
             year="2017"
             mainImage="https://i.postimg.cc/vmMQNpjC/PHOTO-2023-02-17-19-09-02.jpg"
-          />
-          {pastAuctions.map((car) => {
+          /> */}
+          {/* {pastAuctions.map((car) => {
             return <CarCard key={car.id} carDetails={car} />;
-          })}
+          })} */}
         </section>
       </div>
     </main>
