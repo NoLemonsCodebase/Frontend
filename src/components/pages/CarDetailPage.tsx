@@ -8,7 +8,11 @@ import * as React from "react";
 import ImageCarousel from "@/components/ImageCarousel";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { ExternalLinkIcon, InfoCircledIcon } from "@radix-ui/react-icons";
-import { TrackGetEarlyAccessClick, TrackPageView } from "@/lib/services/pixels";
+import {
+  TrackArabicClick,
+  TrackGetEarlyAccessClick,
+  TrackPageView,
+} from "@/lib/services/pixels";
 import { ICar } from "@/lib/types";
 import RichText from "../RichText";
 import { Tooltip } from "react-tooltip";
@@ -325,6 +329,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                   href={arabicDescPDF}
                   target="_blank"
                   className="text-blue-500 hover:text-blue-700"
+                  onClick={() => TrackArabicClick(carDetail.id)}
                 >
                   <ExternalLinkIcon className="w-4 h-4 inline-block mr-1" />
                   افتح الملف

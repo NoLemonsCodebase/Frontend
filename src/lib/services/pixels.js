@@ -56,3 +56,13 @@ export const TrackPageView = async () => {
     console.error(e);
   }
 };
+
+export const TrackArabicClick = ({ car_id }) => {
+  try {
+    gtag("event", "arabic_click", {
+      car_id,
+    });
+  } catch (e) {
+    console.error(e);
+  }
+};
