@@ -26,6 +26,12 @@ export function Navbar() {
           >
             Sell your car
           </a>
+          <a
+            className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+            href="/about-us"
+          >
+            About us
+          </a>
         </div>
       </div>
       <div className="flex items-center space-x-4">
