@@ -12,6 +12,10 @@ const ImageCarousel: React.FunctionComponent<IImageCarouselProps> = ({
   images,
   previewImages,
 }) => {
+  //memoize images and previewImages
+  images = React.useMemo(() => images, [images]);
+  previewImages = React.useMemo(() => previewImages, [previewImages]);
+
   return (
     <div>
       <Fancybox
