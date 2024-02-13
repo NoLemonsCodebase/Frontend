@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["nolemons.ae", "i.postimg.cc"],
+    domains: [
+      "nolemons.ae",
+      "i.postimg.cc",
+      "nolemons.s3.us-west-2.amazonaws.com",
+    ],
   },
   redirects: async () => {
     return [
