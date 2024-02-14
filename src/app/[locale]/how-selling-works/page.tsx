@@ -6,7 +6,7 @@ interface IHowSellingWorksPageProps {}
 const HowSellingWorksPage: React.FunctionComponent<
   IHowSellingWorksPageProps
 > = (props) => {
-  const t = useTranslations("how_selling_works_page");
+  const t = useTranslations("how_selling_works");
 
   return (
     <main className="p-4 h-screen w-full overflow-y-scroll pt-4 pb-8">

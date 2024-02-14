@@ -84,7 +84,7 @@ const sections: Record<string, any[]> = {
 const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
   props
 ) => {
-  const t = useTranslations("sell_your_car_page");
+  const t = useTranslations("sell_your_car");
   const locale = useLocale();
   const [name, setName] = React.useState("");
   const [description, setDescription] = React.useState("");
