@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 interface IIndexProps {}
 
 const ChatWithUsBtn: React.FunctionComponent<IIndexProps> = (props) => {
-  const t = useTranslations("home_page");
+  const t = useTranslations("default.home_page");
 
   return (
     <a

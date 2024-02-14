@@ -6,12 +6,20 @@ export default getRequestConfig(async ({ locale }) => {
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale as any)) notFound();
 
-  return {
-    messages: (
-      await (locale === "en"
-        ? // When using Turbopack, this will enable HMR for `en`
-          import("./dictonaries/en.json")
-        : import(`./dictonaries/${locale}.json`))
+  const messages = {
+    default: (await import(`../locales/${locale}/default.json`)).default,
+    how_it_works: (await import(`../locales/${locale}/how_it_works.json`))
+      .default,
+    how_selling_works: (
+      await import(`../locales/${locale}/how_selling_works.json`)
     ).default,
+    sell_your_car: (await import(`../locales/${locale}/sell_your_car.json`))
+      .default,
+  };
+
+  console.log(messages);
+
+  return {
+    messages,
   };
 });
