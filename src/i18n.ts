@@ -17,8 +17,6 @@ export default getRequestConfig(async ({ locale }) => {
       .default,
   };
 
-  console.log(messages);
-
   return {
     messages,
   };
