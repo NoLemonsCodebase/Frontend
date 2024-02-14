@@ -5,16 +5,18 @@ import cn from "classnames";
 import numeral from "numeral";
 import { MapPinIcon } from "lucide-react";
 import { ICar } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 interface ICarCardProps {
   carDetails: ICar;
 }
 
 const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
+  const t = useTranslations("default");
   const secondsLeft = useSecondsLeft(carDetails?.auction?.time_ending);
 
   const timeLeftText = () => {
-    if (secondsLeft <= 0) return "Auction ended";
+    if (secondsLeft <= 0) return t("statuses.auction_ended");
     const days = Math.floor(secondsLeft / (24 * 60 * 60));
     let hours: string | number = Math.floor(
       (secondsLeft % (24 * 60 * 60)) / (60 * 60)
@@ -64,7 +66,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
               "absolute top-0 right-0 text-white p-2 flex items-center justify-center bg-green-700"
             )}
           >
-            <span>Upcoming</span>
+            <span>{t("statuses.upcoming")}</span>
           </div>
         )}
         {/* <p className="text-sm text-zinc-500 mt-2">
@@ -132,11 +134,11 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
         )}
         <span>
           {carDetails.status === "sold"
-            ? "Sold"
+            ? t("statuses.sold")
             : carDetails.status === "for_sale"
-            ? "For Sale"
+            ? t("statuses.for_sale")
             : carDetails.status === "created"
-            ? "Get early access"
+            ? t("home_page.get_early_access")
             : carDetails.status === "live"
             ? timeLeftText()
             : ""}
