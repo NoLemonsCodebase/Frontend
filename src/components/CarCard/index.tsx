@@ -31,10 +31,10 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
     const hourPart = `${hours}:${minutes}:${seconds}`;
 
     if (days > 1) {
-      return `${days} days ${hourPart}`;
+      return `${days} ${t("car_page.days")} ${hourPart}`;
     }
     if (days == 1) {
-      return `${days} day ${hourPart}`;
+      return `${days} ${t("car_page.days")} ${hourPart}`;
     }
     return hourPart;
   };
