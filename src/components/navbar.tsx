@@ -6,7 +6,7 @@ import DropDownMenu from "./DropDownMenu";
 export function Navbar() {
   const { width } = useWindowSize();
   return (
-    <nav className="sticky top-0 z-10 flex items-center justify-between px-4 md:px-16 py-4 bg-white  shadow">
+    <nav className="sticky top-0 z-[11] flex items-center justify-between px-4 md:px-16 py-4 bg-white  shadow">
       <div className="flex items-center w-full">
         <a href="/">
           <Image src="/logo.png" width={90} height={16} alt="logo" />
