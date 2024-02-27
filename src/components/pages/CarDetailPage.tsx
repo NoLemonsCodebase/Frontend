@@ -269,7 +269,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
   return (
     <div
       className={cn(
-        "flex flex-col mt-2",
+        "flex flex-col mt-2 overflow-x-scroll",
         isCard && "sm:mt-0 shadow bg-white p-4"
       )}
     >
