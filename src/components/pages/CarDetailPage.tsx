@@ -141,7 +141,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         <div className="block md:hidden">
           <CarDetailList carDetail={carDetail} />
         </div>
-        <div className="flex space-x-8 mt-8">
+        <div className="flex space-x-8 mt-8 no-tailwindcss-base">
           <div className="flex-1">
             <RenderBuilderContent
               content={pageContent}
@@ -244,6 +244,10 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     {
       title: t("interior_color"),
       value: carDetail.interior_color,
+    },
+    {
+      title: "Market Value Estimation",
+      value: "test",
     },
   ];
 
