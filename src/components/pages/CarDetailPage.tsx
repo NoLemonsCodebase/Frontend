@@ -19,13 +19,16 @@ import { Tooltip } from "react-tooltip";
 import Link from "next/link";
 import WhatsappIcon from "../icons/whatsapp";
 import { useTranslations } from "next-intl";
+import { RenderBuilderContent } from "../RenderBuilderContent";
 
 interface ICarPageProps {
   carDetail: ICar;
+  pageContent: any;
 }
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   carDetail,
+  pageContent,
 }) => {
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
@@ -139,42 +142,54 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
           <CarDetailList carDetail={carDetail} />
         </div>
         <div className="flex space-x-8 mt-8">
-          <div className="flex-1 flex flex-col">
-            {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
-            <RichText className="mt-2" content={carDetail.description} />
-            {carDetail.car_text_section.map((section: any, index: number) => (
-              <React.Fragment key={index}>
-                <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
-                <RichText className="mt-2" content={section.content} />
-              </React.Fragment>
-            ))}
-
-            {carDetail.car_image.length > 0 && (
-              <p className="mt-4">{t("review_photos_note")}</p>
-            )}
-            {carDetail.car_video?.length > 0 && (
-              <h2 className="text-2xl font-bold mt-8">{t("videos")}</h2>
-            )}
-            {carDetail.car_video?.map((video: any, index: number) => (
-              <React.Fragment key={index}>
-                <h2 className="text-xl font-bold mt-4">{video.title}</h2>
-                <div
-                  className={cn(
-                    "md:mr-20",
-                    video.aspect_ratio == "16:9"
-                      ? "aspect-w-16 aspect-h-10"
-                      : "aspect-w-4 aspect-h-7 max-h-64"
+          <div className="flex-1">
+            <RenderBuilderContent
+              content={pageContent}
+              model={"page"}
+              fallbackContent={
+                <div className="flex-1 flex flex-col">
+                  {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
+                  <RichText className="mt-2" content={carDetail.description} />
+                  {carDetail.car_text_section.map(
+                    (section: any, index: number) => (
+                      <React.Fragment key={index}>
+                        <h2 className="text-2xl font-bold mt-8">
+                          {section.title}
+                        </h2>
+                        <RichText className="mt-2" content={section.content} />
+                      </React.Fragment>
+                    )
                   )}
-                >
-                  <iframe
-                    src={video.video}
-                    title={video.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
+
+                  {carDetail.car_image.length > 0 && (
+                    <p className="mt-4">{t("review_photos_note")}</p>
+                  )}
+                  {carDetail.car_video?.length > 0 && (
+                    <h2 className="text-2xl font-bold mt-8">{t("videos")}</h2>
+                  )}
+                  {carDetail.car_video?.map((video: any, index: number) => (
+                    <React.Fragment key={index}>
+                      <h2 className="text-xl font-bold mt-4">{video.title}</h2>
+                      <div
+                        className={cn(
+                          "md:mr-20",
+                          video.aspect_ratio == "16:9"
+                            ? "aspect-w-16 aspect-h-10"
+                            : "aspect-w-4 aspect-h-7 max-h-64"
+                        )}
+                      >
+                        <iframe
+                          src={video.video}
+                          title={video.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    </React.Fragment>
+                  ))}
                 </div>
-              </React.Fragment>
-            ))}
+              }
+            />
           </div>
           <section className="hidden lg:block sticky top-20 self-start w-96">
             <CarDetailList isCard carDetail={carDetail} />
