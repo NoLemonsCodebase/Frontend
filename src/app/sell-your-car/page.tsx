@@ -55,7 +55,7 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
       `Hello! I'm ${name} and I want to sell my car.\nHere's a small description:\n${description}`
     );
     window.open(
-      `https://api.whatsapp.com/send/?phone=971564404640&text=${text}`,
+      `https://api.whatsapp.com/send/?phone=971566633668&text=${text}`,
       "_blank"
     );
   };

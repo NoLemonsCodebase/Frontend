@@ -122,11 +122,11 @@ const HowSellingWorksPage: React.FunctionComponent<
               </a>{" "}
               or via Whatsapp at{" "}
               <a
-                href="https://wa.me/971564404640"
+                href="https://wa.me/971566633668"
                 className="underline"
                 target="_blank"
               >
-                +971 56 440 4640
+                +971 56 663 3668
               </a>
             </li>
             <li>
