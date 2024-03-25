@@ -15,7 +15,7 @@ export default async function Home(props: PageProps) {
   const locale = useLocale();
 
   const builderModelName = "page";
-  const urlPath = "/" + (props.params?.page?.join("/") || "");
+  const urlPath = "/p/" + (props.params?.page?.join("/") || "");
   console.log("urlPath", urlPath);
   const content = await builder
     .get(builderModelName, {
