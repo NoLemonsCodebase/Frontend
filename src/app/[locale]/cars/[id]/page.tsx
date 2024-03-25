@@ -1,7 +1,13 @@
 import CarDetailPage from "@/components/pages/CarDetailPage";
 import { ICar } from "@/lib/types";
 import { Metadata } from "next";
+import { builder } from "@builder.io/sdk";
 import * as React from "react";
+
+import { RenderBuilderContent } from "@/components/RenderBuilderContent";
+import { useLocale } from "next-intl";
+
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY as string);
 
 type Props = {
   params: { id: string };
@@ -81,11 +87,29 @@ const CarPage: React.FunctionComponent<{ params: any }> = async ({
   params,
 }) => {
   const id = params.id;
+  const locale = useLocale();
+
+  console.log("locale", locale);
+
+  const builderModelName = "page";
+  const urlPath = `/cars/${id}`;
+  const content = await builder
+    .get(builderModelName, {
+      userAttributes: {
+        urlPath,
+        locale,
+      },
+      options: {
+        locale,
+      },
+      prerender: false,
+    })
+    .toPromise();
 
   try {
     const data: ICar = await fetchCar(id);
 
-    return <CarDetailPage carDetail={data} />;
+    return <CarDetailPage carDetail={data} pageContent={content} />;
   } catch (e) {
     return <div>Car not found</div>;
   }

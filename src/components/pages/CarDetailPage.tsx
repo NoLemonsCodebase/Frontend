@@ -18,14 +18,19 @@ import RichText from "../RichText";
 import { Tooltip } from "react-tooltip";
 import Link from "next/link";
 import WhatsappIcon from "../icons/whatsapp";
+import { useTranslations } from "next-intl";
+import { RenderBuilderContent } from "../RenderBuilderContent";
 
 interface ICarPageProps {
   carDetail: ICar;
+  pageContent: any;
 }
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   carDetail,
+  pageContent,
 }) => {
+  const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
 
   const auctionEnded = lastAuction
@@ -69,7 +74,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             onClick={scrollToTarget}
           >
             {carDetail.status == "live" ? (
-              "Bid"
+              t("bid")
             ) : (
               <WhatsappIcon className="text-white" />
             )}
@@ -100,8 +105,8 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
               >
                 <path d="M10 15l-3.5-3.5 1.6-1.6L10 12l4.9-5 1.6 1.6L10 15z" />
               </svg>
-              verified{" "}
-              <span className="hidden sm:block ml-0.5"> by NoLemons</span>
+              {t("verified")}{" "}
+              <span className="hidden sm:block ml-0.5">{t("by_nolemons")}</span>
             </span>
           </div>
         </div>
@@ -110,15 +115,14 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         </p> */}
         {!auctionEnded && (
           <p className="text-sm text-gray-500 font-semibold">
-            Ending{" "}
-            {endDatetime?.toLocaleString("en-US", {
+            {`${t("ending")} ${endDatetime?.toLocaleString("en-US", {
               month: "short",
               day: "numeric",
               year: "numeric",
               hour: "numeric",
               minute: "numeric",
               hour12: true,
-            })}
+            })}`}
           </p>
         )}
         <div className="hidden sm:flex mt-4 space-x-4">
@@ -128,7 +132,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             onClick={scrollToTarget}
           >
             {carDetail.status == "live" ? (
-              "Bid"
+              t("bid")
             ) : (
               <WhatsappIcon className="text-white" />
             )}
@@ -137,75 +141,55 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         <div className="block md:hidden">
           <CarDetailList carDetail={carDetail} />
         </div>
-        <div className="flex space-x-8 mt-8">
-          <div className="flex-1 flex flex-col">
-            {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
-            <RichText className="mt-2" content={carDetail.description} />
-            {carDetail.car_text_section.map((section: any, index: number) => (
-              <React.Fragment key={index}>
-                <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
-                <RichText className="mt-2" content={section.content} />
-              </React.Fragment>
-            ))}
+        <div className="flex space-x-8 mt-8 no-tailwindcss-base">
+          <div className="flex-1">
+            <RenderBuilderContent
+              content={pageContent}
+              model={"page"}
+              fallbackContent={
+                <div className="flex-1 flex flex-col">
+                  {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
+                  <RichText className="mt-2" content={carDetail.description} />
+                  {carDetail.car_text_section.map(
+                    (section: any, index: number) => (
+                      <React.Fragment key={index}>
+                        <h2 className="text-2xl font-bold mt-8">
+                          {section.title}
+                        </h2>
+                        <RichText className="mt-2" content={section.content} />
+                      </React.Fragment>
+                    )
+                  )}
 
-            {carDetail.car_image.length > 0 && (
-              <p className="mt-4">
-                *Please review the photos for all the findings.
-              </p>
-            )}
-
-            {/* <section className="text-gray-600 body-font">
-              <div className="container mx-auto flex flex-wrap">
-                {history.map((item, index) => (
-                  <div
-                    className="flex relative py-2 sm:items-center"
-                    key={index}
-                  >
-                    <div className="h-full w-2 absolute inset-0 flex items-center justify-center">
+                  {carDetail.car_image.length > 0 && (
+                    <p className="mt-4">{t("review_photos_note")}</p>
+                  )}
+                  {carDetail.car_video?.length > 0 && (
+                    <h2 className="text-2xl font-bold mt-8">{t("videos")}</h2>
+                  )}
+                  {carDetail.car_video?.map((video: any, index: number) => (
+                    <React.Fragment key={index}>
+                      <h2 className="text-xl font-bold mt-4">{video.title}</h2>
                       <div
                         className={cn(
-                          "h-full w-1 bg-gray-200 pointer-events-none",
-                          index == 0 && "h-1/2 absolute top-1/2",
-                          index == history.length - 1 && "h-1/2 absolute top-0"
+                          "md:mr-20",
+                          video.aspect_ratio == "16:9"
+                            ? "aspect-w-16 aspect-h-10"
+                            : "aspect-w-4 aspect-h-7 max-h-64"
                         )}
-                      ></div>
-                    </div>
-                    <div className="flex-shrink-0 w-2 h-2 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm"></div>
-                    <div className="flex-grow pl-2 flex sm:items-center items-start flex-col sm:flex-row">
-                      <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                        <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                          {item.title}
-                        </h2>
-                        <p className="leading-relaxed">{item.description}</p>
+                      >
+                        <iframe
+                          src={video.video}
+                          title={video.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                        ></iframe>
                       </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section> */}
-            {carDetail.car_video?.length > 0 && (
-              <h2 className="text-2xl font-bold mt-8">Videos</h2>
-            )}
-            {carDetail.car_video?.map((video: any, index: number) => (
-              <React.Fragment key={index}>
-                <h2 className="text-xl font-bold mt-4">{video.title}</h2>
-                <div
-                  className={cn(
-                    "md:mr-20",
-                    video.aspect_ratio == "16:9"
-                      ? "aspect-w-16 aspect-h-10"
-                      : "aspect-w-4 aspect-h-7 max-h-64"
-                  )}
-                >
-                  <iframe
-                    src={video.video}
-                    title={video.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
+                    </React.Fragment>
+                  ))}
                 </div>
-              </React.Fragment>
-            ))}
+              }
+            />
           </div>
           <section className="hidden lg:block sticky top-20 self-start w-96">
             <CarDetailList isCard carDetail={carDetail} />
@@ -222,42 +206,48 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
   isCard,
   carDetail,
 }) => {
+  const t = useTranslations("default.car_page");
+
   const sections = [
     {
-      title: "Location",
+      title: t("location"),
       value: carDetail.location,
     },
     {
-      title: "VIN (Chassis #)",
+      title: t("vin"),
       value: carDetail.vin,
     },
     {
-      title: "Engine",
+      title: t("engine"),
       value: carDetail.engine,
     },
     {
-      title: "Drivetrain",
+      title: t("drivetrain"),
       value: carDetail.drivetrain,
     },
     {
-      title: "Transmission",
+      title: t("transmission"),
       value: carDetail.transmission,
     },
     {
-      title: "Mileage",
+      title: t("mileage"),
       value: carDetail.mileage,
     },
     {
-      title: "Mileage Type",
+      title: t("mileage_type"),
       value: carDetail.mileage_type,
     },
     {
-      title: "Exterior Color",
+      title: t("exterior_color"),
       value: carDetail.exterior_color,
     },
     {
-      title: "Interior Color",
+      title: t("interior_color"),
       value: carDetail.interior_color,
+    },
+    {
+      title: "Market Value Estimation",
+      value: "test",
     },
   ];
 
@@ -288,7 +278,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
           {inspectionPDF && (
             <tr>
               <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                Inspection report
+                {t("inspection_report")}
               </td>
               <td className="py-2 whitespace-nowrap text-sm text-gray-500">
                 <a
@@ -296,7 +286,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                   target="_blank"
                   className="text-blue-500 hover:text-blue-700"
                 >
-                  Open report
+                  {t("open_report")}
                   <ExternalLinkIcon className="w-4 h-4 inline-block ml-1" />
                 </a>
               </td>
@@ -305,7 +295,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
           {reportHistoryPDF && (
             <tr>
               <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                History Report
+                {t("history_report")}
               </td>
               <td className="py-2 whitespace-nowrap text-sm text-gray-500">
                 <a
@@ -313,7 +303,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                   target="_blank"
                   className="text-blue-500 hover:text-blue-700"
                 >
-                  Open report
+                  {t("open_report")}
                   <ExternalLinkIcon className="w-4 h-4 inline-block ml-1" />
                 </a>
               </td>
@@ -343,7 +333,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                 className="flex items-center space-x-1"
                 href="/how-it-works?showFee=true"
               >
-                <p>NoLemons Buyer Fee</p>
+                <p>{t("nolemons_buyer_fee")}</p>
                 <ExternalLinkIcon className="w-4 h-4 inline-block text-blue-500" />
                 :
               </Link>

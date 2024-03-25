@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import Script from "next/script";
-import NextTopLoader from "nextjs-toploader";
-import WhatsappIcon from "@/components/icons/whatsapp";
+import ChatWithUsBtn from "@/components/chat-with-us-btn";
+import { NextIntlClientProvider, useMessages } from "next-intl";
+import { useTextDirection } from "@/lib/hooks/useTextDirection";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NoLemons.co - The online auction for car people, by car people",
+  title: "NoLemons.ae - The online auction for car people, by car people",
   description: "The online auction for car people, by car people",
   icons: {
     icon: "/logo-web.webp",
@@ -17,13 +17,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://nolemons.co/"),
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function LocaleLayout({ children, params: { locale } }: any) {
+  const messages = useMessages();
+  const direction = useTextDirection(locale);
   return (
-    <html lang="en">
+    <html lang={"locale"} dir={direction}>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-5LKFJ76994" />
       <Script id="google-analytics">
         {`
@@ -60,16 +58,11 @@ export default function RootLayout({
         `}
       </Script>
       <body className={inter.className}>
-        <NextTopLoader />
-        <a
-          className="fixed z-10 bottom-0 right-0 h-8 mr-8 text-white px-4 text-sm font-semibold flex items-center justify-center space-x-2"
-          style={{ background: "#5a9e6f" }}
-          href="https://wa.me/971566633668?text=Hi%21%20I%20am%20from%20NoLemons%20website.%20Could%20you%20please%20tell%20me%3A"
-        >
-          <p>Chat with us</p>
-          <WhatsappIcon />
-        </a>
-        {children}
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Navbar />
+          <ChatWithUsBtn />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

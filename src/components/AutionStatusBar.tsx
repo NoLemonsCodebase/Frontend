@@ -3,6 +3,7 @@ import { ClockIcon, ArrowUpIcon, FrameIcon } from "@radix-ui/react-icons";
 import { useSecondsLeft } from "@/lib/hooks/useSecondsLeft";
 import numeral from "numeral";
 import { IAuction, ICar } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 interface IAutionStatusBarProps {
   carDetail: ICar;
@@ -10,6 +11,7 @@ interface IAutionStatusBarProps {
 
 const TimeLeftText: React.FC<{ auction: IAuction }> = ({ auction }) => {
   const secondsLeft = useSecondsLeft(auction.time_ending);
+  const t = useTranslations("default.car_page");
 
   // X days/day if X > 1, else h:MM:SS format
   const timeLeftText = () => {
@@ -28,10 +30,10 @@ const TimeLeftText: React.FC<{ auction: IAuction }> = ({ auction }) => {
     const hourPart = `${hours}:${minutes}:${seconds}`;
 
     if (days > 1) {
-      return [`${days} days`, hourPart];
+      return [`${days} ${t("days")}`, hourPart];
     }
     if (days == 1) {
-      return [`${days} day`, hourPart];
+      return [`${days} ${t("day")}`, hourPart];
     }
     return [hourPart, ""];
   };
@@ -50,6 +52,7 @@ const TimeLeftText: React.FC<{ auction: IAuction }> = ({ auction }) => {
 const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
   carDetail,
 }) => {
+  const t = useTranslations("default");
   const currentAuction = carDetail.auction;
 
   return (
@@ -58,13 +61,19 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ClockIcon className="w-5 h-5" />
           {carDetail.status == "created" && (
-            <p className="font-semibold whitespace-nowrap">Coming soon</p>
+            <p className="font-semibold whitespace-nowrap">
+              {t("statuses.coming_soon")}
+            </p>
           )}
           {carDetail.status == "sold" && (
-            <p className="font-semibold whitespace-nowrap">Car was sold</p>
+            <p className="font-semibold whitespace-nowrap">
+              {t("statuses.car_was_sold")}
+            </p>
           )}
           {carDetail.status == "for_sale" && (
-            <p className="font-semibold whitespace-nowrap">For sale</p>
+            <p className="font-semibold whitespace-nowrap">
+              {t("statuses.for_sale")}
+            </p>
           )}
           {carDetail.status == "live" && currentAuction && (
             <TimeLeftText auction={currentAuction} />
@@ -74,7 +83,9 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
           <li className="basis-auto flex items-center space-x-2 text-white">
             <ArrowUpIcon className="w-5 h-5 hidden sm:block" />
             <p className="opacity-7 hidden sm:block">
-              {carDetail.status == "for_sale" ? "Starting from" : "High bid"}
+              {carDetail.status == "for_sale"
+                ? t("car_page.starting_from")
+                : t("car_page.high_bid")}
             </p>
             <p className="font-semibold whitespace-nowrap">
               {carDetail.currency}{" "}
@@ -89,7 +100,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
         {currentAuction && carDetail.status == "live" && (
           <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
             <FrameIcon className="w-5 h-5" />
-            <p className="opacity-70">Bids</p>
+            <p className="opacity-70">{t("car_page.bids")}</p>
             <p className="font-semibold">{currentAuction.number_of_bids}</p>
           </li>
         )}

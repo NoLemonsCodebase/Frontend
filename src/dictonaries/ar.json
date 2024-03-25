@@ -1,0 +1,66 @@
+{
+    "navigation": {
+        "how_it_works": "How it works?",
+        "sell_your_car": "Sell your car"
+    },
+    "home_page": {
+        "auctions": "Auctions",
+        "get_early_access": "Get early access",
+        "upcoming": "Upcoming",
+        "sold": "Sold",
+        "for_sale": "For sale",
+        "chat_with_us": "Chat with us"
+    },
+    "car_page": {
+        "time_left": "Time left",
+        "cooming_soon": "Coming soon",
+        "starting_from": "Starting from",
+        "high_bid": "High bid",
+        "bids": "Bids",
+        "days": "days",
+        "day": "day",
+        "contact_us": "Contact us",
+        "bid": "Bid",
+        "verified": "verified",
+        "by_nolemons": "by NoLemons",
+        "ending": "Ending",
+        "review_photos_note": "*Please review the photos for all the findings.",
+        "videos": "Videos",
+        "location": "Location",
+        "vin": "VIN (Chassis #)",
+        "engine": "Engine",
+        "drivetrain": "Drivetrain",
+        "transmission": "Transmission",
+        "mileage": "Mileage",
+        "mileage_type": "Mileage Type",
+        "exterior_color": "Exterior Color",
+        "interior_color": "Interior Color",
+        "inspection_report": "Inspection report",
+        "open_report": "Open report",
+        "history_report": "History report"
+    },
+    "statuses": {
+        "sold": "Sold",
+        "for_sale": "For sale",
+        "upcoming": "Upcoming",
+        "coming_soon": "Coming soon"
+    },
+    "car_card": {
+        "upcoming": "Upcoming",
+        "days": "days",
+        "day": "day",
+        "get_early_access": "Get early access"
+    },
+    "how_it_works_page": {
+        "i_want_to_buy": "I want to buy a car",
+        "i_want_to_sell": "I want to sell a car"
+    },
+    "sell_your_car_page": {
+        "sell_your_car": "بيع سيارتي",
+        "text_s_1": "لا توجد رسوم لعرض وبيع سيارتك مع نوليمنز (NoLemons)، والأفضل من هذا، وجود الفوائد التالية:",
+        "text_s_2": "هل لديك سيارة تريد بيعها مع نوليمنز (NoLemons)؟ املأ الاستمارة أدناه للتواصل معنا.Z",
+        "name": "الاسم",
+        "description": "نبذة عن سيارتك:",
+        "submit": "أرسل عبر الواتساب"
+    }
+}
