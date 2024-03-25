@@ -10,7 +10,7 @@ const ChatWithUsBtn: React.FunctionComponent<IIndexProps> = (props) => {
     <a
       className="fixed z-10 bottom-0 right-0 h-8 mr-8 text-white px-4 text-sm font-semibold flex items-center justify-center"
       style={{ background: "#5a9e6f" }}
-      href="https://wa.me/971564404640?text=Hi%21%20I%20am%20from%20NoLemons%20website.%20Could%20you%20please%20tell%20me%3A"
+      href="https://wa.me/971566633668?text=Hi%21%20I%20am%20from%20NoLemons%20website.%20Could%20you%20please%20tell%20me%3A"
     >
       {t("chat_with_us")}
       <svg
