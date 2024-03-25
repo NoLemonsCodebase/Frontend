@@ -24,11 +24,13 @@ import { RenderBuilderContent } from "../RenderBuilderContent";
 interface ICarPageProps {
   carDetail: ICar;
   pageContent: any;
+  bannerContent: any;
 }
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   carDetail,
   pageContent,
+  bannerContent
 }) => {
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
