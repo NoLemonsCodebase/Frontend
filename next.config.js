@@ -5,7 +5,7 @@ const withBuilderDevTools = require("@builder.io/dev-tools/next")();
 const nextConfig = withBuilderDevTools(
   withNextIntl({
     env: {
-      NEXT_PUBLIC_BUILDER_API_KEY: "b21829d09ece466ca4dae638f3c49bbb",
+      NEXT_PUBLIC_BUILDER_API_KEY: "058aa1afd2c8466e86b2644bee2e9f4a",
     },
     images: {
       domains: [
