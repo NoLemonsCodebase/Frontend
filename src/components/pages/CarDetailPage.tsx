@@ -28,7 +28,7 @@ interface ICarPageProps {
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   carDetail,
-  pageContent,
+  pageContent
 }) => {
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
@@ -245,10 +245,10 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
       title: t("interior_color"),
       value: carDetail.interior_color,
     },
-    {
-      title: "Market Value Estimation",
-      value: "test",
-    },
+    // {
+    //   title: t("Market Value Estimation",
+    //   value: carDetail.interior_color,
+    // },
   ];
 
   const inspectionPDF = carDetail.inspection_report_link;

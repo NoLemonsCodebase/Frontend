@@ -5,6 +5,7 @@ import Script from "next/script";
 import ChatWithUsBtn from "@/components/chat-with-us-btn";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { useTextDirection } from "@/lib/hooks/useTextDirection";
+import Banner from "@/components/Banner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://nolemons.co/"),
 };
+
 
 export default function LocaleLayout({ children, params: { locale } }: any) {
   const messages = useMessages();
@@ -59,6 +61,7 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
       </Script>
       <body className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <Banner />
           <Navbar />
           <ChatWithUsBtn />
           {children}
@@ -67,3 +70,4 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
     </html>
   );
 }
+
