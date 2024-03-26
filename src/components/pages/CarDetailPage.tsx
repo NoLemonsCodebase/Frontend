@@ -28,7 +28,7 @@ interface ICarPageProps {
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   carDetail,
-  pageContent,
+  pageContent
 }) => {
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
