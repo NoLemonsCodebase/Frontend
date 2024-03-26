@@ -38,10 +38,10 @@ const Banner: React.FunctionComponent<IBannerProps> = (props) => {
   // 2) just plain tailwind code
   return  <div className="bg-yellow-50">
             <div className="py-2 md:py-3 lg:py-4">
-              <div className="container flex items-center justify-center px-4 md:px-6">
+              <div className="container flex items-center justify-center px-4 md:px-4">
                 <div className="flex items-center space-x-4 text-yellow-600 dark:text-yellow-400">
-                  <TruckIcon className="h-4 w-4" />
-                  <span className="text-sm font-semibold">Free shipping on first delivery</span>
+                  <TruckIcon className="h-6 w-6" />
+                  <span className="text-sm font-semibold">Ramadan offer! Free shipping to the GCC</span>
                 </div>
               </div>
             </div>
