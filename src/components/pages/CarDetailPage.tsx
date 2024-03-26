@@ -245,10 +245,10 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
       title: t("interior_color"),
       value: carDetail.interior_color,
     },
-    // {
-    //   title: t("Market Value Estimation",
-    //   value: carDetail.interior_color,
-    // },
+    {
+      title: t("market_value"),
+      value: carDetail.market_value,
+    },
   ];
 
   const inspectionPDF = carDetail.inspection_report_link;
