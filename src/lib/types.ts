@@ -24,6 +24,7 @@ export type ICar = {
   body_style: string;
   exterior_color: string;
   interior_color: string;
+  market_value: string;
   inspection_report_link: string | null;
   history_report_link: string | null;
   arabic_description_link: string | null;
