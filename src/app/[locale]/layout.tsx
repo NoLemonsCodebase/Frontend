@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://nolemons.co/"),
 };
 
-function TruckIcon(props) {
+function TruckIcon(props: any) {
   return (
     <svg
       {...props}
