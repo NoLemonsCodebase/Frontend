@@ -21,8 +21,8 @@
         "history_report": "تقرير التاريخ",
         "inspection_report": "تقرير التفتيش",
         "interior_color": "اللون الداخلي",
-        "market_value": "تقدير القيمة السوقية",
         "location": "موقع",
+        "market_value": "تقدير القيمة السوقية",
         "mileage": "عدد الأميال",
         "mileage_type": "نوع الأميال",
         "nolemons_buyer_fee": "لا توجد رسوم على شراء الليمون",
@@ -37,7 +37,7 @@
     },
     "home_page": {
         "auctions": "مزادات",
-        "chat_with_us": "الدردشة معنا (اختبار)",
+        "chat_with_us": "دردش معنا",
         "for_sale": "للبيع",
         "get_early_access": "الحصول على الوصول المبكر",
         "sold": "مُباع",
