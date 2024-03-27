@@ -21,7 +21,6 @@
         "history_report": "تقرير التاريخ",
         "inspection_report": "تقرير التفتيش",
         "interior_color": "اللون الداخلي",
-        "market_value": "تقدير القيمة السوقية",
         "location": "موقع",
         "mileage": "عدد الأميال",
         "mileage_type": "نوع الأميال",
@@ -37,14 +36,16 @@
     },
     "home_page": {
         "auctions": "مزادات",
-        "chat_with_us": "الدردشة معنا (اختبار)",
+        "chat_with_us": "دردش معنا",
         "for_sale": "للبيع",
         "get_early_access": "الحصول على الوصول المبكر",
         "sold": "مُباع",
         "upcoming": "القادمة"
     },
+    "market_value": "تقدير القيمة السوقية",
     "navigation": {
         "about_us": "معلومات عنا",
+        "about_us_test": "اختبار عنا",
         "how_it_works": "كيف تعمل؟",
         "sell_your_car": "بيع سيارتك"
     },

@@ -35,10 +35,10 @@
         "mileage_type": "Mileage Type",
         "exterior_color": "Exterior Color",
         "interior_color": "Interior Color",
-        "market_value": "Market value estimate",
-        "inspection_report": "Inspection report",
-        "open_report": "Open report",
-        "history_report": "History report"
+        "market_value": "Market Value Estimation",
+        "inspection_report": "Inspection Report",
+        "open_report": "Open Report",
+        "history_report": "History Report"
     },
     "statuses": {
         "sold": "Sold",

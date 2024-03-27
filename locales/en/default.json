@@ -21,7 +21,6 @@
         "history_report": "History report",
         "inspection_report": "Inspection report",
         "interior_color": "Interior Color",
-        "market_value": "Market value estimate",
         "location": "Location",
         "mileage": "Mileage",
         "mileage_type": "Mileage Type",
@@ -43,8 +42,10 @@
         "sold": "Sold",
         "upcoming": "Upcoming"
     },
+    "market_value": "Market Value Estimation",
     "navigation": {
         "about_us": "About us",
+        "about_us_test": "About us test",
         "how_it_works": "How it works?",
         "sell_your_car": "Sell your car"
     },
