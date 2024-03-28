@@ -79,8 +79,8 @@ const HowSellingWorksPage: React.FunctionComponent<
             </li>
             <li>
               {t("section_4.list_item_2.1")}{" "}
-              <a href="mailto:admin@nolemons.ae" className="underline">
-                admin@nolemons.ae
+              <a href="mailto:ameer@nolemons.co" className="underline">
+                ameer@nolemons.co
               </a>{" "}
               {t("section_4.list_item_2.2")}{" "}
               <a

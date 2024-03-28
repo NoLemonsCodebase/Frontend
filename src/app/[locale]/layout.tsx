@@ -10,7 +10,7 @@ import Banner from "@/components/Banner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NoLemons.ae - The online auction for car people, by car people",
+  title: "NoLemons.co - The online auction for car people, by car people",
   description: "The online auction for car people, by car people",
   icons: {
     icon: "/logo-web.webp",
