@@ -10,6 +10,7 @@ const nextConfig = withBuilderDevTools(
     images: {
       domains: [
         "nolemons.ae",
+        "nolemons.co",
         "i.postimg.cc",
         "nolemons.s3.us-west-2.amazonaws.com",
       ],

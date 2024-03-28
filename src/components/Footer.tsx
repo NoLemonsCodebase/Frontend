@@ -47,7 +47,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
           </svg>
         </a>
         <a
-          href="https://www.instagram.com/nolemons.ae/"
+          href="https://www.instagram.com/nolemons_co/"
           target="_blank"
           aria-label="Instagram"
         >
@@ -67,7 +67,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
             ></path>
           </svg>
         </a>
-        <a href="mailto:sammy@nolemons.ae" target="_blank" aria-label="Email">
+        <a href="mailto:ameer@nolemons.co" target="_blank" aria-label="Email">
           <svg
             role="presentation"
             width="30px"
