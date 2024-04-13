@@ -67,7 +67,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
           )}
           {carDetail.status == "sold" && (
             <p className="font-semibold whitespace-nowrap">
-              {t("statuses.car_was_sold")}
+              {t("statuses.car_was_sold")} {" | "} {carDetail.currency}{" "}{numeral(carDetail.sale_price).format("0,0")}
             </p>
           )}
           {carDetail.status == "for_sale" && (
