@@ -41,7 +41,7 @@ const Banner: React.FunctionComponent<IBannerProps> = (props) => {
               <div className="container flex items-center justify-center px-4 md:px-4">
                 <div className="flex items-center space-x-4 text-yellow-600 dark:text-yellow-400">
                   <TruckIcon className="h-6 w-6" />
-                  <span className="text-sm font-semibold">Ramadan offer! Free shipping to the GCC</span>
+                  <span className="text-sm font-semibold">Special offer! Free shipping to the GCC</span>
                 </div>
               </div>
             </div>
