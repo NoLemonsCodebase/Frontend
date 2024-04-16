@@ -50,7 +50,7 @@
     },
     "statuses": {
         "auction_ended": "Auction ended",
-        "car_was_sold": "Car was sold",
+        "car_was_sold": "Sold",
         "coming_soon": "Coming soon",
         "for_sale": "For sale",
         "sold": "Sold",
