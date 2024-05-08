@@ -1,4 +1,5 @@
 "use client";
+import { useParams } from 'next/navigation'
 import AutionStatusBar from "@/components/AutionStatusBar";
 import CarImagesSection from "@/components/CarImagesSection";
 import Footer from "@/components/Footer";
@@ -24,12 +25,16 @@ import { RenderBuilderContent } from "../RenderBuilderContent";
 interface ICarPageProps {
   carDetail: ICar;
   pageContent: any;
+  utms: any;
 }
 
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   carDetail,
-  pageContent
+  pageContent,
+  utms
 }) => {
+  
+  // console.log("The utms 1", utms);
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
 
@@ -195,7 +200,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             <CarDetailList isCard carDetail={carDetail} />
           </section>
         </div>
-        <BidSection carDetail={carDetail} />
+        <BidSection carDetail={carDetail} utms={utms}/>
       </section>
       <Footer />
     </>
