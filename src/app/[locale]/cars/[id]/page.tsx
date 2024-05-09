@@ -57,10 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: "NoLemons Online Auction",
         description: carDescription,
-        images: [
-          data.main_image,
-          ...data.car_image.slice(1, 4).map((img) => img.image),
-        ],
+        images: [data.main_image,],
       },
       alternates: {
         canonical: `/cars/${data.id}`,
@@ -82,13 +79,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-const CarPage: React.FunctionComponent<{ params: any }> = async ({
+const CarPage: React.FunctionComponent<{ params: any, searchParams: any }> = async ({
   params,
+  searchParams,
 }) => {
   const id = params.id;
   const locale = useLocale();
-
-  console.log("locale", locale);
+  
+  // console.log("searchParams", searchParams);
+  // console.log("locale", locale);
 
   const builderModelName = "page";
   const urlPath = `/cars/${id}`;
@@ -108,7 +107,7 @@ const CarPage: React.FunctionComponent<{ params: any }> = async ({
   try {
     const data: ICar = await fetchCar(id);
 
-    return <CarDetailPage carDetail={data} pageContent={content} />;
+    return <CarDetailPage carDetail={data} pageContent={content} utms={searchParams}/>;
   } catch (e) {
     return <div>Car not found</div>;
   }
