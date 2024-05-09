@@ -6,6 +6,7 @@ import ChatWithUsBtn from "@/components/chat-with-us-btn";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { useTextDirection } from "@/lib/hooks/useTextDirection";
 import Banner from "@/components/Banner";
+import RequestCar from "@/components/RequestCar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -61,7 +62,8 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
       </Script>
       <body className={inter.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Banner />
+          <RequestCar />
+          {/* <Banner /> */}
           <Navbar />
           <ChatWithUsBtn />
           {children}
