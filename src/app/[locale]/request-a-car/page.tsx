@@ -34,7 +34,7 @@ const RequestACar: React.FunctionComponent<IRequestACarProps> = (
     //   `Hello! I'm ${name}\nHere's a small description:\n${description}`
     // );
     window.open(
-      `http://localhost:3000/en/thank-you/`,
+      `https://nolemons-staging.vercel.app/en/thank-you/`,
       "_parent"
     );
   };
