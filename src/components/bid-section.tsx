@@ -19,7 +19,7 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
   
-  console.log("Bid Section utms", utms);
+  // console.log("Bid Section utms", utms);
   let utm_string = '?';
 
   for (const key in utms) {
@@ -32,7 +32,7 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
   // Remove the last '&' character
   utm_string = utm_string.slice(0, -1);
   
-  console.log(utm_string);
+  // console.log(utm_string);
 
   const onSubmit = async () => {
     setError("");
