@@ -42,12 +42,12 @@ const RequestCar: React.FunctionComponent<IBannerProps> = (props) => {
         <div className="bg-yellow-400 py-3 px-4 text-center">
             <div className="flex items-center justify-center">
                 <BellIcon className="mr-2 h-5 w-5" />
-                <p className="text-sm font-medium text-gray-900">You can request a car</p>
+                <p className="text-sm font-medium text-gray-900">Can't find your dream car?</p>
                 <Link
                 className="ml-4 inline-flex items-center rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-gray-900/90 focus:outline-none focus:ring-2 focus:ring-gray-950 focus:ring-offset-2 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus:ring-gray-300"
                 href="/request-a-car"
                 >
-                Request
+                Request it
                 </Link>
             </div>
         </div>
