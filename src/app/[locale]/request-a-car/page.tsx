@@ -4,8 +4,8 @@ import * as React from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { redirect } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import path from "path";
 
 interface IRequestACarProps {}
@@ -23,7 +23,7 @@ const RequestACar: React.FunctionComponent<IRequestACarProps> = (
     console.log("phone", phone);
     console.log("description", description);
     
-    const url_request = `https://nolemons2.onrender.com/request-car/`;
+    const url_request = "https://nolemons2.onrender.com/request-car/";
     const res = fetch(
       url_request,
       {
