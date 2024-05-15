@@ -4,8 +4,8 @@ import * as React from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { redirect } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import path from "path";
 
 interface IRequestACarProps {}
@@ -14,27 +14,32 @@ const RequestACar: React.FunctionComponent<IRequestACarProps> = (
   props
 ) => {
   const [name, setName] = React.useState("");
+  const [phone, setPhone] = React.useState("");
   const [description, setDescription] = React.useState("");
   
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("name", name);
-    // const url_request = `https://nolemons2.onrender.com/thank-you/`;
-    // const res = fetch(
-    //   url_request,
-    //   {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       phone,
-    //       auction_id: carDetail.auction?.id,
-    //     }),
-    //   }
-    // );
+    console.log("phone", phone);
+    console.log("description", description);
+    
+    const url_request = "https://nolemons2.onrender.com/request-car/";
+    const res = fetch(
+      url_request,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          description: description,
+        }),
+      }
+    );
     // const text = encodeURIComponent(
     //   `Hello! I'm ${name}\nHere's a small description:\n${description}`
     // );
     window.open(
-      `https://nolemons-staging.vercel.app/en/thank-you/`,
+      "/en/thank-you/",
       "_parent"
     );
   };
@@ -50,9 +55,22 @@ const RequestACar: React.FunctionComponent<IRequestACarProps> = (
           type="text"
           name="name"
           id="name"
+          required
           className="border border-gray-400 p-2"
           value={name}
           onChange={(e) => setName(e.target.value)}
+        />
+        <label htmlFor="phone" className="font-bold">
+          {"Whatsapp number"}
+        </label>
+        <input
+          type="text"
+          name="phone"
+          id="phone"
+          required
+          className="border border-gray-400 p-2"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
         />
         <label htmlFor="description" className="font-bold">
           {"Description of the car you want"}
@@ -60,6 +78,8 @@ const RequestACar: React.FunctionComponent<IRequestACarProps> = (
         <textarea
           name="description"
           id="description"
+          required
+          placeholder="e.g. I want a 2018 Porsche 911 GTS preferably in Carmine Red."
           className="border border-gray-400 p-2"
           value={description}
           rows={6}
@@ -67,7 +87,7 @@ const RequestACar: React.FunctionComponent<IRequestACarProps> = (
         />
         <Button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="backgroud-color:rgb(74,212,147) hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
         >
           {"Submit"}
         </Button>
