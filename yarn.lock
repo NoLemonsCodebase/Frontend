@@ -69,10 +69,10 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@builder.io/dev-tools@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@builder.io/dev-tools/-/dev-tools-1.0.11.tgz#cbb81cd8230707f49c4d6c74fb5add8c01ef1f53"
-  integrity sha512-C+csL1z/ypXo/L6JgZEa2ISN+SHAfnhcb4uiaL8rrb74IpbSwHMZz+nY0xR654sHwP7mN9uNMUH/i4+Fl+ZnbA==
+"@builder.io/dev-tools@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@builder.io/dev-tools/-/dev-tools-1.0.1.tgz#4463ef4d9f269548417ec3726202c5fa0f1e2f60"
+  integrity sha512-G+Y1JehA6hLgXbXB2U9/U2D8S+GxxsduZRSfO7sbZ8FxMWk1PBPkL5AwtGGXAmOhhK0ckg9Fr0TLPN0B5IyXTQ==
   dependencies:
     launch-editor "^2.6.0"
     prettier "^2.8.8"
