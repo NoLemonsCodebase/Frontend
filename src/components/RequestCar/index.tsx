@@ -39,7 +39,7 @@ const RequestCar: React.FunctionComponent<IBannerProps> = (props) => {
   // 1) for urls starting with cars and for main page (userRouter of next.js)
   // 2) just plain tailwind code
   return  (
-        <div className="bg-yellow-400 py-3 px-4 text-center">
+        <div className="bg-[#FEFCE8] py-3 px-4 text-center">
             <div className="flex items-center justify-center">
                 <BellIcon className="mr-2 h-5 w-5" />
                 <p className="text-sm font-medium text-gray-900">Can&apos;t find your dream car?</p>

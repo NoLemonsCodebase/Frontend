@@ -55,6 +55,7 @@ const RequestACar: React.FunctionComponent<IRequestACarProps> = (
           type="text"
           name="name"
           id="name"
+          placeholder="Ali Ahmed Al-Mansoori"
           required
           className="border border-gray-400 p-2"
           value={name}
@@ -67,6 +68,7 @@ const RequestACar: React.FunctionComponent<IRequestACarProps> = (
           type="text"
           name="phone"
           id="phone"
+          placeholder="+971566633668"
           required
           className="border border-gray-400 p-2"
           value={phone}
