@@ -9,7 +9,7 @@ export async function GET(request: Request) {
   const cars: ICar[] = await res.json();
 
   const fields: ISitemapField[] = cars.map((car) => ({
-    loc: `https://www.nolemons.co/cars/${car.id}`,
+    loc: `https://www.nolemons.co/cars/${car.url_route}`,
     lastmod: new Date().toISOString(),
   }));
 
