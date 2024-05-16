@@ -3,6 +3,8 @@
  * @see https://v0.dev/t/lXSlZCBBrz3
  */
 "use client";
+
+import { useParams } from 'next/navigation'
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -11,11 +13,26 @@ import "react-phone-input-2/lib/style.css";
 import { TrackBidViaWA, TrackGetEarlyAccessClick } from "@/lib/services/pixels";
 import { ICar } from "@/lib/types";
 
-export function BidSection({ carDetail }: { carDetail: ICar }) {
+export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
+  
+  // console.log("Bid Section utms", utms);
+  let utm_string = '?';
+
+  for (const key in utms) {
+    if (Object.prototype.hasOwnProperty.call(utms, key)) {
+      const value = utms[key];
+      utm_string += `${key}=${value}&`;
+    }
+  }
+  
+  // Remove the last '&' character
+  utm_string = utm_string.slice(0, -1);
+  
+  // console.log(utm_string);
 
   const onSubmit = async () => {
     setError("");
@@ -28,8 +45,9 @@ export function BidSection({ carDetail }: { carDetail: ICar }) {
 
     TrackBidViaWA(phone);
 
+    const url_request = `https://nolemons2.onrender.com/auction-following/${utm_string}`;
     const res = await fetch(
-      "https://nolemons2.onrender.com/auction-following/",
+      url_request,
       {
         method: "POST",
         body: JSON.stringify({

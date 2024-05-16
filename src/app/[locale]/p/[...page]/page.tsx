@@ -16,7 +16,7 @@ export default async function Home(props: PageProps) {
 
   const builderModelName = "page";
   const urlPath = "/p/" + (props.params?.page?.join("/") || "");
-  console.log("urlPath", urlPath);
+  // console.log("urlPath", urlPath);
   const content = await builder
     .get(builderModelName, {
       userAttributes: {
