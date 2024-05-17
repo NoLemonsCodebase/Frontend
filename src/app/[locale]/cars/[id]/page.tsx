@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         description: carDescription,
         images: [{
           url: data.main_image,
-          width: 800,
+          width: 600,
           height: 600,
         },],
       },
