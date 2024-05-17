@@ -69,6 +69,7 @@ const RequestACar: React.FunctionComponent<IRequestACarProps> = (
           name="phone"
           id="phone"
           placeholder="+971566633668"
+          minLength={10}
           required
           className="border border-gray-400 p-2"
           value={phone}
