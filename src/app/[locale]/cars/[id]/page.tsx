@@ -57,11 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: "NoLemons Online Auction",
         description: carDescription,
-        images: [{
-          url: data.main_image,
-          width: 600,
-          height: 600,
-        },],
+        images: [data.main_image,],
       },
       alternates: {
         canonical: `/cars/${data.url_route}`,
