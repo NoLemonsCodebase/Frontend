@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         images: [data.main_image,],
       },
       alternates: {
-        canonical: `/cars/${data.id}`,
+        canonical: `/cars/${data.url_route}`,
       },
     };
   } catch (e) {
