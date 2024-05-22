@@ -43,10 +43,6 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
     }
 
     TrackBidViaWA(phone);
-    const pathname = usePathname()
-
-    console.log(pathname);
-    console.log("FULL URL " + window.location.href);
 
     var url_request = `https://nolemons-dev.onrender.com/auction-following/${utm_string}`;
     if (window.location.href.includes("localhost") || window.location.href.includes("vercel.app")) {
