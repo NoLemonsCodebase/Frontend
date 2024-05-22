@@ -35,7 +35,7 @@ export type ICar = {
   description: string;
   sale_price: number;
   buyers_fee: number;
-  status: "created" | "live" | "for_sale" | "sold" | "deactivated";
+  status: "created" | "testing" | "live" | "for_sale" | "sold" | "deactivated";
   url_route: string | null;
   seller: number;
 };

@@ -72,7 +72,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
         {/* <p className="text-sm text-zinc-500 mt-2">
           {carDetails.short_description}
         </p> */}
-        {carDetails.status == "live" && carDetails.auction?.latest_bid && (
+        {(carDetails.status == "live" || carDetails.status == "testing") && carDetails.auction?.latest_bid && (
           <h4 className="font-semibold text-base mt-auto">
             {`${carDetails.currency} ${numeral(
               carDetails.auction.latest_bid
@@ -91,7 +91,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
         className={cn(
           "text-white w-full p-2 rounded-b-lg flex items-center justify-center",
           carDetails.status === "sold" && "bg-[#6E52A2]",
-          (carDetails.status === "for_sale" || carDetails.status === "live") &&
+          (carDetails.status === "for_sale" || carDetails.status === "live" || carDetails.status === "testing") &&
             "bg-green-700",
           carDetails.status === "created" &&
             "bg-black bg-opacity-50 flex-row-reverse"
@@ -115,7 +115,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
             <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
           </svg>
         )}
-        {carDetails.status == "live" && (
+        {(carDetails.status == "live" || carDetails.status === "testing") && (
           <svg
             className=" h-4 w-4 mr-1 inline-block"
             fill="none"
@@ -139,6 +139,8 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
             ? t("statuses.for_sale")
             : carDetails.status === "created"
             ? t("home_page.get_early_access")
+            : carDetails.status === "testing"
+            ? timeLeftText()
             : carDetails.status === "live"
             ? timeLeftText()
             : ""}

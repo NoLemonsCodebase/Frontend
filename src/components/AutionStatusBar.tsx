@@ -75,11 +75,11 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
               {t("statuses.for_sale")}
             </p>
           )}
-          {carDetail.status == "live" && currentAuction && (
+          {(carDetail.status == "live" || carDetail.status == "testing") && currentAuction && (
             <TimeLeftText auction={currentAuction} />
           )}
         </li>
-        {(carDetail.status == "for_sale" || carDetail.status == "live") && (
+        {(carDetail.status == "for_sale" || carDetail.status == "live" || carDetail.status == "testing") && (
           <li className="basis-auto flex items-center space-x-2 text-white">
             <ArrowUpIcon className="w-5 h-5 hidden sm:block" />
             <p className="opacity-7 hidden sm:block">
@@ -97,7 +97,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
             </p>
           </li>
         )}
-        {currentAuction && carDetail.status == "live" && (
+        {currentAuction && (carDetail.status == "live" || carDetail.status == "testing") && (
           <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
             <FrameIcon className="w-5 h-5" />
             <p className="opacity-70">{t("car_page.bids")}</p>
