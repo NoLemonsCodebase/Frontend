@@ -12,6 +12,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { TrackBidViaWA, TrackGetEarlyAccessClick } from "@/lib/services/pixels";
 import { ICar } from "@/lib/types";
+import { usePathname } from 'next/navigation'
 
 export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
   const [phone, setPhone] = useState("");
@@ -31,8 +32,10 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
   
   // Remove the last '&' character
   utm_string = utm_string.slice(0, -1);
-  
-  // console.log(utm_string);
+  const pathname = usePathname()
+
+  console.log(pathname);
+  console.log(window.location.href);
 
   const onSubmit = async () => {
     setError("");
@@ -44,8 +47,20 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
     }
 
     TrackBidViaWA(phone);
+    const pathname = usePathname()
 
-    const url_request = `https://nolemons-dev.onrender.com/auction-following/${utm_string}`;
+    console.log(pathname);
+    console.log(window.location.href);
+
+    var url_request = `https://nolemons-dev.onrender.com/auction-following/${utm_string}`;
+    // if pathname.includes("cars") {
+    //   url_request = `https://nolemons-dev.onrender.com/auction-following/${utm_string}`;
+    // }
+    // else {
+    //   url_request = `https://nolemons2.onrender.com/auction-following/${utm_string}`;
+    // }
+
+    // const url_request = `https://nolemons-dev.onrender.com/auction-following/${utm_string}`;
     const res = await fetch(
       url_request,
       {
