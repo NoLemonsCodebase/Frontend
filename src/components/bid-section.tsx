@@ -4,14 +4,15 @@
  */
 "use client";
 
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { TrackBidViaWA, TrackGetEarlyAccessClick } from "@/lib/services/pixels";
 import { ICar } from "@/lib/types";
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
   const [phone, setPhone] = useState("");
@@ -31,8 +32,6 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
   
   // Remove the last '&' character
   utm_string = utm_string.slice(0, -1);
-  
-  // console.log(utm_string);
 
   const onSubmit = async () => {
     setError("");
@@ -45,7 +44,14 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
 
     TrackBidViaWA(phone);
 
-    const url_request = `https://nolemons2.onrender.com/auction-following/${utm_string}`;
+    var url_request = `https://nolemons-dev.onrender.com/auction-following/${utm_string}`;
+    if (window.location.href.includes("localhost") || window.location.href.includes("vercel.app")) {
+      url_request = `https://nolemons-dev.onrender.com/auction-following/${utm_string}`;
+    }
+    else {
+      url_request = `https://nolemons2.onrender.com/auction-following/${utm_string}`;
+    }
+    
     const res = await fetch(
       url_request,
       {
