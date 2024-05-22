@@ -185,7 +185,7 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
             </Button>
           </>
         )}
-        {carDetail.status == "live" &&
+        {(carDetail.status == "live" || carDetail.status == "testing") &&
           (!sent ? (
             <>
               <div className="space-y-3">

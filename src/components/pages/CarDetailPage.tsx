@@ -78,7 +78,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold flex items-center justify-center"
             onClick={scrollToTarget}
           >
-            {carDetail.status == "live" ? (
+            {(carDetail.status == "live" || carDetail.status == "testing") ? (
               t("bid")
             ) : (
               <WhatsappIcon className="text-white" />
@@ -136,7 +136,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold flex items-center justify-center"
             onClick={scrollToTarget}
           >
-            {carDetail.status == "live" ? (
+            {(carDetail.status == "live" || carDetail.status == "testing") ? (
               t("bid")
             ) : (
               <WhatsappIcon className="text-white" />
