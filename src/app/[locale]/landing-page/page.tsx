@@ -1,13 +1,15 @@
 import React from 'react'
 import Hero from "@/components/Hero";
 import Brands from "@/components/Brands";
+import Footer2 from '@/components/Footer2';
 
 
 const Landing = () => {
   return (
-    <main className='overflow-hidden'>
+    <main>
       <Hero />
-      <Brands />
+      <Footer2 />
+      {/* <Brands /> */}
     </main>
   )
 }

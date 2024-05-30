@@ -4,7 +4,7 @@ interface IFooterProps {}
 
 const Footer: React.FunctionComponent<IFooterProps> = (props) => {
   return (
-    <footer className="bg-black  text-white p-10 text-center border-t-2 border-gray-200">
+    <footer className="bg-gray-700  text-white p-10 text-center border-t-2 border-gray-200">
       <h1 className="text-3xl font-semibold mb-4">NoLemons</h1>
       <p className="mb-4">&copy; 2023 NoLemons</p>
       <div className="flex justify-center space-x-4">

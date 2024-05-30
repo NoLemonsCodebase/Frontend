@@ -7,6 +7,7 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 import { useTextDirection } from "@/lib/hooks/useTextDirection";
 import Banner from "@/components/Banner";
 import RequestCar from "@/components/RequestCar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -67,6 +68,7 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
           <Navbar />
           <ChatWithUsBtn />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
