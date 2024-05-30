@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const data: ICar = await fetchCar(params.id);
     // console.log(data.auction)
-    const carDescription = (data.auction && data.status == "live")
+    const carDescription = (data.auction && (data.status == "live" || data.status == "testing"))
       ? `For sale: ${data.year} ${data.title};\nAuction ends on ${new Date(data.auction.time_ending
         ).toLocaleString("en-US", {
           month: "short",
