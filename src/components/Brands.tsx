@@ -24,7 +24,7 @@ const quotesArray: Quote[] = [
     },
   ];
 
-const Hero = () => {
+const Brands = () => {
   return (
     <div className="hero relative bg-cover bg-center" style={{ backgroundImage: 'url(/path-to-your-background-image.jpg)' }}>
       <InfiniteMovingCards items={quotesArray} speed="slow" className="mt-1 w-full" />
@@ -77,4 +77,4 @@ const Hero = () => {
   // );
 }
 
-export default Hero
+export default Brands
