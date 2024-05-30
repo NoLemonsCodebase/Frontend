@@ -159,7 +159,7 @@ const NoLemons = () => {
         </section>
 
         {/* In the Media */}
-        <div className="text-center mt-8 flex flex-col space-y-3">
+        {/* <div className="text-center mt-8 flex flex-col space-y-3">
           <h2 className="text-2xl font-bold">In the media</h2>
           <div className={"aspect-w-16 aspect-h-10"}>
             <iframe
@@ -171,7 +171,7 @@ const NoLemons = () => {
               allowFullScreen
             ></iframe>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
