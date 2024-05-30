@@ -44,9 +44,12 @@
         "upcoming": "Upcoming"
     },
     "navigation": {
-        "about_us": "Why us",
+        "about_us": "About us",
         "how_it_works": "How it works?",
-        "sell_your_car": "Sell your car"
+        "why_us": "Why us?",
+        "sell_your_car": "Sell your car",
+        "buyer_guide_local": "UAE buyer guide",
+        "buyer_guide_international": "International buyer guide"
     },
     "statuses": {
         "auction_ended": "Auction ended",
