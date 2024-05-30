@@ -35,9 +35,9 @@ export function Navbar() {
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
-                href="/about-us"
+                href="/why-us"
               >
-                About us
+                Why us
               </a>
             </div>
           </div>
@@ -46,7 +46,7 @@ export function Navbar() {
             items={[
               { label: "How it works?", link: "/how-it-works" },
               { label: "Sell your car", link: "/sell-your-car" },
-              { label: "About us", link: "/about-us" },
+              { label: "Why us", link: "/why-us" },
             ]}
             withBackground={false}
             className="ml-auto"
