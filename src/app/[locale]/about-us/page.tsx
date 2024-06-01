@@ -3,7 +3,7 @@ import React from "react";
 const NoLemons = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-8">What is NoLemons</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">Why NoLemons?</h1>
       <div className="space-y-8">
         {/* Section 1: Cool Cars Only */}
         <section className="bg-blue-100 p-6 rounded-lg shadow-md">
@@ -158,20 +158,6 @@ const NoLemons = () => {
           </div>
         </section>
 
-        {/* In the Media */}
-        <div className="text-center mt-8 flex flex-col space-y-3">
-          <h2 className="text-2xl font-bold">In the media</h2>
-          <div className={"aspect-w-16 aspect-h-10"}>
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/JwqIiOtuajg?si=ocekfXYGIcnp9Wbv"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -23,6 +23,12 @@ export function Navbar() {
             <div className="flex items-center space-x-4">
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+                href="https://nolemons.co/p/about-us-2"
+              >
+                About us
+              </a>
+              <a
+                className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="/how-it-works"
               >
                 How it works?
@@ -35,18 +41,33 @@ export function Navbar() {
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
-                href="/about-us"
+                href="/why-us"
               >
-                About us
+                Why us?
               </a>
+              <a
+                className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+                href="https://nolemons.co/p/buyer-guide-local"
+              >
+                UAE buyer guide
+              </a>
+              <a
+                className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+                href="https://nolemons.co/p/buyer-guide"
+              >
+                International buyer guide
+              </a> 
             </div>
           </div>
         ) : (
           <DropDownMenu
             items={[
+              { label: "About us", link: "https://nolemons.co/p/about-us-2" },
               { label: "How it works?", link: "/how-it-works" },
               { label: "Sell your car", link: "/sell-your-car" },
-              { label: "About us", link: "/about-us" },
+              { label: "Why us?", link: "/why-us" },
+              { label: "UAE buyer guide", link: "https://nolemons.co/p/buyer-guide-local" },
+              { label: "International buyer guide", link: "https://nolemons.co/p/buyer-guide" },
             ]}
             withBackground={false}
             className="ml-auto"
