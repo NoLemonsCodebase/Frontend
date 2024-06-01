@@ -6,7 +6,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
   return (
     <footer className="bg-black  text-white p-10 text-center border-t-2 border-gray-200">
       <h1 className="text-3xl font-semibold mb-4">NoLemons</h1>
-      <p className="mb-4">&copy; 2023 NoLemons</p>
+      <p className="mb-4">&copy; 2024 NoLemons</p>
       <div className="flex justify-center space-x-4">
         <a
           href="https://wa.me/971566633668?text=Hi%21%20I%20am%20from%20NoLemons%20website.%20Could%20you%20please%20tell%20me%3A"

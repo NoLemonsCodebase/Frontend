@@ -1,3 +1,4 @@
+import Hero from "@/components/Hero";
 import CarsPage from "@/components/pages/CarsPage";
 import { Metadata } from "next";
 
@@ -14,5 +15,10 @@ export default async function Home() {
 
   const data = await res.json();
 
-  return <CarsPage cars={data} />;
+  return (
+    <>
+      <Hero />
+      <CarsPage cars={data} />
+    </>
+  );
 }
