@@ -202,7 +202,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
         </div>
         <BidSection carDetail={carDetail} utms={utms}/>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
