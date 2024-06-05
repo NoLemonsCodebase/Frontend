@@ -62,7 +62,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <NextTopLoader />
         <a
-          className="fixed z-10 bottom-0 right-0 h-8 mr-8 text-white px-4 text-sm font-semibold flex items-center justify-center space-x-2"
+          className="fixed z-10 bottom-10 right-10 h-8 mr-8 text-white px-4 text-sm font-semibold flex items-center justify-center space-x-2"
           style={{ background: "#5a9e6f" }}
           href="https://wa.me/971566633668?text=Hi%21%20I%20am%20from%20NoLemons%20website.%20Could%20you%20please%20tell%20me%3A"
         >
