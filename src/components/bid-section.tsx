@@ -158,7 +158,7 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
               Looking for a similar car?
             </h2>
             <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-              Get in touch with our team and we'll see if we can help.
+              Get in touch with our team and we&apos;ll see if we can help.
             </p>
 
             <Button
