@@ -122,10 +122,10 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
         {carDetail.status == "for_sale" && (
           <>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-              Wanna buy this car?
+              Want to buy this car?
             </h2>
             <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-              Contact us to get more information about this car.
+              Get in touch with our team.
             </p>
 
             <Button
@@ -148,17 +148,17 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
                 <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
                 <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
               </svg>
-              <p>Get early access</p>
+              <p>Contact us</p>
             </Button>
           </>
         )}
         {carDetail.status == "sold" && (
           <>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-              Wanna buy this car or similar?
+              Looking for a similar car?
             </h2>
             <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-              Contact us, we will figure something out
+              Get in touch with our team and we'll see if we can help.
             </p>
 
             <Button
@@ -181,7 +181,7 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
                 <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
                 <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
               </svg>
-              <p>Go to whatsapp</p>
+              <p>Contact us</p>
             </Button>
           </>
         )}
