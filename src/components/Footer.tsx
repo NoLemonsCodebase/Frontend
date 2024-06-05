@@ -6,7 +6,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
   return (
     <footer className="bg-black">
         <div className="mx-auto w-full max-w-screen-xl">
-          <div className="grid grid-cols-2 gap-8 ml-4 px-4 pt-6 lg:py-8 md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-8 ml-4 px-4 pt-6 lg:pt-8 md:grid-cols-2">
             <div>
                 <h2 className="mb-6 font-semibold text-white">Buy and Sell</h2>
                 <ul className="text-gray-400 font-medium">
@@ -40,7 +40,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
             </div>
         </div>
         <hr className="mb-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-      <div className="pb-6 pl-6 md:pr-70 lg:pr-70 sm:flex sm:items-center sm:justify-between">
+      <div className="pb-6 pl-6 sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://nolemons.co/" className="hover:underline">NoLemons™</a>. All Rights Reserved.
           </span>
           <div className="flex pb-5 mt-4 sm:justify-center sm:mt-0">
