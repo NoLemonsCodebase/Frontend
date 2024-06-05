@@ -41,6 +41,12 @@ export function Navbar() {
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+                href="/request-a-car"
+              >
+                Request a car
+              </a>
+              <a
+                className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="/why-us"
               >
                 Why us?
@@ -65,6 +71,7 @@ export function Navbar() {
               { label: "About us", link: "https://nolemons.co/p/about-us-2" },
               { label: "How it works?", link: "/how-it-works" },
               { label: "Sell your car", link: "/sell-your-car" },
+              { label: "Request a car", link: "/request-a-car" },
               { label: "Why us?", link: "/why-us" },
               { label: "UAE buyer guide", link: "https://nolemons.co/p/buyer-guide-local" },
               { label: "International buyer guide", link: "https://nolemons.co/p/buyer-guide" },
