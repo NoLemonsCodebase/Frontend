@@ -65,7 +65,8 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
         />
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          // ml-4 inline-flex items-center rounded-md px-4 py-2 text-sm font-medium bg-green-700 text-white shadow-sm transition-colors hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 dark:bg-green-700 dark:text-white dark:hover:bg-green-400 dark:focus:ring-gray-300
+          className="bg-green-700 hover:bg-green-400 focus:ring-2 focus:ring-gray-400 shadow-sm text-white font-bold py-2 px-4 rounded"
         >
           {t("submit")}
         </button>
