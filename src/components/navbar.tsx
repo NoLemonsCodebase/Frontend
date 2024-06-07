@@ -25,19 +25,19 @@ export function Navbar() {
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="https://nolemons.co/p/about-us-2"
               >
-                About us
+                {t("about_us")}
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="/how-it-works"
               >
-                How it works?
+                {t("how_it_works")}
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="/sell-your-car"
               >
-                Sell your car
+                {t("sell_your_car")} 
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
