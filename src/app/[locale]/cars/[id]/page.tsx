@@ -6,6 +6,7 @@ import * as React from "react";
 
 import { RenderBuilderContent } from "@/components/RenderBuilderContent";
 import { useLocale } from "next-intl";
+import { getLocale } from 'next-intl/server';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY as string);
 
@@ -84,7 +85,7 @@ const CarPage: React.FunctionComponent<{ params: any, searchParams: any }> = asy
   searchParams,
 }) => {
   const id = params.id;
-  const locale = useLocale();
+  const locale = await getLocale();
   
   // console.log("searchParams", searchParams);
   // console.log("locale", locale);
