@@ -43,25 +43,25 @@ export function Navbar() {
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="/request-a-car"
               >
-                Request a car
+                {t("requestacar")}
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="/why-us"
               >
-                Why us?
+                {t("whyus")}
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="https://nolemons.co/p/buyer-guide-local"
               >
-                UAE buyer guide
+                {t("uaebuyerguide")}
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="https://nolemons.co/p/buyer-guide"
               >
-                International buyer guide
+                {t("buyerguide")}
               </a> 
             </div>
           </div>
