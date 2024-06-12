@@ -18,9 +18,9 @@ const fetchCar = async (id: string) => {
   let reqUrl = "";
 
   if (Number.isInteger(Number(id))) {
-    reqUrl = `https://nolemons2.onrender.com/api/v2/cars/${id}/`;
+    reqUrl = `https://nolemons-dev.onrender.com/api/v2/cars/${id}/`;
   } else {
-    reqUrl = `https://nolemons2.onrender.com/cars/by-route/${id}/`;
+    reqUrl = `https://nolemons-dev.onrender.com/cars/by-route/${id}/`;
   }
 
   const res = await fetch(reqUrl, { next: { revalidate: 0 } });
