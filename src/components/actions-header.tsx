@@ -11,9 +11,11 @@ import {
   SelectContent,
   Select,
 } from "@/components/ui/select";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 
 export function ActionsHeader() {
+  const t = useTranslations("default.navigation");
   return (
     <div className="flex items-center space-x-4">
       <h1 className="text-3xl font-semibold">Auctions</h1>
