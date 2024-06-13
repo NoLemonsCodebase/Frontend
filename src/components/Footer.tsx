@@ -1,40 +1,42 @@
 import * as React from "react";
+import { useTranslations } from "next-intl";
 
 interface IFooterProps {}
 
 const Footer: React.FunctionComponent<IFooterProps> = (props) => {
+  const t = useTranslations("default.home_page");
   return (
     <footer className="bg-black">
         <div className="mx-auto w-full max-w-screen-xl">
           <div className="grid grid-cols-2 gap-8 ml-4 px-4 pt-6 lg:pt-8 md:grid-cols-2">
             <div>
-                <h2 className="mb-6 font-semibold text-white">Buy and Sell</h2>
+                <h2 className="mb-6 font-semibold text-white">{t("footerbuyandsell")}</h2>
                 <ul className="text-gray-400 font-medium">
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/about-us-2" className=" hover:underline">About us</a>
+                        <a href="https://www.nolemons.co/en/p/about-us-2" className=" hover:underline">{t("footeraboutus")}</a>
                     </li>
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/buyer-guide-local" className="hover:underline">UAE buyer guide</a>
+                        <a href="https://www.nolemons.co/en/p/buyer-guide-local" className="hover:underline">{t("footeruaebuyerguide")}</a>
                     </li>
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/buyer-guide" className="hover:underline">International buyer guide</a>
+                        <a href="https://www.nolemons.co/en/p/buyer-guide" className="hover:underline">{t("footerbuyerguide")}</a>
                     </li>
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/sell-your-car" className="hover:underline">Sell your car</a>
+                        <a href="https://www.nolemons.co/en/sell-your-car" className="hover:underline">{t("footersellyourcar")}</a>
                     </li>
                 </ul>
             </div>
             <div>
-                <h2 className="mb-6 font-semibold text-white">Legal</h2>
+                <h2 className="mb-6 font-semibold text-white">{t("footerlegal")}</h2>
                 <ul className="text-gray-400 font-medium">
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/privacy-policy" className="hover:underline">Privacy Policy</a>
+                        <a href="https://www.nolemons.co/en/p/privacy-policy" className="hover:underline">{t("footerprivacypolicy")}</a>
                     </li>
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/buyer-protection" className="hover:underline">Buyer Protection</a>
+                        <a href="https://www.nolemons.co/en/p/buyer-protection" className="hover:underline">{t("footerbuyerprotection")}</a>
                     </li>
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/terms-conditions" className="hover:underline">Terms &amp; Conditions</a>
+                        <a href="https://www.nolemons.co/en/p/terms-conditions" className="hover:underline">{t("footertoc")}</a>
                     </li>
                 </ul>
             </div>

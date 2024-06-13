@@ -15,6 +15,7 @@ export default getRequestConfig(async ({ locale }) => {
     ).default,
     sell_your_car: (await import(`../locales/${locale}/sell_your_car.json`))
       .default,
+    why_us: (await import(`../locales/${locale}/why_us.json`)).default,
   };
 
   return {

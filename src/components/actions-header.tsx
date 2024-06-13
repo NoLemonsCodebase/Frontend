@@ -15,10 +15,10 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 
 export function ActionsHeader() {
-  const t = useTranslations("default.navigation");
+  const t = useTranslations("default.home_page");
   return (
     <div className="flex items-center space-x-4">
-      <h1 className="text-3xl font-semibold">Auctions</h1>
+      <h1 className="text-3xl font-semibold">{t("auctions")}</h1>
       <div className="grid grid-cols-4 gap-4">
         <Select>
           <SelectTrigger>
