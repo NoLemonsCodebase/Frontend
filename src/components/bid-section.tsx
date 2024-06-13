@@ -84,7 +84,7 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
       className="w-full md:py-24 lg:py-32 h-96 md:h-full"
       id="bid-section"
     >
-      <div className="h-1 bg-gray-500 bg-opacity-40 w-9/12 my-12 md:mb-12 mx-auto" />
+      <div className="h-1 bg-[#FEFCE8] bg-opacity-40 w-9/12 my-12 md:mb-12 mx-auto" />
       <div className="container flex flex-col items-center justify-center gap-4 px-4 text-center md:px-6">
         {carDetail.status == "created" && (
           <>
