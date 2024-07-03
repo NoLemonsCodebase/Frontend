@@ -41,7 +41,12 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
         </div>
         <hr className="mb-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div className="pb-6 pl-6 sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://nolemons.co/" className="hover:underline">NoLemons™</a>. All Rights Reserved.
+          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://nolemons.co/" className="hover:underline">NoLemons™</a>
+          </span>
+          <span className="flex w-64 text-sm text-gray-500 sm:text-center dark:text-gray-400 mt-2">
+          No Lemons Solution FZ-LLC
+          HD69C
+          In5 Tech DIC - Dubai, UAE
           </span>
           <div className="flex pb-5 mt-4 sm:justify-center sm:mt-0">
               <a href="https://www.facebook.com/nolemons.co" className="text-gray-500 hover:text-gray-300">
