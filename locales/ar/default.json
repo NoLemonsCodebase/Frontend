@@ -1,1 +1,75 @@
-{"car_card":{"day":"يوم","days":"أيام","get_early_access":"الحصول على الوصول المبكر","upcoming":"القادمة"},"car_page":{"bid":"مُنَاقَصَة","bids":"عدد المشاركين","by_nolemons":"بواسطة NoLemons","contact_us":"اتصل بنا","cooming_soon":"قريباً","day":"يوم","days":"أيام","drivetrain":"نظام الدفع","ending":"إنهاء","engine":"محرك","exterior_color":"اللون الخارجي","high_bid":"السوم الحالي","history_report":"تقرير التاريخ","inspection_report":"تقرير التفتيش","interior_color":"اللون الداخلي","location":"موقع","market_value":"تقدير القيمة السوقية","mileage":"عدد الأميال","mileage_type":"نوع الأميال","nolemons_buyer_fee":"رسوم الشراء من نوليمنز","open_report":"فتح التقرير","review_photos_note":"* يرجى مراجعة الصور لجميع النتائج.","starting_from":"بدءا من","time_left":"الوقت المتبقي","transmission":"الانتقال","verified":"تم التحقق","videos":"أشرطة فيديو","vin":"رقم VIN (رقم الهيكل)"},"home_page":{"auctions":"مزادات","auctionstitle":"المزادات","buyerprotectiontag":"حماية كاملة للمشتري","chat_with_us":"دردش معنا","footeraboutus":"من نحن","footerbuyandsell":"البيع و الشراء","footerbuyerguide":"دليل المشتري الدولي","footerbuyerprotection":"حماية المشتري","footerlegal":"الصفحات القانونية","footerprivacypolicy":"سياسة الخصوصية","footersellyourcar":"بيع سيارتك","footertoc":"البنود و الشروط","footeruaebuyerguide":"دليل المشتري في الإمارات العربية المتحدة","for_sale":"للبيع","get_early_access":"الحصول على الوصول المبكر","h1":"سيارات أنيقة. \nتم فحصها بعناية وتقديمها بصدق.","sold":"مُباع","upcoming":"القادمة"},"navigation":{"about_us":"معلومات عنا","buyerguide":"دليل المشتري الدولي","how_it_works":"كيف تعمل؟","requestacar":"اطلب سيارة","sell_your_car":"بيع سيارتك","uaebuyerguide":"دليل المشتري في الإمارات العربية المتحدة","whyus":"لماذا نحن؟"},"statuses":{"auction_ended":"انتهى المزاد","car_was_sold":"مُباع","coming_soon":"قريباً","for_sale":"للبيع","sold":"مُباع","upcoming":"القادمة"}}
+{
+    "car_card": {
+        "day": "يوم",
+        "days": "أيام",
+        "get_early_access": "الحصول على الوصول المبكر",
+        "upcoming": "القادمة"
+    },
+    "car_page": {
+        "bid": "مُنَاقَصَة",
+        "bids": "عدد المشاركين",
+        "by_nolemons": "بواسطة NoLemons",
+        "contact_us": "اتصل بنا",
+        "cooming_soon": "قريباً",
+        "day": "يوم",
+        "days": "أيام",
+        "drivetrain": "نظام الدفع",
+        "ending": "إنهاء",
+        "engine": "محرك",
+        "exterior_color": "اللون الخارجي",
+        "high_bid": "السوم الحالي",
+        "history_report": "تقرير التاريخ",
+        "inspection_report": "تقرير التفتيش",
+        "interior_color": "اللون الداخلي",
+        "location": "موقع",
+        "market_value": "تقدير القيمة السوقية",
+        "mileage": "عدد الأميال",
+        "mileage_type": "نوع الأميال",
+        "nolemons_buyer_fee": "رسوم الشراء من نوليمنز",
+        "open_report": "فتح التقرير",
+        "review_photos_note": "* يرجى مراجعة الصور لجميع النتائج.",
+        "starting_from": "بدءا من",
+        "time_left": "الوقت المتبقي",
+        "transmission": "الانتقال",
+        "verified": "تم التحقق",
+        "videos": "أشرطة فيديو",
+        "vin": "رقم VIN (رقم الهيكل)"
+    },
+    "home_page": {
+        "auctions": "مزادات",
+        "auctionstitle": "المزادات",
+        "buyerprotectiontag": "حماية كاملة للمشتري",
+        "chat_with_us": "دردش معنا",
+        "footeraboutus": "من نحن",
+        "footerbuyandsell": "البيع و الشراء",
+        "footerbuyerguide": "دليل المشتري الدولي",
+        "footerbuyerprotection": "حماية المشتري",
+        "footerlegal": "الصفحات القانونية",
+        "footerprivacypolicy": "سياسة الخصوصية",
+        "footersellyourcar": "بيع سيارتك",
+        "footertoc": "البنود و الشروط",
+        "footeruaebuyerguide": "دليل المشتري في الإمارات العربية المتحدة",
+        "for_sale": "للبيع",
+        "get_early_access": "الحصول على الوصول المبكر",
+        "h1": "سيارات أنيقة. \nتم فحصها بعناية وتقديمها بصدق.",
+        "sold": "مُباع",
+        "upcoming": "القادمة"
+    },
+    "navigation": {
+        "about_us": "معلومات عنا",
+        "buyerguide": "دليل المشتري الدولي",
+        "how_it_works": "كيف تعمل؟",
+        "requestacar": "اطلب سيارة",
+        "sell_your_car": "بيع سيارتك",
+        "uaebuyerguide": "دليل المشتري في الإمارات العربية المتحدة",
+        "whyus": "لماذا نحن؟"
+    },
+    "statuses": {
+        "auction_ended": "انتهى المزاد",
+        "car_was_sold": "مُباع",
+        "coming_soon": "قريباً",
+        "for_sale": "للبيع",
+        "sold": "مُباع",
+        "upcoming": "القادمة"
+    }
+}
