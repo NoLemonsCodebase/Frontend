@@ -21,7 +21,7 @@ export function Navbar() {
           <div className="flex items-center space-x-4">
             <div className="border-l border-gray-300 h-5 mx-4" />
             <div className="flex items-center space-x-4">
-              <a
+              {/* <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="https://nolemons.co/p/about-us-2"
               >
@@ -32,7 +32,7 @@ export function Navbar() {
                 href="/how-it-works"
               >
                 {t("how_it_works")}
-              </a>
+              </a> */}
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="/sell-your-car"
@@ -46,6 +46,12 @@ export function Navbar() {
                 Request a car
               </a>
               <a
+                className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+                href="https://nolemons.ae/"
+              >
+                Help center
+              </a>
+              {/* <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="/why-us"
               >
@@ -62,7 +68,7 @@ export function Navbar() {
                 href="https://nolemons.co/p/buyer-guide"
               >
                 International buyer guide
-              </a> 
+              </a>  */}
             </div>
           </div>
         ) : (
