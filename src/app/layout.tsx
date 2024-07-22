@@ -34,6 +34,15 @@ export default function RootLayout({
           gtag('config', 'G-5LKFJ76994');
         `}
       </Script>
+      <Script id="google-tag-manager">
+      {`{
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MCGBCL8D');
+      }`}
+      </Script>
       <Script id="snap-pixels">{`{
         (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
           {a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
@@ -60,6 +69,8 @@ export default function RootLayout({
         `}
       </Script>
       <body className={inter.className}>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCGBCL8D"
+        height="0" width="0" className="display:none;visibility:hidden"></iframe></noscript>
         <NextTopLoader />
         <a
           className="fixed z-10 bottom-0 right-0 h-8 mr-8 text-white px-4 text-sm font-semibold flex items-center justify-center space-x-2"
