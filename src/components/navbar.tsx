@@ -74,13 +74,14 @@ export function Navbar() {
         ) : (
           <DropDownMenu
             items={[
-              { label: "About us", link: "https://nolemons.co/p/about-us-2" },
-              { label: "How it works?", link: "/how-it-works" },
+              // { label: "About us", link: "https://nolemons.co/p/about-us-2" },
+              // { label: "How it works?", link: "/how-it-works" },
               { label: "Sell your car", link: "/sell-your-car" },
               { label: "Request a car", link: "/request-a-car" },
-              { label: "Why us?", link: "/why-us" },
-              { label: "UAE buyer guide", link: "https://nolemons.co/p/buyer-guide-local" },
-              { label: "International buyer guide", link: "https://nolemons.co/p/buyer-guide" },
+              { label: "Help center", link: "https://nolemons.ae/" },
+              // { label: "Why us?", link: "/why-us" },
+              // { label: "UAE buyer guide", link: "https://nolemons.co/p/buyer-guide-local" },
+              // { label: "International buyer guide", link: "https://nolemons.co/p/buyer-guide" },
             ]}
             withBackground={false}
             className="ml-auto"
