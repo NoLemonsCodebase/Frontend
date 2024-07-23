@@ -3,7 +3,7 @@ import CarsPage from "@/components/pages/CarsPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "NoLemons.co - The online auction for car people, by car people",
+  title: "NoLemons - The online auction for car people, by car people",
   description: "By car people. For car people.",
   metadataBase: new URL("https://nolemons.co"),
 };

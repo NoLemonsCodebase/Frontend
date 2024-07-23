@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NoLemons.co - The online auction for car people, by car people",
+  title: "NoLemons - The online auction for car people, by car people",
   description: "The online auction for car people, by car people",
   icons: {
     icon: "/logo-web.webp",
