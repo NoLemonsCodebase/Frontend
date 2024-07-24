@@ -5,7 +5,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "NoLemons - The online auction for car people, by car people",
   description: "By car people. For car people.",
-  metadataBase: new URL("https://nolemons.co"),
+  metadataBase: new URL("https://nolemons.ae"),
 };
 
 export default async function Home() {

@@ -11,16 +11,16 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                 <h2 className="mb-6 font-semibold text-white">Buy and Sell</h2>
                 <ul className="text-gray-400 font-medium">
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/about-us-2" className=" hover:underline">About us</a>
+                        <a href="https://www.nolemons.ae/en/p/about-us-2" className=" hover:underline">About us</a>
                     </li>
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/buyer-guide-local" className="hover:underline">UAE buyer guide</a>
+                        <a href="https://www.nolemons.ae/en/p/buyer-guide-local" className="hover:underline">UAE buyer guide</a>
                     </li>
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/buyer-guide" className="hover:underline">International buyer guide</a>
+                        <a href="https://www.nolemons.ae/en/p/buyer-guide" className="hover:underline">International buyer guide</a>
                     </li>
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/sell-your-car" className="hover:underline">Sell your car</a>
+                        <a href="https://www.nolemons.ae/en/sell-your-car" className="hover:underline">Sell your car</a>
                     </li>
                 </ul>
             </div>
@@ -28,20 +28,20 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                 <h2 className="mb-6 font-semibold text-white">Legal</h2>
                 <ul className="text-gray-400 font-medium">
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/privacy-policy" className="hover:underline">Privacy Policy</a>
+                        <a href="https://www.nolemons.ae/en/p/privacy-policy" className="hover:underline">Privacy Policy</a>
                     </li>
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/buyer-protection" className="hover:underline">Buyer Protection</a>
+                        <a href="https://www.nolemons.ae/en/p/buyer-protection" className="hover:underline">Buyer Protection</a>
                     </li>
                     <li className="mb-4">
-                        <a href="https://www.nolemons.co/en/p/terms-conditions" className="hover:underline">Terms &amp; Conditions</a>
+                        <a href="https://www.nolemons.ae/en/p/terms-conditions" className="hover:underline">Terms &amp; Conditions</a>
                     </li>
                 </ul>
             </div>
         </div>
         <hr className="mb-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div className="pb-6 pl-6 sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://nolemons.co/" className="hover:underline">NoLemons™</a>
+          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://nolemons.ae/" className="hover:underline">NoLemons™</a>
           </span>
           <span className="flex w-64 text-sm text-gray-500 sm:text-center dark:text-gray-400 mt-2">
           No Lemons Solution FZ-LLC
@@ -49,7 +49,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
           In5 Tech DIC - Dubai, UAE
           </span>
           <div className="flex pb-5 mt-4 sm:justify-center sm:mt-0">
-              <a href="https://www.facebook.com/nolemons.co" className="text-gray-500 hover:text-gray-300">
+              <a href="https://www.facebook.com/nolemons.ae" className="text-gray-500 hover:text-gray-300">
                   {/* <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
                         <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
                     </svg> */}
