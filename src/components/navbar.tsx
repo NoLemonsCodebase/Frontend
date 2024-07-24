@@ -23,7 +23,7 @@ export function Navbar() {
             <div className="flex items-center space-x-4">
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
-                href="https://nolemons.co/p/about-us-2"
+                href="https://nolemons.ae/p/about-us-2"
               >
                 {t("about_us")}
               </a>
@@ -53,13 +53,13 @@ export function Navbar() {
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
-                href="https://nolemons.co/p/buyer-guide-local"
+                href="https://nolemons.ae/p/buyer-guide-local"
               >
                 UAE buyer guide
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
-                href="https://nolemons.co/p/buyer-guide"
+                href="https://nolemons.ae/p/buyer-guide"
               >
                 International buyer guide
               </a> 
@@ -68,13 +68,13 @@ export function Navbar() {
         ) : (
           <DropDownMenu
             items={[
-              { label: "About us", link: "https://nolemons.co/p/about-us-2" },
+              { label: "About us", link: "https://nolemons.ae/p/about-us-2" },
               { label: "How it works?", link: "/how-it-works" },
               { label: "Sell your car", link: "/sell-your-car" },
               { label: "Request a car", link: "/request-a-car" },
               { label: "Why us?", link: "/why-us" },
-              { label: "UAE buyer guide", link: "https://nolemons.co/p/buyer-guide-local" },
-              { label: "International buyer guide", link: "https://nolemons.co/p/buyer-guide" },
+              { label: "UAE buyer guide", link: "https://nolemons.ae/p/buyer-guide-local" },
+              { label: "International buyer guide", link: "https://nolemons.ae/p/buyer-guide" },
             ]}
             withBackground={false}
             className="ml-auto"

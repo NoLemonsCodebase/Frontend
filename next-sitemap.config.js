@@ -1,4 +1,4 @@
-const siteUrl = "https://www.nolemons.co";
+const siteUrl = "https://www.nolemons.ae";
 
 module.exports = {
   siteUrl,
