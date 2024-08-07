@@ -1,8 +1,11 @@
 "use client";
 
 import * as React from "react";
+import Link from 'next/link'
 import { useTranslations, useLocale } from "next-intl";
+import { Button } from "@/components/ui/button";
 interface ISellYourCarPageProps {}
+
 
 const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
   props
@@ -40,7 +43,16 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
       <div className="w-full border-b pt-4" />
       <p className="pt-4">{t("text_s_2")}</p>
 
-      <form className="flex flex-col space-y-2" onSubmit={handleSubmit}>
+      <Link target="_blank" href="https://nw60ssq5era.typeform.com/to/CN1PoETZ/">
+        <Button>Sell my car</Button>
+      </Link>
+      
+      
+      {/* <Button type="button" className="backgroud-color:rgb(74,212,147) hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        <a target="_blank" href="https://nw60ssq5era.typeform.com/to/CN1PoETZ/">Sell car</a>
+      </Button> */}
+
+      {/* <form className="flex flex-col space-y-2" onSubmit={handleSubmit}>
         <label htmlFor="name" className="font-bold">
           {t("name")}
         </label>
@@ -69,7 +81,7 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
         >
           {t("submit")}
         </button>
-      </form>
+      </form> */}
     </div>
   );
 };
