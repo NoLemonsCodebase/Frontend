@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const res = await fetch("https://nolemons2.onrender.com/api/v2/cars/", {
+  const res = await fetch("http://127.0.0.1:8000/api/v2/cars/", {
     next: { revalidate: 0 },
   });
 

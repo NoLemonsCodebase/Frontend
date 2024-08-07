@@ -69,6 +69,15 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
             <span>{t("statuses.upcoming")}</span>
           </div>
         )}
+        {carDetails.status == "unverified" && (
+          <div
+            className={cn(
+              "absolute top-0 right-0 text-black p-2 flex items-center justify-center bg-yellow-400"
+            )}
+          >
+            <span>Verifying</span>
+          </div>
+        )}
         {/* <p className="text-sm text-zinc-500 mt-2">
           {carDetails.short_description}
         </p> */}
@@ -93,11 +102,11 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
           carDetails.status === "sold" && "bg-[#6E52A2]",
           (carDetails.status === "for_sale" || carDetails.status === "live") &&
             "bg-green-700",
-          carDetails.status === "created" &&
+          (carDetails.status === "created" || carDetails.status == "unverified") &&
             "bg-black bg-opacity-50 flex-row-reverse"
         )}
       >
-        {carDetails.status == "created" && (
+        {(carDetails.status == "created" || carDetails.status == "unverified") && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="ml-2 icon icon-tabler icon-tabler-brand-whatsapp"
@@ -139,6 +148,8 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
             ? t("statuses.for_sale")
             : carDetails.status === "created"
             ? t("home_page.get_early_access")
+            : carDetails.status === "unverified"
+            ? t("home_page.unverified")
             : carDetails.status === "live"
             ? timeLeftText()
             : ""}

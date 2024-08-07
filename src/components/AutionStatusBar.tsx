@@ -60,7 +60,7 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
       <ul className="flex items-center justify-between space-x-6 px-4 py-2">
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ClockIcon className="w-5 h-5" />
-          {carDetail.status == "created" && (
+          {(carDetail.status == "created" || carDetail.status == "unverified") && (
             <p className="font-semibold whitespace-nowrap">
               {t("statuses.coming_soon")}
             </p>
