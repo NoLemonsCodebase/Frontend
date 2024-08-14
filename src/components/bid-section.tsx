@@ -45,7 +45,7 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
 
     TrackBidViaWA(phone);
 
-    const url_request = `https://nolemons2.onrender.com/auction-following/${utm_string}`;
+    const url_request = `https://nolemons-dev.onrender.com/auction-following/${utm_string}`;
     const res = await fetch(
       url_request,
       {
