@@ -37,19 +37,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const data: ICar = await fetchCar(params.id);
     // console.log(data.auction)
-    const carDescription = (data.auction && data.status == "live")
-      ? `For sale: ${data.year} ${data.title};\nAuction ends on ${new Date(data.auction.time_ending
-        ).toLocaleString("en-US", {
-          month: "short",
-          day: "numeric",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-          hour12: true,
-        })}`
-      : data.status == "created"
-      ? `Coming soon: ${data.year} ${data.title}`
-      : `For sale: ${data.year} ${data.title}`;
+    const carDescription =
+      data.auction && data.status == "live"
+        ? `For sale: ${data.year} ${data.title};\nAuction ends on ${new Date(
+            data.auction.time_ending
+          ).toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          })}`
+        : data.status == "created"
+        ? `Coming soon: ${data.year} ${data.title}`
+        : `For sale: ${data.year} ${data.title}`;
 
     return {
       title: `${data.title} ${data.year} | NoLemons Online Auction`,
@@ -57,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: "NoLemons Online Auction",
         description: carDescription,
-        images: [data.main_image,],
+        images: [data.main_image],
       },
       alternates: {
         canonical: `/cars/${data.url_route}`,
@@ -79,13 +81,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-const CarPage: React.FunctionComponent<{ params: any, searchParams: any }> = async ({
-  params,
-  searchParams,
-}) => {
-  const id = params.id;
-  const locale = useLocale();
-  
+const CarPage: React.FunctionComponent<{
+  params: any;
+  searchParams: any;
+}> = async ({ params, searchParams }) => {
+  const { id, locale } = params;
+
   // console.log("searchParams", searchParams);
   // console.log("locale", locale);
 
@@ -107,7 +108,13 @@ const CarPage: React.FunctionComponent<{ params: any, searchParams: any }> = asy
   try {
     const data: ICar = await fetchCar(id);
 
-    return <CarDetailPage carDetail={data} pageContent={content} utms={searchParams}/>;
+    return (
+      <CarDetailPage
+        carDetail={data}
+        pageContent={content}
+        utms={searchParams}
+      />
+    );
   } catch (e) {
     return <div>Car not found</div>;
   }

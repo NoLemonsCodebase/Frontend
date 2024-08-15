@@ -1,11 +1,12 @@
-import { useSecondsLeft } from "@/lib/hooks/useSecondsLeft";
-import Link from "next/link";
-import * as React from "react";
-import cn from "classnames";
-import numeral from "numeral";
-import { MapPinIcon } from "lucide-react";
 import { ICar } from "@/lib/types";
+import cn from "classnames";
+import { MapPinIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+import numeral from "numeral";
+import * as React from "react";
+import TimeLeft from "./time-left";
+import Image from "next/image";
 
 interface ICarCardProps {
   carDetails: ICar;
@@ -13,43 +14,20 @@ interface ICarCardProps {
 
 const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
   const t = useTranslations("default");
-  const secondsLeft = useSecondsLeft(carDetails?.auction?.time_ending);
 
-  const timeLeftText = () => {
-    if (secondsLeft <= 0) return t("statuses.auction_ended");
-    const days = Math.floor(secondsLeft / (24 * 60 * 60));
-    let hours: string | number = Math.floor(
-      (secondsLeft % (24 * 60 * 60)) / (60 * 60)
-    );
-    let minutes: string | number = Math.floor((secondsLeft % (60 * 60)) / 60);
-    let seconds: string | number = Math.floor(secondsLeft % 60);
-
-    if (hours < 10) hours = "0" + hours;
-    if (minutes < 10) minutes = "0" + minutes;
-    if (seconds < 10) seconds = "0" + seconds;
-
-    const hourPart = `${hours}:${minutes}:${seconds}`;
-
-    if (days > 1) {
-      return `${days} ${t("car_page.days")} ${hourPart}`;
-    }
-    if (days == 1) {
-      return `${days} ${t("car_page.days")} ${hourPart}`;
-    }
-    return hourPart;
-  };
-
+  const singleCarUrl = carDetails.url_route || carDetails.id;
   return (
     <Link
-      href={`/cars/${carDetails.url_route || carDetails.id}`}
+      href={`/cars/${singleCarUrl}`}
       className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer hover:bg-gray-100 flex flex-col"
     >
       <div className="aspect-w-16 aspect-h-10">
-        <img
+        <Image
           src={carDetails.main_image}
           alt={carDetails.title}
-          style={{ objectFit: "cover" }}
-          className="block"
+          width={720}
+          height={500}
+          className="block object-cover"
         />
       </div>
       <div className="p-4 pb-2 flex-1 flex flex-col">
@@ -67,15 +45,6 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
             )}
           >
             <span>{t("statuses.upcoming")}</span>
-          </div>
-        )}
-        {carDetails.status == "unverified" && (
-          <div
-            className={cn(
-              "absolute top-0 right-0 text-black p-2 flex items-center justify-center bg-yellow-400"
-            )}
-          >
-            <span>Verifying</span>
           </div>
         )}
         {/* <p className="text-sm text-zinc-500 mt-2">
@@ -102,11 +71,11 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
           carDetails.status === "sold" && "bg-[#6E52A2]",
           (carDetails.status === "for_sale" || carDetails.status === "live") &&
             "bg-green-700",
-          (carDetails.status === "created" || carDetails.status == "unverified") &&
+          carDetails.status === "created" &&
             "bg-black bg-opacity-50 flex-row-reverse"
         )}
       >
-        {(carDetails.status == "created" || carDetails.status == "unverified") && (
+        {carDetails.status == "created" && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="ml-2 icon icon-tabler icon-tabler-brand-whatsapp"
@@ -142,17 +111,17 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
           </svg>
         )}
         <span>
-          {carDetails.status === "sold"
-            ? t("statuses.sold")
-            : carDetails.status === "for_sale"
-            ? t("statuses.for_sale")
-            : carDetails.status === "created"
-            ? t("home_page.get_early_access")
-            : carDetails.status === "unverified"
-            ? t("home_page.unverified")
-            : carDetails.status === "live"
-            ? timeLeftText()
-            : ""}
+          {carDetails.status === "sold" ? (
+            t("statuses.sold")
+          ) : carDetails.status === "for_sale" ? (
+            t("statuses.for_sale")
+          ) : carDetails.status === "created" ? (
+            t("home_page.get_early_access")
+          ) : carDetails.status === "live" ? (
+            <TimeLeft timeEnding={carDetails?.auction?.time_ending} />
+          ) : (
+            ""
+          )}
         </span>
       </div>
     </Link>

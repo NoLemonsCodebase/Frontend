@@ -12,12 +12,12 @@ export function Navbar() {
   const { width } = useWindowSize();
   const t = useTranslations("default.navigation");
   return (
-    <nav className="sticky top-0 z-[11] flex items-center justify-between px-4 md:px-16 py-4 bg-white  shadow">
-      <div className="flex items-center w-full">
+    <nav className="sticky top-0 z-[11] flex items-center justify-between  py-4 bg-white  shadow">
+      <div className=" container m-auto flex items-center w-full px-4 md:px-16">
         <a href="/">
-          <Image src="/logo.png" width={90} height={16} alt="logo" />
+          <Image src="/logo.png" priority width={90} height={16} alt="logo" />
         </a>
-        {width! > 640 ? (
+        {width! > 1280 ? (
           <div className="flex items-center space-x-4">
             <div className="border-l border-gray-300 h-5 mx-4" />
             <div className="flex items-center space-x-4">
@@ -37,7 +37,7 @@ export function Navbar() {
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="/sell-your-car"
               >
-                {t("sell_your_car")} 
+                {t("sell_your_car")}
               </a>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
@@ -62,7 +62,7 @@ export function Navbar() {
                 href="https://nolemons.ae/p/buyer-guide"
               >
                 International buyer guide
-              </a> 
+              </a>
             </div>
           </div>
         ) : (
@@ -73,8 +73,14 @@ export function Navbar() {
               { label: "Sell your car", link: "/sell-your-car" },
               { label: "Request a car", link: "/request-a-car" },
               { label: "Why us?", link: "/why-us" },
-              { label: "UAE buyer guide", link: "https://nolemons.ae/p/buyer-guide-local" },
-              { label: "International buyer guide", link: "https://nolemons.ae/p/buyer-guide" },
+              {
+                label: "UAE buyer guide",
+                link: "https://nolemons.ae/p/buyer-guide-local",
+              },
+              {
+                label: "International buyer guide",
+                link: "https://nolemons.ae/p/buyer-guide",
+              },
             ]}
             withBackground={false}
             className="ml-auto"
