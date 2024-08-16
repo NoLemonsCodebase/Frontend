@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+/* eslint-disable @next/next/no-img-element */
+
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import cn from "classnames";
@@ -16,16 +18,23 @@ const CarImagesSection: React.FC<{
     <Fancybox className="w-full flex space-x-2">
       {images.length > 0 && (
         <a
-          className="w-[70%] cursor-pointer"
+          className="w-[70%] cursor-pointer relative"
           data-fancybox="gallery"
-          data-src={images[0]}
+          href={images[0]}
         >
-          <div
+          {/* <div
             style={{
               backgroundImage: `url(${images[0]})`,
               paddingBottom: "60%",
             }}
             className={cn("h-0 w-full", "bg-center bg-no-repeat bg-cover")}
+          /> */}
+          <Image
+            className=" absolute left-0 top-0 w-full h-full object-cover bg-center"
+            src={images[0]}
+            width={1100}
+            height={720}
+            alt="card image"
           />
         </a>
       )}
