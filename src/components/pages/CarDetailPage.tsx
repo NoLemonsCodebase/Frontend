@@ -1,5 +1,5 @@
 "use client";
-import { useParams } from 'next/navigation'
+import { useParams } from "next/navigation";
 import AutionStatusBar from "@/components/AutionStatusBar";
 import CarImagesSection from "@/components/CarImagesSection";
 import Footer from "@/components/Footer";
@@ -31,9 +31,8 @@ interface ICarPageProps {
 const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   carDetail,
   pageContent,
-  utms
+  utms,
 }) => {
-  
   // console.log("The utms 1", utms);
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
@@ -71,9 +70,10 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
 
   return (
     <>
-      <section className="flex flex-col px-4 md:px-16 py-4 car-description">
+      <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 car-description">
         <div className="flex sm:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-14 bg-white border-b">
           <AutionStatusBar carDetail={carDetail} />
+
           <button
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold flex items-center justify-center"
             onClick={scrollToTarget}
@@ -200,7 +200,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
             <CarDetailList isCard carDetail={carDetail} />
           </section>
         </div>
-        <BidSection carDetail={carDetail} utms={utms}/>
+        <BidSection carDetail={carDetail} utms={utms} />
       </section>
       {/* <Footer /> */}
     </>

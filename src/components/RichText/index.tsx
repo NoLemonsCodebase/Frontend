@@ -1,4 +1,5 @@
-import * as React from "react";
+import { FunctionComponent, useState, useEffect } from "react";
+// import * as React from "react";
 import createDomPurify from "dompurify";
 import cn from "classnames";
 
@@ -16,12 +17,20 @@ const cleanText = (text: string) => {
   }
 };
 
-const RichText: React.FunctionComponent<IRichTextProps> = (props) => {
+const RichText: FunctionComponent<IRichTextProps> = ({
+  content,
+  className,
+}) => {
+  const [contentRender, setContentRender] = useState("");
+
+  useEffect(() => {
+    setContentRender(cleanText(content));
+  }, [content]);
   return (
     <div
-      className={cn("no-tailwindcss-base", props.className)}
+      className={cn("no-tailwindcss-base", className)}
       dangerouslySetInnerHTML={{
-        __html: cleanText(props.content),
+        __html: contentRender,
       }}
     />
   );

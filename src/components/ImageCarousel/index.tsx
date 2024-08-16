@@ -17,6 +17,7 @@ const ImageCarousel: React.FunctionComponent<IImageCarouselProps> = ({
   //memoize images and previewImages
   images = React.useMemo(() => images, [images]);
   previewImages = images.slice(1, 6);
+
   //...
   return (
     <Fancybox
@@ -27,7 +28,7 @@ const ImageCarousel: React.FunctionComponent<IImageCarouselProps> = ({
         },
       }}
     >
-      <ImageSlider showIndicators={false} showStatus={false}>
+      <ImageSlider showThumbs={false} showIndicators={false} showStatus={false}>
         {images.slice(0, 6).map((image, index) => (
           <div
             key={index}
@@ -38,9 +39,9 @@ const ImageCarousel: React.FunctionComponent<IImageCarouselProps> = ({
             <Image
               alt=""
               src={image}
-              width="400"
-              height="300"
-              style={{ maxHeight: 300, objectFit: "contain" }}
+              width={1100}
+              height={720}
+              // style={{ maxHeight: 300, objectFit: "contain" }}
             />
             {index == 5 && (
               <div className="absolute w-full h-full top-0 left-0 flex items-center justify-center text-white bg-black font-semibold text-[8px] text-base text-center bg-opacity-60">

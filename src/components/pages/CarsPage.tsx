@@ -37,44 +37,43 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
   }, []);
 
   return (
-    <main className="flex min-h-screen space-x-6 px-8 sm:px-16 py-4">
-      <div className="flex flex-col">
-        {/* <p className="text-2xl font-bold mb-4">Auctions</p> */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {cars.map((car) => {
-            return <CarCard key={car.id} carDetails={car} />;
-          })}
-          {/* {forSaleAuctions.map((car) => {
+    <main className=" container m-auto min-h-screen space-x-6 px-8 sm:px-16 py-4">
+      {/* <p className="text-2xl font-bold mb-4">Auctions</p> */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {cars.map((car) => {
+          return <CarCard key={car.id} carDetails={car} />;
+        })}
+        {/* {forSaleAuctions.map((car) => {
             return <CarCard key={car.id} carDetails={car} />;
           })}
           {createdCars.map((car) => {
             return <CarCard key={car.id} carDetails={car} />;
           })} */}
-          {/* <UpcomingCarCard
+        {/* <UpcomingCarCard
             title="Porsche Cayman GT4"
             location="Dubai, UAE"
             year="2016"
             mainImage="https://i.postimg.cc/x8XKgrf2/IMG-9065.jpg"
           /> */}
-          {/* <UpcomingCarCard
+        {/* <UpcomingCarCard
             title="Mercedes  SLR"
             location="Dubai, UAE"
             year="2009"
             mainImage="https://i.postimg.cc/90ZCdL3K/HD1A9944.jpg"
           /> */}
-          {/* <UpcomingCarCard
+        {/* <UpcomingCarCard
             title="Jaguar E Type Roadster"
             location="Dubai, UAE"
             year="1963"
             mainImage="https://i.postimg.cc/d0L85jYR/d4690d0b-d3fc-4600-a8c8-d1c4513ad2f3.jpg"
           /> */}
-          {/* <UpcomingCarCard
+        {/* <UpcomingCarCard
             title="Porsche 911 Carrera Manual"
             location="Dubai, UAE"
             year="2008"
             mainImage="https://i.postimg.cc/764Z5qmC/6291873c-c0df-46f8-8d5a-2505449ed66c.jpg"
           /> */}
-          {/* <UpcomingCarCard
+        {/* <UpcomingCarCard
             title="Mercedes 190SL"
             location="Dubai, UAE"
             year="1957"
@@ -86,11 +85,10 @@ const CarsPage: React.FunctionComponent<ICarsPageProps> = ({ cars = [] }) => {
             year="2017"
             mainImage="https://i.postimg.cc/vmMQNpjC/PHOTO-2023-02-17-19-09-02.jpg"
           /> */}
-          {/* {pastAuctions.map((car) => {
+        {/* {pastAuctions.map((car) => {
             return <CarCard key={car.id} carDetails={car} />;
           })} */}
-        </section>
-      </div>
+      </section>
     </main>
   );
 };

@@ -1,50 +1,26 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Navbar } from "@/components/navbar";
-import Script from "next/script";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+
 import ChatWithUsBtn from "@/components/chat-with-us-btn";
-import { NextIntlClientProvider, useMessages } from "next-intl";
-import { useTextDirection } from "@/lib/hooks/useTextDirection";
-import Banner from "@/components/Banner";
-import RequestCar from "@/components/RequestCar";
 import Footer from "@/components/Footer";
+import WhatsappIcon from "@/components/icons/whatsapp";
+import { Navbar } from "@/components/navbar";
+import RequestCar from "@/components/RequestCar";
+import { useTextDirection } from "@/lib/hooks/useTextDirection";
+import { NextIntlClientProvider, useMessages } from "next-intl";
+import { Inter } from "next/font/google";
+import Script from "next/script";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "NoLemons - The online auction for car people, by car people",
-  description: "The online auction for car people, by car people",
-  icons: {
-    icon: "/logo-web.webp",
-  },
-  metadataBase: new URL("https://nolemons.ae/"),
-};
-
 
 export default function LocaleLayout({ children, params: { locale } }: any) {
   const messages = useMessages();
   const direction = useTextDirection(locale);
+
   return (
-    <html lang={"locale"} dir={direction}>
+    <html lang={locale} dir={direction}>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-5LKFJ76994" />
-      <Script id="google-analytics">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'G-5LKFJ76994');
-        `}
-      </Script>
-      <Script id="google-tag-manager">
-        {`
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-PTPTTBKT');
-        `}
-      </Script>
+
       <Script id="snap-pixels">{`{
         (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
           {a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
@@ -70,10 +46,28 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
           <!-- End Meta Pixel Code -->
         `}
       </Script>
+      {/* google tag manager */}
+      <GoogleTagManager gtmId="GTM-PTPTTBKT" />
       <body className={inter.className}>
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTPTTBKT"
-        height="0" width="0" className="display:none;visibility:hidden"></iframe></noscript>
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PTPTTBKT"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+
+        <NextTopLoader />
+        <a
+          className="fixed z-10 bottom-0 right-0 h-8 mr-8 text-white px-4 text-sm font-semibold flex items-center justify-center space-x-2"
+          style={{ background: "#5a9e6f" }}
+          href="https://wa.me/971566633668?text=Hi%21%20I%20am%20from%20NoLemons%20website.%20Could%20you%20please%20tell%20me%3A"
+        >
+          <p>Chat with us</p>
+          <WhatsappIcon />
+        </a>
+        <NextIntlClientProvider messages={messages}>
           <RequestCar />
           {/* <Banner /> */}
           <Navbar />
@@ -82,7 +76,8 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
           <Footer />
         </NextIntlClientProvider>
       </body>
+      {/* google analytics */}
+      <GoogleAnalytics gaId="G-5LKFJ76994" />
     </html>
   );
 }
-

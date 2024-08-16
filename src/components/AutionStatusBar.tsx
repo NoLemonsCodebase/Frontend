@@ -60,14 +60,16 @@ const AutionStatusBar: React.FunctionComponent<IAutionStatusBarProps> = ({
       <ul className="flex items-center justify-between space-x-6 px-4 py-2">
         <li className="basis-auto flex items-center space-x-2 text-white">
           <ClockIcon className="w-5 h-5" />
-          {(carDetail.status == "created" || carDetail.status == "unverified") && (
+          {(carDetail.status == "created" ||
+            carDetail.status == "unverified") && (
             <p className="font-semibold whitespace-nowrap">
               {t("statuses.coming_soon")}
             </p>
           )}
           {carDetail.status == "sold" && (
             <p className="font-semibold whitespace-nowrap">
-              {t("statuses.car_was_sold")} {" | "} {carDetail.currency}{" "}{numeral(carDetail.sale_price).format("0,0")}
+              {t("statuses.car_was_sold")} {" | "} {carDetail.currency}{" "}
+              {numeral(carDetail.sale_price).format("0,0")}
             </p>
           )}
           {carDetail.status == "for_sale" && (
