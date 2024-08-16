@@ -46,7 +46,7 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
           <!-- End Meta Pixel Code -->
         `}
       </Script>
-      <Script id="clarity">
+      <Script id="clarity" strategy="afterInteractive">
         {`
           (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

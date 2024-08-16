@@ -7,6 +7,7 @@ import { useWindowSize } from "@uidotdev/usehooks";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import DropDownMenu from "./DropDownMenu";
+import Link from "next/link";
 
 export function Navbar() {
   const { width } = useWindowSize();
@@ -14,9 +15,16 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-[11] flex items-center justify-between  py-4 bg-white  shadow">
       <div className=" container m-auto flex items-center w-full px-4 md:px-16">
-        <a href="/">
-          <Image src="/logo.png" priority width={90} height={16} alt="logo" />
-        </a>
+        <Link href="/">
+          <Image
+            className="w-24"
+            src="/logo.png"
+            width={1500}
+            height={238}
+            alt="logo"
+            priority
+          />
+        </Link>
         {width! > 1280 ? (
           <div className="flex items-center space-x-4">
             <div className="border-l border-gray-300 h-5 mx-4" />
