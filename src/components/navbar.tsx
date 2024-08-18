@@ -8,10 +8,16 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import DropDownMenu from "./DropDownMenu";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const { width } = useWindowSize();
   const t = useTranslations("default.navigation");
+
+  // Get the pathname to make the button in the navbar that matches the current page active.
+  const pathname = usePathname();
+  const curPathname = pathname.split("/").slice(2).at(0) ?? "";
+
   return (
     <nav className="sticky top-0 z-[11] flex items-center justify-between  py-4 bg-white  shadow">
       <div className=" container m-auto flex items-center w-full px-4 md:px-16">
@@ -35,30 +41,38 @@ export function Navbar() {
               >
                 {t("about_us")}
               </a>
-              <a
-                className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+              <Link
+                className={`text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1 ${
+                  curPathname == "how-it-works" ? "bg-gray-200" : ""
+                }`}
                 href="/how-it-works"
               >
                 {t("how_it_works")}
-              </a>
-              <a
-                className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+              </Link>
+              <Link
+                className={`text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1 ${
+                  curPathname == "sell-your-car" ? "bg-gray-200" : ""
+                }`}
                 href="/sell-your-car"
               >
                 {t("sell_your_car")}
-              </a>
-              <a
-                className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+              </Link>
+              <Link
+                className={`text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1 ${
+                  curPathname == "request-a-car" ? "bg-gray-200" : ""
+                }`}
                 href="/request-a-car"
               >
                 Request a car
-              </a>
-              <a
-                className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
+              </Link>
+              <Link
+                className={`text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1 ${
+                  curPathname == "why-us" ? "bg-gray-200" : ""
+                }`}
                 href="/why-us"
               >
                 Why us?
-              </a>
+              </Link>
               <a
                 className="text-sm md:text-base text-gray-700  hover:bg-gray-200  rounded-md px-2 py-1"
                 href="https://nolemons.ae/p/buyer-guide-local"

@@ -2,7 +2,6 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 import ChatWithUsBtn from "@/components/chat-with-us-btn";
 import Footer from "@/components/Footer";
-import WhatsappIcon from "@/components/icons/whatsapp";
 import { Navbar } from "@/components/navbar";
 import RequestCar from "@/components/RequestCar";
 import { useTextDirection } from "@/lib/hooks/useTextDirection";
@@ -68,14 +67,6 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
         </noscript>
 
         <NextTopLoader />
-        <a
-          className="fixed z-10 bottom-0 right-0 h-8 mr-8 text-white px-4 text-sm font-semibold flex items-center justify-center space-x-2"
-          style={{ background: "#5a9e6f" }}
-          href="https://wa.me/971566633668?text=Hi%21%20I%20am%20from%20NoLemons%20website.%20Could%20you%20please%20tell%20me%3A"
-        >
-          <p>Chat with us</p>
-          <WhatsappIcon />
-        </a>
         <NextIntlClientProvider messages={messages}>
           <RequestCar />
           {/* <Banner /> */}

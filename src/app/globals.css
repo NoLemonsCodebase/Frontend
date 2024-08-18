@@ -1,22 +1,21 @@
 @tailwind base;
 
 @layer base {
-
   .no-tailwindcss-base h1,
   .no-tailwindcss-base h2,
   .no-tailwindcss-base h3,
   .no-tailwindcss-base h4,
   .no-tailwindcss-base h5,
   .no-tailwindcss-base h6 {
-      font-size: revert;
-      font-weight: revert;
+    font-size: revert;
+    font-weight: revert;
   }
 
   .no-tailwindcss-base ol,
   .no-tailwindcss-base ul {
-      list-style: revert;
-      margin: revert;
-      padding: revert;
+    list-style: revert;
+    margin: revert;
+    padding: revert;
   }
 }
 
@@ -25,4 +24,24 @@
 
 ul {
   list-style: disc;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d2cece;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

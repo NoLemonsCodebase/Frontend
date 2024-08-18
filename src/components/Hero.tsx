@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { CaretRightIcon } from "@radix-ui/react-icons";
 import { FlipWords } from "./ui/flip-words";
+import { RiArrowDropRightLine } from "react-icons/ri";
 
 const wordsRender: string[] = [
   "Global Shipping",
@@ -30,7 +31,7 @@ const Hero = () => {
             />
           </div>
           <span className="text-sm font-small">Full Buyer Protection</span>
-          <CaretRightIcon className="ml-2 w-6 h-6" />
+          <RiArrowDropRightLine className=" text-3xl" />
         </a>
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">
           Exciting cars.
