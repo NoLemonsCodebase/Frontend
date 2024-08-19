@@ -56,6 +56,7 @@ const DropDownMenu = (props: Props) => {
             aria-labelledby="options-menu"
           >
             {props.items.map((item) => {
+
               return (
                 <a
                   key={item.label}
@@ -69,9 +70,6 @@ const DropDownMenu = (props: Props) => {
 
                   <span className="flex flex-col">
                     <span>{item.label}</span>
-                    {item.desc && (
-                      <span className="text-xs text-gray-400">{item.desc}</span>
-                    )}
                   </span>
                 </a>
               );

@@ -1,42 +1,46 @@
 import React from "react";
 import Image from "next/image";
+import { CaretRightIcon } from "@radix-ui/react-icons";
+import { FlipWords } from "./ui/flip-words";
+import { RiArrowDropRightLine } from "react-icons/ri";
+
+const wordsRender: string[] = [
+  "Global Shipping",
+  "Aftersales Support",
+  "Fully Inspected",
+  "Detailed Vehicle History",
+  "Professional Photoshoots",
+];
 
 const Hero = () => {
   return (
-    <section className="bg-white">
+    <section className=" overflow-hidden">
       <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
         <a
           href="https://www.nolemons.ae/en/p/buyer-protection"
           className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200"
           role="alert"
         >
-          <span className="text-xs bg-primary-600 rounded-full text-black px-4 py-1.5 mr-3">
+          <div className="px-4 py-1.5 mr-3">
             <Image
               src="/images/protected.png"
               alt="Protected"
-              width="30"
-              height="30"
+              width={30}
+              height={30}
               priority
-            />{" "}
-          </span>
+            />
+          </div>
           <span className="text-sm font-small">Full Buyer Protection</span>
-          <svg
-            className="ml-2 w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
+          <RiArrowDropRightLine className=" text-3xl" />
         </a>
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">
           Exciting cars.
           <br /> Carefully checked & honestly presented.
         </h1>
+        <FlipWords
+          words={wordsRender}
+          className="md:text-4xl text-2xl font-bold text-[#455e8b]"
+        />
       </div>
     </section>
   );
