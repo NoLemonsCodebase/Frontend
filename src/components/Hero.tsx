@@ -1,7 +1,4 @@
-import React from "react";
 import Image from "next/image";
-import { CaretRightIcon } from "@radix-ui/react-icons";
-import { FlipWords } from "./ui/flip-words";
 import { RiArrowDropRightLine } from "react-icons/ri";
 
 const wordsRender: string[] = [
@@ -37,10 +34,10 @@ const Hero = () => {
           Exciting cars.
           <br /> Carefully checked & honestly presented.
         </h1>
-        <FlipWords
+        {/* <FlipWords
           words={wordsRender}
           className="md:text-4xl text-2xl font-bold text-[#455e8b]"
-        />
+        /> */}
       </div>
     </section>
   );

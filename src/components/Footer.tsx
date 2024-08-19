@@ -25,38 +25,28 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                   alt="yellow-logo"
                 />
               </div>
-              <p className=" text-gray-100 text-2xl">NoLemons Company</p>
             </div>
             <div>
               <h2 className="mb-4 font-semibold text-white">Buy and Sell</h2>
               <ul className="text-gray-400 flex flex-col gap-2 font-medium list-none">
                 <li>
-                  <a
-                    href="https://www.nolemons.ae/en/p/about-us-2"
-                    className=" hover:underline"
-                  >
-                    About us
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.nolemons.ae/en/p/buyer-guide-local"
-                    className="hover:underline"
-                  >
-                    UAE buyer guide
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.nolemons.ae/en/p/buyer-guide"
-                    className="hover:underline"
-                  >
-                    International buyer guide
-                  </a>
+                  <Link href="/sell-your-car" className="hover:underline">
+                    How it works ?
+                  </Link>
                 </li>
                 <li>
                   <Link href="/sell-your-car" className="hover:underline">
                     Sell your car
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/sell-your-car" className="hover:underline">
+                    Request a car
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/sell-your-car" className="hover:underline">
+                    Why us ?
                   </Link>
                 </li>
               </ul>
