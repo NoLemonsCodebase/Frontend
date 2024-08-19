@@ -1,11 +1,10 @@
 "use client";
 
 import * as React from "react";
-import Link from 'next/link'
+import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 interface ISellYourCarPageProps {}
-
 
 const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
   props
@@ -28,7 +27,7 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
   };
 
   return (
-    <div className="flex flex-col p-4 space-y-4 max-w-xl mx-auto">
+    <div className="flex flex-col p-4 py-10 space-y-4 max-w-xl mx-auto">
       <h2 className="text-3xl font-bold text-center">{t("sell_your_car")}</h2>
       <p>{t("text_s_1")}</p>
       {Array.from({ length: 7 }).map((_, index) => (
@@ -43,11 +42,13 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
       <div className="w-full border-b pt-4" />
       <p className="pt-4">{t("text_s_2")}</p>
 
-      <Link target="_blank" href="https://nw60ssq5era.typeform.com/to/CN1PoETZ/">
-        <Button>Sell my car</Button>
+      <Link
+        target="_blank"
+        href="https://nw60ssq5era.typeform.com/to/CN1PoETZ/"
+      >
+        <Button className="w-full md:text-xl md:py-6 mt-1">Sell my car</Button>
       </Link>
-      
-      
+
       {/* <Button type="button" className="backgroud-color:rgb(74,212,147) hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
         <a target="_blank" href="https://nw60ssq5era.typeform.com/to/CN1PoETZ/">Sell car</a>
       </Button> */}

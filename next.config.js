@@ -34,6 +34,11 @@ const nextConfig = withBuilderDevTools(
           hostname: "nolemons.s3.us-west-2.amazonaws.com",
           pathname: "**",
         },
+        {
+          protocol: "https",
+          hostname: "api.typeform.com",
+          pathname: "**",
+        },
       ],
     },
     redirects: async () => {
