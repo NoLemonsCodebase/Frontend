@@ -139,7 +139,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     },
     {
       title: t("accident_check_link"),
-      link: arabic_description_link,
+      link: arabicReport,
     },
   ];
 
