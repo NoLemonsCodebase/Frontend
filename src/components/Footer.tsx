@@ -25,7 +25,6 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                   alt="yellow-logo"
                 />
               </div>
-              <p className=" text-gray-100 text-2xl">NoLemons Company</p>
             </div>
             <div>
               <h2 className="mb-4 font-semibold text-white">Buy and Sell</h2>
