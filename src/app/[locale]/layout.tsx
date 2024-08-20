@@ -18,7 +18,7 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
 
   return (
     <html lang={locale} dir={direction}>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-5LKFJ76994" />
+      {/* <Script src="https://www.googletagmanager.com/gtag/js?id=G-5LKFJ76994" /> */}
 
       <Script id="snap-pixels">{`{
         (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
@@ -55,11 +55,11 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
         `}
       </Script>
       {/* google tag manager */}
-      <GoogleTagManager gtmId="GTM-PTPTTBKT" />
+      <GoogleTagManager gtmId="GTM-M6BCNQDM" />
       <body className={inter.className}>
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-PTPTTBKT"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-M6BCNQDM"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}

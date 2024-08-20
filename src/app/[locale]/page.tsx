@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import CarsPage from "@/components/pages/CarsPage";
+import CarsPage from "@/components/cars-detail/cars-page";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
