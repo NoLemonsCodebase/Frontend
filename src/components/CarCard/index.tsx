@@ -16,6 +16,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
   const t = useTranslations("default");
 
   const singleCarUrl = carDetails.url_route || carDetails.id;
+
   return (
     <Link
       href={`/cars/${singleCarUrl}`}

@@ -1,11 +1,8 @@
 import CarDetailPage from "@/components/cars-detail/car-detail-page";
 import { ICar } from "@/lib/types";
-import { Metadata } from "next";
 import { builder } from "@builder.io/sdk";
+import { Metadata } from "next";
 import * as React from "react";
-
-import { RenderBuilderContent } from "@/components/RenderBuilderContent";
-import { useLocale } from "next-intl";
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY as string);
 
