@@ -1,4 +1,4 @@
-import CarDetailPage from "@/components/pages/CarDetailPage";
+import CarDetailPage from "@/components/cars-detail/car-detail-page";
 import { ICar } from "@/lib/types";
 import { Metadata } from "next";
 import { builder } from "@builder.io/sdk";
