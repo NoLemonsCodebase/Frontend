@@ -53,7 +53,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
               "absolute top-0 right-0 text-white p-2 flex items-center justify-center bg-yellow-500"
             )}
           >
-            <span>{t("statuses.upcoming")}</span>
+            <span>{t("statuses.verifying")}</span>
           </div>
         )}
         {carDetails.status == "live" && carDetails.auction?.latest_bid && (
