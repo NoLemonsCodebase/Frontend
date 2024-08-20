@@ -23,6 +23,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                   height={702}
                   src="/logo-web.webp"
                   alt="yellow-logo"
+                  priority
                 />
               </div>
             </div>
@@ -30,7 +31,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
               <h2 className="mb-4 font-semibold text-white">Buy and Sell</h2>
               <ul className="text-gray-400 flex flex-col gap-2 font-medium list-none">
                 <li>
-                  <Link href="/sell-your-car" className="hover:underline">
+                  <Link href="/how-it-works" className="hover:underline">
                     How it works ?
                   </Link>
                 </li>
@@ -40,12 +41,12 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sell-your-car" className="hover:underline">
+                  <Link href="/request-a-car" className="hover:underline">
                     Request a car
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sell-your-car" className="hover:underline">
+                  <Link href="/why-us" className="hover:underline">
                     Why us ?
                   </Link>
                 </li>
@@ -56,7 +57,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
               <ul className="text-gray-400 flex flex-col gap-2 font-medium list-none">
                 <li>
                   <a
-                    href="https://www.nolemons.ae/en/p/privacy-policy"
+                    href="https://nolemons.help/privacy-policy/"
                     className="hover:underline"
                   >
                     Privacy Policy
@@ -64,7 +65,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                 </li>
                 <li>
                   <a
-                    href="https://www.nolemons.ae/en/p/buyer-protection"
+                    href="https://nolemons.help/uae-buyer-guide/"
                     className="hover:underline"
                   >
                     Buyer Protection
@@ -72,7 +73,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                 </li>
                 <li>
                   <a
-                    href="https://www.nolemons.ae/en/p/terms-conditions"
+                    href="https://nolemons.help/terms-and-conditions/"
                     className="hover:underline"
                   >
                     Terms &amp; Conditions

@@ -28,7 +28,6 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     title_status,
     exterior_color,
     interior_color,
-    seller_type,
     market_value,
     inspection_report_link,
     service_history_link,
@@ -111,6 +110,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
   const carfaxReport = carfax_report_link;
   const accidentCheck = accident_check_link;
   const arabicReport = arabic_description_link;
+  // const sellerWhatsapp = seller_whatsapp;
 
   const linksReports = [
     {
@@ -138,9 +138,13 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
       link: accidentCheck,
     },
     {
-      title: t("accident_check_link"),
+      title: "الوصف باللغة العربية",
       link: arabicReport,
     },
+    // {
+    //   title: t("seller_whatsapp"),
+    //   link: sellerWhatsapp,
+    // },
   ];
 
   return (
