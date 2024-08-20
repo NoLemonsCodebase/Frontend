@@ -78,7 +78,8 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
           carDetails.status === "sold" && "bg-[#6E52A2]",
           (carDetails.status === "for_sale" || carDetails.status === "live") &&
             "bg-green-700",
-          (carDetails.status === "created" || carDetails.status === "unverified")&&
+          (carDetails.status === "created" ||
+            carDetails.status === "unverified") &&
             "bg-black bg-opacity-50 flex-row-reverse"
         )}
       >

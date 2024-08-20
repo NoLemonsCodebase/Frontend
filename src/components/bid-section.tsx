@@ -4,23 +4,31 @@
  */
 "use client";
 
-import { useParams } from 'next/navigation'
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { TrackBidViaWA, TrackGetEarlyAccessClick } from "@/lib/services/pixels";
+import { ICar } from "@/lib/types";
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { TrackBidViaWA, TrackGetEarlyAccessClick } from "@/lib/services/pixels";
-import { ICar } from "@/lib/types";
 
-export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
+// icons
+import { FaWhatsapp } from "react-icons/fa";
+
+export function BidSection({
+  carDetail,
+  utms,
+}: {
+  carDetail: ICar;
+  utms: any;
+}) {
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
-  
-  // console.log("Bid Section utms", utms);
-  let utm_string = '?';
+
+  const { auction, status, title, year } = carDetail;
+
+  let utm_string = "?";
 
   for (const key in utms) {
     if (Object.prototype.hasOwnProperty.call(utms, key)) {
@@ -28,16 +36,16 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
       utm_string += `${key}=${value}&`;
     }
   }
-  
+
   // Remove the last '&' character
   utm_string = utm_string.slice(0, -1);
-  
+
   // console.log(utm_string);
 
   const onSubmit = async () => {
     setError("");
     setLoading(true);
-    if (!carDetail.auction) {
+    if (!auction) {
       setError("This car is not currently in an auction. Contact us for help.");
       setLoading(false);
       return;
@@ -46,16 +54,13 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
     TrackBidViaWA(phone);
 
     const url_request = `https://nolemons2.onrender.com/auction-following/${utm_string}`;
-    const res = await fetch(
-      url_request,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          phone,
-          auction_id: carDetail.auction?.id,
-        }),
-      }
-    );
+    const res = await fetch(url_request, {
+      method: "POST",
+      body: JSON.stringify({
+        phone,
+        auction_id: auction?.id,
+      }),
+    });
 
     if (res.ok) {
       setSent(true);
@@ -70,7 +75,7 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
 
   const onEarlyAccessClick = () => {
     const text = encodeURIComponent(
-      `Hello! I'm interested in ${carDetail.title} ${carDetail.year}`
+      `Hello! I'm interested in ${title} ${year}`
     );
     TrackGetEarlyAccessClick();
     window.open(
@@ -79,6 +84,8 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
     );
   };
 
+  const createdOrUnverfied = status == "created" || status == "unverified";
+
   return (
     <section
       className="w-full md:py-24 lg:py-32 h-96 md:h-full"
@@ -86,45 +93,30 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
     >
       <div className="h-1 bg-gray-500 bg-opacity-40 w-9/12 my-12 md:mb-12 mx-auto" />
       <div className="container flex flex-col items-center justify-center gap-4 px-4 text-center md:px-6">
-        {carDetail.status == "created" && (
+        {createdOrUnverfied ? (
           <>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
               Get early access
             </h2>
-            <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
+            <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
               Contact us to get early access to this car.
             </p>
-
             <Button
               onClick={onEarlyAccessClick}
               className="w-48 flex space-x-1"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="ml-2 icon icon-tabler icon-tabler-brand-whatsapp"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-                <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
-              </svg>
+              <FaWhatsapp className=" text-lg" />
               <p>Get early access</p>
             </Button>
           </>
-        )}
-        {carDetail.status == "for_sale" && (
+        ) : null}
+
+        {status == "for_sale" && (
           <>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
               Want to buy this car?
             </h2>
-            <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
+            <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
               Get in touch with our team.
             </p>
 
@@ -132,27 +124,12 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
               onClick={onEarlyAccessClick}
               className="w-48 flex space-x-1"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="ml-2 icon icon-tabler icon-tabler-brand-whatsapp"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-                <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
-              </svg>
+              <FaWhatsapp className=" text-lg" />
               <p>Contact us</p>
             </Button>
           </>
         )}
-        {carDetail.status == "sold" && (
+        {status == "sold" && (
           <>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
               Looking for a similar car?
@@ -165,27 +142,12 @@ export function BidSection({ carDetail, utms }: { carDetail: ICar, utms: any}) {
               onClick={onEarlyAccessClick}
               className="w-48 flex space-x-1"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="ml-2 icon icon-tabler icon-tabler-brand-whatsapp"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-                <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
-              </svg>
+              <FaWhatsapp className=" text-lg" />
               <p>Contact us</p>
             </Button>
           </>
         )}
-        {carDetail.status == "live" &&
+        {status == "live" &&
           (!sent ? (
             <>
               <div className="space-y-3">

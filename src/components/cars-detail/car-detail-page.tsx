@@ -34,7 +34,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   pageContent,
   utms,
 }) => {
-  // console.log("The utms 1", utms);
+
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
 
@@ -68,7 +68,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   React.useEffect(() => {
     TrackPageView();
   }, []);
-
+console.log(carDetail.status)
   return (
     <>
       <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 car-description">
