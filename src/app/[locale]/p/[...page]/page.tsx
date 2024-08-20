@@ -1,4 +1,4 @@
-import CarsPage from "@/components/pages/CarsPage";
+
 import { builder } from "@builder.io/sdk";
 import { useLocale } from "next-intl";
 import { RenderBuilderContent } from "@/components/RenderBuilderContent";
