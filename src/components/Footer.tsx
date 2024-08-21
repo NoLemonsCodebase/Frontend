@@ -12,12 +12,12 @@ interface IFooterProps {}
 
 const Footer: React.FunctionComponent<IFooterProps> = (props) => {
   return (
-    <footer className="md:p-4 p-3">
-      <div className="bg-black rounded-2xl py-10 md:py-12">
-        <div className=" container m-auto px-8">
-          <div className="grid grid-cols-1 gap-12 md:gap-10 md:grid-cols-4 md:pb-10">
+    <footer className="p-3 md:p-4">
+      <div className="rounded-2xl bg-black py-10 md:py-12">
+        <div className="container m-auto px-8">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-10 md:pb-10">
             <div>
-              <div className="max-w-[80px] md:max-w-[100px] mb-4">
+              <div className="mb-4 max-w-[80px] md:max-w-[100px]">
                 <Image
                   width={702}
                   height={702}
@@ -29,7 +29,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
             </div>
             <div>
               <h2 className="mb-4 font-semibold text-white">Buy and Sell</h2>
-              <ul className="text-gray-400 flex flex-col gap-2 font-medium list-none">
+              <ul className="flex list-none flex-col gap-2 font-medium text-gray-400">
                 <li>
                   <Link href="/how-it-works" className="hover:underline">
                     How it works ?
@@ -54,7 +54,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
             </div>
             <div>
               <h2 className="mb-4 font-semibold text-white">Legal</h2>
-              <ul className="text-gray-400 flex flex-col gap-2 font-medium list-none">
+              <ul className="flex list-none flex-col gap-2 font-medium text-gray-400">
                 <li>
                   <a
                     href="https://nolemons.help/privacy-policy/"
@@ -81,38 +81,38 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                 </li>
               </ul>
             </div>
-            <span className=" max-w-[256px] text-sm md:pt-8 text-gray-400 ">
+            <span className="max-w-[256px] text-sm text-gray-400 md:pt-8">
               No Lemons Solution FZ-LLC HD69C In5 Tech DIC - Dubai, UAE
             </span>
           </div>
-          <hr className="my-10  sm:mx-auto border-gray-700 md:my-12" />
+          <hr className="my-10 border-gray-700 sm:mx-auto md:my-12" />
 
-          <div className="flex gap-3 pb-5 mt-4 items-center justify-center sm:mt-0">
+          <div className="mt-4 flex items-center justify-center gap-3 pb-5 sm:mt-0">
             <a
               href="https://www.facebook.com/nolemons.ae"
-              className="text-gray-500 block hover:text-gray-300 border p-2 border-gray-500 rounded-full"
+              className="block rounded-full border border-gray-500 p-2 text-gray-500 hover:text-gray-300"
               target="_blank"
             >
-              <FaFacebookF className="  " />
+              <FaFacebookF className=" " />
               <span className="sr-only">Facebook page</span>
             </a>
             <a
               href="https://www.instagram.com/nolemons_co/"
-              className="text-gray-500 block hover:text-gray-300 border p-2 border-gray-500 rounded-full"
+              className="block rounded-full border border-gray-500 p-2 text-gray-500 hover:text-gray-300"
             >
-              <FaInstagram className="  " />
+              <FaInstagram className=" " />
               <span className="sr-only">Instagram</span>
             </a>
             <a
               href="https://www.linkedin.com/company/nolemons/"
-              className="text-gray-500 block hover:text-gray-300 border p-2 border-gray-500 rounded-full"
+              className="block rounded-full border border-gray-500 p-2 text-gray-500 hover:text-gray-300"
             >
-              <FaLinkedinIn className="  " />
+              <FaLinkedinIn className=" " />
               <span className="sr-only">LinkedIn page</span>
             </a>
           </div>
 
-          <span className="text-sm block text-center text-gray-400 md:mt-4">
+          <span className="block text-center text-sm text-gray-400 md:mt-4">
             © 2024{" "}
             <a href="https://nolemons.ae/" className="hover:underline">
               NoLemons™

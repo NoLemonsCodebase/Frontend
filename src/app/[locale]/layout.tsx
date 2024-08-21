@@ -2,7 +2,7 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 import ChatWithUsBtn from "@/components/chat-with-us-btn";
 import Footer from "@/components/Footer";
-import { Navbar } from "@/components/navbar";
+import Navbar from "@/components/navbar";
 import RequestCar from "@/components/RequestCar";
 import { useTextDirection } from "@/lib/hooks/useTextDirection";
 import { NextIntlClientProvider, useMessages } from "next-intl";
