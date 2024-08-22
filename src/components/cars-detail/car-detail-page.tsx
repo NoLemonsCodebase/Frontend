@@ -8,10 +8,11 @@ import { ICar } from "@/lib/types";
 import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useTranslations } from "next-intl";
-import * as React from "react";
+
 import RichText from "../RichText";
 import WhatsappIcon from "../icons/whatsapp";
 import CarDetailList from "./car-detail-list";
+import { Fragment, useEffect } from "react";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -23,14 +24,19 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
 
-  const auctionEnded = lastAuction
-    ? new Date(lastAuction.time_ending) < new Date()
-    : true;
-  const endDatetime = lastAuction
-    ? new Date(lastAuction.time_ending)
-    : undefined;
-
+  let auctionEnded: any;
+  let endDatetime: any;
   const { width } = useWindowSize();
+
+  useEffect(() => {
+    if (lastAuction) {
+      auctionEnded = new Date(lastAuction.time_ending) < new Date();
+      endDatetime = new Date(lastAuction.time_ending);
+    } else {
+      auctionEnded = true;
+      endDatetime = undefined;
+    }
+  }, []);
 
   const scrollToTarget = () => {
     if (carDetail.status == "created") {
@@ -50,10 +56,10 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
     targetSection?.scrollIntoView({ behavior: "smooth" });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     TrackPageView();
   }, []);
-  console.log(carDetail.status);
+
   return (
     <>
       <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 car-description">
@@ -137,10 +143,10 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             <div className="flex-1 flex flex-col">
               <RichText className="mt-2" content={carDetail.description} />
               {carDetail.car_text_section.map((section: any, index: number) => (
-                <React.Fragment key={index}>
+                <Fragment key={index}>
                   <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
                   <RichText className="mt-2" content={section.content} />
-                </React.Fragment>
+                </Fragment>
               ))}
 
               {carDetail.car_image.length > 0 && (
@@ -150,7 +156,7 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
                 <h2 className="text-2xl font-bold mt-8">{t("videos")}</h2>
               )}
               {carDetail.car_video?.map((video: any, index: number) => (
-                <React.Fragment key={index}>
+                <Fragment key={index}>
                   <h2 className="text-xl font-bold mt-4">{video.title}</h2>
                   <div
                     className={cn(
@@ -167,7 +173,7 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
                       allowFullScreen
                     ></iframe>
                   </div>
-                </React.Fragment>
+                </Fragment>
               ))}
             </div>
           </div>

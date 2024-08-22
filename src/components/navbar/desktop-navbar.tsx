@@ -24,12 +24,12 @@ export default function DesktopNavbar() {
           </ul>
         </li>
       ))}
-      <a
-        href="https://nolemons.help"
+      <Link
+        href="/sell-your-car"
         className=" bg-green-600 transition-colors duration-300 hover:bg-green-500 text-white px-6 py-2.5 rounded-full cursor-pointer ml-8"
       >
-        Help Center
-      </a>
+        Sell your car
+      </Link>
     </ul>
   );
 }

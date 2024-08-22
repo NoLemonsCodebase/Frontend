@@ -96,7 +96,7 @@ function Footer(props: IFooterProps): React.ReactElement {
               </ul>
             </div>
             <div>
-              <h2 className="mb-4 font-semibold text-white">Legal</h2>
+              <h2 className="mb-4 font-semibold text-xl text-white">Legal</h2>
               <ul className="flex list-none flex-col gap-2 font-medium text-gray-400">
                 <li>
                   <a

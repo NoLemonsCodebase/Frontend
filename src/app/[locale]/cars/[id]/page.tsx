@@ -1,4 +1,5 @@
 import CarDetailPage from "@/components/cars-detail/car-detail-page";
+import GtmTracking from "@/components/gtm-tracking";
 import { ICar } from "@/lib/types";
 import { builder } from "@builder.io/sdk";
 import { Metadata } from "next";
@@ -87,7 +88,12 @@ const CarPage: React.FunctionComponent<{
   try {
     const data: ICar = await fetchCar(id);
 
-    return <CarDetailPage carDetail={data} utms={searchParams} />;
+    return (
+      <>
+        <GtmTracking slug={id} />
+        <CarDetailPage carDetail={data} utms={searchParams} />
+      </>
+    );
   } catch (e) {
     return <div>Car not found</div>;
   }
