@@ -5,11 +5,18 @@ import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Tooltip } from "react-tooltip";
+import { useEffect, useState } from "react";
 
 const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
   isCard,
   carDetail,
 }) => {
+  // to prevent hydration error
+  const [onClient, setOnClient] = useState(false);
+  useEffect(() => {
+    setOnClient(true);
+  }, []);
+
   const t = useTranslations("default.car_page");
 
   // extract field from carDetail
@@ -137,16 +144,16 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
       title: t("accident_check_link"),
       link: accidentCheck,
     },
-    {
-      title: "الوصف باللغة العربية",
-      link: arabicReport,
-    },
+
     // {
     //   title: t("seller_whatsapp"),
     //   link: sellerWhatsapp,
     // },
   ];
-
+  // {
+  //   title: "الوصف (باللغةالعربية)",
+  //   link: arabicReport,
+  // },
   return (
     <div
       className={cn(
@@ -165,7 +172,10 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                   {title}:
                 </td>
                 <td className="py-2 whitespace-nowrap text-sm text-gray-500">
-                  {title == "Mileage" ? value.toLocaleString() : value}
+                  {/* {title == "Mileage" ? value.toLocaleString() : value} */}
+                  {onClient && title === "Mileage"
+                    ? value.toLocaleString()
+                    : value}
                 </td>
               </tr>
             ) : null
@@ -192,6 +202,24 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
             ) : null
           )}
 
+          {/* ====================== arabic Report Links ========================= */}
+          {arabicReport ? (
+            <tr>
+              <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                الوصف (باللغة العربية)
+              </td>
+              <td className="py-2 whitespace-nowrap  text-sm text-gray-500">
+                <a
+                  href={arabicReport}
+                  target="_blank"
+                  className="text-blue-500 flex  hover:text-blue-700"
+                >
+                  <span>افتح الملف</span>
+                  <LiaExternalLinkAltSolid className=" text-xl ml-1" />
+                </a>
+              </td>
+            </tr>
+          ) : null}
           <tr>
             <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
               <Link

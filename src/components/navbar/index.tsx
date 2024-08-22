@@ -96,7 +96,7 @@ export default function Navbar() {
       <div className=" container m-auto flex justify-between items-center px-4 md:px-16">
         <Link href="/">
           <Image
-            className="w-24"
+            className="w-24 "
             src="/logo.png"
             width={1500}
             height={238}

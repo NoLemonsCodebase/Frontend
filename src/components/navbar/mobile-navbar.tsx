@@ -21,7 +21,6 @@ export default function MobileNavbar() {
     <div>
       <button
         className="p-3 pr-0"
-        type="button"
         onClick={() => setIsOpen(!isOpen)}
         id="options-menu"
       >
@@ -32,38 +31,35 @@ export default function MobileNavbar() {
         )}
       </button>
 
-      <div
+      <ul
         className={` ${
           isOpen ? " scale-y-100" : "scale-y-0"
-        } absolute origin-top-right transition-all duration-300 right-0 w-full bg-white rounded-md shadow-lg  ring-1 ring-black ring-opacity-5`}
+        } absolute origin-top-right transition-all duration-300 left-2/4 -translate-x-2/4 w-full list-none bg-white rounded-md shadow-lg  ring-1 ring-black ring-opacity-5`}
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="options-menu"
       >
-        <ul
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="options-menu"
-        >
-          {menuBtns.map(({ id, title, links, height }) => (
-            <li key={id} className="">
-              <Btn
-                onClickHandler={openDropHandler.bind(null, id)}
-                rotateIcon={id == openDrop}
-                key={id}
-                title={title}
-              />
-              {/* Dropdown menu */}
-              <ul
-                className={`overflow-hidden transition-all duration-300 ${
-                  id == openDrop ? height : "h-0"
-                }`}
-              >
-                {links.map(({ name, link }) => (
-                  <LinkItem key={name} name={name} link={link} />
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </div>
+        {menuBtns.map(({ id, title, links, height }) => (
+          <li key={id} className="">
+            <Btn
+              onClickHandler={openDropHandler.bind(null, id)}
+              rotateIcon={id == openDrop}
+              key={id}
+              title={title}
+            />
+            {/* Dropdown menu */}
+            <ul
+              className={`overflow-hidden transition-all duration-300 ${
+                id == openDrop ? height : "h-0"
+              }`}
+            >
+              {links.map(({ name, link }) => (
+                <LinkItem key={name} name={name} link={link} />
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
