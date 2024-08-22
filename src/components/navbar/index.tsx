@@ -10,6 +10,30 @@ import { useWindowSize } from "@uidotdev/usehooks";
 // navbar links
 export const menuBtns = [
   {
+    id: "about",
+    title: "About",
+    links: [
+      {
+        name: "About Us",
+        link: "https://nolemons.help/about-us/",
+      },
+      {
+        name: "FAQs",
+        link: "https://nolemons.help/faqs/",
+      },
+      {
+        name: "What is NoLemons ?",
+        link: "https://nolemons.help/what-is-nolemons/",
+      },
+      {
+        name: "Testimonials",
+        link: "https://nolemons.help/testimonials/",
+      },
+    ],
+    height: "h-[176px]",
+    mobileHeight: "group-hover:h-[176px]",
+  },
+  {
     id: "for-buyers",
     title: "For Buyers",
     links: [
@@ -41,30 +65,7 @@ export const menuBtns = [
     height: "h-[88px]",
     mobileHeight: "group-hover:h-[88px]",
   },
-  {
-    id: "about",
-    title: "About",
-    links: [
-      {
-        name: "About Us",
-        link: "https://nolemons.help/about-us/",
-      },
-      {
-        name: "FAQs",
-        link: "https://nolemons.help/faqs/",
-      },
-      {
-        name: "What is NoLemons ?",
-        link: "https://nolemons.help/what-is-nolemons/",
-      },
-      {
-        name: "Testimonials",
-        link: "https://nolemons.help/testimonials/",
-      },
-    ],
-    height: "h-[176px]",
-    mobileHeight: "group-hover:h-[176px]",
-  },
+
   {
     id: "legal",
     title: "Legal",
