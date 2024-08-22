@@ -1,8 +1,9 @@
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 import ChatWithUsBtn from "@/components/chat-with-us-btn";
-import Footer from "@/components/footer";
+
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import RequestCar from "@/components/RequestCar";
 import { useTextDirection } from "@/lib/hooks/useTextDirection";
 import { NextIntlClientProvider, useMessages } from "next-intl";
