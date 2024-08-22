@@ -56,11 +56,11 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
         `}
       </Script>
       {/* google tag manager */}
-      <GoogleTagManager gtmId="GTM-M6BCNQDM" />
+      <GoogleTagManager gtmId="GTM-PTPTTBKT" />
       <body className={inter.className}>
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-M6BCNQDM"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PTPTTBKT"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
