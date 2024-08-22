@@ -9,7 +9,7 @@ const wordsRender: string[] = [
   "Professional Photoshoots",
 ];
 
-const Hero = () => {
+function Hero() {
   return (
     <section className="overflow-hidden">
       <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
@@ -41,6 +41,6 @@ const Hero = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Hero;

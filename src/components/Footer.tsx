@@ -10,14 +10,14 @@ import * as React from "react";
 
 interface IFooterProps {}
 
-const Footer: React.FunctionComponent<IFooterProps> = (props) => {
+function Footer(props: IFooterProps): React.ReactElement {
   return (
     <footer className="p-3 md:p-4">
-      <div className="rounded-2xl bg-black py-10 md:py-12">
+      <div className="rounded-2xl bg-black py-10 md:py-14">
         <div className="container m-auto px-8">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-10 md:pb-10">
             <div>
-              <div className="mb-4 max-w-[80px] md:max-w-[100px]">
+              <div className="max-w-[80px] md:max-w-[100px]">
                 <Image
                   width={702}
                   height={702}
@@ -26,9 +26,52 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                   priority
                 />
               </div>
+              <span className="max-w-[240px] block text-sm text-gray-400 pt-4">
+                No Lemons Solution FZ-LLC HD69C In5 Tech DIC - Dubai, UAE
+              </span>
             </div>
             <div>
-              <h2 className="mb-4 font-semibold text-white">Buy and Sell</h2>
+              <h2 className="mb-4 text-xl font-semibold text-white">About</h2>
+              <ul className="flex list-none flex-col gap-2 font-medium text-gray-400">
+                <li>
+                  <a
+                    href="https://nolemons.help/about-us"
+                    className="hover:underline"
+                  >
+                    About us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://nolemons.help/faqs"
+                    className="hover:underline"
+                  >
+                    FAQs
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="https://nolemons.help/testimonials"
+                    className="hover:underline"
+                  >
+                    Testimonials
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://nolemons.help/what-is-nolemons"
+                    className="hover:underline"
+                  >
+                    What is NoLemons ?
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 className="mb-4 font-semibold text-xl text-white">
+                Buy and Sell
+              </h2>
               <ul className="flex list-none flex-col gap-2 font-medium text-gray-400">
                 <li>
                   <Link href="/how-it-works" className="hover:underline">
@@ -79,11 +122,16 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
                     Terms &amp; Conditions
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="https://nolemons.help/seller-agreement"
+                    className="hover:underline"
+                  >
+                    Sell Agreement
+                  </a>
+                </li>
               </ul>
             </div>
-            <span className="max-w-[256px] text-sm text-gray-400 md:pt-8">
-              No Lemons Solution FZ-LLC HD69C In5 Tech DIC - Dubai, UAE
-            </span>
           </div>
           <hr className="my-10 border-gray-700 sm:mx-auto md:my-12" />
 
@@ -122,6 +170,6 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;
