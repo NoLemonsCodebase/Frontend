@@ -9,16 +9,16 @@ const wordsRender: string[] = [
   "Professional Photoshoots",
 ];
 
-const Hero = () => {
+function Hero() {
   return (
-    <section className=" overflow-hidden">
-      <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+    <section className="overflow-hidden">
+      <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
         <a
-          href="https://www.nolemons.ae/en/p/buyer-protection"
-          className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200"
+          href="https://nolemons.help/uae-buyer-guide/"
+          className="mb-7 inline-flex items-center justify-between rounded-full bg-gray-100 px-1 py-1 pr-4 text-sm text-gray-700 hover:bg-gray-200"
           role="alert"
         >
-          <div className="px-4 py-1.5 mr-3">
+          <div className="mr-3 px-4 py-1.5">
             <Image
               src="/images/protected.png"
               alt="Protected"
@@ -27,10 +27,10 @@ const Hero = () => {
               priority
             />
           </div>
-          <span className="text-sm font-small">Full Buyer Protection</span>
-          <RiArrowDropRightLine className=" text-3xl" />
+          <span className="font-small text-sm">Full Buyer Protection</span>
+          <RiArrowDropRightLine className="text-3xl" />
         </a>
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">
+        <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
           Exciting cars.
           <br /> Carefully checked & honestly presented.
         </h1>
@@ -41,6 +41,6 @@ const Hero = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Hero;

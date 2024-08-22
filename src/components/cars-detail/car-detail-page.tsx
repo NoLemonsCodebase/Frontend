@@ -1,40 +1,25 @@
 "use client";
-import { useParams } from "next/navigation";
 import AutionStatusBar from "@/components/AutionStatusBar";
 import CarImagesSection from "@/components/CarImagesSection";
-import Footer from "@/components/Footer";
-import { BidSection } from "@/components/bid-section";
-import cn from "classnames";
-import * as React from "react";
 import ImageCarousel from "@/components/ImageCarousel";
-import { useWindowSize } from "@uidotdev/usehooks";
-import { ExternalLinkIcon, InfoCircledIcon } from "@radix-ui/react-icons";
-import {
-  TrackArabicClick,
-  TrackGetEarlyAccessClick,
-  TrackPageView,
-} from "@/lib/services/pixels";
+import { BidSection } from "@/components/bid-section";
+import { TrackGetEarlyAccessClick, TrackPageView } from "@/lib/services/pixels";
 import { ICar } from "@/lib/types";
-import RichText from "../RichText";
-import { Tooltip } from "react-tooltip";
-import Link from "next/link";
-import WhatsappIcon from "../icons/whatsapp";
+import { useWindowSize } from "@uidotdev/usehooks";
+import cn from "classnames";
 import { useTranslations } from "next-intl";
-import { RenderBuilderContent } from "../RenderBuilderContent";
+import * as React from "react";
+import RichText from "../RichText";
+import WhatsappIcon from "../icons/whatsapp";
 import CarDetailList from "./car-detail-list";
 
 interface ICarPageProps {
   carDetail: ICar;
-  pageContent: any;
+
   utms: any;
 }
 
-const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
-  carDetail,
-  pageContent,
-  utms,
-}) => {
-
+function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
 
@@ -68,7 +53,7 @@ const CarDetailPage: React.FunctionComponent<ICarPageProps> = ({
   React.useEffect(() => {
     TrackPageView();
   }, []);
-console.log(carDetail.status)
+  console.log(carDetail.status);
   return (
     <>
       <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 car-description">
@@ -149,53 +134,42 @@ console.log(carDetail.status)
         </div>
         <div className="flex space-x-8 mt-8 no-tailwindcss-base">
           <div className="flex-1">
-            <RenderBuilderContent
-              content={pageContent}
-              model={"page"}
-              fallbackContent={
-                <div className="flex-1 flex flex-col">
-                  {/* <h2 className="text-2xl font-bold">Highlights</h2> */}
-                  <RichText className="mt-2" content={carDetail.description} />
-                  {carDetail.car_text_section.map(
-                    (section: any, index: number) => (
-                      <React.Fragment key={index}>
-                        <h2 className="text-2xl font-bold mt-8">
-                          {section.title}
-                        </h2>
-                        <RichText className="mt-2" content={section.content} />
-                      </React.Fragment>
-                    )
-                  )}
+            <div className="flex-1 flex flex-col">
+              <RichText className="mt-2" content={carDetail.description} />
+              {carDetail.car_text_section.map((section: any, index: number) => (
+                <React.Fragment key={index}>
+                  <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
+                  <RichText className="mt-2" content={section.content} />
+                </React.Fragment>
+              ))}
 
-                  {carDetail.car_image.length > 0 && (
-                    <p className="mt-4">{t("review_photos_note")}</p>
-                  )}
-                  {carDetail.car_video?.length > 0 && (
-                    <h2 className="text-2xl font-bold mt-8">{t("videos")}</h2>
-                  )}
-                  {carDetail.car_video?.map((video: any, index: number) => (
-                    <React.Fragment key={index}>
-                      <h2 className="text-xl font-bold mt-4">{video.title}</h2>
-                      <div
-                        className={cn(
-                          "md:mr-20",
-                          video.aspect_ratio == "16:9"
-                            ? "aspect-w-16 aspect-h-10"
-                            : "aspect-w-4 aspect-h-7 max-h-64"
-                        )}
-                      >
-                        <iframe
-                          src={video.video}
-                          title={video.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowFullScreen
-                        ></iframe>
-                      </div>
-                    </React.Fragment>
-                  ))}
-                </div>
-              }
-            />
+              {carDetail.car_image.length > 0 && (
+                <p className="mt-4">{t("review_photos_note")}</p>
+              )}
+              {carDetail.car_video?.length > 0 && (
+                <h2 className="text-2xl font-bold mt-8">{t("videos")}</h2>
+              )}
+              {carDetail.car_video?.map((video: any, index: number) => (
+                <React.Fragment key={index}>
+                  <h2 className="text-xl font-bold mt-4">{video.title}</h2>
+                  <div
+                    className={cn(
+                      "md:mr-20",
+                      video.aspect_ratio == "16:9"
+                        ? "aspect-w-16 aspect-h-10"
+                        : "aspect-w-4 aspect-h-7 max-h-64"
+                    )}
+                  >
+                    <iframe
+                      src={video.video}
+                      title={video.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
           </div>
           <section className="hidden lg:block sticky top-20 self-start w-96">
             <CarDetailList isCard carDetail={carDetail} />
@@ -205,6 +179,6 @@ console.log(carDetail.status)
       </section>
     </>
   );
-};
+}
 
 export default CarDetailPage;

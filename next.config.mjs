@@ -1,18 +1,19 @@
-const withNextIntl = require("next-intl/plugin")();
-const withBuilderDevTools = require("@builder.io/dev-tools/next")();
+import createNextIntlPlugin from 'next-intl/plugin';
+ 
+const withNextIntl = createNextIntlPlugin();
+
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withBuilderDevTools(
-  withNextIntl({
+const nextConfig = {
     env: {
       NEXT_PUBLIC_BUILDER_API_KEY: "058aa1afd2c8466e86b2644bee2e9f4a",
     },
     images: {
       remotePatterns: [
-        {
-          protocol: "https",
-          hostname: "nolemons.ae",
-          pathname: "**",
+      {
+        protocol: "https",
+        hostname: "nolemons.ae",
+        pathname: "**",
         },
         {
           protocol: "https",
@@ -55,7 +56,8 @@ const nextConfig = withBuilderDevTools(
         // },
       ];
     },
-  })
-);
+  }
 
-module.exports = nextConfig;
+
+
+  export default withNextIntl(nextConfig);

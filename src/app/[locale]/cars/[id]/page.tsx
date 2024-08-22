@@ -84,34 +84,10 @@ const CarPage: React.FunctionComponent<{
 }> = async ({ params, searchParams }) => {
   const { id, locale } = params;
 
-  // console.log("searchParams", searchParams);
-  // console.log("locale", locale);
-
-  const builderModelName = "page";
-  const urlPath = `/cars/${id}`;
-  const content = await builder
-    .get(builderModelName, {
-      userAttributes: {
-        urlPath,
-        locale,
-      },
-      options: {
-        locale,
-      },
-      prerender: false,
-    })
-    .toPromise();
-
   try {
     const data: ICar = await fetchCar(id);
 
-    return (
-      <CarDetailPage
-        carDetail={data}
-        pageContent={content}
-        utms={searchParams}
-      />
-    );
+    return <CarDetailPage carDetail={data} utms={searchParams} />;
   } catch (e) {
     return <div>Car not found</div>;
   }
