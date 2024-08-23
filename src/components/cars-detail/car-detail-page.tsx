@@ -55,7 +55,7 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
     // Scroll to the target section
     targetSection?.scrollIntoView({ behavior: "smooth" });
   };
-
+  console.log(auctionEnded);
   useEffect(() => {
     TrackPageView();
   }, []);
@@ -107,10 +107,8 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             </span>
           </div>
         </div>
-        {/* <p className="text-sm">
-          1 Owner, Dual-Motor AWD, Texas-Owned, Reviewed by Alanis King
-        </p> */}
-        {!auctionEnded && (
+
+        {auctionEnded && (
           <p className="text-sm text-gray-500 font-semibold">
             {`${t("ending")} ${endDatetime?.toLocaleString("en-US", {
               month: "short",
