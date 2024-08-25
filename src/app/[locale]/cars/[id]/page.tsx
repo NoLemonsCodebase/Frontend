@@ -2,6 +2,7 @@ import CarDetailPage from "@/components/cars-detail/car-detail-page";
 import GtmTracking from "@/components/gtm-tracking";
 import { ICar } from "@/lib/types";
 import { builder } from "@builder.io/sdk";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Metadata } from "next";
 import * as React from "react";
 
