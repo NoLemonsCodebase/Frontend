@@ -7,7 +7,7 @@ export default function GtmTracking({ slug }: any) {
   useEffect(() => {
     if (slug) {
       const props = {
-        page_title: slug,
+        pageTitle: slug,
       };
       gtmPageView(props);
     }

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo-web.webp",
   },
-  metadataBase: new URL("https://nolemons.ae/"),
+  metadataBase: new URL("https://nolemons.co/"),
 };
 
 export default function RootLayout({

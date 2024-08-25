@@ -19,7 +19,7 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
 
   return (
     <html lang={locale} dir={direction}>
-      {/* <Script src="https://www.googletagmanager.com/gtag/js?id=G-5LKFJ76994" /> */}
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-5LKFJ76994" />
 
       <Script id="snap-pixels">{`{
         (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
@@ -46,6 +46,8 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
           <!-- End Meta Pixel Code -->
         `}
       </Script>
+
+      {/* Microsoft Clarity */}
       <Script id="clarity" strategy="afterInteractive">
         {`
           (function(c,l,a,r,i,t,y){
@@ -55,12 +57,22 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
           })(window, document, "clarity", "script", "no5iqs9494");
         `}
       </Script>
+
       {/* google tag manager */}
-      <GoogleTagManager gtmId="GTM-PTPTTBKT" />
+      <Script id="gtm" strategy="afterInteractive">
+        {`
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-M6BCNQDM');
+        `}
+      </Script>
+
       <body className={inter.className}>
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-PTPTTBKT"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-M6BCNQDM"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}

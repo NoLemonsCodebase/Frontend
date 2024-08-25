@@ -38,6 +38,8 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
     }
   }, []);
 
+  // const { car_text_section_arabic } = carDetail;
+  // console.log(car_text_section_arabic);
   const scrollToTarget = () => {
     if (carDetail.status == "created") {
       const text = encodeURIComponent(
@@ -63,6 +65,12 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   return (
     <>
       <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 car-description">
+        {/* <RichText
+          dir="rtl"
+          className="mt-2"
+          content={car_text_section_arabic[0].content}
+        /> */}
+
         <div className="flex sm:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-14 bg-white border-b">
           <AutionStatusBar carDetail={carDetail} />
 
