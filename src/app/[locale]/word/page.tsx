@@ -71,7 +71,7 @@ const textHtml = `<p class="MsoNormal" dir="RTL" style="text-align: center; line
 <p class="MsoNormal" dir="RTL" style="text-align: justify; line-height: 150%; direction: rtl; unicode-bidi: embed;"><span lang="AR-SA" style="font-size: 14.0pt; line-height: 150%; font-family: 'Times New Roman',serif; mso-ascii-theme-font: major-bidi; mso-hansi-theme-font: major-bidi; mso-bidi-theme-font: major-bidi;">&nbsp;</span></p>`;
 export default function page() {
   return (
-    <div className=" container">
+    <div className="p-10 max-w-5xl m-auto">
       <RichText content={textHtml} />
     </div>
   );
