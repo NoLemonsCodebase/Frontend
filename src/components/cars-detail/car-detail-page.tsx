@@ -12,7 +12,7 @@ import { useTranslations } from "next-intl";
 import RichText from "../RichText";
 import WhatsappIcon from "../icons/whatsapp";
 import CarDetailList from "./car-detail-list";
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -21,20 +21,20 @@ interface ICarPageProps {
 }
 
 function CarDetailPage({ carDetail, utms }: ICarPageProps) {
+  const [auctionEnded, setAuctionEnded] = useState<boolean>(true);
+  const [endDatetime, setEndDatetime] = useState<Date | null>(null);
+
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
 
-  let auctionEnded: any;
-  let endDatetime: any;
   const { width } = useWindowSize();
 
   useEffect(() => {
     if (lastAuction) {
-      auctionEnded = new Date(lastAuction.time_ending) < new Date();
-      endDatetime = new Date(lastAuction.time_ending);
+      setAuctionEnded(new Date(lastAuction.time_ending) < new Date());
+      setEndDatetime(new Date(lastAuction.time_ending));
     } else {
-      auctionEnded = true;
-      endDatetime = undefined;
+      setAuctionEnded(true);
     }
   }, []);
 
@@ -115,7 +115,7 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             </span>
           </div>
         </div>
-        {auctionEnded && (
+        {auctionEnded || carDetail.status == "live" ? (
           <p className="text-sm text-gray-500 font-semibold">
             {`${t("ending")} ${endDatetime?.toLocaleString("en-US", {
               month: "short",
@@ -126,7 +126,7 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
               hour12: true,
             })}`}
           </p>
-        )}
+        ) : null}
         <div className="hidden sm:flex mt-4 space-x-4">
           <AutionStatusBar carDetail={carDetail} />
           <button

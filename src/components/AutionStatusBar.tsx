@@ -42,9 +42,17 @@ const TimeLeftText: React.FC<{ auction: IAuction }> = ({ auction }) => {
     <>
       <p className="hidden sm:block opacity-70">Time Left</p>
       <p className="font-semibold whitespace-nowrap">{timeLeftText()[0]}</p>
-      <p className="hidden sm:block font-semibold whitespace-nowrap">
+      <p className="hidden sm:block font-semibold whitespace-nowrap min-w-[70px]">
         {timeLeftText()[1]}
       </p>
+      {/* <p>
+        <span className="opacity-70">Ending time </span>{" "}
+        {auction.time_ending.toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        })}
+      </p> */}
     </>
   );
 };
