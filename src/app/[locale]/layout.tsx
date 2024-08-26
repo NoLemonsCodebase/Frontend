@@ -47,7 +47,7 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
         `}
       </Script>
 
-      {/* Microsoft Clarity */}
+      {/* Microsoft Clarity
       <Script id="clarity" strategy="afterInteractive">
         {`
           (function(c,l,a,r,i,t,y){
@@ -56,7 +56,7 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
           })(window, document, "clarity", "script", "no5iqs9494");
         `}
-      </Script>
+      </Script> */}
 
       {/* google tag manager */}
       <Script id="gtm" strategy="afterInteractive">
