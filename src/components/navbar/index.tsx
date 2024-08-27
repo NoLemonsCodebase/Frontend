@@ -38,6 +38,10 @@ export const menuBtns = [
     title: "For Buyers",
     links: [
       {
+        name: "Full Buyer Protection",
+        link: "https://nolemons.help/buyer-protection/",
+      },
+      {
         name: "UAE Buyer Guide",
         link: "https://nolemons.help/uae-buyer-guide",
       },
@@ -47,7 +51,7 @@ export const menuBtns = [
       },
     ],
     height: "h-[88px]",
-    mobileHeight: "group-hover:h-[88px]",
+    mobileHeight: "group-hover:h-[132px]",
   },
   {
     id: "for-sellers",
