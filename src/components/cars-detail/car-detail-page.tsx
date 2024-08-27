@@ -21,7 +21,7 @@ interface ICarPageProps {
 }
 
 function CarDetailPage({ carDetail, utms }: ICarPageProps) {
-  const [auctionEnded, setAuctionEnded] = useState<boolean>(true);
+  const [auctionEnded, setAuctionEnded] = useState<boolean>(false);
   const [endDatetime, setEndDatetime] = useState<Date | null>(null);
 
   const t = useTranslations("default.car_page");
@@ -33,13 +33,9 @@ function CarDetailPage({ carDetail, utms }: ICarPageProps) {
     if (lastAuction) {
       setAuctionEnded(new Date(lastAuction.time_ending) < new Date());
       setEndDatetime(new Date(lastAuction.time_ending));
-    } else {
-      setAuctionEnded(true);
     }
   }, []);
 
-  // const { car_text_section_arabic } = carDetail;
-  // console.log(car_text_section_arabic);
   const scrollToTarget = () => {
     if (carDetail.status == "created") {
       const text = encodeURIComponent(
