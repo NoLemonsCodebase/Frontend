@@ -14,7 +14,7 @@ function Hero() {
     <section className="overflow-hidden">
       <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
         <a
-          href="ttps://nolemons.help/buyer-protection/"
+          href="https://nolemons.help/buyer-protection"
           className="mb-7 inline-flex items-center justify-between rounded-full bg-gray-100 px-1 py-1 pr-4 text-sm text-gray-700 hover:bg-gray-200"
           role="alert"
         >
