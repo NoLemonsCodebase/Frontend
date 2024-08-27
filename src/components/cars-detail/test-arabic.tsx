@@ -1,7 +1,6 @@
-import RichText from "@/components/RichText";
-import React from "react";
+import RichText from "../RichText";
 
-const textHtml = `<p class=“”p1"” dir=“”rtl”“><strong>2012 Audi R8 V10</strong></p>
+const textHtmlArabic = `<p class=“”p1"” dir=“”rtl”“><strong>2012 Audi R8 V10</strong></p>
 <p class=“”p2"” dir=“”rtl”“>المكان: دبي، الإمارات</p>
 <p class=“”p2"” dir=“”rtl”“>رقم الشاصي: WUAANB427CN000620</p>
 <p class=“”p2"” dir=“”rtl”“>المحرك/الماكينة: 5.2L, V10</p>
@@ -82,10 +81,6 @@ const textHtml = `<p class=“”p1"” dir=“”rtl”“><strong>2012 Audi R8
 <p class=“”p2"” dir=“”rtl”“><strong>حق الفحص قبل الشراء</strong></p>
 <p class=“”p2"” dir=“”rtl”“>يحق للمشترين المهتمين والمشاركين في المزاد فحص السيارة في أي كراج أو وكالة قبل شرائها.</p>
 <p class=“”p5"” dir=“”rtl”“>يُرجى مراجعة الصور لمعرفة جميع التفاصيل.</p>`;
-export default function page() {
-  return (
-    <div className="p-10 max-w-5xl m-auto">
-      <RichText dir="rtl" content={textHtml} />
-    </div>
-  );
+export default function TestArabic() {
+  return <RichText className=" md:pr-10" dir="rtl" content={textHtmlArabic} />;
 }

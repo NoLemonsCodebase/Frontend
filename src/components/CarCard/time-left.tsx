@@ -9,7 +9,7 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
   const t = useTranslations("default");
 
   const [secondsLeft, setSecondsLeft] = useState<number>(0);
-
+  // console.log(timeEnding);
   useEffect(() => {
     const endDateUTC = timeEnding
       ? new Date(timeEnding).getTime()
@@ -56,5 +56,5 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
     timeLeftRender = `${days} ${t("car_page.days")} ${hourPart}`;
   }
 
-  return <div>{timeLeftRender}</div>;
+  return <div className="  min-w-[130px]">{timeLeftRender}</div>;
 }

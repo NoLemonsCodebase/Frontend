@@ -20,7 +20,7 @@ export default function MobileNavbar() {
   return (
     <div>
       <button
-        className="p-3 pr-0"
+        className="p-3.5 pr-0"
         onClick={() => setIsOpen(!isOpen)}
         id="options-menu"
       >
