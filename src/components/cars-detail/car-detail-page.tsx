@@ -24,10 +24,7 @@ interface ICarPageProps {
   utms: any;
 }
 
-export default function CarDetailPage({
-  carDetail,
-  utms,
-}: ICarPageProps): JSX.Element {
+export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   const [auctionEnded, setAuctionEnded] = useState<boolean>(false);
   const [endDatetime, setEndDatetime] = useState<Date | null>(null);
 
@@ -66,7 +63,7 @@ export default function CarDetailPage({
 
   return (
     <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 car-description">
-      <div className="flex sm:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-14 bg-white border-b">
+      <div className="flex lg:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-14 bg-white border-b">
         {carDetail.status == "for_sale" ? (
           <a
             href={whatsAppLink}
@@ -104,8 +101,8 @@ export default function CarDetailPage({
             previewImages={carDetail.car_image.map((car: any) => car.image)}
           />
         ))}
-      <div className="flex mt-4">
-        <div className="flex gap-x-4 flex-wrap">
+      <div className="flex mt-4 gap-2">
+        <div className="flex gap-4">
           <h1 className="text-xl font-bold">
             {carDetail.year} {carDetail.title}
           </h1>
@@ -113,7 +110,7 @@ export default function CarDetailPage({
             <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
               <FaCheck className=" mr-2 text-[10px] text-green-600" />
               {t("verified")}
-              <span className="hidden sm:block ml-0.5">{t("by_nolemons")}</span>
+              <span className="hidden xl:block ml-0.5">{t("by_nolemons")}</span>
             </span>
           </div>
         </div>
@@ -121,7 +118,7 @@ export default function CarDetailPage({
           <a
             href={whatsAppLink}
             target="_blank"
-            className="px-2 h-12 ml-auto hidden basis-96 bg-green-400 rounded font-semibold sm:flex items-center justify-center"
+            className="px-2 h-12 ml-auto hidden basis-96 bg-green-400 rounded font-semibold lg:flex items-center justify-center"
           >
             <FaWhatsapp className=" text-xl mr-2" />
             Make An Offer
@@ -142,7 +139,7 @@ export default function CarDetailPage({
       ) : null}
 
       {carDetail.status != "for_sale" ? (
-        <div className="hidden sm:flex mt-4 space-x-4">
+        <div className="hidden lg:flex mt-4 space-x-4">
           <AutionStatusBar carDetail={carDetail} />
           <button
             className="px-2 h-12 bg-green-400 rounded w-32 font-semibold flex items-center justify-center"
