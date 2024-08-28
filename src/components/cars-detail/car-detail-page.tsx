@@ -63,7 +63,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
 
   return (
     <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 car-description">
-      <div className="flex lg:hidden py-2 -mt-3 mb-3 -mx-2 px-2 z-10 space-x-4 sticky top-14 bg-white border-b">
+      <div className="flex lg:hidden bg-white py-2 -mt-3 mb-3 z-10 space-x-2 sticky top-14  border-b">
         {carDetail.status == "for_sale" ? (
           <a
             href={whatsAppLink}
@@ -77,7 +77,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           <Fragment>
             <AutionStatusBar carDetail={carDetail} />
             <button
-              className="px-2 h-12 bg-green-400 rounded w-32 font-semibold flex items-center justify-center"
+              className="px-2 h-12 bg-green-400 rounded flex-[20%] font-semibold flex items-center justify-center"
               onClick={scrollToTarget}
             >
               {carDetail.status == "live" ? (
@@ -106,7 +106,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           <h1 className="text-xl font-bold">
             {carDetail.year} {carDetail.title}
           </h1>
-          <div className="flex">
+          <div className="flex items-start">
             <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
               <FaCheck className=" mr-2 text-[10px] text-green-600" />
               {t("verified")}
