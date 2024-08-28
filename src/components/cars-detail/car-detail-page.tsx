@@ -101,12 +101,12 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             previewImages={carDetail.car_image.map((car: any) => car.image)}
           />
         ))}
-      <div className="flex mt-4 gap-2">
+      <div className="flex items-center mt-4 gap-2">
         <div className="flex gap-4">
           <h1 className="text-xl font-bold">
             {carDetail.year} {carDetail.title}
           </h1>
-          <div className="flex items-start ">
+          <div className="flex">
             <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
               <FaCheck className=" mr-2 text-[10px] text-green-600" />
               {t("verified")}

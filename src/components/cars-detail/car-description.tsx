@@ -4,8 +4,6 @@ import RichText from "../RichText";
 import { IoLanguage } from "react-icons/io5";
 import TestArabic from "./test-arabic";
 
-
-
 export default function CarDescription({ carDetail }: { carDetail: ICar }) {
   const [lan, setLan] = useState<string>("en");
 
@@ -34,7 +32,7 @@ export default function CarDescription({ carDetail }: { carDetail: ICar }) {
             English
           </button>
           <span
-            className={`left-0 -z-10 transition-transform duration-300 bg-slate-700 w-32 h-full absolute rounded-full ${
+            className={`left-0 -z-10 transition-transform duration-300 bg-black bg-opacity-80 w-32 h-full absolute rounded-full ${
               lan == "ar" ? "translate-x-0" : "translate-x-[82px]"
             }`}
           ></span>
