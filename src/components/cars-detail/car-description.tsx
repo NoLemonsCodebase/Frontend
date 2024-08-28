@@ -3,6 +3,9 @@ import React, { Fragment, useState } from "react";
 import RichText from "../RichText";
 import { IoLanguage } from "react-icons/io5";
 import TestArabic from "./test-arabic";
+
+
+
 export default function CarDescription({ carDetail }: { carDetail: ICar }) {
   const [lan, setLan] = useState<string>("en");
 

@@ -11,8 +11,7 @@ interface IAutionStatusBarProps {
 export default function AutionStatusBar({
   carDetail,
 }: IAutionStatusBarProps): JSX.Element {
-
-  // for translation 
+  // for translation
   const t = useTranslations("default");
 
   // info we need from carDetail
