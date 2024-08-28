@@ -5,6 +5,7 @@
 import Image from "next/image";
 import React from "react";
 import Fancybox from "./ImageCarousel/Fancybox";
+import { cn } from "@/lib/utils";
 
 const CarImagesSection: React.FC<{
   images: string[];
@@ -33,6 +34,7 @@ const CarImagesSection: React.FC<{
             width={1100}
             height={720}
             alt="card image"
+            priority
           />
         </a>
       )}
@@ -46,23 +48,15 @@ const CarImagesSection: React.FC<{
             className="cursor-pointer"
           >
             <div
-              className=" w-full h-20 lg:h-32 relative border-2 border-gray-50"
-              // style={{
-              //   backgroundImage: `url(${image})`,
-              //   paddingBottom: "65%",
-              // }}
-              // className={cn(
-              //   "relative h-0 w-40 sm:w-full border-2 border-gray-50",
-              //   "bg-center bg-no-repeat bg-cover"
-              // )}
+              style={{
+                backgroundImage: `url(${image})`,
+                paddingBottom: "65%",
+              }}
+              className={cn(
+                "relative h-0 w-40 sm:w-full border-2 border-gray-50",
+                "bg-center bg-no-repeat bg-cover"
+              )}
             >
-              <Image
-                className=" absolute w-full h-full object-cover bg-center"
-                src={image}
-                width={1100}
-                height={720}
-                alt="card image"
-              />
               {idx == 7 && (
                 <div className="absolute w-full h-full flex items-center justify-center text-white bg-black font-semibold text-[8px] sm:text-xs lg:text-base text-center bg-opacity-60">
                   All photos ({images.length})
