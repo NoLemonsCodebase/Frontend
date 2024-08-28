@@ -220,7 +220,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
               </td>
             </tr>
           ) : null}
-          <tr>
+          {/* <tr>
             <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
               <Link
                 className="flex space-x-1"
@@ -242,7 +242,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                 Service fee ({carDetail.buyers_fee}) on final sale price
               </Tooltip>
             </td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
     </div>

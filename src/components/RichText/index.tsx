@@ -34,7 +34,7 @@ const RichText: FunctionComponent<IRichTextProps> = ({
       dir={dir}
       className={cn("no-tailwindcss-base", className)}
       dangerouslySetInnerHTML={{
-        __html: content,
+        __html: contentRender,
       }}
     />
   );

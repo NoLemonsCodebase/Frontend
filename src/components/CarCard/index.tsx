@@ -2,11 +2,15 @@ import { ICar } from "@/lib/types";
 import cn from "classnames";
 import { MapPinIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
 import numeral from "numeral";
 import * as React from "react";
 import TimeLeft from "./time-left";
-import Image from "next/image";
+
+// icons
+import { FaWhatsapp } from "react-icons/fa";
+import { MdOutlineAccessTime } from "react-icons/md";
 
 interface ICarCardProps {
   carDetails: ICar;
@@ -64,7 +68,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
             ).format("0,0")}`}
           </h4>
         )}
-        {(carDetails.status == "for_sale" || carDetails.status == "sold") && (
+        {carDetails.status == "sold" && (
           <h4 className="font-semibold text-base mt-auto">
             {`${carDetails.currency} ${numeral(carDetails.sale_price).format(
               "0,0"
@@ -84,39 +88,10 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
         )}
       >
         {carDetails.status == "created" && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="ml-2 icon icon-tabler icon-tabler-brand-whatsapp"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
-          </svg>
+          <FaWhatsapp className=" ml-2 text-xl" />
         )}
         {carDetails.status == "live" && (
-          <svg
-            className=" h-4 w-4 mr-1 inline-block"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <polyline points="12 6 12 12 16 14" />
-          </svg>
+          <MdOutlineAccessTime className=" mr-1 text-xl" />
         )}
         <span>
           {carDetails.status === "sold" ? (
