@@ -77,15 +77,6 @@ function SwitherButton({ switchArabic, switchEnglish, lan }: any) {
   return (
     <div className=" mt-10 relative flex items-center border w-[212px] p-1 rounded-full mb-8">
       <button
-        onClick={switchArabic}
-        className={`basis-24 transition-colors duration-300 ${
-          lan == "ar" ? "text-white" : "text-black"
-        }`}
-      >
-        العربية
-      </button>
-      <IoLanguage className="basis-5 text-white" />
-      <button
         onClick={switchEnglish}
         className={`basis-24 transition-colors duration-300 ${
           lan == "en" ? "text-white" : "text-black"
@@ -93,9 +84,19 @@ function SwitherButton({ switchArabic, switchEnglish, lan }: any) {
       >
         English
       </button>
+      <IoLanguage className="basis-5 text-white" />
+      <button
+        onClick={switchArabic}
+        className={`basis-24 transition-colors duration-300 ${
+          lan == "ar" ? "text-white" : "text-black"
+        }`}
+      >
+        العربية
+      </button>
+
       <span
         className={`left-0 -z-10 transition-transform duration-300 bg-black bg-opacity-80 w-32 h-full absolute rounded-full ${
-          lan == "ar" ? "translate-x-0" : "translate-x-[82px]"
+          lan == "en" ? "translate-x-0" : "translate-x-[82px]"
         }`}
       ></span>
     </div>

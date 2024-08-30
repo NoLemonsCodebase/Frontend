@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import { Fragment, useState } from "react";
 import { CiBadgeDollar } from "react-icons/ci";
 import { FaHandHoldingUsd } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { IoCloseOutline } from "react-icons/io5";
 import { MdOutlineQuestionMark } from "react-icons/md";
 import { IoIosArrowRoundBack } from "react-icons/io";
@@ -75,7 +76,7 @@ export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
                   target="_blank"
                   className=" shadow border flex items-center gap-3 px-4 py-3 rounded-xl"
                 >
-                  <FaHandHoldingUsd className=" text-xl" />
+                  <CiBadgeDollar className=" text-xl" />
                   <span>Make an offer</span>
                 </a>
                 <a
@@ -90,7 +91,7 @@ export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
                   target="_blank"
                   className="shadow flex items-center gap-3 border px-4 py-3 rounded-xl"
                 >
-                  <CiBadgeDollar className=" text-xl" />
+                  <FaEye className=" text-xl" />
                   <span>Request a viewing</span>
                 </a>
               </div>

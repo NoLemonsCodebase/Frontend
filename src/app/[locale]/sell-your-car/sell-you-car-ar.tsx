@@ -77,7 +77,9 @@ export default function SellYouCarAr() {
         target="_blank"
         href="https://nw60ssq5era.typeform.com/to/CN1PoETZ/"
       >
-        <Button className="w-full md:text-xl md:py-6 mt-1">بيع سيارتي</Button>
+        <Button className="w-full text-xl md:text-2xl md:py-6 mt-1">
+          بيع سيارتي
+        </Button>
       </Link>
     </div>
   );

@@ -61,7 +61,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   }, []);
 
   return (
-    <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 overflow-hidden">
+    <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 overflow-clip">
       <div className="flex lg:hidden bg-white py-2 -mt-3 mb-3 z-10 space-x-2 sticky top-14  border-b">
         {carDetail.status != "for_sale" ? (
           <Fragment>
