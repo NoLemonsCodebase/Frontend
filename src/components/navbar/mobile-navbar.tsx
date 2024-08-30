@@ -54,7 +54,12 @@ export default function MobileNavbar() {
               }`}
             >
               {links.map(({ name, link }) => (
-                <LinkItem key={name} name={name} link={link} />
+                <LinkItem
+                  closeNavHandler={() => setIsOpen(false)}
+                  key={name}
+                  name={name}
+                  link={link}
+                />
               ))}
             </ul>
           </li>
@@ -80,11 +85,12 @@ function Btn({ rotateIcon, title, onClickHandler }: any) {
   );
 }
 
-function LinkItem({ name, link }: any) {
+function LinkItem({ name, link, closeNavHandler }: any) {
   if (name == "Sell Your Car")
     return (
       <li>
         <Link
+          onClick={closeNavHandler}
           href={link}
           className="hover:bg-sky-50  p-3 pl-4 flex items-center gap-1 text-sm"
         >

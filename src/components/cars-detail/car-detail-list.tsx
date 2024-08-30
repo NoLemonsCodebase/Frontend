@@ -164,7 +164,6 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
       <table className="min-w-full divide-y divide-gray-200">
         <tbody className="divide-y divide-gray-200">
           {/* ====================== values fiels ========================= */}
-
           {sections.map(({ title, value }, index) =>
             value ? (
               <tr key={index}>

@@ -17,17 +17,10 @@ const CarImagesSection: React.FC<{
     <Fancybox className="w-full flex space-x-2">
       {images.length > 0 && (
         <a
-          className="w-[70%]  cursor-pointer relative"
+          className=" basis-[70%]  cursor-pointer relative"
           data-fancybox="gallery"
           href={images[0]}
         >
-          {/* <div
-            style={{
-              backgroundImage: `url(${images[0]})`,
-              paddingBottom: "60%",
-            }}
-            className={cn("h-0 w-full", "bg-center bg-no-repeat bg-cover")}
-          /> */}
           <Image
             className=" absolute left-0 top-0 w-full h-full object-cover bg-center"
             src={images[0]}
@@ -39,7 +32,7 @@ const CarImagesSection: React.FC<{
         </a>
       )}
 
-      <div className="grid grid-cols-2 gap-1.5 justify-center flex-grow">
+      <div className="grid grid-cols-2 gap-1.5 justify-center flex-[30%]">
         {previewImages.map((image, idx) => (
           <a
             key={idx}
@@ -74,18 +67,6 @@ const CarImagesSection: React.FC<{
           />
         ))}
       </div>
-      {/* <ButtonBack
-          className="fixed top-1/2 bg-white p-1 rounded-full left-0 transform -translate-y-1/2 bg-opacity-60"
-          onClick={handleLeftClick}
-        >
-          <HeroIcon>outline/chevron-left</HeroIcon>
-        </ButtonBack>
-        <ButtonNext
-          className="fixed top-1/2 bg-white p-1 rounded-full right-0 transform -translate-y-1/2  bg-opacity-60"
-          onClick={handleRightClick}
-        >
-          <HeroIcon>outline/chevron-right</HeroIcon>
-        </ButtonNext> */}
     </Fancybox>
   );
 };
