@@ -11,7 +11,7 @@ const HowItWorksPage: React.FunctionComponent<IHowItWorksPageProps> = (
   const section1ItemsCount = Object.keys(t.raw("section_1")).length / 2;
   const section2ItemsCount = Object.keys(t.raw("section_2")).length / 2;
   return (
-    <main className="p-4 h-screen w-full overflow-y-scroll pt-4 pb-8">
+    <main className="p-4 w-full pt-4 pb-8">
       <div className="flex flex-col mx-auto items-center">
         <div className="text-4xl font-bold my-4">{t("i_want_to_buy")}</div>
         <div className="bg-white w-full sm:w-1/2 lg:w-96 border border-gray-200 divide-y divide-gray-200">

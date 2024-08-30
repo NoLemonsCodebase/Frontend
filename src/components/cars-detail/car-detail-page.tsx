@@ -13,7 +13,7 @@ import { Fragment, useEffect, useState } from "react";
 import WhatsappIcon from "../icons/whatsapp";
 import CarDetailList from "./car-detail-list";
 
-import { FaCheck, FaWhatsapp } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
 
@@ -61,7 +61,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   }, []);
 
   return (
-    <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 ">
+    <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 overflow-hidden">
       <div className="flex lg:hidden bg-white py-2 -mt-3 mb-3 z-10 space-x-2 sticky top-14  border-b">
         {carDetail.status != "for_sale" ? (
           <Fragment>
@@ -105,14 +105,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           </div>
         </div>
         {carDetail.status == "for_sale" ? (
-          <a
-            href={whatsAppLink}
-            target="_blank"
-            className="px-2 h-12 ml-auto hidden basis-96 bg-green-400 rounded font-semibold lg:flex items-center justify-center"
-          >
-            <FaWhatsapp className=" text-xl mr-2" />
-            Make An Offer
-          </a>
+          <InterestedButton carDetail={carDetail} />
         ) : null}
       </div>
       {auctionEnded || carDetail.status == "live" ? (
@@ -181,14 +174,11 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             ))}
           </div>
         </div>
-        <section className="hidden lg:block sticky top-20 self-start w-96">
+        <section className="hidden lg:block sticky top-20 self-start w-[30%]">
           <CarDetailList isCard carDetail={carDetail} />
         </section>
       </div>
       <BidSection carDetail={carDetail} utms={utms} />
-      {carDetail.status == "for_sale" && (
-        <InterestedButton carDetail={carDetail} />
-      )}
     </section>
   );
 }

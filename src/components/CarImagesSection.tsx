@@ -17,7 +17,7 @@ const CarImagesSection: React.FC<{
     <Fancybox className="w-full flex space-x-2">
       {images.length > 0 && (
         <a
-          className="w-[70%]  cursor-pointer relative"
+          className=" basis-[70%]  cursor-pointer relative"
           data-fancybox="gallery"
           href={images[0]}
         >
@@ -39,7 +39,7 @@ const CarImagesSection: React.FC<{
         </a>
       )}
 
-      <div className="grid grid-cols-2 gap-1.5 justify-center flex-grow">
+      <div className="grid grid-cols-2 gap-1.5 justify-center flex-[30%]">
         {previewImages.map((image, idx) => (
           <a
             key={idx}

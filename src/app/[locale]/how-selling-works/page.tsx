@@ -9,7 +9,7 @@ const HowSellingWorksPage: React.FunctionComponent<
   const t = useTranslations("how_selling_works");
 
   return (
-    <main className="p-4 h-screen w-full overflow-y-scroll pt-4 pb-8">
+    <main className="p-4 w-full pt-4 pb-8">
       <div className="flex flex-col mx-auto max-w-xl text-lg font-normal">
         <div className="text-4xl font-bold my-4 text-center">
           {t("how_selling_works")}
