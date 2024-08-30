@@ -9,14 +9,13 @@ import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useTranslations } from "next-intl";
 
-import RichText from "../RichText";
+import { Fragment, useEffect, useState } from "react";
 import WhatsappIcon from "../icons/whatsapp";
 import CarDetailList from "./car-detail-list";
-import { Fragment, useEffect, useState } from "react";
 
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaWhatsapp } from "react-icons/fa";
 import CarDescription from "./car-description";
-import { FaWhatsapp } from "react-icons/fa";
+import InterestedButton from "./interested-button";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -62,18 +61,9 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   }, []);
 
   return (
-    <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 car-description">
+    <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 ">
       <div className="flex lg:hidden bg-white py-2 -mt-3 mb-3 z-10 space-x-2 sticky top-14  border-b">
-        {carDetail.status == "for_sale" ? (
-          <a
-            href={whatsAppLink}
-            target="_blank"
-            className="px-2 h-12 w-full bg-green-400 rounded font-semibold flex items-center justify-center"
-          >
-            <FaWhatsapp className=" text-xl mr-2" />
-            Make An Offer
-          </a>
-        ) : (
+        {carDetail.status != "for_sale" ? (
           <Fragment>
             <AutionStatusBar carDetail={carDetail} />
             <button
@@ -87,7 +77,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
               )}
             </button>
           </Fragment>
-        )}
+        ) : null}
       </div>
       {width &&
         (width > 640 ? (
@@ -196,6 +186,21 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
         </section>
       </div>
       <BidSection carDetail={carDetail} utms={utms} />
+      {carDetail.status == "for_sale" && (
+        <InterestedButton carDetail={carDetail} />
+      )}
     </section>
   );
+}
+
+{
+  /* <a
+href={whatsAppLink}
+target="_blank"
+className="px-2 h-12 w-full bg-green-400 rounded font-semibold flex items-center justify-center"
+>
+<FaWhatsapp className=" text-xl mr-2" />
+Make An Offer
+</a>
+) */
 }
