@@ -64,7 +64,7 @@ export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
                   className=" flex items-center gap-3 border px-4 py-3 rounded-xl"
                 >
                   <MdOutlineQuestionMark className=" text-xl" />
-                  <span className=" ">Ask a question</span>
+                  <span>Ask a question</span>
                 </a>
                 <a
                   href={`https://api.whatsapp.com/send/?phone=971566633668&text=${request_a_viewing_text}`}
@@ -72,7 +72,7 @@ export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
                   className=" flex items-center gap-3 border px-4 py-3 rounded-xl"
                 >
                   <CiBadgeDollar className=" text-xl" />
-                  <span className=" ">Request a viewing</span>
+                  <span>Request a viewing</span>
                 </a>
               </div>
             </XYAnim>
