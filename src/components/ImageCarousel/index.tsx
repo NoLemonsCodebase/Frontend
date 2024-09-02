@@ -1,6 +1,6 @@
 import * as React from "react";
 import Fancybox from "./Fancybox";
-import Carousel from "./Carousel";
+// import Carousel from "./Carousel";
 import Image from "next/image";
 import { Carousel as ImageSlider } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -22,9 +22,14 @@ const ImageCarousel: React.FunctionComponent<IImageCarouselProps> = ({
   return (
     <Fancybox
       // Sample options
+
       options={{
-        Carousel: {
-          infinite: false,
+        Toolbar: {
+          display: {
+            left: ["infobar"],
+            middle: ["facebook", "b", "d", "c"],
+            right: ["close"],
+          },
         },
       }}
     >

@@ -17,7 +17,7 @@ const CarImagesSection: React.FC<{
     <Fancybox className="w-full flex space-x-2">
       {images.length > 0 && (
         <a
-          className=" basis-[70%]  cursor-pointer relative"
+          className=" basis-[70%] cursor-pointer relative"
           data-fancybox="gallery"
           href={images[0]}
         >
