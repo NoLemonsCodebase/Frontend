@@ -59,7 +59,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
 
   // extract car images
   const { car_image } = carDetail;
-  console.log(auctionEnded, carDetail.auction, carDetail.status);
+
   useEffect(() => {
     TrackPageView();
   }, []);
@@ -90,11 +90,11 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             previewImages={carDetail.car_image.map((car: any) => car.image)}
           />
         ) : (
-          <ImageCarousel
-            images={carDetail.car_image.map((car: any) => car.image)}
-            previewImages={carDetail.car_image.map((car: any) => car.image)}
-          />
-          // <MobileGallery carImages={car_image} />
+          // <ImageCarousel
+          //   images={carDetail.car_image.map((car: any) => car.image)}
+          //   previewImages={carDetail.car_image.map((car: any) => car.image)}
+          // />
+          <MobileGallery carImages={car_image} />
         ))}
       <div className="flex items-center mt-4 gap-2">
         <div className="flex gap-4">
