@@ -44,13 +44,13 @@ export default function AutionStatusBar({
         </li>
         {(status == "for_sale" || status == "live") && (
           <li className="flex items-center  text-white">
-            <ArrowUpIcon className="w-5 h-5 hidden sm:block" />
+            <ArrowUpIcon className="w-5 h-5 mr-1 hidden sm:block" />
             <p className="opacity-7 hidden sm:block">
               {status == "for_sale"
                 ? t("car_page.starting_from")
                 : t("car_page.high_bid")}
             </p>
-            <p className="font-semibold whitespace-nowrap">
+            <p className="font-semibold ml-2 whitespace-nowrap">
               {currency}{" "}
               {numeral(
                 status == "for_sale"
@@ -60,13 +60,15 @@ export default function AutionStatusBar({
             </p>
           </li>
         )}
-        {currentAuction && status == "live" && (
-          <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
-            <FrameIcon className="w-5 h-5" />
-            <p className="opacity-70">{t("car_page.bids")}</p>
-            <p className="font-semibold">{currentAuction.number_of_bids}</p>
-          </li>
-        )}
+        {currentAuction &&
+          status == "live" &&
+          currentAuction.number_of_bids > 1 && (
+            <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
+              <FrameIcon className="w-5 h-5" />
+              <p className="opacity-70">{t("car_page.bids")}</p>
+              <p className="font-semibold">{currentAuction.number_of_bids}</p>
+            </li>
+          )}
       </ul>
     </div>
   );

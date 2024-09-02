@@ -16,7 +16,7 @@ import CarDetailList from "./car-detail-list";
 import { FaCheck } from "react-icons/fa";
 import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
-import MobileGallery from "../mobile-gallery";
+// import MobileGallery from "../mobile-gallery";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -90,11 +90,11 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             previewImages={carDetail.car_image.map((car: any) => car.image)}
           />
         ) : (
-          // <ImageCarousel
-          //   images={carDetail.car_image.map((car: any) => car.image)}
-          //   previewImages={carDetail.car_image.map((car: any) => car.image)}
-          // />
-          <MobileGallery carImages={car_image} />
+          <ImageCarousel
+            images={carDetail.car_image.map((car: any) => car.image)}
+            previewImages={carDetail.car_image.map((car: any) => car.image)}
+          />
+          // <MobileGallery carImages={car_image} />
         ))}
       <div className="flex items-center mt-4 gap-2">
         <div className="flex gap-4">
