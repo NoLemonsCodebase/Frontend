@@ -72,7 +72,7 @@ export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
 
               <div className=" p-4 flex flex-col gap-4">
                 <a
-                  href={`https://api.whatsapp.com/send/?phone=971566633668&text=${make_an_offer_text}`}
+                  href={`https://api.whatsapp.com/send/?phone=971564404640&text=${make_an_offer_text}`}
                   target="_blank"
                   className=" shadow border flex items-center gap-3 px-4 py-3 rounded-xl"
                 >
