@@ -16,6 +16,7 @@ import CarDetailList from "./car-detail-list";
 import { FaCheck } from "react-icons/fa";
 import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
+import MobileGallery from "../mobile-gallery";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -34,7 +35,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
 
   useEffect(() => {
     if (lastAuction) {
-      setAuctionEnded(new Date(lastAuction.time_ending) < new Date());
+      setAuctionEnded(new Date(lastAuction.time_ending) >= new Date());
       setEndDatetime(new Date(lastAuction.time_ending));
     }
   }, []);
@@ -56,6 +57,9 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
     targetSection?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // extract car images
+  const { car_image } = carDetail;
+  console.log(auctionEnded, carDetail.auction, carDetail.status);
   useEffect(() => {
     TrackPageView();
   }, []);
@@ -90,6 +94,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             images={carDetail.car_image.map((car: any) => car.image)}
             previewImages={carDetail.car_image.map((car: any) => car.image)}
           />
+          // <MobileGallery carImages={car_image} />
         ))}
       <div className="flex items-center mt-4 gap-2">
         <div className="flex gap-4">
@@ -108,7 +113,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           <InterestedButton carDetail={carDetail} />
         ) : null}
       </div>
-      {auctionEnded || carDetail.status == "live" ? (
+      {auctionEnded && carDetail.status == "live" ? (
         <p className="text-sm text-gray-500 font-semibold">
           {`${t("ending")} ${endDatetime?.toLocaleString("en-US", {
             month: "short",
