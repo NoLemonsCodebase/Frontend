@@ -16,7 +16,7 @@ import CarDetailList from "./car-detail-list";
 import { FaCheck } from "react-icons/fa";
 import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
-import MobileGallery from "../mobile-gallery";
+// import MobileGallery from "../mobile-gallery";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -59,7 +59,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
 
   // extract car images
   const { car_image } = carDetail;
-  console.log(auctionEnded, carDetail.auction, carDetail.status);
+
   useEffect(() => {
     TrackPageView();
   }, []);

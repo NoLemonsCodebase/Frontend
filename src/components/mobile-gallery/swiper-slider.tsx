@@ -18,23 +18,23 @@ export default function SwiperSlider({ allImages }: { allImages: string[] }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   return (
-    <div className=" fixed bg-black inset-0 z-20">
+    <div className=" grid place-content-center fixed bg-black inset-0 z-20">
       <Swiper
         spaceBetween={10}
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
+        className="main-swiper"
       >
         {allImages.map((img, idx) => (
           <SwiperSlide key={idx}>
             <Image
-              className=" absolute left-0 top-0 w-full h-full object-cover"
               width={1170}
               height={600}
-              alt="imag"
+              alt={`car-image${idx}`}
               src={img}
-              blurDataURL="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP09Q35DwADzAHvIGCw/QAAAABJRU5ErkJggg=="
+              placeholder="blur"
             />
           </SwiperSlide>
         ))}
@@ -42,20 +42,21 @@ export default function SwiperSlider({ allImages }: { allImages: string[] }) {
       <Swiper
         onSwiper={setThumbsSwiper}
         spaceBetween={10}
-        slidesPerView={4}
+        slidesPerView="auto"
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
+        className="small-swiper"
       >
         {allImages.map((img, idx) => (
           <SwiperSlide key={idx}>
             <Image
               width={600}
               height={300}
-              alt="imag"
+              alt={`car-image${idx}`}
               src={img}
-              blurDataURL="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP09Q35DwADzAHvIGCw/QAAAABJRU5ErkJggg=="
+              placeholder="blur"
             />
           </SwiperSlide>
         ))}
