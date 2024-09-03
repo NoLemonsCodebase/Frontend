@@ -1,3 +1,7 @@
+type ArabicContent = {
+  content: string;
+};
+
 export type ICar = {
   id: number;
   car_text_section: Array<{
@@ -11,6 +15,7 @@ export type ICar = {
   auction?: IAuction;
   title: string;
   short_description: string;
+  car_text_section_arabic: ArabicContent;
   brand: string;
   model: string;
   mileage: number;
@@ -35,7 +40,13 @@ export type ICar = {
   description: string;
   sale_price: number;
   buyers_fee: number;
-  status: "created" | "live" | "for_sale" | "sold" | "unverified" | "deactivated";
+  status:
+    | "created"
+    | "live"
+    | "for_sale"
+    | "sold"
+    | "unverified"
+    | "deactivated";
   url_route: string | null;
   seller: number;
 };

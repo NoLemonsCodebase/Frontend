@@ -10,19 +10,12 @@ export default function CarDescription({ carDetail }: { carDetail: ICar }) {
   const switchArabic = () => setLan("ar");
   const switchEnglish = () => setLan("en");
 
+  const { car_text_section_arabic } = carDetail;
+
   return (
-    <div>
-      {carDetail.id == 109 ? (
+    <div className="md:pr-10">
+      {car_text_section_arabic ? (
         <div className=" relative flex items-center border w-[212px] p-1 rounded-full mb-8">
-          <button
-            onClick={switchArabic}
-            className={`basis-24 transition-colors duration-300 ${
-              lan == "ar" ? "text-white" : "text-black"
-            }`}
-          >
-            العربية
-          </button>
-          <IoLanguage className="basis-5 text-white" />
           <button
             onClick={switchEnglish}
             className={`basis-24 transition-colors duration-300 ${
@@ -31,16 +24,25 @@ export default function CarDescription({ carDetail }: { carDetail: ICar }) {
           >
             English
           </button>
+          <IoLanguage className="basis-5 text-white" />
+          <button
+            onClick={switchArabic}
+            className={`basis-24 transition-colors duration-300 ${
+              lan == "ar" ? "text-white" : "text-black"
+            }`}
+          >
+            العربية
+          </button>
           <span
             className={`left-0 -z-10 transition-transform duration-300 bg-black bg-opacity-80 w-32 h-full absolute rounded-full ${
-              lan == "ar" ? "translate-x-0" : "translate-x-[82px]"
+              lan == "en" ? "translate-x-0" : "translate-x-[82px]"
             }`}
           ></span>
         </div>
       ) : null}
 
       {lan == "ar" ? (
-        <TestArabic />
+        <RichText content={car_text_section_arabic?.content} />
       ) : (
         <Fragment>
           <RichText className="mt-2" content={carDetail.description} />

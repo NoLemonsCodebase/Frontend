@@ -10,10 +10,10 @@ import cn from "classnames";
 import { useTranslations } from "next-intl";
 
 import { Fragment, useEffect, useState } from "react";
-import WhatsappIcon from "../icons/whatsapp";
+
 import CarDetailList from "./car-detail-list";
 
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaWhatsapp } from "react-icons/fa";
 import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
 // import MobileGallery from "../mobile-gallery";
@@ -59,25 +59,25 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
 
   // extract car images
   const { car_image } = carDetail;
-
+  console.log(carDetail);
   useEffect(() => {
     TrackPageView();
   }, []);
 
   return (
     <section className=" container m-auto flex flex-col px-4 md:px-16 py-4 overflow-clip">
-      <div className="flex lg:hidden bg-white py-2 -mt-3 mb-3 z-10 space-x-2 sticky top-14  border-b">
+      <div className="flex lg:hidden flex-wrap bg-white py-2 -mt-3 mb-3 z-10 gap-1 sticky top-14  border-b">
         {carDetail.status != "for_sale" ? (
           <Fragment>
             <AutionStatusBar carDetail={carDetail} />
             <button
-              className="px-2 h-12 bg-green-400 rounded flex-[20%] font-semibold flex items-center justify-center"
+              className="p-2 bg-green-400 rounded font-semibold flex flex-grow items-center justify-center"
               onClick={scrollToTarget}
             >
               {carDetail.status == "live" ? (
                 t("bid")
               ) : (
-                <WhatsappIcon className="text-white" />
+                <FaWhatsapp className=" text-xl text-white" />
               )}
             </button>
           </Fragment>
@@ -130,13 +130,13 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
         <div className="hidden lg:flex mt-4 space-x-4">
           <AutionStatusBar carDetail={carDetail} />
           <button
-            className="px-2 h-12 bg-green-400 rounded w-32 font-semibold flex items-center justify-center"
+            className="p-2 bg-green-400 rounded basis-[30%]  font-semibold flex items-center justify-center"
             onClick={scrollToTarget}
           >
             {carDetail.status == "live" ? (
               t("bid")
             ) : (
-              <WhatsappIcon className="text-white" />
+              <FaWhatsapp className=" text-xl text-white" />
             )}
           </button>
         </div>
