@@ -38,7 +38,7 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
         modules={[FreeMode, Navigation, Thumbs, Pagination]}
         className="main-swiper"
       >
-        {allImages.map((img, idx) => (
+        {allImages.map((img: string, idx: number) => (
           <SwiperSlide key={idx}>
             <Image
               width={1170}
@@ -59,7 +59,7 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
         modules={[FreeMode, Navigation, Thumbs]}
         className="small-swiper"
       >
-        {allImages.map((img, idx) => (
+        {allImages.map((img: string, idx: number) => (
           <SwiperSlide key={idx}>
             <Image
               width={600}
