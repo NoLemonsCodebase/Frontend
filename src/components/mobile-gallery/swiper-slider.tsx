@@ -1,6 +1,6 @@
 "use client";
 
-import React, { SetStateAction, useRef, useState } from "react";
+import React, { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,21 +9,33 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import "swiper/css/pagination";
 
 // import required modules
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { FreeMode, Navigation, Thumbs, Pagination } from "swiper/modules";
 import Image from "next/image";
 
-export default function SwiperSlider({ allImages }: { allImages: string[] }) {
+import { IoClose } from "react-icons/io5";
+
+export default function SwiperSlider({ allImages, onCloseGallery }: any) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   return (
-    <div className=" grid place-content-center fixed bg-black inset-0 z-20">
+    <div className=" py-4 flex flex-col items-center justify-center md:justify-between fixed bg-black inset-0 z-20">
+      <button
+        onClick={onCloseGallery}
+        className=" text-4xl group w-14 h-14  bg-gray-600/30 rounded-sm  text-white absolute right-0 top-0"
+      >
+        <IoClose className=" m-auto group-hover:rotate-180 transition-transform duration-300" />
+      </button>
       <Swiper
         spaceBetween={10}
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
+        pagination={{
+          type: "fraction",
+        }}
+        modules={[FreeMode, Navigation, Thumbs, Pagination]}
         className="main-swiper"
       >
         {allImages.map((img, idx) => (
@@ -41,7 +53,6 @@ export default function SwiperSlider({ allImages }: { allImages: string[] }) {
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
-        spaceBetween={10}
         slidesPerView="auto"
         freeMode={true}
         watchSlidesProgress={true}

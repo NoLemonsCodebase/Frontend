@@ -16,7 +16,7 @@ import CarDetailList from "./car-detail-list";
 import { FaCheck, FaWhatsapp } from "react-icons/fa";
 import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
-// import MobileGallery from "../mobile-gallery";
+import MobileGallery from "../mobile-gallery";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -83,19 +83,20 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           </Fragment>
         ) : null}
       </div>
-      {width &&
+      {/* {width &&
         (width > 640 ? (
-          <CarImagesSection
-            images={carDetail.car_image.map((car: any) => car.image)}
-            previewImages={carDetail.car_image.map((car: any) => car.image)}
-          />
+          // <CarImagesSection
+          //   images={carDetail.car_image.map((car: any) => car.image)}
+          //   previewImages={carDetail.car_image.map((car: any) => car.image)}
+          // />
+          <MobileGallery carImages={car_image} />
         ) : (
-          <ImageCarousel
-            images={carDetail.car_image.map((car: any) => car.image)}
-            previewImages={carDetail.car_image.map((car: any) => car.image)}
-          />
-          // <MobileGallery carImages={car_image} />
-        ))}
+          // <ImageCarousel
+          //   images={carDetail.car_image.map((car: any) => car.image)}
+          //   previewImages={carDetail.car_image.map((car: any) => car.image)}
+          // />
+        ))} */}
+      <MobileGallery carImages={car_image} />
       <div className="flex items-center mt-4 gap-2">
         <div className="flex gap-4">
           <h1 className="text-xl font-bold">
@@ -186,16 +187,4 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
       <BidSection carDetail={carDetail} utms={utms} />
     </section>
   );
-}
-
-{
-  /* <a
-href={whatsAppLink}
-target="_blank"
-className="px-2 h-12 w-full bg-green-400 rounded font-semibold flex items-center justify-center"
->
-<FaWhatsapp className=" text-xl mr-2" />
-Make An Offer
-</a>
-) */
 }
