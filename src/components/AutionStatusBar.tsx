@@ -18,8 +18,8 @@ export default function AutionStatusBar({
   const { auction: currentAuction, status, sale_price, currency } = carDetail;
 
   return (
-    <div className="rounded bg-black bg-opacity-80 flex flex-grow items-center">
-      <ul className="flex items-center justify-between space-x-2 md:space-x-6 px-4 py-2">
+    <div className="rounded bg-black bg-opacity-80 flex-grow items-center">
+      <ul className="flex items-center justify-between md:justify-normal  px-4 py-3">
         <li className=" flex items-center text-white">
           <ClockIcon className="w-5 h-5 mr-1" />
           {(status == "created" || status == "unverified") && (
