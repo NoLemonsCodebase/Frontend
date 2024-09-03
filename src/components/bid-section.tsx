@@ -152,10 +152,10 @@ export function BidSection({
             <>
               <div className="space-y-3">
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                  Bid Now
+                  Make an Offer
                 </h2>
                 <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                  Enter your Whatsapp number to place a bid (offer)
+                  Enter your WhatsApp number to submit an offer
                 </p>
               </div>
               <div className="mx-auto w-full max-w-sm space-y-2">
@@ -185,7 +185,7 @@ export function BidSection({
                         <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
                       </svg>
                     )}
-                    Bid on WhatsApp{" "}
+                    Continue on WhatsApp{" "}
                   </Button>
                 </form>
               </div>
@@ -196,8 +196,7 @@ export function BidSection({
                 Thank you!
               </h2>
               <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                You will receive a message on WhatsApp to place your bid to this
-                number{" "}
+                You will now receive a message on WhatsApp to submit your offer at this number:{" "}
                 <span className="font-semibold text-black">+{phone}</span>
               </p>
             </>
