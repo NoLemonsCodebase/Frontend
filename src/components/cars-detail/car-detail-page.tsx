@@ -16,7 +16,7 @@ import CarDetailList from "./car-detail-list";
 import { FaCheck, FaWhatsapp } from "react-icons/fa";
 import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
-// import MobileGallery from "../mobile-gallery";
+import MobileGallery from "../mobile-gallery";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -32,7 +32,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   const lastAuction = carDetail.auction;
 
   const { width } = useWindowSize();
-
+  console.log(lastAuction);
   useEffect(() => {
     if (lastAuction) {
       setAuctionEnded(new Date(lastAuction.time_ending) >= new Date());
@@ -59,7 +59,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
 
   // extract car images
   const { car_image } = carDetail;
-  console.log(carDetail);
+
   useEffect(() => {
     TrackPageView();
   }, []);
@@ -94,8 +94,8 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             images={carDetail.car_image.map((car: any) => car.image)}
             previewImages={carDetail.car_image.map((car: any) => car.image)}
           />
-          // <MobileGallery carImages={car_image} />
         ))}
+      {/* <MobileGallery carImages={car_image} /> */}
       <div className="flex items-center mt-4 gap-2">
         <div className="flex gap-4">
           <h1 className="text-xl font-bold">
@@ -186,16 +186,4 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
       <BidSection carDetail={carDetail} utms={utms} />
     </section>
   );
-}
-
-{
-  /* <a
-href={whatsAppLink}
-target="_blank"
-className="px-2 h-12 w-full bg-green-400 rounded font-semibold flex items-center justify-center"
->
-<FaWhatsapp className=" text-xl mr-2" />
-Make An Offer
-</a>
-) */
 }
