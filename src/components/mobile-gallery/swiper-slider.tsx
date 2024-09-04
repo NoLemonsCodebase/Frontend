@@ -24,7 +24,7 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
     <div className=" py-4 flex flex-col items-center justify-center md:justify-between fixed bg-black inset-0 z-20">
       <button
         onClick={onCloseGallery}
-        className=" text-4xl group w-14 h-14  bg-gray-600/30 rounded-sm  text-white absolute right-0 top-0"
+        className=" text-2xl group w-14 h-14  bg-gray-600/30 rounded-sm  text-white absolute right-0 top-0"
       >
         <IoClose className=" m-auto group-hover:rotate-180 transition-transform duration-300" />
       </button>

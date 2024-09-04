@@ -78,6 +78,7 @@ button {
 .main-swiper .swiper-slide {
   border-radius: 15px;
   overflow: hidden;
+  user-select: none;
 }
 .main-swiper .swiper-button-next,
 .main-swiper .swiper-button-prev {
@@ -136,4 +137,5 @@ button {
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+  user-select: none;
 }
