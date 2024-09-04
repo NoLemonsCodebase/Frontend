@@ -12,7 +12,13 @@ import "swiper/css/thumbs";
 import "swiper/css/pagination";
 
 // import required modules
-import { FreeMode, Navigation, Thumbs, Pagination } from "swiper/modules";
+import {
+  FreeMode,
+  Navigation,
+  Thumbs,
+  Pagination,
+  EffectCreative,
+} from "swiper/modules";
 import Image from "next/image";
 
 import { IoClose } from "react-icons/io5";
@@ -47,7 +53,19 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
         pagination={{
           type: "fraction",
         }}
-        modules={[FreeMode, Navigation, Thumbs, Pagination]}
+        grabCursor={true}
+        effect={"creative"}
+        creativeEffect={{
+          prev: {
+            shadow: true,
+            translate: ["-120%", 0, -500],
+          },
+          next: {
+            shadow: true,
+            translate: ["120%", 0, -500],
+          },
+        }}
+        modules={[FreeMode, Navigation, Thumbs, Pagination, EffectCreative]}
         className="main-swiper"
       >
         {allImages.map((img: string, idx: number) => (
