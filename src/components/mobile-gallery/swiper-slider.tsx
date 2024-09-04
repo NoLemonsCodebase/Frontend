@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -20,8 +20,20 @@ import { IoClose } from "react-icons/io5";
 export default function SwiperSlider({ allImages, onCloseGallery }: any) {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
+  useEffect(() => {
+    const html = document.querySelector("html");
+    if (html) {
+      html.style.overflow = "hidden";
+    }
+    return () => {
+      if (html) {
+        html.style.overflow = "auto"; // Reset on unmount
+      }
+    };
+  }, []);
+
   return (
-    <div className=" py-4 flex flex-col items-center justify-center md:justify-between fixed bg-black inset-0 z-20">
+    <div className=" py-4 flex flex-col items-center justify-center md:justify-between fixed bg-black/90 inset-0 z-20">
       <button
         onClick={onCloseGallery}
         className=" text-2xl group w-14 h-14  bg-gray-600/30 rounded-sm  text-white absolute right-0 top-0"

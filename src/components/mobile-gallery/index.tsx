@@ -19,7 +19,7 @@ export default function MobileGallery({ carImages }: MobileGalleryProps) {
   );
 
   const preview_images = all_images.slice(0, 8);
-  console.log(preview_images);
+
   function openGalleryHandler() {
     setShowGallery(true);
   }
@@ -36,17 +36,23 @@ export default function MobileGallery({ carImages }: MobileGalleryProps) {
       >
         <Image src={all_images[0]} alt="main image" width={1110} height={740} />
       </div>
-      <div className="overflow-x-scroll basis-[30%]">
-        <div className=" flex gap-2 w-[200%] md:w-auto lg:flex-wrap">
+      <div className="overflow-x-scroll lg:overflow-auto basis-[30%]">
+        <div className=" grid grid-cols-8 lg:grid-cols-2 h-full gap-2 w-[300%] lg:w-auto ">
           {preview_images.map((img, idx) => (
             <div
               onClick={openGalleryHandler}
               key={idx}
-              className=" basis-[16%] lg:basis-[45%] rounded-md overflow-hidden relative cursor-pointer"
+              className="rounded-md overflow-hidden relative cursor-pointer"
             >
-              <Image src={img} alt="prev image" width={1110} height={740} />
+              <Image
+                className=" h-full object-cover"
+                src={img}
+                alt="prev image"
+                width={1110}
+                height={740}
+              />
               {idx == 7 && (
-                <div className="absolute w-full h-full top-0 left-0 flex items-center justify-center text-white bg-black font-semibold text-[8px] text-base text-center bg-opacity-60">
+                <div className="absolute inset-0 text-white bg-black font-semibold flex items-center justify-center text-[8px] lg:text-base bg-opacity-60">
                   View all photos ({all_images.length})
                 </div>
               )}

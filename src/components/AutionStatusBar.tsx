@@ -1,5 +1,5 @@
 import { ICar } from "@/lib/types";
-import { ArrowUpIcon, ClockIcon, FrameIcon } from "@radix-ui/react-icons";
+import { ArrowUpIcon, ClockIcon } from "@radix-ui/react-icons";
 import { useTranslations } from "next-intl";
 import numeral from "numeral";
 import TimeLeft from "./CarCard/time-left";
@@ -64,8 +64,7 @@ export default function AutionStatusBar({
           status == "live" &&
           currentAuction.number_of_bids > 1 && (
             <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
-              <FrameIcon className="w-5 h-5" />
-              <p className="opacity-70">{t("car_page.bids")}</p>
+              <p className="opacity-70 ml-2">{t("car_page.bids")}</p>
               <p className="font-semibold">{currentAuction.number_of_bids}</p>
             </li>
           )}

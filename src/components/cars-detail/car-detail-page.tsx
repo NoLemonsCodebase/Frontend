@@ -32,7 +32,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   const lastAuction = carDetail.auction;
 
   const { width } = useWindowSize();
-
+  console.log(lastAuction);
   useEffect(() => {
     if (lastAuction) {
       setAuctionEnded(new Date(lastAuction.time_ending) >= new Date());
@@ -59,7 +59,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
 
   // extract car images
   const { car_image } = carDetail;
-  console.log(carDetail);
+
   useEffect(() => {
     TrackPageView();
   }, []);
@@ -83,20 +83,19 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           </Fragment>
         ) : null}
       </div>
-      {/* {width &&
+      {width &&
         (width > 640 ? (
-          // <CarImagesSection
-          //   images={carDetail.car_image.map((car: any) => car.image)}
-          //   previewImages={carDetail.car_image.map((car: any) => car.image)}
-          // />
-          <MobileGallery carImages={car_image} />
+          <CarImagesSection
+            images={carDetail.car_image.map((car: any) => car.image)}
+            previewImages={carDetail.car_image.map((car: any) => car.image)}
+          />
         ) : (
-          // <ImageCarousel
-          //   images={carDetail.car_image.map((car: any) => car.image)}
-          //   previewImages={carDetail.car_image.map((car: any) => car.image)}
-          // />
-        ))} */}
-      <MobileGallery carImages={car_image} />
+          <ImageCarousel
+            images={carDetail.car_image.map((car: any) => car.image)}
+            previewImages={carDetail.car_image.map((car: any) => car.image)}
+          />
+        ))}
+      {/* <MobileGallery carImages={car_image} /> */}
       <div className="flex items-center mt-4 gap-2">
         <div className="flex gap-4">
           <h1 className="text-xl font-bold">

@@ -50,11 +50,18 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
   const hourPart = `${hours}:${minutes}:${seconds}`;
 
   if (days > 1) {
-    timeLeftRender = `${days} ${t("car_page.days")} ${hourPart}`;
-  }
-  if (days == 1) {
-    timeLeftRender = `${days} ${t("car_page.days")} ${hourPart}`;
+    timeLeftRender = (
+      <div className=" min-w-[130px]">{`${days} ${t(
+        "car_page.days"
+      )} ${hourPart}`}</div>
+    );
+  } else if (days == 1) {
+    timeLeftRender = (
+      <div className=" min-w-[130px]">{`${days} day ${hourPart}`}</div>
+    );
+  } else {
+    timeLeftRender = <div className=" min-w-[70px]">{hourPart}</div>;
   }
 
-  return <div className="  min-w-[130px]">{timeLeftRender}</div>;
+  return timeLeftRender;
 }
