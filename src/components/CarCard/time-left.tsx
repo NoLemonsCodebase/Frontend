@@ -9,7 +9,7 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
   const t = useTranslations("default");
 
   const [secondsLeft, setSecondsLeft] = useState<number>(0);
-  // console.log(timeEnding);
+
   useEffect(() => {
     const endDateUTC = timeEnding
       ? new Date(timeEnding).getTime()
@@ -36,6 +36,7 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
   let timeLeftRender;
 
   if (secondsLeft <= 0) timeLeftRender = t("statuses.auction_ended");
+
   const days = Math.floor(secondsLeft / (24 * 60 * 60));
   let hours: string | number = Math.floor(
     (secondsLeft % (24 * 60 * 60)) / (60 * 60)
