@@ -77,6 +77,7 @@ button {
 .main-swiper {
   height: 90%;
   max-width: 1000px;
+  overflow: auto;
   @media (max-width: 768px) {
     height: 350px;
   }

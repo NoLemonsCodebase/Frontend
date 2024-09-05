@@ -47,6 +47,7 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
         pagination={{
           type: "fraction",
         }}
+        grabCursor={true}
         modules={[FreeMode, Navigation, Thumbs, Pagination]}
         className="main-swiper"
       >
