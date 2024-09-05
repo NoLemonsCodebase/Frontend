@@ -35,7 +35,7 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
 
   let timeLeftRender;
 
-  if (secondsLeft <= 0) timeLeftRender = t("statuses.auction_ended");
+  if (secondsLeft <= 0) return t("statuses.auction_ended");
 
   const days = Math.floor(secondsLeft / (24 * 60 * 60));
   let hours: string | number = Math.floor(
