@@ -111,21 +111,22 @@ button {
   color: #fff;
 }
 /*----------------- small swiper ----------------------*/
-.small-swiper {
+.small-swiper.swiper {
   margin-top: 10px;
-  box-sizing: border-box;
-  padding: 10px 0;
-  height: 80px;
+  padding: 5px 10px;
+  height: 100px;
+  @media (max-width: 768px) {
+    height: 80px;
+  }
 }
 
 .small-swiper .swiper-slide {
   width: 150px;
   height: 100%;
 
-  /* transform: scaleX(0.5); */
   transition: 0.5s all;
   border-radius: 10px;
-  overflow: hidden;
+
   margin-right: 5px;
   user-select: none;
   cursor: grab;
@@ -137,11 +138,6 @@ button {
 .small-swiper .swiper-slide-thumb-active {
   /* transform: scaleX(1); */
   /* width: 150px; */
-}
 
-.small-swiper .swiper-slide img {
-  filter: grayscale(1) blur(1px);
-}
-.small-swiper .swiper-slide-thumb-active img {
-  filter: grayscale(0) blur(0px);
+  box-shadow: 0 0 0 2px yellow;
 }

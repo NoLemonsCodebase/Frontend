@@ -31,11 +31,9 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   const t = useTranslations("default.car_page");
   const lastAuction = carDetail.auction;
 
-  const { width } = useWindowSize();
-  console.log(lastAuction);
   useEffect(() => {
     if (lastAuction) {
-      setAuctionEnded(new Date(lastAuction.time_ending) >= new Date());
+      setAuctionEnded(new Date(lastAuction.time_ending) > new Date());
       setEndDatetime(new Date(lastAuction.time_ending));
     }
   }, []);
@@ -59,7 +57,6 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
 
   // extract car images
   const { car_image } = carDetail;
-  console.log(car_image);
   useEffect(() => {
     TrackPageView();
   }, []);
