@@ -3,18 +3,26 @@
 import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import ZoomEffect from "../anim/zoom";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "swiper/css/pagination";
+import "swiper/css/zoom";
 
 // import required modules
-import { FreeMode, Navigation, Thumbs, Pagination } from "swiper/modules";
-import Image from "next/image";
+import {
+  FreeMode,
+  Navigation,
+  Thumbs,
+  Pagination,
+  Zoom,
+  Keyboard,
+} from "swiper/modules";
 
+import Image from "next/image";
 import { IoClose } from "react-icons/io5";
 
 export default function SwiperSlider({ allImages, onCloseGallery }: any) {
@@ -33,7 +41,10 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
   }, []);
 
   return (
-    <div className=" py-4 flex flex-col items-center justify-center md:justify-between fixed bg-black/90 inset-0 z-20">
+    <ZoomEffect
+      dur={0.3}
+      classes=" py-4 flex flex-col items-center justify-center md:justify-between fixed bg-black/90 inset-0 z-20"
+    >
       <button
         onClick={onCloseGallery}
         className=" text-2xl group w-14 h-14  bg-gray-600/30 rounded-sm  text-white absolute right-0 top-0"
@@ -43,24 +54,29 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
       <Swiper
         spaceBetween={10}
         navigation={true}
+        zoom={true}
         thumbs={{ swiper: thumbsSwiper }}
         pagination={{
           type: "fraction",
         }}
-        grabCursor={true}
-        modules={[FreeMode, Navigation, Thumbs, Pagination]}
+        keyboard={{
+          enabled: true,
+        }}
+        modules={[Keyboard, FreeMode, Navigation, Thumbs, Pagination, Zoom]}
         className="main-swiper"
       >
         {allImages.map((img: string, idx: number) => (
           <SwiperSlide key={idx}>
-            <Image
-              width={1170}
-              height={600}
-              alt={`car-image${idx}`}
-              src={img}
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP09Q35DwADzAHvIGCw/QAAAABJRU5ErkJggg=="
-              placeholder="blur"
-            />
+            <div className="swiper-zoom-container">
+              <Image
+                width={1170}
+                height={600}
+                alt={`car-image${idx}`}
+                src={img}
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP09Q35DwADzAHvIGCw/QAAAABJRU5ErkJggg=="
+                placeholder="blur"
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -85,6 +101,6 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </ZoomEffect>
   );
 }

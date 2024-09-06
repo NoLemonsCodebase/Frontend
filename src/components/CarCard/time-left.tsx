@@ -33,7 +33,6 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
     return () => clearInterval(interval);
   }, []);
 
-  let timeLeftRender;
 
   if (secondsLeft <= 0) return t("statuses.auction_ended");
 
@@ -51,18 +50,18 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
   const hourPart = `${hours}:${minutes}:${seconds}`;
 
   if (days > 1) {
-    timeLeftRender = (
+    return (
       <div className=" min-w-[130px]">{`${days} ${t(
         "car_page.days"
       )} ${hourPart}`}</div>
     );
   } else if (days == 1) {
-    timeLeftRender = (
+    return (
       <div className=" min-w-[130px]">{`${days} day ${hourPart}`}</div>
     );
   } else {
-    timeLeftRender = <div className=" min-w-[70px]">{hourPart}</div>;
+    return <div className=" min-w-[70px]">{hourPart}</div>;
   }
 
-  return timeLeftRender;
+
 }
