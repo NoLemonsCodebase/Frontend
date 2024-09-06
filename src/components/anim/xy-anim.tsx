@@ -79,6 +79,7 @@ export default function XYAnim({
       variants={animVar}
       initial="init"
       exit="exit"
+      animate="enter"
       // whileInView="enter"
       // viewport={{ once: true }}
       custom={{ dur, delay, xy, dis }}
