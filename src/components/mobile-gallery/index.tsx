@@ -1,6 +1,7 @@
+import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import SwiperSlider from "./swiper-slider";
 import { useMemo, useState } from "react";
+import SwiperSlider from "./swiper-slider";
 
 type CarImage = {
   image: string;
@@ -60,12 +61,14 @@ export default function MobileGallery({ carImages }: MobileGalleryProps) {
           ))}
         </div>
       </div>
-      {showGallery && (
-        <SwiperSlider
-          onCloseGallery={closeGalleryHandler}
-          allImages={all_images}
-        />
-      )}
+      <AnimatePresence>
+        {showGallery && (
+          <SwiperSlider
+            onCloseGallery={closeGalleryHandler}
+            allImages={all_images}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

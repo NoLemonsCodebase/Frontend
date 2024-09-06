@@ -1,11 +1,8 @@
 "use client";
 import AutionStatusBar from "@/components/AutionStatusBar";
-import CarImagesSection from "@/components/CarImagesSection";
-import ImageCarousel from "@/components/ImageCarousel";
 import { BidSection } from "@/components/bid-section";
 import { TrackGetEarlyAccessClick, TrackPageView } from "@/lib/services/pixels";
 import { ICar } from "@/lib/types";
-import { useWindowSize } from "@uidotdev/usehooks";
 import cn from "classnames";
 import { useTranslations } from "next-intl";
 
@@ -14,9 +11,9 @@ import { Fragment, useEffect, useState } from "react";
 import CarDetailList from "./car-detail-list";
 
 import { FaCheck, FaWhatsapp } from "react-icons/fa";
+import MobileGallery from "../mobile-gallery";
 import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
-import MobileGallery from "../mobile-gallery";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -80,18 +77,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           </Fragment>
         ) : null}
       </div>
-      {/* {width &&
-        (width > 640 ? (
-          <CarImagesSection
-            images={carDetail.car_image.map((car: any) => car.image)}
-            previewImages={carDetail.car_image.map((car: any) => car.image)}
-          />
-        ) : (
-          <ImageCarousel
-            images={carDetail.car_image.map((car: any) => car.image)}
-            previewImages={carDetail.car_image.map((car: any) => car.image)}
-          />
-        ))} */}
+
       {car_image.length > 0 ? <MobileGallery carImages={car_image} /> : null}
       <div className="flex items-center mt-4 gap-2">
         <div className="flex gap-4">

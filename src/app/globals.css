@@ -110,6 +110,10 @@ button {
 .main-swiper .swiper-pagination-fraction {
   color: #fff;
 }
+/* Zooming */
+.main-swiper .swiper-zoom-container img {
+  object-fit: cover;
+}
 /*----------------- small swiper ----------------------*/
 .small-swiper.swiper {
   margin-top: 10px;
