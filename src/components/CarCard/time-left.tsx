@@ -34,7 +34,6 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
   }, []);
 
 
-
   if (secondsLeft <= 0) return t("statuses.auction_ended");
 
   const days = Math.floor(secondsLeft / (24 * 60 * 60));
