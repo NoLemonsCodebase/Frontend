@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `Car not found`,
       description: "Car not found",
       openGraph: {
-        title: "NoLemons Online Auction",
+        title: "NoLemons Car Sales",
         description: "Car not found",
         images: [],
       },
