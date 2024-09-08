@@ -71,8 +71,6 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
         <NextTopLoader />
         <NextIntlClientProvider messages={messages}>
           <RequestCar />
-          {/* <Banner /> */}
-          {/* delete */}
           <Navbar />
           <ChatWithUsBtn />
           {children}
