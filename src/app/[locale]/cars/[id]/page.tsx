@@ -50,9 +50,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         : data.status == "created"
         ? `Coming soon: ${data.year} ${data.title}`
         : `For sale: ${data.year} ${data.title}`;
-
+    const page_title = data.status == "live" ? "| NoLemons Online Auction" : "";
     return {
-      title: `${data.title} ${data.year} | NoLemons Online Auction`,
+      title: `${data.title} ${data.year} ${page_title}`,
       description: carDescription,
       openGraph: {
         title: "NoLemons Online Auction",
