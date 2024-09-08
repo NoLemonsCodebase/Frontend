@@ -51,11 +51,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ? `Coming soon: ${data.year} ${data.title}`
         : `For sale: ${data.year} ${data.title}`;
     const page_title = data.status == "live" ? "| NoLemons Online Auction" : "";
+    const graph_title =
+      data.status == "live" ? "NoLemons Online Auction" : "NoLemons Car Sales";
     return {
       title: `${data.title} ${data.year} ${page_title}`,
       description: carDescription,
       openGraph: {
-        title: "NoLemons Online Auction",
+        title: graph_title,
         description: carDescription,
         images: [data.main_image],
       },
@@ -65,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   } catch (e) {
     return {
-      title: `Car not found | NoLemons Online Auction`,
+      title: `Car not found`,
       description: "Car not found",
       openGraph: {
         title: "NoLemons Online Auction",
