@@ -33,7 +33,7 @@ export default function CarsPage({ cars = [] }: ICarsPageProps) {
     setShowSpinner(true);
     const timer = setTimeout(() => {
       setShowSpinner(false);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(timer);

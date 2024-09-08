@@ -19,25 +19,25 @@ const categories = [
 export default function CarsFilter() {
   const search_params = useSearchParams();
   const pathname = usePathname();
-  const { replace } = useRouter();
+  const { push } = useRouter();
   const curr_active = search_params.get("cat") ?? "";
 
   function handleFilter(val: string) {
     const params = new URLSearchParams(search_params);
     params.set("cat", val);
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
+    push(`${pathname}?${params.toString()}`, { scroll: false });
   }
 
   useEffect(() => {
     const params = new URLSearchParams(search_params);
     if (!params.has("cat")) {
       params.set("cat", "uae");
-      replace(`${pathname}?${params.toString()}`);
+      push(`${pathname}?${params.toString()}`);
     }
-  }, []);
+  }, [search_params]);
 
   return (
-    <div className=" flex mb-5 shadow-md rounded-md overflow-hidden w-fit">
+    <div className=" flex md:mb-10 mb-6  shadow-md rounded-md overflow-hidden w-fit">
       {categories.map((filter) => (
         <button
           key={filter.value}
@@ -56,7 +56,7 @@ export default function CarsFilter() {
             />
           </div>
           <span
-            className={`text-xs transition-colors duration-500 ${
+            className={`text-xs md:text-base transition-colors duration-500 ${
               curr_active == filter.value ? " text-white" : ""
             }`}
           >
