@@ -9,9 +9,8 @@ import { TrackBidViaWA, TrackGetEarlyAccessClick } from "@/lib/services/pixels";
 import { ICar } from "@/lib/types";
 import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 
-// import "react-phone-input-2/lib/material.css";
+import "react-phone-input-2/lib/material.css";
 
 // icons
 import { FaWhatsapp } from "react-icons/fa";
@@ -42,11 +41,12 @@ export function BidSection({
   // Remove the last '&' character
   utm_string = utm_string.slice(0, -1);
 
-  // console.log(utm_string);
+  async function onSubmitHandler(e: any) {
+    e.preventDefault();
 
-  const onSubmit = async () => {
     setError("");
     setLoading(true);
+
     if (!auction) {
       setError("This car is not currently in an auction. Contact us for help.");
       setLoading(false);
@@ -63,7 +63,6 @@ export function BidSection({
         auction_id: auction?.id,
       }),
     });
-
     if (res.ok) {
       setSent(true);
     } else {
@@ -73,7 +72,7 @@ export function BidSection({
     }
 
     setLoading(false);
-  };
+  }
 
   const onEarlyAccessClick = () => {
     const text = encodeURIComponent(
@@ -90,7 +89,7 @@ export function BidSection({
 
   return (
     <section
-      className="w-full md:py-24 lg:py-32 h-96 md:h-full"
+      className="w-full md:pt-24 lg:pt-32 pb-60 md:h-full "
       id="bid-section"
     >
       <div className="h-1 bg-gray-500 bg-opacity-40 w-9/12 my-12 md:mb-12 mx-auto" />
@@ -160,21 +159,18 @@ export function BidSection({
                   Enter your WhatsApp number to submit an offer
                 </p>
               </div>
-              <div className="mx-auto w-full max-w-sm space-y-2">
-                <form
-                  className="flex flex-col items-center space-y-2"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    onSubmit();
-                  }}
-                >
+              <div>
+                <form onSubmit={onSubmitHandler}>
                   <PhoneInput
+                    buttonStyle={{
+                      textAlign: "left",
+                    }}
                     preferredCountries={["sa", "ae", "qa", "kw", "bh", "om"]}
                     country={"ae"}
                     value={phone}
                     onChange={setPhone}
                   />
-                  <Button type="submit" disabled={loading}>
+                  <Button className=" mt-5" type="submit" disabled={loading}>
                     {loading && (
                       <svg
                         width="20"
