@@ -11,6 +11,8 @@ import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
+// import "react-phone-input-2/lib/material.css";
+
 // icons
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -196,7 +198,8 @@ export function BidSection({
                 Thank you!
               </h2>
               <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                You will now receive a message on WhatsApp to submit your offer at this number:{" "}
+                You will now receive a message on WhatsApp to submit your offer
+                at this number:{" "}
                 <span className="font-semibold text-black">+{phone}</span>
               </p>
             </>
