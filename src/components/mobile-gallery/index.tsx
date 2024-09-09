@@ -19,7 +19,7 @@ export default function MobileGallery({ carImages }: MobileGalleryProps) {
     [carImages]
   );
 
-  const preview_images = all_images.slice(0, 8);
+  const preview_images = all_images.slice(1, 9);
 
   function openGalleryHandler() {
     setShowGallery(true);
