@@ -1,5 +1,8 @@
+"use client";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import { MdOutlineVerifiedUser } from "react-icons/md";
+import { useSearchParams } from "next/navigation";
+// import { FlipWords } from "./ui/flip-words";
 const wordsRender: string[] = [
   "Global Shipping",
   "Aftersales Support",
@@ -9,6 +12,9 @@ const wordsRender: string[] = [
 ];
 
 function Hero() {
+  const search_params = useSearchParams();
+  const curr_active = search_params.get("cat") ?? "";
+
   return (
     <section className="overflow-hidden">
       <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
@@ -24,7 +30,13 @@ function Hero() {
         </a>
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
           Exciting cars.
-          <br /> Carefully checked & honestly presented.
+          <br /> Carefully checked &{" "}
+          {curr_active == "uae"
+            ? "honestly presented"
+            : curr_active == "import-a-car"
+            ? "honestly import a car"
+            : "private sale"}{" "}
+          {/* honestly presented. */}
         </h1>
         {/* <FlipWords
           words={wordsRender}

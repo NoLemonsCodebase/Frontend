@@ -79,10 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-const CarPage: React.FunctionComponent<{
-  params: any;
-  searchParams: any;
-}> = async ({ params, searchParams }) => {
+export default async function CarPage({ params, searchParams }: any) {
   const { id, locale } = params;
 
   try {
@@ -97,6 +94,4 @@ const CarPage: React.FunctionComponent<{
   } catch (e) {
     return <div>Car not found</div>;
   }
-};
-
-export default CarPage;
+}
