@@ -13,14 +13,7 @@ import "swiper/css/pagination";
 import "swiper/css/zoom";
 
 // import required modules
-import {
-  FreeMode,
-  Navigation,
-  Thumbs,
-  Pagination,
-  Zoom,
-  Keyboard,
-} from "swiper/modules";
+import { FreeMode, Navigation, Thumbs, Pagination, Zoom } from "swiper/modules";
 
 import Image from "next/image";
 import { IoClose } from "react-icons/io5";
@@ -59,10 +52,7 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
         pagination={{
           type: "fraction",
         }}
-        keyboard={{
-          enabled: true,
-        }}
-        modules={[Keyboard, FreeMode, Navigation, Thumbs, Pagination, Zoom]}
+        modules={[FreeMode, Navigation, Thumbs, Pagination, Zoom]}
         className="main-swiper"
       >
         {allImages.map((img: string, idx: number) => (
@@ -73,8 +63,6 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
                 height={600}
                 alt={`car-image${idx}`}
                 src={img}
-                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP09Q35DwADzAHvIGCw/QAAAABJRU5ErkJggg=="
-                placeholder="blur"
               />
             </div>
           </SwiperSlide>
@@ -90,14 +78,7 @@ export default function SwiperSlider({ allImages, onCloseGallery }: any) {
       >
         {allImages.map((img: string, idx: number) => (
           <SwiperSlide key={idx}>
-            <Image
-              width={600}
-              height={300}
-              alt={`car-image${idx}`}
-              src={img}
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP09Q35DwADzAHvIGCw/QAAAABJRU5ErkJggg=="
-              placeholder="blur"
-            />
+            <Image width={600} height={300} alt={`car-image${idx}`} src={img} />
           </SwiperSlide>
         ))}
       </Swiper>
