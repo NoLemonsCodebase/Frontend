@@ -14,7 +14,7 @@ interface ICarsPageProps {
 
 export default function CarsPage({ cars = [] }: ICarsPageProps) {
   const [showSpinner, setShowSpinner] = useState(false);
-  const search_params = useSearchParams();
+  // const search_params = useSearchParams();
 
   // const render_cars = cars.filter((car) => {
   //   if (search_params.get("cat") == "uae") {
@@ -48,17 +48,18 @@ export default function CarsPage({ cars = [] }: ICarsPageProps) {
           return <CarCard key={car.id} carDetails={car} />;
         })}
       </section>
-      {/* {showSpinner ? (
-        <div className=" flex justify-center pt-32">
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {render_cars.map((car) => {
-            return <CarCard key={car.id} carDetails={car} />;
-          })}
-        </section>
-      )} */}
+
+      {/* // {showSpinner ? (
+      //   <div className=" flex justify-center pt-32">
+      //     <div className="loader"></div>
+      //   </div>
+      // ) : (
+      //   <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      //     {render_cars.map((car) => {
+      //       return <CarCard key={car.id} carDetails={car} />;
+      //     })}
+      //   </section>
+      // )} */}
     </main>
   );
 }

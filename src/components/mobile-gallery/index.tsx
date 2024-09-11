@@ -29,6 +29,7 @@ export default function MobileGallery({ carImages }: MobileGalleryProps) {
     setShowGallery(false);
   }
 
+  console.log("hi from parent");
   return (
     <div className=" flex flex-col overflow-hidden lg:flex-row gap-4">
       <div

@@ -1,11 +1,7 @@
-import { TrackArabicClick } from "@/lib/services/pixels";
 import { cn } from "@/lib/utils";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
-import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
-import { Tooltip } from "react-tooltip";
 import { useEffect, useState } from "react";
+import { LiaExternalLinkAltSolid } from "react-icons/lia";
 
 const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
   isCard,
@@ -219,29 +215,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
               </td>
             </tr>
           ) : null}
-          {/* <tr>
-            <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
-              <Link
-                className="flex space-x-1"
-                href="/how-it-works?showFee=true"
-              >
-                <p>{t("nolemons_buyer_fee")}</p>
-                <LiaExternalLinkAltSolid className="text-xl text-blue-500" />:
-              </Link>
-            </td>
-            <td className="py-2 whitespace-nowrap text-sm text-gray-500 flex">
-              <a
-                data-tooltip-id="my-tooltip"
-                className="flex items-center justify-start"
-              >
-                <strong>{carDetail.buyers_fee}</strong>
-                <InfoCircledIcon className="w-4 h-4 inline-block ml-1" />
-              </a>
-              <Tooltip id="my-tooltip">
-                Service fee ({carDetail.buyers_fee}) on final sale price
-              </Tooltip>
-            </td>
-          </tr> */}
+
         </tbody>
       </table>
     </div>
