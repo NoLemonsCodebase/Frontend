@@ -45,7 +45,9 @@ ul {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
+:root {
+  --f-carousel-spacing: 10px;
+}
 button {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -199,3 +201,59 @@ button {
   object-fit: cover;
   position: relative;
 }
+.my-carousel.f-carousel {
+  --f-button-width: 38px;
+  --f-button-height: 38px;
+
+  --f-button-svg-width: 16px;
+  --f-button-svg-height: 16px;
+  --f-button-svg-stroke-width: 2.5;
+
+  --f-button-color: rgb(71 85 105);
+  --f-button-border-radius: 50%;
+  --f-button-shadow: 0 6px 12px -2px rgb(50 50 93 / 25%),
+    0 3px 7px -3px rgb(0 0 0 / 30%);
+
+  --f-button-bg: #fff;
+  --f-button-hover-bg: #f9f9f9;
+  --f-button-active-bg: #f0f0f0;
+}
+
+.f-carousel {
+  height: 80vh;
+  margin-bottom: 20px;
+}
+.my-carousel.f-carousel {
+  max-width: 1000px;
+  margin: auto;
+}
+.my-carousel.f-carousel .f-carousel__slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.nav-carousel.f-carousel {
+  height: 100px;
+}
+.nav-carousel.f-carousel .f-carousel__viewport {
+  padding: 10px;
+}
+.nav-carousel.f-carousel .f-carousel__slide {
+  max-width: 100px;
+  margin: 0 5px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.nav-carousel.f-carousel .f-carousel__slide img {
+  height: 100%;
+  object-fit: cover;
+}
+.f-carousel__slide.is-nav-selected {
+  color: #fff;
+  box-shadow: 0 0 0 2px yellow;
+}
+
+/* */
