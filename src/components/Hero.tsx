@@ -1,3 +1,4 @@
+"use client";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import { MdOutlineVerifiedUser } from "react-icons/md";
 import { useSearchParams } from "next/navigation";
@@ -11,8 +12,8 @@ const wordsRender: string[] = [
 ];
 
 function Hero() {
-  // const search_params = useSearchParams();
-  // const curr_active = search_params.get("cat") ?? "uae";
+  const search_params = useSearchParams();
+  const curr_active = search_params.get("cat") ?? "uae";
 
   return (
     <section className="overflow-hidden">
