@@ -3,7 +3,7 @@ import React, { useRef, useEffect, PropsWithChildren, useMemo } from "react";
 import { Carousel as NativeCarousel } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/carousel/carousel.css";
 
-import { Thumbs } from "@fancyapps/ui/dist/carousel/carousel.thumbs.esm.js";
+// import { Thumbs } from "@fancyapps/ui/dist/carousel/carousel.thumbs.esm.js";
 import "@fancyapps/ui/dist/carousel/carousel.thumbs.css";
 
 import type { OptionsType } from "@fancyapps/ui/types/Carousel/options";
@@ -15,7 +15,7 @@ interface Props {
   options?: Partial<OptionsType>;
   allImages: any;
   onCloseGallery: any;
-  initial: number
+  initial: number;
 }
 
 function FancyCarousel(props: PropsWithChildren<Props>) {
@@ -39,7 +39,7 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
       Dots: false,
       infinite: false,
       transition: "classic",
-      initialPage: props.initial
+      initialPage: props.initial,
     };
 
     mainCarousel = new NativeCarousel(mainContainer, mainOptions);

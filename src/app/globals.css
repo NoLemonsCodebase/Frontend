@@ -242,7 +242,10 @@ button {
   border-radius: 20px;
   overflow: hidden;
 }
-
+.my-carousel.f-carousel .f-carousel__slide img {
+  height: 100%;
+  object-fit: cover;
+}
 .nav-carousel.f-carousel {
   height: 100px;
 }
