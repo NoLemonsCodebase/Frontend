@@ -1,4 +1,10 @@
-import React, { useRef, useEffect, PropsWithChildren, useMemo } from "react";
+import React, {
+  useRef,
+  useEffect,
+  PropsWithChildren,
+  useMemo,
+  useState,
+} from "react";
 
 import { Carousel as NativeCarousel } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/carousel/carousel.css";
@@ -9,7 +15,7 @@ import "@fancyapps/ui/dist/carousel/carousel.thumbs.css";
 import type { OptionsType } from "@fancyapps/ui/types/Carousel/options";
 import Image from "next/image";
 import { IoClose } from "react-icons/io5";
-// import ZoomEffect from "../anim/zoom";
+import ZoomEffect from "../anim/zoom";
 
 interface Props {
   options?: Partial<OptionsType>;
@@ -23,7 +29,6 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
 
   const mainContainerRef: any = useRef(null);
   const navContainerRef = useRef(null);
-
   const mainCarouselRef = useRef<any>(null);
 
   let mainCarousel: any; // store the main carousel instance
@@ -75,8 +80,9 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
   //   //   mainCarousel.slideTo(slideNumber); // Use the carousel instance to navigate to a slide
   //   // }
   // }
+
   return (
-    <div className=" fixed bg-black/80 inset-0 w-full z-50 flex flex-col items-center justify-center">
+    <div className=" fixed bg-black/80 inset-0 w-full z-50 flex flex-col items-center justify-center show-slider">
       <button
         onClick={props.onCloseGallery}
         className=" text-2xl group w-14 h-14  bg-gray-600/30 rounded-sm  text-white absolute right-0 top-0"

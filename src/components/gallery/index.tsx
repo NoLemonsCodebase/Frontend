@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+// import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import FancyCarousel from "./fancy-carousel";
@@ -63,15 +63,14 @@ export default function Gallery({ carImages }: MobileGalleryProps) {
           ))}
         </div>
       </div>
-      <AnimatePresence>
-        {showGallery && (
-          <FancyCarousel
-            initial={curSlider}
-            onCloseGallery={closeGalleryHandler}
-            allImages={all_images}
-          />
-        )}
-      </AnimatePresence>
+
+      {showGallery && (
+        <FancyCarousel
+          initial={curSlider}
+          onCloseGallery={closeGalleryHandler}
+          allImages={all_images}
+        />
+      )}
     </div>
   );
 }
