@@ -1,92 +1,105 @@
-import * as React from "react";
-import Fancybox from "./Fancybox";
+// import { useMemo } from "react";
+// import Fancybox from "./Fancybox";
+
+// import Image from "next/image";
 // import Carousel from "./Carousel";
-import Image from "next/image";
-import { Carousel as ImageSlider } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-interface IImageCarouselProps {
-  images: string[];
-  previewImages: string[];
-}
+// interface IImageCarouselProps {
+//   images: string[];
+//   previewImages: string[];
+// }
 
-const ImageCarousel: React.FunctionComponent<IImageCarouselProps> = ({
-  images,
-  previewImages,
-}) => {
-  //memoize images and previewImages
-  images = React.useMemo(() => images, [images]);
-  previewImages = images.slice(1, 6);
+// export default function ImageCarousel({ carImages }: any) {
+//   //memoize images and previewImages
+//   const all_images = useMemo(
+//     () => carImages.map((ob: any) => ob.image),
+//     [carImages]
+//   );
 
-  //...
-  return (
-    <Fancybox
-      // Sample options
+//   const preview_images = all_images.slice(1, 9);
+//   //...
+//   return (
+//     // <Fancybox
+//     //   options={{
+//     //     Toolbar: {
+//     //       enabled: true,
+//     //     },
+//     //     hideScrollbar: true,
+//     //     Thumbs: {
+//     //       type: "classic",
+//     //     },
+//     //   }}
+//     // >
+//     //   <div className="flex flex-col lg:flex-row gap-4">
+//     //     <button
+//     //       data-fancybox
+//     //       data-src="#nolemons-1"
+//     //       className="rounded-md overflow-hidden lg:basis-[70%]"
+//     //     >
+//     //       <Image
+//     //         src={all_images[0]}
+//     //         alt="main image"
+//     //         width={1110}
+//     //         height={740}
+//     //         priority
+//     //       />
+//     //     </button>
+//     //     <div className="overflow-x-scroll lg:overflow-auto basis-[30%]">
+//     //       <div className=" grid grid-cols-8 lg:grid-cols-2 h-full gap-2 w-[300%] lg:w-auto ">
+//     //         {preview_images.map((img: string, idx: number) => (
+//     //           <button
+//     //             key={idx}
+//     //             data-fancybox
+//     //             data-src={`#nolemons-${idx + 2}`}
+//     //             className="rounded-md overflow-hidden relative cursor-pointer"
+//     //           >
+//     //             <Image
+//     //               className=" w-full h-full object-cover"
+//     //               src={img}
+//     //               alt="prev image"
+//     //               width={1110}
+//     //               height={740}
+//     //               priority
+//     //             />
 
-      options={{
-        Toolbar: {
-          display: {
-            left: ["infobar"],
-            middle: ["facebook", "b", "d", "c"],
-            right: ["close"],
-          },
-        },
-      }}
-    >
-      <ImageSlider showThumbs={false} showIndicators={false} showStatus={false}>
-        {images.slice(0, 6).map((image, index) => (
-          <div
-            key={index}
-            className="relative"
-            data-src={image}
-            data-fancybox="gallery"
-          >
-            <Image
-              alt=""
-              src={image}
-              width={1100}
-              height={720}
-              // style={{ maxHeight: 300, objectFit: "contain" }}
-            />
-            {index == 5 && (
-              <div className="absolute w-full h-full top-0 left-0 flex items-center justify-center text-white bg-black font-semibold text-[8px] text-base text-center bg-opacity-60">
-                View all photos ({images.length})
-              </div>
-            )}
-          </div>
-        ))}
-      </ImageSlider>
-      {images.slice(6).map((image, index) => (
-        <div key={index} data-src={image} data-fancybox="gallery" />
-      ))}
-      <div className="flex space-x-2 align-center justify-center flex-grow overflow-x-scroll">
-        {previewImages.map((image, idx) => (
-          <a
-            key={idx}
-            data-fancybox="gallery"
-            data-src={image}
-            className="cursor-pointer"
-          >
-            <div
-              style={{
-                backgroundImage: `url(${image})`,
-                paddingBottom: "65%",
-              }}
-              className={
-                "relative h-0 w-20 sm:w-full border-2 border-gray-50 bg-center bg-no-repeat bg-cover"
-              }
-            >
-              {idx == 4 && (
-                <div className="absolute w-full h-full flex items-center justify-center text-white bg-black font-semibold text-[8px] sm:text-xs lg:text-base text-center bg-opacity-60">
-                  All photos ({images.length})
-                </div>
-              )}
-            </div>
-          </a>
-        ))}
-      </div>
-    </Fancybox>
-  );
-};
+//     //             {idx == 7 && (
+//     //               <div className="absolute inset-0 text-white bg-black font-semibold flex items-center justify-center text-[8px] lg:text-base bg-opacity-60">
+//     //                 View all photos ({all_images.length})
+//     //               </div>
+//     //             )}
+//     //           </button>
+//     //         ))}
+//     //       </div>
+//     //     </div>
+//     //   </div>
+//     //   {all_images.slice(9).map((img: string, idx: number) => (
+//     //     <button
+//     //       key={idx}
+//     //       data-fancybox
+//     //       data-src={`#nolemons-${idx + 10}`}
+//     //       className="hidden"
+//     //     >
+//     //       <Image src={img} alt="prev image" width={500} height={300} />
+//     //     </button>
+//     //   ))}
 
-export default React.memo(ImageCarousel);
+//     //   {all_images.map((img: string, idx: number) => (
+//     //     <div
+//     //       key={idx}
+//     //       style={{ display: "none", position: "relative" }}
+//     //       id={`nolemons-img-${idx + 1}`}
+//     //     >
+//     //       <span className="loader absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2"></span>
+//     //       <Image
+//     //         key={idx}
+//     //         src={img}
+//     //         alt={`nolemons-${idx + 1}`}
+//     //         width={1110}
+//     //         height={740}
+//     //       />
+//     //     </div>
+//     //   ))}
+//     // </Fancybox>
+//     <></>
+//   );
+// }

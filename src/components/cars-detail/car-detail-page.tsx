@@ -11,9 +11,11 @@ import { Fragment, useEffect, useState } from "react";
 import CarDetailList from "./car-detail-list";
 
 import { FaCheck, FaWhatsapp } from "react-icons/fa";
-import MobileGallery from "../mobile-gallery";
 import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
+
+import Gallery from "../gallery";
+// import ImageCarousel from "../ImageCarousel";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -78,7 +80,8 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
         ) : null}
       </div>
 
-      {car_image.length > 0 ? <MobileGallery carImages={car_image} /> : null}
+      {car_image.length > 0 ? <Gallery carImages={car_image} /> : null}
+
       <div className="flex items-center mt-4 gap-2">
         <div className="flex gap-4">
           <h1 className="text-xl font-bold">
