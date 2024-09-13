@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 
 const animVar = {
   init: {
-    filter: "blur(100px)",
+    // filter: "blur(100px)",
     transform: "scale(0.7)",
     opacity: 0,
   },
 
   enter: ({ dur, delay }: { dur: number; delay: number }) => {
     return {
-      filter: "blur(0)",
+      // filter: "blur(0)",
       transform: "scale(1)",
       opacity: 1,
       transition: {
@@ -21,7 +21,7 @@ const animVar = {
   },
   exit: ({ dur }: { dur: number }) => {
     return {
-      filter: "blur(100px)",
+      // filter: "blur(100px)",
       transform: "scale(0.7)",
       opacity: 0,
       transition: {

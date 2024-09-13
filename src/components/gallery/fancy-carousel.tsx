@@ -9,31 +9,22 @@ import "@fancyapps/ui/dist/carousel/carousel.thumbs.css";
 import type { OptionsType } from "@fancyapps/ui/types/Carousel/options";
 import Image from "next/image";
 import { IoClose } from "react-icons/io5";
+// import ZoomEffect from "../anim/zoom";
 
 interface Props {
   options?: Partial<OptionsType>;
-  carImages: any;
+  allImages: any;
+  onCloseGallery: any;
+  initial: number
 }
 
-// const defaults: Partial<OptionsType> = {
-//   Dots: false,
-//   // Thumbs: {
-//   //   type: "modern",
-//   // },
-// };
-
-function Carousel(props: PropsWithChildren<Props>) {
-  const all_images = useMemo(
-    () => props.carImages.map((ob: any) => ob.image),
-    [props.carImages]
-  );
-
+function FancyCarousel(props: PropsWithChildren<Props>) {
   // const preview_images = all_images.slice(1, 9);
 
   const mainContainerRef: any = useRef(null);
   const navContainerRef = useRef(null);
 
-  // const mainCarouselRef = useRef<any>(null);
+  const mainCarouselRef = useRef<any>(null);
 
   let mainCarousel: any; // store the main carousel instance
 
@@ -44,20 +35,24 @@ function Carousel(props: PropsWithChildren<Props>) {
     if (!mainContainer || !navContainer) return;
 
     const mainOptions: Partial<OptionsType> = {
+      slidesPerPage: 1,
       Dots: false,
       infinite: false,
+      transition: "classic",
+      initialPage: props.initial
     };
 
     mainCarousel = new NativeCarousel(mainContainer, mainOptions);
-    // mainCarouselRef.current = mainCarousel;
-    console.log(mainCarousel);
+    mainCarouselRef.current = mainCarousel;
+
     const navOptions: Partial<OptionsType> = {
       infinite: false,
       transition: false,
       center: true,
       fill: true,
-      dragFree: true,
+      dragFree: false,
       Dots: false,
+      Navigation: false,
 
       Sync: {
         target: mainCarousel,
@@ -72,24 +67,24 @@ function Carousel(props: PropsWithChildren<Props>) {
     };
   }, []);
 
-  function handleGoToSlide(slideNumber: number) {
-    console.log(mainCarousel);
-    // const mainCarousel = mainCarouselRef.current;
+  // function handleGoToSlide(slideNumber: number) {
+  //   console.log(mainCarousel);
+  //   // const mainCarousel = mainCarouselRef.current;
 
-    // if (mainCarousel) {
-    //   mainCarousel.slideTo(slideNumber); // Use the carousel instance to navigate to a slide
-    // }
-  }
+  //   // if (mainCarousel) {
+  //   //   mainCarousel.slideTo(slideNumber); // Use the carousel instance to navigate to a slide
+  //   // }
+  // }
   return (
-    <div className=" fixed bg-black/80 inset-0 w-full z-50">
+    <div className=" fixed bg-black/80 inset-0 w-full z-50 flex flex-col items-center justify-center">
       <button
-        onClick={() => handleGoToSlide(50)}
+        onClick={props.onCloseGallery}
         className=" text-2xl group w-14 h-14  bg-gray-600/30 rounded-sm  text-white absolute right-0 top-0"
       >
         <IoClose className=" m-auto group-hover:rotate-180 transition-transform duration-300" />
       </button>
       <div className="my-carousel" ref={mainContainerRef}>
-        {all_images.map((img: string, idx: number) => (
+        {props.allImages.map((img: string, idx: number) => (
           <div key={idx} className="f-carousel__slide">
             <Image
               key={idx}
@@ -103,7 +98,7 @@ function Carousel(props: PropsWithChildren<Props>) {
       </div>
 
       <div className="f-carousel nav-carousel" ref={navContainerRef}>
-        {all_images.map((img: string, idx: number) => (
+        {props.allImages.map((img: string, idx: number) => (
           <div key={idx} className="f-carousel__slide">
             <Image
               key={idx}
@@ -119,4 +114,4 @@ function Carousel(props: PropsWithChildren<Props>) {
   );
 }
 
-export default Carousel;
+export default FancyCarousel;
