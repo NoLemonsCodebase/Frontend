@@ -61,9 +61,7 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
             target="_blank"
             href="https://nw60ssq5era.typeform.com/to/CN1PoETZ/"
           >
-            <Button className="w-full md:text-xl md:py-6 mt-1">
-              Sell my car
-            </Button>
+            <Button className="w-full md:text-xl py-3 mt-1">Sell my car</Button>
           </Link>
         </div>
       ) : (
