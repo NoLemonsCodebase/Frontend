@@ -22,6 +22,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.our-container {
+  @apply container m-auto px-4 md:max-w-7xl;
+}
+
 ul {
   list-style: disc;
 }
@@ -83,99 +87,7 @@ button {
     transform: rotate(360deg);
   }
 }
-/* .swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
 
-/* .swiper {
-  width: 100%;
-}
-
-.swiper-slide {
-  background-size: cover;
-  background-position: center;
-}
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  user-select: none;
-}
-/*----------------- main swiper ----------------------*/
-/* .main-swiper {
-  height: 90%;
-  max-width: 1000px;
-  overflow: auto;
-  @media (max-width: 768px) {
-    height: 350px;
-  }
-}
-
-.main-swiper .swiper-slide {
-  border-radius: 15px;
-  overflow: hidden;
-  user-select: none;
-}
-.main-swiper .swiper-button-next,
-.main-swiper .swiper-button-prev {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.482);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: transform 0.2s;
-  user-select: none;
-}
-.main-swiper .swiper-button-next:hover,
-.main-swiper .swiper-button-prev:hover {
-  transform: scale(1.2);
-}
-
-.main-swiper .swiper-button-next::after,
-.main-swiper .swiper-button-prev::after {
-  font-size: 15px;
-}
-.main-swiper .swiper-pagination-fraction {
-  color: #fff;
-}
-/* Zooming */
-/*
-.main-swiper .swiper-zoom-container img {
-  object-fit: cover;
-} */
-/*----------------- small swiper ----------------------*/
-/*
-.small-swiper.swiper {
-  margin-top: 10px;
-  padding: 5px 10px;
-  height: 100px;
-  @media (max-width: 768px) {
-    height: 80px;
-  }
-}
-
-.small-swiper .swiper-slide {
-  width: 150px;
-  height: 100%;
-
-  transition: 0.5s all;
-  border-radius: 10px;
-
-  margin-right: 5px;
-  user-select: none;
-  cursor: grab;
-  @media (max-width: 768px) {
-    width: 25%;
-  }
-}
-
-.small-swiper .swiper-slide-thumb-active {
-  box-shadow: 0 0 0 2px yellow;
-} */
 .fancybox__viewport {
   position: relative;
   width: 100%;

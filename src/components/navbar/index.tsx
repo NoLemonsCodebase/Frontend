@@ -97,7 +97,7 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-[11] bg-white shadow">
-      <div className=" container m-auto flex justify-between items-center px-4 md:px-16">
+      <div className="our-container  flex justify-between items-center">
         <Link href="/">
           <Image
             className="w-24 "

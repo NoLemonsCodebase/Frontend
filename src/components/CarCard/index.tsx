@@ -16,10 +16,23 @@ interface ICarCardProps {
   carDetails: ICar;
 }
 
-const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
+export default function CarCard({ carDetails }: ICarCardProps) {
   const t = useTranslations("default");
 
-  const singleCarUrl = carDetails.url_route || carDetails.id;
+  const {
+    url_route,
+    id,
+    main_image,
+    title,
+    year,
+    location,
+    status,
+    auction,
+    currency,
+    sale_price,
+  } = carDetails;
+
+  const singleCarUrl = url_route || id;
 
   return (
     <Link
@@ -28,8 +41,8 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
     >
       <div className="aspect-w-16 aspect-h-10">
         <Image
-          src={carDetails.main_image}
-          alt={carDetails.title}
+          src={main_image}
+          alt={title}
           width={720}
           height={500}
           className="block object-cover"
@@ -37,13 +50,13 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
       </div>
       <div className="p-4 pb-2 flex-1 flex flex-col">
         <h3 className="font-semibold text-lg">
-          {carDetails.year} {carDetails.title}
+          {year} {title}
         </h3>
         <div className="flex items-center mt-0.5">
           <MapPinIcon size={16} className="text-zinc-500" />
-          <p className="text-sm text-zinc-500">{carDetails.location}</p>
+          <p className="text-sm text-zinc-500">{location}</p>
         </div>
-        {carDetails.status == "created" && (
+        {status == "created" && (
           <div
             className={cn(
               "absolute top-0 right-0 text-white p-2 flex items-center justify-center bg-green-700"
@@ -52,7 +65,7 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
             <span>{t("statuses.upcoming")}</span>
           </div>
         )}
-        {carDetails.status == "unverified" && (
+        {status == "unverified" && (
           <div
             className={cn(
               "absolute top-0 right-0 text-white p-2 flex items-center justify-center bg-yellow-500"
@@ -61,49 +74,39 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
             <span>{t("statuses.verifying")}</span>
           </div>
         )}
-        {carDetails.status == "live" && carDetails.auction?.latest_bid && (
+        {status == "live" && auction?.latest_bid && (
           <h4 className="font-semibold text-base mt-auto">
-            {`${carDetails.currency} ${numeral(
-              carDetails.auction.latest_bid
-            ).format("0,0")}`}
+            {`${currency} ${numeral(auction.latest_bid).format("0,0")}`}
           </h4>
         )}
-        {carDetails.status == "sold" && (
+        {status == "sold" && (
           <h4 className="font-semibold text-base mt-auto">
-            {`${carDetails.currency} ${numeral(carDetails.sale_price).format(
-              "0,0"
-            )}`}
+            {`${currency} ${numeral(sale_price).format("0,0")}`}
           </h4>
         )}
       </div>
       <div
         className={cn(
-          "text-white w-full p-2 rounded-b-lg flex items-center justify-center",
-          carDetails.status === "sold" && "bg-[#6E52A2]",
-          (carDetails.status === "for_sale" || carDetails.status === "live") &&
-            "bg-green-700",
-          (carDetails.status === "created" ||
-            carDetails.status === "unverified") &&
+          "text-white w-full p-3 rounded-b-lg flex items-center justify-center",
+          status === "sold" && "bg-[#6E52A2]",
+          (status === "for_sale" || status === "live") && "bg-green-700",
+          (status === "created" || status === "unverified") &&
             "bg-black bg-opacity-50 flex-row-reverse"
         )}
       >
-        {carDetails.status == "created" && (
-          <FaWhatsapp className=" ml-2 text-xl" />
-        )}
-        {carDetails.status == "live" && (
-          <MdOutlineAccessTime className=" mr-1 text-xl" />
-        )}
+        {status == "created" && <FaWhatsapp className=" ml-2 text-xl" />}
+        {status == "live" && <MdOutlineAccessTime className=" mr-1 text-xl" />}
         <span>
-          {carDetails.status === "sold" ? (
+          {status === "sold" ? (
             t("statuses.sold")
-          ) : carDetails.status === "for_sale" ? (
+          ) : status === "for_sale" ? (
             t("statuses.for_sale")
-          ) : carDetails.status === "created" ? (
+          ) : status === "created" ? (
             t("home_page.get_early_access")
-          ) : carDetails.status === "unverified" ? (
+          ) : status === "unverified" ? (
             t("home_page.unverified")
-          ) : carDetails.status === "live" ? (
-            <TimeLeft timeEnding={carDetails?.auction?.time_ending} />
+          ) : status === "live" ? (
+            <TimeLeft timeEnding={auction?.time_ending} />
           ) : (
             ""
           )}
@@ -111,6 +114,4 @@ const CarCard: React.FunctionComponent<ICarCardProps> = ({ carDetails }) => {
       </div>
     </Link>
   );
-};
-
-export default CarCard;
+}

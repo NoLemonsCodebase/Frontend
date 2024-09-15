@@ -16,9 +16,9 @@ export default async function Home() {
   const data = await res.json();
 
   return (
-    <>
+    <main>
       <Hero />
       <CarsPage cars={data} />
-    </>
+    </main>
   );
 }

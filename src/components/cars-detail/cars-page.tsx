@@ -13,7 +13,7 @@ interface ICarsPageProps {
 }
 
 export default function CarsPage({ cars = [] }: ICarsPageProps) {
-  const [showSpinner, setShowSpinner] = useState(false);
+  // const [showSpinner, setShowSpinner] = useState(false);
   // const search_params = useSearchParams();
 
   // const render_cars = cars.filter((car) => {
@@ -41,25 +41,25 @@ export default function CarsPage({ cars = [] }: ICarsPageProps) {
   // }, [search_params]);
 
   return (
-    <main className=" container m-auto min-h-screen px-8 pb-20">
+    <section className="our-container pb-40">
       {/* <CarsFilter /> */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {cars.map((car) => {
           return <CarCard key={car.id} carDetails={car} />;
         })}
-      </section>
+      </div>
 
-      {/* // {showSpinner ? (
-      //   <div className=" flex justify-center pt-32">
-      //     <div className="loader"></div>
-      //   </div>
-      // ) : (
-      //   <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      //     {render_cars.map((car) => {
-      //       return <CarCard key={car.id} carDetails={car} />;
-      //     })}
-      //   </section>
-      // )} */}
-    </main>
+      {/* {showSpinner ? (
+        <div className=" flex justify-center pt-32">
+          <div className="loader"></div>
+        </div>
+      ) : (
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {render_cars.map((car) => {
+            return <CarCard key={car.id} carDetails={car} />;
+          })}
+        </section>
+      )} */}
+    </section>
   );
 }
