@@ -30,23 +30,34 @@ export default function CarCard({ carDetails }: ICarCardProps) {
     auction,
     currency,
     sale_price,
+    parsed_car_text_section,
   } = carDetails;
 
-  const singleCarUrl = url_route || id;
+  const isParsed = Boolean(parsed_car_text_section);
+
+  let singleCarUrl = `/cars/${url_route || id}`;
+
+  if (isParsed) {
+    singleCarUrl = `/parsed_car/${id}`;
+  }
 
   return (
     <Link
-      href={`/cars/${singleCarUrl}`}
+      href={singleCarUrl}
       className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer hover:bg-gray-100 flex flex-col"
     >
       <div className="aspect-w-16 aspect-h-10">
-        <Image
-          src={main_image}
-          alt={title}
-          width={720}
-          height={500}
-          className="block object-cover"
-        />
+        {main_image && (
+          <Image
+            src={main_image}
+            alt={title}
+            width={720}
+            height={500}
+            className="block object-cover"
+            // unoptimized={true}
+            // quality={100}
+          />
+        )}
       </div>
       <div className="p-4 pb-2 flex-1 flex flex-col">
         <h3 className="font-semibold text-lg">
@@ -74,11 +85,13 @@ export default function CarCard({ carDetails }: ICarCardProps) {
             <span>{t("statuses.verifying")}</span>
           </div>
         )}
+
         {status == "live" && auction?.latest_bid && (
           <h4 className="font-semibold text-base mt-auto">
             {`${currency} ${numeral(auction.latest_bid).format("0,0")}`}
           </h4>
         )}
+
         {status == "sold" && (
           <h4 className="font-semibold text-base mt-auto">
             {`${currency} ${numeral(sale_price).format("0,0")}`}

@@ -8,8 +8,13 @@ export type ICar = {
     title: string;
     content: string;
   }>;
+  parsed_car_text_section?: Array<any>;
   car_video: Array<any>;
+  parsed_car_video?: Array<any>;
   car_image: Array<{
+    image: string;
+  }>;
+  parsed_car_image?: Array<{
     image: string;
   }>;
   auction?: IAuction;
@@ -56,4 +61,8 @@ export type IAuction = {
   number_of_bids: number;
   time_ending: string;
   latest_bid: number;
+};
+
+export type TSearchParams = {
+  searchParams: { [key: string]: string | string[] | undefined };
 };

@@ -2,6 +2,9 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import FancyCarousel from "./fancy-carousel";
+import PreviewImagesMobile from "./preview-images-mobile";
+import { useWindowSize } from "@uidotdev/usehooks";
+import PreviewImagesDesktop from "./preview-images-desktop";
 
 type CarImage = {
   image: string;
@@ -14,13 +17,14 @@ type MobileGalleryProps = {
 export default function Gallery({ carImages }: MobileGalleryProps) {
   const [showGallery, setShowGallery] = useState<boolean>(false);
   const [curSlider, setCurSlider] = useState<number>(0);
+  const { width } = useWindowSize();
+
+  const curWidth = width ?? 100;
 
   const all_images = useMemo(
     () => carImages.map((ob) => ob.image),
     [carImages]
   );
-
-  const preview_images = all_images.slice(1, 9);
 
   function openGalleryHandler(cur: number) {
     setCurSlider(cur);
@@ -39,30 +43,17 @@ export default function Gallery({ carImages }: MobileGalleryProps) {
       >
         <Image src={all_images[0]} alt="main image" width={1110} height={740} />
       </div>
-      <div className="overflow-x-scroll lg:overflow-auto basis-[30%]">
-        <div className=" grid grid-cols-8 lg:grid-cols-2 h-full gap-2 w-[300%] lg:w-auto ">
-          {preview_images.map((img, idx) => (
-            <div
-              onClick={() => openGalleryHandler(idx + 1)}
-              key={idx}
-              className="rounded-md overflow-hidden relative cursor-pointer"
-            >
-              <Image
-                className=" h-full object-cover"
-                src={img}
-                alt="prev image"
-                width={1110}
-                height={740}
-              />
-              {idx == 7 && (
-                <div className="absolute inset-0 text-white bg-black font-semibold flex items-center justify-center text-[8px] lg:text-base bg-opacity-60">
-                  View all photos ({all_images.length})
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
+      {curWidth > 1024 ? (
+        <PreviewImagesDesktop
+          images={all_images}
+          openGallery={openGalleryHandler}
+        />
+      ) : (
+        <PreviewImagesMobile
+          images={all_images}
+          openGallery={openGalleryHandler}
+        />
+      )}
 
       {showGallery && (
         <FancyCarousel

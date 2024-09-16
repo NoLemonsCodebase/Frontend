@@ -15,7 +15,6 @@ import "@fancyapps/ui/dist/carousel/carousel.thumbs.css";
 import type { OptionsType } from "@fancyapps/ui/types/Carousel/options";
 import Image from "next/image";
 import { IoClose } from "react-icons/io5";
-import ZoomEffect from "../anim/zoom";
 
 interface Props {
   options?: Partial<OptionsType>;
@@ -29,10 +28,10 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
 
   const mainContainerRef: any = useRef(null);
   const navContainerRef = useRef(null);
-  const mainCarouselRef = useRef<any>(null);
+  // const mainCarouselRef = useRef<any>(null);
 
-  let mainCarousel: any; // store the main carousel instance
-
+  // let mainCarousel: any; // store the main carousel instance
+  const [c, setC] = useState(0);
   useEffect(() => {
     const mainContainer = mainContainerRef.current;
     const navContainer = navContainerRef.current;
@@ -45,10 +44,15 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
       infinite: false,
       transition: "classic",
       initialPage: props.initial,
+      on: {
+        change: (instance) => {
+          console.log(instance.page);
+        },
+      },
     };
 
-    mainCarousel = new NativeCarousel(mainContainer, mainOptions);
-    mainCarouselRef.current = mainCarousel;
+    const mainCarousel = new NativeCarousel(mainContainer, mainOptions);
+    // mainCarouselRef.current = mainCarousel;
 
     const navOptions: Partial<OptionsType> = {
       infinite: false,
@@ -66,9 +70,21 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
 
     const navCarousel = new NativeCarousel(navContainer, navOptions);
 
+    // Add keyboard navigation
+    function handleKeyDown(event: KeyboardEvent) {
+      console.log(event);
+      if (event.key === "ArrowRight") {
+        mainCarousel.slideNext(); // Navigate to the next slide
+      } else if (event.key === "ArrowLeft") {
+        mainCarousel.slidePrev(); // Navigate to the previous slide
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       mainCarousel.destroy();
       navCarousel.destroy();
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
@@ -85,8 +101,10 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
     <div className=" fixed bg-black/80 inset-0 w-full z-50 flex flex-col items-center justify-center show-slider">
       <button
         onClick={props.onCloseGallery}
+        // onClick={() => setC((p) => p + 1)}
         className=" text-2xl group w-14 h-14  bg-gray-600/30 rounded-sm  text-white absolute right-0 top-0"
       >
+        {c}
         <IoClose className=" m-auto group-hover:rotate-180 transition-transform duration-300" />
       </button>
       <div className="my-carousel" ref={mainContainerRef}>

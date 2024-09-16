@@ -12,7 +12,7 @@ import FullBuyerBtn from "./full-buyer-btn";
 
 function Hero() {
   const search_params = useSearchParams();
-  const curr_active = search_params.get("cat") ?? "uae";
+  // const curr_active = search_params.get("cat") ?? "uae";
 
   return (
     <section className="overflow-hidden">

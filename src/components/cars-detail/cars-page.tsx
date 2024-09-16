@@ -1,65 +1,20 @@
-"use client";
-
-import { TrackPageView } from "@/lib/services/pixels";
 import { ICar } from "@/lib/types";
 
 import CarCard from "../CarCard";
-import { useEffect, useState } from "react";
-import CarsFilter from "../cars-filter";
-import { useSearchParams } from "next/navigation";
+import TrackPageViewCom from "../track-page-view";
+import { getCars } from "@/lib/car-actions";
 
-interface ICarsPageProps {
-  cars: ICar[];
-}
-
-export default function CarsPage({ cars = [] }: ICarsPageProps) {
-  const [showSpinner, setShowSpinner] = useState(false);
-  const search_params = useSearchParams();
-
-  const render_cars = cars.filter((car) => {
-    if (search_params.get("cat") == "uae") {
-      return true;
-    } else if (search_params.get("cat") == "import-a-car") {
-      return car.status == "for_sale";
-    }
-    return car.status == "sold";
-  });
-
-  useEffect(() => {
-    TrackPageView();
-  }, []);
-
-  useEffect(() => {
-    setShowSpinner(true);
-    const timer = setTimeout(() => {
-      setShowSpinner(false);
-    }, 500);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [search_params]);
+export default async function CarsPage({ category }: { category: any }) {
+  const cars: ICar[] = await getCars({ category });
 
   return (
-    <section className="our-container pb-40">
-      <CarsFilter />
-      {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {cars.map((car) => {
-          return <CarCard key={car.id} carDetails={car} />;
+    <section className="pb-40">
+      <TrackPageViewCom />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {cars.map((car, idx) => {
+          return <CarCard key={idx} carDetails={car} />;
         })}
-      </div> */}
-
-      {showSpinner ? (
-        <div className=" flex justify-center pt-32">
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {render_cars.map((car) => {
-            return <CarCard key={car.id} carDetails={car} />;
-          })}
-        </section>
-      )}
+      </div>
     </section>
   );
 }
