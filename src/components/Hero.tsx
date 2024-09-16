@@ -16,7 +16,7 @@ function Hero() {
 
   return (
     <section className="overflow-hidden">
-      <div className="mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16">
+      <div className="mx-auto max-w-screen-xl py-8 text-center lg:px-12 lg:py-16">
         <h1 className="mb-7 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
           Exciting cars.
           <br /> Carefully checked & honestly presented
