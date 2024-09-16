@@ -1,3 +1,4 @@
+"use client";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
@@ -33,7 +34,6 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
     return () => clearInterval(interval);
   }, []);
 
-
   if (secondsLeft <= 0) return t("statuses.auction_ended");
 
   const days = Math.floor(secondsLeft / (24 * 60 * 60));
@@ -56,12 +56,8 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
       )} ${hourPart}`}</div>
     );
   } else if (days == 1) {
-    return (
-      <div className=" min-w-[130px]">{`${days} day ${hourPart}`}</div>
-    );
+    return <div className=" min-w-[130px]">{`${days} day ${hourPart}`}</div>;
   } else {
     return <div className=" min-w-[70px]">{hourPart}</div>;
   }
-
-
 }

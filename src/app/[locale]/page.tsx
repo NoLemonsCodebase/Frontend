@@ -1,6 +1,9 @@
 import Hero from "@/components/Hero";
 import CarsPage from "@/components/cars-detail/cars-page";
+import CarsFilter from "@/components/cars-filter";
+import Loader from "@/components/ui/loader";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "NoLemons - The online auction for car people, by car people",
@@ -8,17 +11,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://nolemons.ae"),
 };
 
-export default async function Home() {
-  const res = await fetch("https://nolemons2.onrender.com/api/v2/cars/", {
-    next: { revalidate: 0 },
-  });
-
-  const data = await res.json();
+export default function Home({ searchParams }: { searchParams: any }) {
+  const { cat } = searchParams;
 
   return (
-    <main>
+    <main className="our-container">
       <Hero />
-      <CarsPage cars={data} />
+      <CarsFilter />
+
+      <Suspense key={cat} fallback={<Loader />}>
+        <CarsPage category={cat} />
+      </Suspense>
     </main>
   );
 }
