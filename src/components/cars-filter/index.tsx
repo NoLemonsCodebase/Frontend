@@ -44,12 +44,12 @@ export default function CarsFilter() {
   }, [search_params]);
 
   return (
-    <div className=" flex md:mb-10 mb-6  shadow-md rounded-md overflow-hidden w-fit">
+    <div className=" flex gap-4 md:mb-10 mb-6 ">
       {categories.map((filter) => (
         <button
           key={filter.value}
           onClick={handleFilter.bind(null, filter.value)}
-          className={`px-2 py-1.5 gap-2 transition-colors duration-500 flex items-center rounded-md ${
+          className={`px-3 py-1.5 gap-2 shadow-md transition-colors duration-500 flex items-center rounded-md ${
             curr_active == filter.value ? " bg-[#262626]" : ""
           }`}
         >
@@ -65,7 +65,7 @@ export default function CarsFilter() {
             </div>
           )}
           <span
-            className={`text-xs md:text-base transition-colors duration-500 ${
+            className={`transition-colors duration-500 ${
               curr_active == filter.value ? " text-white" : ""
             }`}
           >
