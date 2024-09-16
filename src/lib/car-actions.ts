@@ -1,7 +1,7 @@
 const LEMON_CARS = "https://nolemons2.onrender.com/api/v2/cars/";
 const IMPORT_A_CAR = "https://nolemons2.onrender.com/parser/api/v1/cars/";
 
-export async function getCars({ category }: { category: any }) {
+export async function getCars({ category = "uae" }: { category: any }) {
   try {
     if (category == "all" || !category) {
       const [uae_data, import_data] = await Promise.all([

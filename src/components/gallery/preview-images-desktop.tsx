@@ -19,6 +19,7 @@ export default function PreviewImagesDesktop({
             key={idx}
             className="rounded-md overflow-hidden relative cursor-pointer"
           >
+    
             <Image
               className=" h-full object-cover"
               src={img}

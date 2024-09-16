@@ -101,36 +101,38 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
     <div className=" fixed bg-black/80 inset-0 w-full z-50 flex flex-col items-center justify-center show-slider">
       <button
         onClick={props.onCloseGallery}
-        // onClick={() => setC((p) => p + 1)}
         className=" text-2xl group w-14 h-14  bg-gray-600/30 rounded-sm  text-white absolute right-0 top-0"
       >
-        {c}
         <IoClose className=" m-auto group-hover:rotate-180 transition-transform duration-300" />
       </button>
       <div className="my-carousel" ref={mainContainerRef}>
-        {props.allImages.map((img: string, idx: number) => (
+        {props.allImages.map((img: string | null, idx: number) => (
           <div key={idx} className="f-carousel__slide">
-            <Image
-              key={idx}
-              src={img}
-              alt={`nolemons-img-${idx}`}
-              width={1110}
-              height={740}
-            />
+            {img && (
+              <Image
+                key={idx}
+                src={img}
+                alt={`nolemons-img-${idx}`}
+                width={1110}
+                height={740}
+              />
+            )}
           </div>
         ))}
       </div>
 
       <div className="f-carousel nav-carousel" ref={navContainerRef}>
-        {props.allImages.map((img: string, idx: number) => (
+        {props.allImages.map((img: string | null, idx: number) => (
           <div key={idx} className="f-carousel__slide">
-            <Image
-              key={idx}
-              src={img}
-              alt={`nolemons-img-${idx}`}
-              width={500}
-              height={300}
-            />
+            {img && (
+              <Image
+                key={idx}
+                src={img}
+                alt={`nolemons-img-${idx}`}
+                width={500}
+                height={300}
+              />
+            )}
           </div>
         ))}
       </div>

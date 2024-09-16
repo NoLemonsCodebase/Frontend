@@ -60,6 +60,8 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
     TrackPageView();
   }, []);
 
+  console.log(car_image);
+
   return (
     <section className=" our-container flex flex-col py-4 overflow-clip">
       <div className="flex lg:hidden flex-wrap bg-white py-2 -mt-3 mb-3 z-10 gap-1 sticky top-14  border-b">
