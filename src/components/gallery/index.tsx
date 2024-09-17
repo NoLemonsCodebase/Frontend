@@ -5,6 +5,7 @@ import FancyCarousel from "./fancy-carousel";
 import PreviewImagesMobile from "./preview-images-mobile";
 import { useWindowSize } from "@uidotdev/usehooks";
 import PreviewImagesDesktop from "./preview-images-desktop";
+import Loader from "../ui/loader";
 
 type CarImage = {
   image: string;
@@ -19,7 +20,7 @@ export default function Gallery({ carImages }: MobileGalleryProps) {
   const [curSlider, setCurSlider] = useState<number>(0);
   const { width } = useWindowSize();
 
-  const curWidth = width ?? 100;
+  // const curWidth = width ?? 100;
 
   const all_images = useMemo(
     () => carImages.map((ob) => ob.image),
@@ -35,6 +36,9 @@ export default function Gallery({ carImages }: MobileGalleryProps) {
     setShowGallery(false);
   }
 
+  if (!width) return <Loader />;
+  const screen: "desktop" | "mobile" = width > 1024 ? "desktop" : "mobile";
+
   return (
     <div className=" flex flex-col overflow-hidden lg:flex-row gap-4">
       <div
@@ -43,7 +47,7 @@ export default function Gallery({ carImages }: MobileGalleryProps) {
       >
         <Image src={all_images[0]} alt="main image" width={1110} height={740} />
       </div>
-      {curWidth > 1024 ? (
+      {screen == "desktop" ? (
         <PreviewImagesDesktop
           images={all_images}
           openGallery={openGalleryHandler}
@@ -57,6 +61,7 @@ export default function Gallery({ carImages }: MobileGalleryProps) {
 
       {showGallery && (
         <FancyCarousel
+          screen={screen}
           initial={curSlider}
           onCloseGallery={closeGalleryHandler}
           allImages={all_images}

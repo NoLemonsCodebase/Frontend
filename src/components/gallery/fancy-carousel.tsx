@@ -15,23 +15,37 @@ import "@fancyapps/ui/dist/carousel/carousel.thumbs.css";
 import type { OptionsType } from "@fancyapps/ui/types/Carousel/options";
 import Image from "next/image";
 import { IoClose } from "react-icons/io5";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 interface Props {
   options?: Partial<OptionsType>;
   allImages: any;
   onCloseGallery: any;
   initial: number;
+  screen: "desktop" | "mobile";
 }
 
 function FancyCarousel(props: PropsWithChildren<Props>) {
-  // const preview_images = all_images.slice(1, 9);
-
   const mainContainerRef: any = useRef(null);
   const navContainerRef = useRef(null);
+
   // const mainCarouselRef = useRef<any>(null);
 
+  const [curIndex, setCurentIndex] = useState(1);
   // let mainCarousel: any; // store the main carousel instance
-  const [c, setC] = useState(0);
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    if (html) {
+      html.style.overflow = "hidden";
+    }
+    return () => {
+      if (html) {
+        html.style.overflow = "unset"; // Reset on unmount
+      }
+    };
+  }, []);
+
   useEffect(() => {
     const mainContainer = mainContainerRef.current;
     const navContainer = navContainerRef.current;
@@ -46,7 +60,7 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
       initialPage: props.initial,
       on: {
         change: (instance) => {
-          console.log(instance.page);
+          setCurentIndex(instance.page + 1);
         },
       },
     };
@@ -99,6 +113,9 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
 
   return (
     <div className=" fixed bg-black/80 inset-0 w-full z-50 flex flex-col items-center justify-center show-slider">
+      <div className="h-14 min-w-[80px] px-3 absolute bg-gray-600/30 left-0 top-0 text-white flex justify-center items-center">
+        {curIndex} / {props.allImages?.length}
+      </div>
       <button
         onClick={props.onCloseGallery}
         className=" text-2xl group w-14 h-14  bg-gray-600/30 rounded-sm  text-white absolute right-0 top-0"
@@ -115,6 +132,7 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
                 alt={`nolemons-img-${idx}`}
                 width={1110}
                 height={740}
+                quality={props.screen == "mobile" ? 75 : 100}
               />
             )}
           </div>
