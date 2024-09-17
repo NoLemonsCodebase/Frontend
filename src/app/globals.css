@@ -194,12 +194,22 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
-  overflow: hidden;
 }
+.my-carousel.f-carousel .f-button {
+  background-color: rgba(0, 0, 0, 0.31);
+  color: yellow;
+}
+.my-carousel.f-carousel .f-button:hover {
+  background-color: rgba(0, 0, 0, 0.505);
+  color: yellow;
+}
+
 .my-carousel.f-carousel .f-carousel__slide img {
   height: 100%;
-  object-fit: cover;
+  border-radius: 20px;
+  background: #00000063;
+
+  object-fit: contain;
 }
 .nav-carousel.f-carousel {
   height: 100px;
@@ -213,6 +223,7 @@ button {
   border-radius: 10px;
   overflow: hidden;
 }
+
 .nav-carousel.f-carousel .f-carousel__slide img {
   height: 100%;
   object-fit: cover;

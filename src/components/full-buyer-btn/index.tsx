@@ -28,7 +28,7 @@ export default function FullBuyerBtn() {
   return (
     <a
       href="https://nolemons.help/buyer-protection"
-      className=" mb-4 inline-flex items-center justify-between rounded-full bg-gray-100  p-3 md:p-4 md:px-6 pr-4 text-gray-700 hover:bg-gray-200"
+      className=" mb-4 inline-flex items-center justify-between rounded-full bg-gray-100 p-3 md:p-4 md:px-6 pr-4 text-gray-700 hover:bg-gray-200 md:w-96 w-72"
       role="alert"
     >
       <MdOutlineVerifiedUser className="text-xl md:text-3xl mr-3" />
