@@ -43,7 +43,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   const car_images_render = car_image ? car_image : parsed_car_image;
   const car_video_render = car_video ? car_video : parsed_car_video;
   const lastAuction = auction;
-  console.log(status);
+
   useEffect(() => {
     if (lastAuction) {
       setAuctionEnded(new Date(lastAuction.time_ending) > new Date());

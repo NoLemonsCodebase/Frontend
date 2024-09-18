@@ -46,9 +46,7 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
     if (!mainContainer || !navContainer) return;
 
     const mainOptions: Partial<OptionsType> = {
-      slidesPerPage: 1,
       Dots: false,
-      infinite: false,
       transition: "classic",
       initialPage: props.initial,
       on: {
@@ -66,9 +64,10 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
       transition: false,
       center: true,
       fill: true,
-      dragFree: false,
-      Dots: false,
+      slidesPerPage: 1,
+      dragFree: true,
       Navigation: false,
+      Dots: false,
 
       Sync: {
         target: mainCarousel,
@@ -94,15 +93,6 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
     };
   }, []);
 
-  // function handleGoToSlide(slideNumber: number) {
-  //   console.log(mainCarousel);
-  //   // const mainCarousel = mainCarouselRef.current;
-
-  //   // if (mainCarousel) {
-  //   //   mainCarousel.slideTo(slideNumber); // Use the carousel instance to navigate to a slide
-  //   // }
-  // }
-
   return (
     <div className=" fixed bg-black/80 inset-0 w-full z-50 flex flex-col items-center justify-center show-slider">
       <div className="h-14 min-w-[80px] px-3 absolute bg-gray-600/30 left-0 top-0 text-white flex justify-center items-center">
@@ -114,35 +104,31 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
       >
         <IoClose className=" m-auto group-hover:rotate-180 transition-transform duration-300" />
       </button>
-      <div className="my-carousel" ref={mainContainerRef}>
-        {props.allImages.map((img: string | null, idx: number) => (
+      <div id="my-carousel" ref={mainContainerRef}>
+        {props.allImages.map((img: string, idx: number) => (
           <div key={idx} className="f-carousel__slide">
-            {img && (
-              <Image
-                key={idx}
-                src={img}
-                alt={`nolemons-img-${idx}`}
-                width={1110}
-                height={740}
-                quality={props.screen == "mobile" ? 75 : 90}
-              />
-            )}
+            <Image
+              key={idx}
+              src={img}
+              alt={`nolemons-img-${idx}`}
+              width={1110}
+              height={740}
+              quality={props.screen == "mobile" ? 75 : 90}
+            />
           </div>
         ))}
       </div>
 
-      <div className="f-carousel nav-carousel" ref={navContainerRef}>
-        {props.allImages.map((img: string | null, idx: number) => (
+      <div className="f-carousel" id="nav-carousel" ref={navContainerRef}>
+        {props.allImages.map((img: string, idx: number) => (
           <div key={idx} className="f-carousel__slide">
-            {img && (
-              <Image
-                key={idx}
-                src={img}
-                alt={`nolemons-img-${idx}`}
-                width={500}
-                height={300}
-              />
-            )}
+            <Image
+              key={idx}
+              src={img}
+              alt={`nolemons-img-${idx}`}
+              width={500}
+              height={300}
+            />
           </div>
         ))}
       </div>
