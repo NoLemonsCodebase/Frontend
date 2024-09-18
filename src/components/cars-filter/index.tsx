@@ -4,17 +4,17 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const categories = [
-  {
-    name: "All",
-    value: "all",
-    // img: "/images/filter-images/car.png",
-  },
+  // {
+  //   name: "All",
+  //   value: "all",
+  //   // img: "/images/filter-images/car.png",
+  // },
   { name: "UAE", value: "uae", img: "/images/filter-images/uae.png" },
-  {
-    name: "Import A Car",
-    value: "import-a-car",
-    img: "/images/filter-images/world-globe.png",
-  },
+  // {
+  //   name: "Import A Car",
+  //   value: "import-a-car",
+  //   img: "/images/filter-images/world-globe.png",
+  // },
   // {
   //   name: "Private Sale ",
   //   value: "private-sale",
@@ -27,7 +27,7 @@ export default function CarsFilter() {
   const pathname = usePathname();
   const { push } = useRouter();
 
-  const curr_active = search_params.get("cat") ?? "all";
+  const curr_active = search_params.get("cat") ?? "uae";
 
   function handleFilter(val: string) {
     const params = new URLSearchParams(search_params);

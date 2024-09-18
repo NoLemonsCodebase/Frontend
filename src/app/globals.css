@@ -59,7 +59,6 @@ button {
 
 /* start our loader car style */
 .loader {
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,32 +130,7 @@ button {
   }
 }
 
-.fancybox__viewport {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  cursor: default;
-}
-.fancybox__slide {
-  margin: 0;
-}
-.fancybox__slide > .fancybox__content {
-  height: 100%;
-  padding: 0;
-  background-color: transparent;
-
-  @media (max-width: 768px) {
-    height: auto;
-  }
-}
-
-.fancybox__slide > .fancybox__content img {
-  height: 100%;
-  object-fit: cover;
-  position: relative;
-}
-.my-carousel.f-carousel {
+.f-carousel {
   --f-button-width: 38px;
   --f-button-height: 38px;
   --f-carousel-spacing: 8px;
@@ -174,66 +148,75 @@ button {
   --f-button-active-bg: #f0f0f0;
 }
 
-.f-carousel {
+/* .f-carousel {
   height: 80vh;
   margin-bottom: 20px;
 
   @media (max-width: 768px) {
     height: auto;
   }
-}
-.my-carousel.f-carousel {
+} */
+#my-carousel {
+  height: 80vh;
+  margin-bottom: 20px;
   max-width: 1000px;
   width: 100%;
   margin: auto;
   @media (max-width: 768px) {
     margin: 0;
+    height: auto;
   }
 }
-.my-carousel.f-carousel .f-carousel__slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#my-carousel .f-carousel__slide {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
 }
-.my-carousel.f-carousel .f-button {
+#my-carousel .f-carousel__slide img {
+  object-fit: contain;
+  background: #00000063;
+  border-radius: 20px;
+}
+#my-carousel .f-button {
   background-color: rgba(0, 0, 0, 0.31);
   color: white;
   border-radius: 6px;
 }
-.my-carousel.f-carousel .f-button:hover {
+#my-carousel .f-button:hover {
   background-color: rgba(0, 0, 0, 0.505);
   color: white;
 }
 
-.my-carousel.f-carousel .f-carousel__slide img {
-  height: 100%;
-  border-radius: 20px;
-  background: #00000063;
-
-  object-fit: contain;
-}
-.nav-carousel.f-carousel {
+#nav-carousel {
   height: 100px;
+  width: 100%;
 }
-.nav-carousel.f-carousel .f-carousel__viewport {
+#nav-carousel .f-carousel__viewport {
   padding: 10px;
 }
-.nav-carousel.f-carousel .f-carousel__slide {
+
+#nav-carousel .f-carousel__slide img {
+  background: #00000063;
+  object-fit: cover;
+}
+
+#nav-carousel .f-carousel__slide {
+  /* width: 10%; */
   max-width: 100px;
   margin: 0 5px;
   border-radius: 10px;
   overflow: hidden;
+  /* @media (max-width: 768px) {
+    width: 20%;
+  } */
 }
-
-.nav-carousel.f-carousel .f-carousel__slide img {
+#nav-carousel .f-carousel__slide img {
   height: 100%;
   object-fit: cover;
 }
 .f-carousel__slide.is-nav-selected {
   box-shadow: 0 0 0 2px yellow;
 }
-
-/* */
 
 .show-slider {
   animation: sliderShow 1s 0.5s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
