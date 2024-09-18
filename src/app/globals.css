@@ -194,9 +194,7 @@ button {
 #nav-carousel .f-carousel__viewport {
   padding: 10px;
 }
-#nav-carousel {
-  height: 100px;
-}
+
 #nav-carousel .f-carousel__slide img {
   background: #00000063;
   object-fit: cover;
