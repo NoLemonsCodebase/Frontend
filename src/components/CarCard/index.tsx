@@ -44,7 +44,7 @@ export default function CarCard({ carDetails }: ICarCardProps) {
   return (
     <Link
       href={singleCarUrl}
-      className="relative rounded-lg overflow-hidden shadow-xl cursor-pointer hover:bg-gray-100 flex flex-col p-2 md:p-3"
+      className="relative rounded-lg overflow-hidden shadow-xl cursor-pointer hover:bg-gray-100 flex flex-col p-3"
     >
       <div className="aspect-w-16 aspect-h-10 rounded-lg overflow-hidden">
         {main_image && (
