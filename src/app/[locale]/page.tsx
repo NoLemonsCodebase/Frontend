@@ -17,9 +17,8 @@ export default function Home({ searchParams }: { searchParams: any }) {
   return (
     <main className="our-container">
       <Hero />
-      {/* <CarsFilter /> */}
-
-      <Suspense key={cat} fallback={<Loader />}>
+      <CarsFilter />
+      <Suspense key={cat} fallback={<Loader pb="pb-[400px]" />}>
         <CarsPage category={cat} />
       </Suspense>
     </main>

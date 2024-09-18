@@ -1,40 +1,19 @@
 import CarDetailPage from "@/components/cars-detail/car-detail-page";
 import GtmTracking from "@/components/gtm-tracking";
+import { getUaeCar } from "@/lib/car-actions";
 import { ICar } from "@/lib/types";
-import { builder } from "@builder.io/sdk";
+
 import { Metadata } from "next";
 import * as React from "react";
-
-builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY as string);
 
 type Props = {
   params: { id: string };
 };
 
-const fetchCar = async (id: string) => {
-  let reqUrl = "";
-
-  if (Number.isInteger(Number(id))) {
-    reqUrl = `https://nolemons2.onrender.com/api/v2/cars/${id}/`;
-  } else {
-    reqUrl = `https://nolemons2.onrender.com/cars/by-route/${id}/`;
-  }
-
-  const res = await fetch(reqUrl, { next: { revalidate: 0 } });
-
-  if (!res.status || res.status !== 200) {
-    throw new Error("Car not found");
-  }
-
-  const data: ICar = await res.json();
-
-  return data;
-};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const data: ICar = await fetchCar(params.id);
-    // console.log(data.auction)
+    const data: ICar = await getUaeCar(params.id);
     const carDescription =
       data.auction && data.status == "live"
         ? `For sale: ${data.year} ${data.title};\nAuction ends on ${new Date(
@@ -82,16 +61,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function CarPage({ params, searchParams }: any) {
   const { id, locale } = params;
 
-  try {
-    const data: ICar = await fetchCar(id);
+  const data: ICar = await getUaeCar(id);
 
-    return (
-      <>
-        <GtmTracking slug={id} />
-        <CarDetailPage carDetail={data} utms={searchParams} />
-      </>
-    );
-  } catch (e) {
-    return <div>Car not found</div>;
-  }
+  return (
+    <>
+      <GtmTracking slug={id} />
+      <CarDetailPage carDetail={data} utms={searchParams} />
+    </>
+  );
 }

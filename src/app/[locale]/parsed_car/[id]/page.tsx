@@ -1,9 +1,22 @@
-import React from "react";
+import CarDetailPage from "@/components/cars-detail/car-detail-page";
+import GtmTracking from "@/components/gtm-tracking";
+import { getImportCar } from "@/lib/car-actions";
+import { ICar, TSearchParams } from "@/lib/types";
 
-export default function ParsedCarPage() {
+type Props = {
+  params: { id: string; locale: string };
+  searchParams: TSearchParams;
+};
+
+export default async function ParsedCarPage({ params, searchParams }: Props) {
+  const { id, locale } = params;
+
+  const data: ICar = await getImportCar(id);
+
   return (
-    <section className=" our-container py-40 text-xl md:text-5xl text-center">
-      Comming Soon
-    </section>
+    <>
+      <GtmTracking slug={id} />
+      <CarDetailPage carDetail={data} utms={searchParams} />
+    </>
   );
 }
