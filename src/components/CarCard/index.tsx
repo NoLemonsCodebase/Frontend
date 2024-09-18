@@ -44,9 +44,9 @@ export default function CarCard({ carDetails }: ICarCardProps) {
   return (
     <Link
       href={singleCarUrl}
-      className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer hover:bg-gray-100 flex flex-col"
+      className="relative rounded-lg overflow-hidden shadow-xl cursor-pointer hover:bg-gray-100 flex flex-col p-2 md:p-3"
     >
-      <div className="aspect-w-16 aspect-h-10">
+      <div className="aspect-w-16 aspect-h-10 rounded-lg overflow-hidden">
         {main_image && (
           <Image
             src={main_image}
@@ -100,7 +100,7 @@ export default function CarCard({ carDetails }: ICarCardProps) {
       </div>
       <div
         className={cn(
-          "text-white w-full p-3 rounded-b-lg flex items-center justify-center",
+          "text-white w-full p-3 rounded-lg flex items-center justify-center",
           status === "sold" && "bg-[#6E52A2]",
           (status === "for_sale" || status === "live") && "bg-green-700",
           (status === "created" || status === "unverified") &&

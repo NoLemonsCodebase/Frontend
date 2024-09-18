@@ -8,10 +8,14 @@ export type ICar = {
     title: string;
     content: string;
   }>;
-  parsed_car_text_section?: Array<any>;
+  parsed_car_text_section?: Array<{
+    content: string;
+    title?: string;
+  }>;
+
   car_video: Array<any>;
   parsed_car_video?: Array<any>;
-  car_image: Array<{
+  car_image?: Array<{
     image: string;
   }>;
   parsed_car_image?: Array<{
@@ -52,7 +56,7 @@ export type ICar = {
     | "for_sale"
     | "sold"
     | "unverified"
-    | "deactivated";
+    | "deactivate";
   url_route: string | null;
   seller: number;
 };

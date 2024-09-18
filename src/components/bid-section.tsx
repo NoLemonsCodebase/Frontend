@@ -85,7 +85,8 @@ export function BidSection({
     );
   };
 
-  const createdOrUnverfied = status == "created" || status == "unverified";
+  const createdOrUnverfied =
+    status == "created" || status == "unverified" || "deactivate";
 
   return (
     <section

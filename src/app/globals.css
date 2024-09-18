@@ -197,11 +197,12 @@ button {
 }
 .my-carousel.f-carousel .f-button {
   background-color: rgba(0, 0, 0, 0.31);
-  color: yellow;
+  color: white;
+  border-radius: 6px;
 }
 .my-carousel.f-carousel .f-button:hover {
   background-color: rgba(0, 0, 0, 0.505);
-  color: yellow;
+  color: white;
 }
 
 .my-carousel.f-carousel .f-carousel__slide img {

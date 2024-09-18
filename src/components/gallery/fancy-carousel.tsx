@@ -1,10 +1,4 @@
-import React, {
-  useRef,
-  useEffect,
-  PropsWithChildren,
-  useMemo,
-  useState,
-} from "react";
+import { PropsWithChildren, useEffect, useRef, useState } from "react";
 
 import { Carousel as NativeCarousel } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/carousel/carousel.css";
@@ -15,7 +9,6 @@ import "@fancyapps/ui/dist/carousel/carousel.thumbs.css";
 import type { OptionsType } from "@fancyapps/ui/types/Carousel/options";
 import Image from "next/image";
 import { IoClose } from "react-icons/io5";
-import { useWindowSize } from "@uidotdev/usehooks";
 
 interface Props {
   options?: Partial<OptionsType>;
@@ -86,7 +79,6 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
 
     // Add keyboard navigation
     function handleKeyDown(event: KeyboardEvent) {
-      console.log(event);
       if (event.key === "ArrowRight") {
         mainCarousel.slideNext(); // Navigate to the next slide
       } else if (event.key === "ArrowLeft") {
@@ -132,7 +124,7 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
                 alt={`nolemons-img-${idx}`}
                 width={1110}
                 height={740}
-                quality={props.screen == "mobile" ? 75 : 100}
+                quality={props.screen == "mobile" ? 75 : 90}
               />
             )}
           </div>

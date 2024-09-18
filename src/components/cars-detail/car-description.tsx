@@ -9,7 +9,12 @@ export default function CarDescription({ carDetail }: { carDetail: ICar }) {
   const switchArabic = () => setLan("ar");
   const switchEnglish = () => setLan("en");
 
-  const { car_text_section_arabic } = carDetail;
+  const { car_text_section_arabic, parsed_car_text_section, car_text_section } =
+    carDetail;
+
+  const text_section_render = car_text_section
+    ? car_text_section
+    : parsed_car_text_section;
 
   return (
     <div className="md:pr-10">
@@ -45,12 +50,13 @@ export default function CarDescription({ carDetail }: { carDetail: ICar }) {
       ) : (
         <Fragment>
           <RichText className="mt-2" content={carDetail.description} />
-          {carDetail.car_text_section.map((section: any, index: number) => (
-            <Fragment key={index}>
-              <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
-              <RichText className="mt-2" content={section.content} />
-            </Fragment>
-          ))}
+          {text_section_render &&
+            text_section_render.map((section: any, index: number) => (
+              <Fragment key={index}>
+                <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
+                <RichText className="mt-2" content={section.content} />
+              </Fragment>
+            ))}
         </Fragment>
       )}
     </div>

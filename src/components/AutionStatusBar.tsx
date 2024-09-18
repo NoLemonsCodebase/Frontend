@@ -16,13 +16,15 @@ export default function AutionStatusBar({
 
   // info we need from carDetail
   const { auction: currentAuction, status, sale_price, currency } = carDetail;
+  const is_comming =
+    status == "created" || status == "unverified" || status == "deactivate";
 
   return (
     <div className="rounded bg-black bg-opacity-80 flex-grow items-center">
       <ul className="flex items-center justify-between md:justify-normal  px-4 py-3">
         <li className=" flex items-center text-white">
           <ClockIcon className="w-5 h-5 mr-1" />
-          {(status == "created" || status == "unverified") && (
+          {is_comming && (
             <p className="font-semibold whitespace-nowrap">
               {t("statuses.coming_soon")}
             </p>
