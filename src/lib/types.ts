@@ -45,6 +45,7 @@ export type ICar = {
   description: string;
   sale_price: number;
   buyers_fee: number;
+  verified: boolean;
   status:
     | "created"
     | "live"

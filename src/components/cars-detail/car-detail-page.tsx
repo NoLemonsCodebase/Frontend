@@ -59,7 +59,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   useEffect(() => {
     TrackPageView();
   }, []);
-
+  console.log(carDetail);
   return (
     <section className=" our-container flex flex-col py-4 overflow-clip">
       <div className="flex lg:hidden flex-wrap bg-white py-2 -mt-3 mb-3 z-10 gap-1 sticky top-14  border-b">
@@ -87,13 +87,17 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           <h1 className="text-xl font-bold">
             {carDetail.year} {carDetail.title}
           </h1>
-          <div className="flex items-start">
-            <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-              <FaCheck className=" mr-2 text-[10px] text-green-600" />
-              {t("verified")}
-              <span className="hidden xl:block ml-0.5">{t("by_nolemons")}</span>
-            </span>
-          </div>
+          {carDetail.verified && (
+            <div className="flex items-start">
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                <FaCheck className=" mr-2 text-[10px] text-green-600" />
+                {t("verified")}
+                <span className="hidden xl:block ml-0.5">
+                  {t("by_nolemons")}
+                </span>
+              </span>
+            </div>
+          )}
         </div>
         {carDetail.status == "for_sale" ? (
           <InterestedButton carDetail={carDetail} />
