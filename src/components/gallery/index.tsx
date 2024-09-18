@@ -50,10 +50,16 @@ export default function Gallery({ carImages, isVerified }: MobileGalleryProps) {
         onClick={() => openGalleryHandler(0)}
         className=" cursor-pointer rounded-md overflow-hidden lg:basis-[70%] relative"
       >
-        <Image src={all_images[0]} alt="main image" width={1110} height={740} />
+        <Image
+          src={all_images[0]}
+          alt="main image"
+          width={1110}
+          height={740}
+          priority
+        />
         {isVerified && (
           <div className="flex items-start absolute bottom-2 right-2">
-            <span className="inline-flex items-center px-2 py-1 rounded-md text-sm font-medium bg-green-100/20 text-white">
+            <span className="inline-flex items-center py-1 px-1.5 md:py-2 md:px-3 rounded-md text-sm font-medium bg-opacity-40 bg-black text-white">
               <FaCheck className=" mr-2 bg-green-700 text-[20px] p-1 rounded-md text-white" />
               {t("verified")}
               <span className="hidden xl:block ml-0.5">{t("by_nolemons")}</span>

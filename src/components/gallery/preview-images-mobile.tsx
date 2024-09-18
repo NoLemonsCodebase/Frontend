@@ -24,6 +24,7 @@ export default function PreviewImagesMobile({
               alt="prev image"
               width={1110}
               height={740}
+              priority
             />
             {idx == 2 && (
               <div className="absolute inset-0 text-white bg-black font-semibold flex items-center justify-center text-[8px] lg:text-base bg-opacity-60">

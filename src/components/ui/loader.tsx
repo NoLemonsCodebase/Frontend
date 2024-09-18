@@ -1,6 +1,14 @@
-export default function Loader() {
+type Props = {
+  pt?: string;
+  pb?: string;
+};
+
+export default function Loader({
+  pt = "pt-[100px]",
+  pb = "pb-[100px]",
+}: Props) {
   return (
-    <div className="loader">
+    <div className={`loader ${pt} ${pb}`}>
       <svg
         className="car"
         width="102"
