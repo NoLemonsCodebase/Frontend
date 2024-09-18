@@ -189,6 +189,7 @@ button {
 
 #nav-carousel {
   height: 100px;
+  width: 100%;
 }
 #nav-carousel .f-carousel__viewport {
   padding: 10px;
