@@ -60,7 +60,7 @@ export default function Gallery({ carImages, isVerified }: MobileGalleryProps) {
         {isVerified && (
           <div className="flex items-start absolute bottom-2 right-2">
             <span className="inline-flex items-center py-1 px-1.5 md:py-2 md:px-3 rounded-md text-sm font-medium bg-opacity-40 bg-black text-white">
-              <FaCheck className=" mr-2 bg-green-700 text-[20px] p-1 rounded-md text-white" />
+              <FaCheck className=" mr-2 bg-green-600 text-[20px] p-1 rounded-md text-white" />
               {t("verified")}
               <span className="hidden xl:block ml-0.5">{t("by_nolemons")}</span>
             </span>
