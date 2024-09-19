@@ -47,7 +47,7 @@ function Btn({ rotateIcon, title, onClickHandler }: any) {
 }
 
 function LinkItem({ name, link }: any) {
-  if (name == "Sell Your Car")
+  if (name == "Sell Your Car" || name == "Request a car")
     return (
       <li>
         <Link

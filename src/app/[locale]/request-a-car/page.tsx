@@ -10,43 +10,31 @@ import path from "path";
 
 interface IRequestACarProps {}
 
-const RequestACar: React.FunctionComponent<IRequestACarProps> = (
-  props
-) => {
+const RequestACar: React.FunctionComponent<IRequestACarProps> = (props) => {
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [description, setDescription] = React.useState("");
-  
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("name", name);
-    console.log("phone", phone);
-    console.log("description", description);
-    
+
     const url_request = "https://nolemons2.onrender.com/request-car/";
-    const res = fetch(
-      url_request,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          name: name,
-          phone: phone,
-          description: description,
-        }),
-      }
-    );
+    const res = fetch(url_request, {
+      method: "POST",
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        description: description,
+      }),
+    });
     // const text = encodeURIComponent(
     //   `Hello! I'm ${name}\nHere's a small description:\n${description}`
     // );
-    window.open(
-      "/en/thank-you/",
-      "_parent"
-    );
+    window.open("/en/thank-you/", "_parent");
   };
 
   return (
-    <div className="flex flex-col p-4 space-y-4 max-w-xl mx-auto">
-
+    <div className="flex flex-col px-4 pt-10 md:pt-20  max-w-xl mx-auto h-screen  ">
       <form className="flex flex-col space-y-2" onSubmit={handleSubmit}>
         <label htmlFor="name" className="font-bold">
           {"Name"}
