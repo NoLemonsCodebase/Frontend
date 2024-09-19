@@ -4,17 +4,17 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const categories = [
-  // {
-  //   name: "All",
-  //   value: "all",
-  //   // img: "/images/filter-images/car.png",
-  // },
+  {
+    name: "All",
+    value: "all",
+    // img: "/images/filter-images/car.png",
+  },
   { name: "UAE", value: "uae", img: "/images/filter-images/uae.png" },
-  // {
-  //   name: "Import A Car",
-  //   value: "import-a-car",
-  //   img: "/images/filter-images/world-globe.png",
-  // },
+  {
+    name: "Import A Car",
+    value: "import-a-car",
+    img: "/images/filter-images/world-globe.png",
+  },
   // {
   //   name: "Private Sale ",
   //   value: "private-sale",

@@ -49,9 +49,13 @@ export const menuBtns = [
         name: "International Buyer Guide",
         link: "https://nolemons.help/international-buyer-guide/",
       },
+      {
+        name: "Request a car",
+        link: "/request-a-car",
+      },
     ],
-    height: "h-[132px]",
-    mobileHeight: "group-hover:h-[132px]",
+    height: "h-[176px]",
+    mobileHeight: "group-hover:h-[176px]",
   },
   {
     id: "for-sellers",

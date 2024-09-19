@@ -3,6 +3,7 @@ import { FunctionComponent, useState, useEffect } from "react";
 // import * as React from "react";
 import createDomPurify from "dompurify";
 import cn from "classnames";
+import { cairo } from "@/lib/font";
 
 interface IRichTextProps {
   content: string;
@@ -32,7 +33,7 @@ const RichText: FunctionComponent<IRichTextProps> = ({
   return (
     <div
       dir={dir}
-      className={cn("no-tailwindcss-base", className)}
+      className={cn("no-tailwindcss-base", className, cairo.className)}
       dangerouslySetInnerHTML={{
         __html: content,
       }}

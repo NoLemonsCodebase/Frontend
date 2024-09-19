@@ -3,7 +3,6 @@ import { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { Carousel as NativeCarousel } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/carousel/carousel.css";
 
-// import { Thumbs } from "@fancyapps/ui/dist/carousel/carousel.thumbs.esm.js";
 import "@fancyapps/ui/dist/carousel/carousel.thumbs.css";
 
 import type { OptionsType } from "@fancyapps/ui/types/Carousel/options";
@@ -22,7 +21,7 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
   const mainContainerRef: any = useRef(null);
   const navContainerRef = useRef(null);
 
-  // const mainCarouselRef = useRef<any>(null);
+  const mainCarouselRef = useRef<any>(null);
 
   const [curIndex, setCurentIndex] = useState(1);
   // let mainCarousel: any; // store the main carousel instance
@@ -49,6 +48,7 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
       Dots: false,
       transition: "classic",
       initialPage: props.initial,
+
       on: {
         change: (instance) => {
           setCurentIndex(instance.page + 1);
@@ -57,7 +57,7 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
     };
 
     const mainCarousel = new NativeCarousel(mainContainer, mainOptions);
-    // mainCarouselRef.current = mainCarousel;
+    mainCarouselRef.current = mainCarousel;
 
     const navOptions: Partial<OptionsType> = {
       infinite: false,
@@ -65,7 +65,7 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
       center: true,
       fill: true,
       slidesPerPage: 1,
-      dragFree: true,
+      dragFree: false,
       Navigation: false,
       Dots: false,
 
