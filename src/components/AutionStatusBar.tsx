@@ -16,8 +16,7 @@ export default function AutionStatusBar({
 
   // info we need from carDetail
   const { auction: currentAuction, status, sale_price, currency } = carDetail;
-  const is_comming =
-    status == "created" || status == "unverified" || status == "deactivate";
+  const is_comming = status == "created" || status == "unverified";
 
   return (
     <div className="rounded bg-black bg-opacity-80 flex-grow items-center">

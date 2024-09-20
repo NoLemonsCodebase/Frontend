@@ -47,17 +47,13 @@ export default function CarCard({ carDetails }: ICarCardProps) {
       className="relative rounded-lg overflow-hidden shadow-xl cursor-pointer hover:bg-gray-100 flex flex-col p-3"
     >
       <div className="aspect-w-16 aspect-h-10 rounded-lg overflow-hidden">
-        {main_image && (
-          <Image
-            src={main_image}
-            alt={title}
-            width={720}
-            height={500}
-            className="block object-cover"
-            // unoptimized={true}
-            // quality={100}
-          />
-        )}
+        <Image
+          src={main_image}
+          alt={title}
+          width={720}
+          height={500}
+          className="block object-cover"
+        />
       </div>
       <div className="p-4 pb-2 flex-1 flex flex-col">
         <h3 className="font-semibold text-lg">

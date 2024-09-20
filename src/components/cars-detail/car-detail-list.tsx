@@ -17,6 +17,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
 
   // extract field from carDetail
   const {
+    parsed_car_text_section,
     location,
     vin,
     engine,
@@ -41,6 +42,8 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     arabic_description_link,
     seller_whatsapp,
   } = carDetail;
+
+  const is_parsed = Boolean(parsed_car_text_section);
 
   const sections = [
     {
@@ -150,6 +153,9 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
   //   title: "الوصف (باللغةالعربية)",
   //   link: arabicReport,
   // },
+  let fields_render = sections;
+  if (is_parsed) fields_render = sections.filter((_, idx) => idx !== 1);
+
   return (
     <div
       className={cn(
@@ -159,10 +165,10 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     >
       <table className="min-w-full divide-y divide-gray-200">
         <tbody className="divide-y divide-gray-200">
-          {/* ====================== values fiels ========================= */}
-          {sections.map(({ title, value }, index) =>
+          {/* ====================== values fields ========================= */}
+          {fields_render.map(({ title, value }, idx) =>
             value ? (
-              <tr key={index}>
+              <tr key={idx}>
                 <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                   {title}:
                 </td>
@@ -215,7 +221,6 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
               </td>
             </tr>
           ) : null}
-
         </tbody>
       </table>
     </div>
