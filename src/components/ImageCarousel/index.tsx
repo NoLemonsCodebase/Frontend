@@ -41,7 +41,6 @@ export default function ImageCarousel({ carImages }: any) {
             alt="main image"
             width={1110}
             height={740}
-            priority
           />
         </button>
         <div className="overflow-x-scroll lg:overflow-auto basis-[30%]">
@@ -59,7 +58,6 @@ export default function ImageCarousel({ carImages }: any) {
                   alt="prev image"
                   width={1110}
                   height={740}
-                  priority
                 />
 
                 {idx == 7 && (
@@ -79,17 +77,11 @@ export default function ImageCarousel({ carImages }: any) {
           data-src={`#nolemons-img-${idx + 9}`}
           className="hidden"
         >
-          <Image
-            src={img}
-            alt="prev image"
-            width={500}
-            height={300}
-            quality={50}
-          />
+          <Image src={img} alt="prev image" width={500} height={300} />
         </button>
       ))}
 
-      {all_images.map((img: string, idx: number, arr: any) => (
+      {all_images.map((img: string, idx: number) => (
         <div
           key={idx}
           style={{ display: "none", position: "relative" }}
@@ -102,7 +94,6 @@ export default function ImageCarousel({ carImages }: any) {
             width={1110}
             height={740}
             className=" relative"
-            priority
           />
         </div>
       ))}
