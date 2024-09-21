@@ -20,7 +20,6 @@ export default function ImageCarousel({ carImages }: any) {
   return (
     <Fancybox
       options={{
-        Carousel: { enabled: true },
         mainClass: "our-gallery",
         Toolbar: {
           enabled: true,
@@ -79,9 +78,7 @@ export default function ImageCarousel({ carImages }: any) {
           data-fancybox="gallery"
           data-src={`#nolemons-img-${idx + 9}`}
           className="hidden"
-        >
-          <Image src={img} alt="prev image" width={500} height={300} />
-        </button>
+        ></button>
       ))}
 
       {all_images.map((img: string, idx: number, arr: any) => (
@@ -97,21 +94,6 @@ export default function ImageCarousel({ carImages }: any) {
             width={1110}
             height={740}
             className=" relative"
-          />
-          <Image
-            src={arr[(idx + 1) % arr.length]}
-            alt={`nolemons-${arr[(idx + 1) % arr.length]}`}
-            width={1110}
-            height={740}
-            className=" hidden"
-            priority
-          />
-          <Image
-            src={arr[(idx + 2) % arr.length]}
-            alt={`nolemons-${arr[(idx + 1) % arr.length]}`}
-            width={1110}
-            height={740}
-            className=" hidden"
             priority
           />
         </div>
