@@ -76,7 +76,37 @@ button {
 .moveUpRotate {
   animation: moveUpRotate 4s ease-in-out infinite;
 }
-
+.loader-sppiner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #fff;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader-sppiner::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-left: 4px solid #31e94c;
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /* start our loader car style */
 .loader {
   display: flex;
@@ -149,8 +179,15 @@ button {
     transform: rotate(360deg);
   }
 }
-
-.f-carousel {
+.our-gallery .fancybox__content {
+  height: 100%;
+  background-color: transparent;
+}
+.our-gallery .fancybox__content img {
+  height: 100%;
+  object-fit: contain;
+}
+/* .f-carousel {
   --f-button-width: 38px;
   --f-button-height: 38px;
   --f-carousel-spacing: 8px;
@@ -166,7 +203,7 @@ button {
   --f-button-bg: #fff;
   --f-button-hover-bg: #f9f9f9;
   --f-button-active-bg: #f0f0f0;
-}
+} */
 
 /* .f-carousel {
   height: 80vh;
@@ -222,14 +259,10 @@ button {
 }
 
 #nav-carousel .f-carousel__slide {
-  /* width: 10%; */
   max-width: 100px;
   margin: 0 5px;
   border-radius: 10px;
   overflow: hidden;
-  /* @media (max-width: 768px) {
-    width: 20%;
-  } */
 }
 #nav-carousel .f-carousel__slide img {
   height: 100%;

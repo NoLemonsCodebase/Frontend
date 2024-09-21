@@ -11,7 +11,7 @@ export default function Search() {
   const pathname = usePathname();
   const { replace } = useRouter();
   const searchParams = useSearchParams();
-  const debouncedValue = useDebounce(value, 1500);
+  const debouncedValue = useDebounce(value, 500);
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams);

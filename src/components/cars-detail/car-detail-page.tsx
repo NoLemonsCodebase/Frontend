@@ -15,6 +15,8 @@ import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
 
 import Gallery from "../gallery";
+import ImageCarousel from "../ImageCarousel";
+import Fancybox from "../fancybox";
 // import ImageCarousel from "../ImageCarousel";
 
 interface ICarPageProps {
@@ -90,9 +92,10 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
         ) : null}
       </div>
 
-      {car_images_render && car_images_render.length > 0 ? (
+      {/* {car_images_render && car_images_render.length > 0 ? (
         <Gallery carImages={car_images_render} isVerified={verified} />
-      ) : null}
+      ) : null} */}
+      <ImageCarousel carImages={car_images_render} />
 
       <div className="flex items-center mt-4 gap-2">
         <div className="flex gap-4">
@@ -150,6 +153,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             {car_video_render && car_video_render?.length > 0 && (
               <h2 className="text-2xl font-bold mt-8">{t("videos")}</h2>
             )}
+
             {car_video_render &&
               car_video_render?.map((video: any, index: number) => (
                 <Fragment key={index}>
@@ -165,9 +169,11 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
                     <iframe
                       src={video.video}
                       title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share"
                       allowFullScreen
-                    ></iframe>
+                    >
+                      vedio 1
+                    </iframe>
                   </div>
                 </Fragment>
               ))}

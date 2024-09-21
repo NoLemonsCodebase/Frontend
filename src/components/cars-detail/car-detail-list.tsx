@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
+import Fancybox from "../fancybox";
 
 const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
   isCard,
@@ -143,16 +144,8 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
       title: t("accident_check_link"),
       link: accidentCheck,
     },
-
-    // {
-    //   title: t("seller_whatsapp"),
-    //   link: sellerWhatsapp,
-    // },
   ];
-  // {
-  //   title: "الوصف (باللغةالعربية)",
-  //   link: arabicReport,
-  // },
+
   let fields_render = sections;
   if (is_parsed) fields_render = sections.filter((_, idx) => idx !== 1);
 
@@ -183,6 +176,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
           )}
 
           {/* ====================== Report Links ========================= */}
+
           {linksReports.map(({ title, link }) =>
             link ? (
               <tr key={title}>
@@ -190,14 +184,28 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                   {title}:
                 </td>
                 <td className="py-2 whitespace-nowrap  text-sm text-gray-500">
-                  <a
-                    href={link}
-                    target="_blank"
-                    className="text-blue-500 flex  hover:text-blue-700"
-                  >
-                    {t("open_report")}
-                    <LiaExternalLinkAltSolid className=" text-xl ml-1" />
-                  </a>
+                  {link.includes("pdf") ? (
+                    <Fancybox>
+                      <a
+                        href={link}
+                        data-fancybox
+                        data-type="pdf"
+                        className="text-blue-500 flex  hover:text-blue-700"
+                      >
+                        {t("open_report")}
+                        <LiaExternalLinkAltSolid className=" text-xl ml-1" />
+                      </a>
+                    </Fancybox>
+                  ) : (
+                    <a
+                      href={link}
+                      target="_blank"
+                      className="text-blue-500 flex  hover:text-blue-700"
+                    >
+                      {t("open_report")}
+                      <LiaExternalLinkAltSolid className=" text-xl ml-1" />
+                    </a>
+                  )}
                 </td>
               </tr>
             ) : null
@@ -210,14 +218,17 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                 الوصف (باللغة العربية)
               </td>
               <td className="py-2 whitespace-nowrap  text-sm text-gray-500">
-                <a
-                  href={arabicReport}
-                  target="_blank"
-                  className="text-blue-500 flex  hover:text-blue-700"
-                >
-                  <span>افتح الملف</span>
-                  <LiaExternalLinkAltSolid className=" text-xl ml-1" />
-                </a>
+                <Fancybox>
+                  <a
+                    href={arabicReport}
+                    data-fancybox
+                    data-type="pdf"
+                    className="text-blue-500 flex  hover:text-blue-700"
+                  >
+                    <span>افتح الملف</span>
+                    <LiaExternalLinkAltSolid className=" text-xl ml-1" />
+                  </a>
+                </Fancybox>
               </td>
             </tr>
           ) : null}
