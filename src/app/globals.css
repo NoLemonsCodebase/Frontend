@@ -81,11 +81,9 @@ button {
   height: 48px;
   border-radius: 50%;
   display: inline-block;
-  border-top: 4px solid #fff;
-  border-right: 4px solid transparent;
   box-sizing: border-box;
-  animation: rotation 1s linear infinite;
 }
+
 .loader-sppiner::after {
   content: "";
   box-sizing: border-box;
@@ -95,7 +93,7 @@ button {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border-left: 4px solid #31e94c;
+  border-left: 4px solid #fff;
   border-bottom: 4px solid transparent;
   animation: rotation 0.5s linear infinite reverse;
 }
@@ -182,6 +180,7 @@ button {
 .our-gallery .fancybox__content {
   height: 100%;
   background-color: transparent;
+  padding: 0;
 }
 .our-gallery .fancybox__content img {
   height: 100%;

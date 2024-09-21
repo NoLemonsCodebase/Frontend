@@ -34,7 +34,7 @@ export default function ImageCarousel({ carImages }: any) {
       <div className="flex flex-col lg:flex-row gap-4">
         <button
           data-fancybox="gallery"
-          data-src="#nolemons-img-1"
+          data-src="#nolemons-img-0"
           className="rounded-md overflow-hidden lg:basis-[70%]"
         >
           <Image
@@ -51,7 +51,7 @@ export default function ImageCarousel({ carImages }: any) {
               <button
                 key={idx}
                 data-fancybox="gallery"
-                data-src={`#nolemons-img-${idx + 2}`}
+                data-src={`#nolemons-img-${idx + 1}`}
                 className="rounded-md overflow-hidden relative cursor-pointer"
               >
                 <Image
@@ -77,27 +77,42 @@ export default function ImageCarousel({ carImages }: any) {
         <button
           key={idx}
           data-fancybox="gallery"
-          data-src={`#nolemons-img-${idx + 10}`}
+          data-src={`#nolemons-img-${idx + 9}`}
           className="hidden"
         >
           <Image src={img} alt="prev image" width={500} height={300} />
         </button>
       ))}
 
-      {all_images.map((img: string, idx: number) => (
+      {all_images.map((img: string, idx: number, arr: any) => (
         <div
           key={idx}
           style={{ display: "none", position: "relative" }}
-          id={`nolemons-img-${idx + 1}`}
+          id={`nolemons-img-${idx}`}
         >
-          <span className="loader-sppiner absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2"></span>
+          <div className="loader-sppiner absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2"></div>
           <Image
-            key={idx}
             src={img}
-            alt={`nolemons-${idx + 1}`}
+            alt={`nolemons-${idx}`}
             width={1110}
             height={740}
             className=" relative"
+          />
+          <Image
+            src={arr[(idx + 1) % arr.length]}
+            alt={`nolemons-${arr[(idx + 1) % arr.length]}`}
+            width={1110}
+            height={740}
+            className=" hidden"
+            priority
+          />
+          <Image
+            src={arr[(idx + 2) % arr.length]}
+            alt={`nolemons-${arr[(idx + 1) % arr.length]}`}
+            width={1110}
+            height={740}
+            className=" hidden"
+            priority
           />
         </div>
       ))}
