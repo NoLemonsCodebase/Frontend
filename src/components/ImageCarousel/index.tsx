@@ -78,7 +78,15 @@ export default function ImageCarousel({ carImages }: any) {
           data-fancybox="gallery"
           data-src={`#nolemons-img-${idx + 9}`}
           className="hidden"
-        ></button>
+        >
+          <Image
+            src={img}
+            alt="prev image"
+            width={500}
+            height={300}
+            quality={50}
+          />
+        </button>
       ))}
 
       {all_images.map((img: string, idx: number, arr: any) => (
