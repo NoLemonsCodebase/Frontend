@@ -179,7 +179,7 @@ button {
 }
 .our-gallery .fancybox__content {
   height: 100%;
-  background-color: transparent;
+  background: transparent;
   padding: 0;
 }
 .our-gallery .fancybox__content img {

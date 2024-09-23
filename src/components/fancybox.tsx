@@ -93,7 +93,7 @@
 
 // export default Fancybox;
 
-import { useRef, useEffect, PropsWithChildren } from "react";
+import { useRef, useEffect, PropsWithChildren, useState } from "react";
 
 import { Fancybox as NativeFancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";

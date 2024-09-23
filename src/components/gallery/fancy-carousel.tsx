@@ -59,7 +59,7 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
             if (panzoom.targetScale > 1) {
               panzoom.zoomTo(0.5);
             } else {
-              panzoom.zoomTo(2, { event });
+              panzoom.zoomTo(1.5, { event });
             }
           },
         },

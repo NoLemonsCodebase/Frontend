@@ -3,7 +3,7 @@ const IMPORT_A_CAR = "https://nolemons2.onrender.com/parser/api/v1/cars";
 
 type Props = {
   category: string;
-  search: string;
+  search?: string;
 };
 
 export async function getCars({ category = "uae", search = "" }: Props) {

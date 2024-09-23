@@ -1,40 +1,96 @@
-import { useMemo } from "react";
-import Fancybox from "./Fancybox";
+import { useMemo, useState } from "react";
 
 import Image from "next/image";
-
+import { useWindowSize } from "@uidotdev/usehooks";
+import Loader from "../ui/loader";
+import { FaCheck } from "react-icons/fa";
+import { useTranslations } from "next-intl";
+import Fancybox from "../fancybox";
+//============
 interface IImageCarouselProps {
-  images: string[];
-  previewImages: string[];
+  carImages: string[];
+  isVerified: boolean;
 }
 
-export default function ImageCarousel({ carImages }: any) {
-  //memoize images and previewImages
-  const all_images = useMemo(
-    () => carImages.map((ob: any) => ob.image),
-    [carImages]
-  );
+export default function ImageCarousel({
+  carImages,
+  isVerified,
+}: IImageCarouselProps) {
+  const { width } = useWindowSize();
+  const t = useTranslations("default.car_page");
 
-  const preview_images = all_images.slice(1, 9);
-  //...
+  //memoize images and previewImages
+  const all_images = useMemo(() => carImages, [carImages]);
+
+  if (!width) return <Loader />;
+
+  let preview_images_render = all_images.slice(1, 4);
+
+  if (width > 1024) {
+    preview_images_render = all_images.slice(1, 9);
+  }
+
+  let preview_images_length = preview_images_render.length;
+  // ="gallery"
+
   return (
     <Fancybox
+      delegate='[data-fancybox="gallery"]'
       options={{
         mainClass: "our-gallery",
+
         Toolbar: {
           enabled: true,
+
+          display: {
+            left: ["infobar"],
+            // middle: ["iterateZoom"],
+            middle: [
+              "zoomIn",
+              "zoomOut",
+              "toggle1to1",
+              "rotateCCW",
+              "rotateCW",
+              "flipX",
+              "flipY",
+              "download",
+            ],
+            right: [
+              "iterateZoom",
+              "slideshow",
+              "fullscreen",
+              "thumbs",
+              "close",
+            ],
+          },
         },
-        hideScrollbar: true,
+        // hideScrollbar: true,
         Thumbs: {
           type: "classic",
         },
+        on: {
+          reveal: (fancybox, key) => {
+            // console.log(fancybox.getSlide().index);
+            // console.log(fancybox.getSlide()?.panzoom);
+            // fancybox.getSlide().contentEl.style.transform = "scale(2)";
+            // console.log();
+            // switch (key) {
+            //   case "+":
+            //     fancybox.getSlide()?.panzoom.zoomIn();
+            //     break;
+            //   case "-":
+            //     fancybox.getSlide()?.panzoom.zoomOut();
+            //     break;
+            // }
+          },
+        },
       }}
     >
-      <div className="flex flex-col lg:flex-row gap-4">
+      <div className="flex flex-col lg:flex-row gap-4 ">
         <button
           data-fancybox="gallery"
           data-src="#nolemons-img-0"
-          className="rounded-md overflow-hidden lg:basis-[70%]"
+          className="rounded-md overflow-hidden lg:basis-[70%] relative"
         >
           <Image
             src={all_images[0]}
@@ -42,44 +98,57 @@ export default function ImageCarousel({ carImages }: any) {
             width={1110}
             height={740}
           />
+          {isVerified && (
+            <div className="flex items-start absolute bottom-2 right-2">
+              <span className="inline-flex items-center py-1 px-1.5 md:py-2 md:px-3 rounded-md text-sm font-medium bg-opacity-40 bg-black text-white">
+                <FaCheck className=" mr-2 bg-green-500 text-[20px] p-1 rounded-md text-white" />
+                {t("verified")}
+                <span className="hidden xl:block ml-0.5">
+                  {t("by_nolemons")}
+                </span>
+              </span>
+            </div>
+          )}
         </button>
-        <div className="overflow-x-scroll lg:overflow-auto basis-[30%]">
-          <div className=" grid grid-cols-8 lg:grid-cols-2 h-full gap-2 w-[300%] lg:w-auto ">
-            {preview_images.map((img: string, idx: number) => (
-              <button
-                key={idx}
-                data-fancybox="gallery"
-                data-src={`#nolemons-img-${idx + 1}`}
-                className="rounded-md overflow-hidden relative cursor-pointer"
-              >
-                <Image
-                  className=" w-full h-full object-cover"
-                  src={img}
-                  alt="prev image"
-                  width={1110}
-                  height={740}
-                />
 
-                {idx == 7 && (
-                  <div className="absolute inset-0 text-white bg-black font-semibold flex items-center justify-center text-[8px] lg:text-base bg-opacity-60">
-                    View all photos ({all_images.length})
-                  </div>
-                )}
-              </button>
-            ))}
-          </div>
+        <div className="basis-[30%] grid grid-cols-3 lg:grid-cols-2 gap-2">
+          {preview_images_render.map((img: string, idx: number) => (
+            <button
+              key={idx}
+              data-fancybox="gallery"
+              data-src={`#nolemons-img-${idx + 1}`}
+              className="rounded-md overflow-hidden relative cursor-pointer"
+            >
+              <Image
+                className=" w-full h-full object-cover"
+                src={img}
+                alt="prev image"
+                width={1110}
+                height={740}
+              />
+
+              {idx + 1 == preview_images_length && (
+                <div className="absolute inset-0 text-white bg-black font-semibold flex items-center justify-center text-[8px] lg:text-base bg-opacity-60">
+                  View all photos ({all_images.length})
+                </div>
+              )}
+            </button>
+          ))}
         </div>
       </div>
-      {all_images.slice(9).map((img: string, idx: number) => (
-        <button
-          key={idx}
-          data-fancybox="gallery"
-          data-src={`#nolemons-img-${idx + 9}`}
-          className="hidden"
-        >
-          <Image src={img} alt="prev image" width={500} height={300} />
-        </button>
-      ))}
+
+      {all_images
+        .slice(preview_images_length + 1)
+        .map((img: string, idx: number) => (
+          <button
+            key={idx}
+            data-fancybox="gallery"
+            data-src={`#nolemons-img-${idx + preview_images_length + 1}`}
+            className="hidden"
+          >
+            <Image src={img} alt="prev image" width={500} height={300} />
+          </button>
+        ))}
 
       {all_images.map((img: string, idx: number) => (
         <div
@@ -94,6 +163,7 @@ export default function ImageCarousel({ carImages }: any) {
             width={1110}
             height={740}
             className=" relative"
+            priority={idx % 2 == 0 ? true : false}
           />
         </div>
       ))}

@@ -11,10 +11,9 @@ type Props = {
 };
 
 export default async function CarsPage({ category, search }: Props) {
+  // fetch cars based on filter & search
   const cars: ICar[] = await getCars({ category, search });
-
   const cars_render = cars.filter((car) => car.status != "deactivate");
-
   if (cars_render.length == 0) return <NoFoundCars />;
 
   return (
