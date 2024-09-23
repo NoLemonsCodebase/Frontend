@@ -37,8 +37,9 @@ export default function CarCard({ carDetails }: ICarCardProps) {
 
   let singleCarUrl = `/cars/${url_route || id}`;
   let location_image = "/images/filter-images/uae.png";
+
   if (isParsed) {
-    singleCarUrl = `/parsed_car/${id}`;
+    singleCarUrl = `/import_a_car/${id}`;
     location_image = "/images/filter-images/world-globe.png";
   }
 
