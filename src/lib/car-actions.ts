@@ -1,46 +1,34 @@
 const NO_LEMON_CARS = "https://nolemons2.onrender.com/api/v2/cars";
 const IMPORT_A_CAR = "https://nolemons2.onrender.com/parser/api/v1/cars";
 
-export async function getCars({ category = "uae" }: { category: any }) {
+type Props = {
+  category: string;
+  search?: string;
+};
+
+export async function getCars({ category = "uae", search = "" }: Props) {
   try {
-    if (category == "all" || !category) {
+    if (category == "all") {
       const [uae_data, import_data] = await Promise.all([
-        getUaeCars(),
-        getImportCars(),
+        fetchData(`${NO_LEMON_CARS}?search=${search}`),
+        fetchData(`${IMPORT_A_CAR}?search=${search}`),
       ]);
 
       return [...uae_data, ...import_data];
     }
 
     if (category == "uae") {
-      const uae_data = await getUaeCars();
+      const uae_data = await fetchData(NO_LEMON_CARS);
       return uae_data;
     }
 
     if (category == "import-a-car") {
-      const import_data = await getImportCars();
+      const import_data = await fetchData(IMPORT_A_CAR);
       return import_data;
     }
   } catch (e: any) {
     throw new Error("Oops! Something went wrong");
   }
-}
-
-async function getUaeCars() {
-  let req_url = NO_LEMON_CARS;
-  const res = await fetch(req_url, { next: { revalidate: 0 } });
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  const data = res.json();
-  return data;
-}
-
-async function getImportCars() {
-  let req_url = IMPORT_A_CAR;
-  const res = await fetch(req_url, { next: { revalidate: 0 } });
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  const data = res.json();
-  return data;
 }
 
 export async function getUaeCar(id: string) {
@@ -68,6 +56,12 @@ export async function getImportCar(id: string) {
     throw new Error("Car not found");
   }
 
+  const data = res.json();
+  return data;
+}
+
+async function fetchData(url: string) {
+  const res = await fetch(url, { next: { revalidate: 0 } });
   const data = res.json();
   return data;
 }

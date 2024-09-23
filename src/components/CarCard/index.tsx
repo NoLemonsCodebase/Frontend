@@ -1,6 +1,6 @@
 import { ICar } from "@/lib/types";
 import cn from "classnames";
-import { MapPinIcon } from "lucide-react";
+
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,15 +30,16 @@ export default function CarCard({ carDetails }: ICarCardProps) {
     auction,
     currency,
     sale_price,
-    parsed_car_text_section,
+    category,
   } = carDetails;
 
-  const isParsed = Boolean(parsed_car_text_section);
+  const isParsed = category == "import_a_car";
 
   let singleCarUrl = `/cars/${url_route || id}`;
-
+  let location_image = "/images/filter-images/uae.png";
   if (isParsed) {
     singleCarUrl = `/parsed_car/${id}`;
+    location_image = "/images/filter-images/world-globe.png";
   }
 
   return (
@@ -47,24 +48,26 @@ export default function CarCard({ carDetails }: ICarCardProps) {
       className="relative rounded-lg overflow-hidden shadow-xl cursor-pointer hover:bg-gray-100 flex flex-col p-3"
     >
       <div className="aspect-w-16 aspect-h-10 rounded-lg overflow-hidden">
-        {main_image && (
-          <Image
-            src={main_image}
-            alt={title}
-            width={720}
-            height={500}
-            className="block object-cover"
-            // unoptimized={true}
-            // quality={100}
-          />
-        )}
+        <Image
+          src={main_image}
+          alt={title}
+          width={720}
+          height={500}
+          className="block object-cover"
+        />
       </div>
       <div className="p-4 pb-2 flex-1 flex flex-col">
         <h3 className="font-semibold text-lg">
           {year} {title}
         </h3>
-        <div className="flex items-center mt-0.5">
-          <MapPinIcon size={16} className="text-zinc-500" />
+        <div className="flex items-center gap-2 mt-0.5">
+          <Image
+            src={location_image}
+            width={500}
+            height={500}
+            alt="location"
+            className=" max-w-[20px]"
+          />
           <p className="text-sm text-zinc-500">{location}</p>
         </div>
         {status == "created" && (

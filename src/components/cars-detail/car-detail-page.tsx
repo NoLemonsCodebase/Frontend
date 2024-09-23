@@ -10,12 +10,12 @@ import { Fragment, useEffect, useState } from "react";
 
 import CarDetailList from "./car-detail-list";
 
-import { FaCheck, FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
 
+import ImageCarousel from "../ImageCarousel";
 import Gallery from "../gallery";
-// import ImageCarousel from "../ImageCarousel";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -37,11 +37,15 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
     car_image,
     parsed_car_image,
     car_video,
+    category,
     parsed_car_video,
   } = carDetail;
 
-  const car_images_render = car_image ? car_image : parsed_car_image;
-  const car_video_render = car_video ? car_video : parsed_car_video;
+  const car_images_render =
+    category == "import_a_car" ? parsed_car_image : car_image;
+  const car_video_render =
+    category == "import_a_car" ? parsed_car_video : car_video;
+
   const lastAuction = auction;
 
   useEffect(() => {
@@ -89,9 +93,16 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           </Fragment>
         ) : null}
       </div>
-
-      {car_images_render && car_images_render.length > 0 ? (
+      {/* 
+      {car_images_render && car_images_render.length > 8 ? (
         <Gallery carImages={car_images_render} isVerified={verified} />
+      ) : null} */}
+
+      {car_images_render && car_images_render.length > 8 ? (
+        <ImageCarousel
+          carImages={car_images_render.map((img) => img.image)}
+          isVerified={verified}
+        />
       ) : null}
 
       <div className="flex items-center mt-4 gap-2">
@@ -150,6 +161,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             {car_video_render && car_video_render?.length > 0 && (
               <h2 className="text-2xl font-bold mt-8">{t("videos")}</h2>
             )}
+
             {car_video_render &&
               car_video_render?.map((video: any, index: number) => (
                 <Fragment key={index}>
@@ -165,9 +177,11 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
                     <iframe
                       src={video.video}
                       title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share"
                       allowFullScreen
-                    ></iframe>
+                    >
+                      vedio 1
+                    </iframe>
                   </div>
                 </Fragment>
               ))}

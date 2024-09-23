@@ -57,6 +57,7 @@ export type ICar = {
     | "sold"
     | "unverified"
     | "deactivate";
+  category: string;
   url_route: string | null;
   seller: number;
 };

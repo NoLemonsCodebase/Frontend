@@ -46,9 +46,24 @@ function FancyCarousel(props: PropsWithChildren<Props>) {
 
     const mainOptions: Partial<OptionsType> = {
       Dots: false,
+      slidesPerPage: 1,
+      // slides:
       transition: "classic",
       initialPage: props.initial,
+      Panzoom: {
+        zoom: true,
+        on: {
+          click: (panzoom, event) => {
+            event.preventDefault();
 
+            if (panzoom.targetScale > 1) {
+              panzoom.zoomTo(0.5);
+            } else {
+              panzoom.zoomTo(1.5, { event });
+            }
+          },
+        },
+      },
       on: {
         change: (instance) => {
           setCurentIndex(instance.page + 1);
