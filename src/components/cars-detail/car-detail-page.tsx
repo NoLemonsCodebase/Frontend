@@ -15,7 +15,6 @@ import CarDescription from "./car-description";
 import InterestedButton from "./interested-button";
 
 import ImageCarousel from "../ImageCarousel";
-import Gallery from "../gallery";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -93,12 +92,8 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           </Fragment>
         ) : null}
       </div>
-      {/* 
-      {car_images_render && car_images_render.length > 8 ? (
-        <Gallery carImages={car_images_render} isVerified={verified} />
-      ) : null} */}
 
-      {car_images_render && car_images_render.length > 8 ? (
+      {car_images_render && car_images_render.length > 2 ? (
         <ImageCarousel
           carImages={car_images_render.map((img) => img.image)}
           isVerified={verified}
