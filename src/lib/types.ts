@@ -58,6 +58,7 @@ export type ICar = {
     | "unverified"
     | "deactivate";
   category: string;
+  country: string;
   url_route: string | null;
   seller: number;
 };

@@ -30,17 +30,16 @@ export default function CarCard({ carDetails }: ICarCardProps) {
     auction,
     currency,
     sale_price,
+    country,
     category,
   } = carDetails;
 
   const isParsed = category == "import_a_car";
 
   let singleCarUrl = `/cars/${url_route || id}`;
-  let location_image = "/images/filter-images/uae.png";
 
   if (isParsed) {
     singleCarUrl = `/import_a_car/${id}`;
-    location_image = "/images/filter-images/world-globe.png";
   }
 
   return (
@@ -63,9 +62,9 @@ export default function CarCard({ carDetails }: ICarCardProps) {
         </h3>
         <div className="flex items-center gap-2 mt-0.5">
           <Image
-            src={location_image}
-            width={500}
-            height={500}
+            src={`https://flagcdn.com/w320/${country.toLowerCase()}.png`}
+            width={320}
+            height={215}
             alt="location"
             className=" max-w-[20px]"
           />

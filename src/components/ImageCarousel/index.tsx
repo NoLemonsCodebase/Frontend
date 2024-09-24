@@ -163,7 +163,7 @@ export default function ImageCarousel({
             width={1110}
             height={740}
             className=" relative"
-            priority={idx % 2 == 0 ? true : false}
+            priority={idx <= 30 ? true : false}
           />
         </div>
       ))}
