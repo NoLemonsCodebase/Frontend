@@ -39,50 +39,12 @@ export default function ImageCarousel({
       options={{
         mainClass: "our-gallery",
 
+        // hideScrollbar: true,
         Toolbar: {
           enabled: true,
-
-          display: {
-            left: ["infobar"],
-            // middle: ["iterateZoom"],
-            middle: [
-              "zoomIn",
-              "zoomOut",
-              "toggle1to1",
-              "rotateCCW",
-              "rotateCW",
-              "flipX",
-              "flipY",
-              "download",
-            ],
-            right: [
-              "iterateZoom",
-              "slideshow",
-              "fullscreen",
-              "thumbs",
-              "close",
-            ],
-          },
         },
-        // hideScrollbar: true,
         Thumbs: {
           type: "classic",
-        },
-        on: {
-          reveal: (fancybox, key) => {
-            // console.log(fancybox.getSlide().index);
-            // console.log(fancybox.getSlide()?.panzoom);
-            // fancybox.getSlide().contentEl.style.transform = "scale(2)";
-            // console.log();
-            // switch (key) {
-            //   case "+":
-            //     fancybox.getSlide()?.panzoom.zoomIn();
-            //     break;
-            //   case "-":
-            //     fancybox.getSlide()?.panzoom.zoomOut();
-            //     break;
-            // }
-          },
         },
       }}
     >
@@ -163,7 +125,6 @@ export default function ImageCarousel({
             width={1110}
             height={740}
             className=" relative"
-            priority={idx <= 30 ? true : false}
           />
         </div>
       ))}

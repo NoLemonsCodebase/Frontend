@@ -21,7 +21,7 @@ export default function ChatWithUsBtn() {
     <Fragment>
       {showButton ? (
         <a
-          className="fixed z-10 bottom-0 left-8 h-8  text-white px-4 text-sm font-semibold flex items-center justify-center"
+          className="fixed z-10 bottom-0 right-4 h-8  text-white px-4 text-sm font-semibold flex items-center justify-center"
           style={{ background: "#15803D" }}
           href={`https://wa.me/971566633668?text=${text}`}
           target="_blank"

@@ -12,7 +12,7 @@ import CarDetailList from "./car-detail-list";
 
 import { FaWhatsapp } from "react-icons/fa";
 import CarDescription from "./car-description";
-import InterestedButton from "./interested-button";
+import InterestedButton from "../interested-button";
 
 import ImageCarousel from "../ImageCarousel";
 
