@@ -3,6 +3,8 @@ type Props = {
   search?: string;
 };
 
+// --------------------
+
 export async function getCars({ category = "uae", search = "" }: Props) {
   try {
     if (category == "all") {
