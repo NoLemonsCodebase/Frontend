@@ -9,7 +9,7 @@ interface TimeLeftProps {
 export default function TimeLeft({ timeEnding }: TimeLeftProps) {
   const t = useTranslations("default");
 
-  const [secondsLeft, setSecondsLeft] = useState<number>(0);
+  const [secondsLeft, setSecondsLeft] = useState<number>(-10);
 
   useEffect(() => {
     const endDateUTC = timeEnding
@@ -33,6 +33,9 @@ export default function TimeLeft({ timeEnding }: TimeLeftProps) {
 
     return () => clearInterval(interval);
   }, []);
+
+  // to show in the first render
+  if (secondsLeft == -10) return "Checking...";
 
   if (secondsLeft <= 0) return t("statuses.auction_ended");
 
