@@ -281,3 +281,18 @@ button {
     opacity: 1;
   }
 }
+
+/* custom-phone-input */
+
+.custom-phone-input {
+  padding: 8px 8px 8px 56px !important;
+  width: 100% !important;
+  border: 1px solid #e5e7eb !important;
+  outline: none;
+}
+.custom-phone-input:focus {
+  box-shadow: 0 0 0 2px #4ade80 !important;
+}
+/* .custom-phone-input:hover {
+  border: none !important;
+} */
