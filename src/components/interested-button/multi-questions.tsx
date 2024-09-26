@@ -23,6 +23,10 @@ export default function MultiQuestions({
   useDisableScroll();
   const { title, year } = carDetail;
 
+  const make_an_offer_text = encodeURIComponent(
+    `Hi! I would like to make an offer for this ${title} ${year}`
+  );
+
   const ask_a_question_text = encodeURIComponent(
     `Hi! I would like to ask a question about this ${title} ${year}`
   );
@@ -45,15 +49,24 @@ export default function MultiQuestions({
         </div>
 
         <div className=" p-4 flex flex-col gap-4">
-          <button
+          {/* <button
             onClick={openMake}
             className=" shadow border flex items-center gap-3 px-4 py-3 rounded-xl"
           >
             <CiBadgeDollar className=" text-xl" />
             <span>Make an offer</span>
-          </button>
+          </button> */}
+          <a
+            href={`https://api.whatsapp.com/send/?phone=971566633668&text=${make_an_offer_text}`}
+            target="_blank"
+            className="shadow flex items-center gap-3 border px-4 py-3 rounded-xl"
+          >
+            <CiBadgeDollar className=" text-xl" />
+            <span>Ask a question</span>
+          </a>
           <a
             href={`https://api.whatsapp.com/send/?phone=971566633668&text=${ask_a_question_text}`}
+            target="_blank"
             className="shadow flex items-center gap-3 border px-4 py-3 rounded-xl"
           >
             <MdOutlineQuestionMark className=" text-xl" />

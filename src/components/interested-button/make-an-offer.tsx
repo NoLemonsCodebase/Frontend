@@ -28,7 +28,7 @@ export default function MakeAnOffer({
   return (
     <div className="z-[12] fixed inset-0 flex justify-center items-end md:items-center ">
       <XYAnim xy={dirAnimation} dur={0.3}>
-        <div className="bg-white rounded-t-xl md:rounded-xl px-4 py-10 relative md:p-10">
+        <div className="bg-white rounded-t-xl md:rounded-xl px-4 py-10 relative md:p-10 md:w-[500px]">
           <div className="left-1/2 w-20 h-20 -top-10 -translate-x-1/2 absolute rounded-full bg-white p-2 ">
             <FaCommentsDollar className=" m-auto text-5xl text-green-600 " />
           </div>
