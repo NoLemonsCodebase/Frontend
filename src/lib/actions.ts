@@ -4,36 +4,62 @@ export async function makeAnOfferAction(
   prevState: any,
   formData: FormData
 ): Promise<void> {
+  // extract data from form submition
   const name = formData.get("name");
   const phone = formData.get("phone");
-  const offer_price = formData.get("offer_price");
-  const actual_price = formData.get("actual_price");
+  const offer = formData.get("offer_price");
+  const sale_price = formData.get("sale_price");
+  const car_id = formData.get("car_id");
+  const currency = formData.get("currency");
 
-  if (name && typeof name == "string" && name.length < 3)
-    return { ...prevState, message: "Invalid name" };
+  // validation name
+  if (typeof name == "string" && !/^[a-zA-z ]+$/g.test(name))
+    return { ...prevState, error: "Invalid name" };
 
-  if (
-    offer_price &&
-    actual_price &&
-    typeof +offer_price == "number" &&
-    typeof +actual_price == "number"
-  ) {
-    const present30 = (+actual_price / 100) * 30;
-    if (+offer_price < +actual_price - present30)
+  // validation offer price
+  if (offer && sale_price) {
+    const sale_price_num = Number(sale_price);
+    const offer_price_num = Number(offer);
+
+    const present30 = (sale_price_num / 100) * 30;
+    if (offer_price_num < sale_price_num - present30)
       return {
         ...prevState,
         message:
           "Your offer is too low, please submit an offer that is within 30% of asking price",
       };
 
-    if (+offer_price > +actual_price + +present30)
+    if (offer_price_num > sale_price_num + present30)
       return {
         ...prevState,
         message:
           "Your offer is too hight, please submit an offer that is within 30% of asking price",
       };
   }
-  await new Promise((res) => setTimeout(res, 2000));
+  const data = {
+    name,
+    phone,
+    car_id,
+    currency,
+    offer,
+    sale_price,
+  };
 
-  // return { ...prevState, message: "not yet" };
+  // const res = await fetch(
+  //   "https://hook.eu2.make.com/k71nt4dic6n2yit9potwlwe75vwh7f85",
+  //   {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json", // Set the content type to JSON
+  //     },
+  //     body: JSON.stringify(data),
+  //   }
+  // );
+
+  // if (!res.ok) {
+  //   throw new Error(`Error: Something went wrong`);
+  // }
+
+  await new Promise((res) => setTimeout(res, 3000));
+  return { ...prevState, message: "successfully", error: "" };
 }
