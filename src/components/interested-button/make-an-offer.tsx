@@ -155,7 +155,7 @@ function ButtonSumbit() {
       <button
         disabled={pending}
         type="submit"
-        className="bg-green-500  text-white font-bold mt-2 py-2 px-4 rounded w-full hover:bg-green-600 disabled:bg-green-900"
+        className="bg-green-500  text-white font-bold mt-2 py-2 px-4 rounded w-full hover:bg-green-600 disabled:bg-green-900 disabled:cursor-not-allowed"
       >
         {pending ? "Submiting..." : "Submit Offer"}
       </button>

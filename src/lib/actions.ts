@@ -45,7 +45,7 @@ export async function makeAnOfferAction(
     sale_price,
   };
 
-  // const res = await fetch(
+  // const res = await fetch (
   //   "https://hook.eu2.make.com/k71nt4dic6n2yit9potwlwe75vwh7f85",
   //   {
   //     method: "POST",
