@@ -5,10 +5,7 @@ import { IoCloseOutline } from "react-icons/io5";
 
 export default function SuccessMessage({ onCloseMake }: any) {
   const { setPlay } = useSoundCash();
-
-  useEffect(() => {
-    setPlay(true);
-  }, []);
+  setPlay(true);
 
   return (
     <div className=" flex flex-col justify-center items-center relative w-full min-h-[400px]">
