@@ -44,7 +44,7 @@ export default function MakeAnOffer({
               <FaCommentsDollar className=" m-auto text-5xl text-green-600 " />
             </div>
 
-            <div className=" flex items-start md:items-center gap-4 mb-2">
+            <div className=" flex items-start gap-4 mb-2">
               <div className=" font-semibold text-xl">
                 Make An Offer for {title}
               </div>
