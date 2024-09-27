@@ -30,7 +30,7 @@ export default function MakeAnOffer({
   const inputStyle =
     "border outline-none ring-green-400 transition-all duration-300 focus:ring-2 block w-full p-2 mt-1 rounded-lg";
   return (
-    <div className="z-[12] fixed inset-0 flex justify-center items-end md:items-center ">
+    <div className="z-[21] fixed inset-0 flex justify-center items-end md:items-center ">
       <XYAnim
         classes="rounded-t-xl bg-white w-full md:rounded-xl relative md:w-[500px]"
         xy={dirAnimation}

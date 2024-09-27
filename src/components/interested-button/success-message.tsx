@@ -1,8 +1,8 @@
 import useSoundCash from "@/lib/hooks/use-cash-sound";
 
-import { FaHandshake } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
-
+import { MdOutlineDone } from "react-icons/md";
+import ZoomEffect from "../anim/zoom";
 export default function SuccessMessage({ onCloseMake }: any) {
   useSoundCash();
   return (
@@ -13,8 +13,20 @@ export default function SuccessMessage({ onCloseMake }: any) {
       >
         <IoCloseOutline className="text-xl lg:text-2xl" />
       </button>
-      <FaHandshake className=" text-green-600 text-8xl mx-auto" />
-      <p>Thank you for submitting your offer</p>
+      <ZoomEffect dur={0.4}>
+        <MdOutlineDone className=" mb-4 bg-green-100 rounded-full text-green-600 p-4 text-9xl mx-auto" />
+      </ZoomEffect>
+      <p className=" uppercase mb-1 text-gray-600">Submition complete</p>
+      <p className=" text-gray-400 text-center mb-6">
+        Thank you for submitting your offer
+      </p>
+
+      <button
+        onClick={onCloseMake}
+        className=" bg-green-500 hover:bg-green-600 px-4 py-2 rounded-full min-w-[150px] text-white"
+      >
+        Done!
+      </button>
     </div>
   );
 }

@@ -4,15 +4,14 @@ import { motion } from "framer-motion";
 const animVar = {
   init: {
     // filter: "blur(100px)",
-    transform: "scale(0.7)",
-    opacity: 0,
+    transform: "scale(0.3) rotate(45deg)",
   },
 
   enter: ({ dur, delay }: { dur: number; delay: number }) => {
     return {
       // filter: "blur(0)",
-      transform: "scale(1)",
-      opacity: 1,
+      transform: "scale(1) rotate(0deg)",
+
       transition: {
         duration: dur,
         delay,
