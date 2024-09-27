@@ -1,12 +1,10 @@
 import useSoundCash from "@/lib/hooks/use-cash-sound";
-import { useEffect } from "react";
+
 import { FaHandshake } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
 
 export default function SuccessMessage({ onCloseMake }: any) {
-  const { setPlay } = useSoundCash();
-  setPlay(true);
-
+  useSoundCash();
   return (
     <div className=" flex flex-col justify-center items-center relative w-full min-h-[400px]">
       <button

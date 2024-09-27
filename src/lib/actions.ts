@@ -14,7 +14,7 @@ export async function makeAnOfferAction(
 
   // validation name
   if (typeof name == "string" && !/^[a-zA-z ]+$/g.test(name))
-    return { ...prevState, error: "Invalid name" };
+    return { ...prevState, nameErr: "Invalid name" };
 
   // validation offer price
   if (offer && sale_price) {
@@ -61,5 +61,5 @@ export async function makeAnOfferAction(
   // }
 
   await new Promise((res) => setTimeout(res, 3000));
-  return { ...prevState, message: "successfully", error: "" };
+  return { ...prevState, message: "successfully", error: "", nameErr: "" };
 }

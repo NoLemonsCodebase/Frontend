@@ -15,6 +15,7 @@ type Props = {
 
 const initialState: any = {
   message: "",
+  nameErr: "",
   error: "",
 };
 
@@ -73,7 +74,7 @@ export default function MakeAnOffer({
                   placeholder="John Doe"
                   required
                 />
-                <Error errorMessage={state?.error} />
+                <Error errorMessage={state?.nameErr} />
               </div>
 
               {/* Phone Number Field */}
@@ -110,7 +111,7 @@ export default function MakeAnOffer({
                     id="offer_price"
                     name="offer_price"
                     className={inputStyle}
-                    placeholder="$1000"
+                    placeholder={`$${sale_price}`}
                     required
                   />
                 </div>
