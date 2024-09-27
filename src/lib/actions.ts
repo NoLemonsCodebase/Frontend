@@ -25,14 +25,14 @@ export async function makeAnOfferAction(
     if (offer_price_num < sale_price_num - present30)
       return {
         ...prevState,
-        message:
+        error:
           "Your offer is too low, please submit an offer that is within 30% of asking price",
       };
 
     if (offer_price_num > sale_price_num + present30)
       return {
         ...prevState,
-        message:
+        error:
           "Your offer is too hight, please submit an offer that is within 30% of asking price",
       };
   }
