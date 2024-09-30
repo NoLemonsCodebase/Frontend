@@ -1,11 +1,10 @@
+import useDisableScroll from "@/lib/hooks/use-disabled-scroll";
 import { ICar } from "@/lib/types";
 import { CiBadgeDollar } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
-import { IoIosArrowRoundBack } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { MdOutlineQuestionMark } from "react-icons/md";
 import XYAnim from "../anim/xy-anim";
-import useDisableScroll from "@/lib/hooks/use-disabled-scroll";
 
 type Props = {
   dirAnimation: string;
@@ -35,7 +34,7 @@ export default function MultiQuestions({
   );
 
   return (
-    <div className="z-[12] fixed inset-0 bg-black/50 backdrop-blur-sm flex md:justify-center items-end md:items-center">
+    <div className="z-[21] fixed inset-0 bg-black/50 backdrop-blur-sm flex md:justify-center items-end md:items-center">
       <XYAnim
         xy={dirAnimation}
         dur={0.3}
@@ -49,20 +48,20 @@ export default function MultiQuestions({
         </div>
 
         <div className=" p-4 flex flex-col gap-4">
-          {/* <button
+          {/*<button
             onClick={openMake}
             className=" shadow border flex items-center gap-3 px-4 py-3 rounded-xl"
           >
             <CiBadgeDollar className=" text-xl" />
             <span>Make an offer</span>
-          </button> */}
+          </button>*/}
           <a
             href={`https://api.whatsapp.com/send/?phone=971566633668&text=${make_an_offer_text}`}
             target="_blank"
             className="shadow flex items-center gap-3 border px-4 py-3 rounded-xl"
           >
             <CiBadgeDollar className=" text-xl" />
-            <span>Ask a question</span>
+            <span>Make an offer</span>
           </a>
           <a
             href={`https://api.whatsapp.com/send/?phone=971566633668&text=${ask_a_question_text}`}

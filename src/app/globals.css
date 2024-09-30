@@ -25,6 +25,17 @@
 .our-container {
   @apply container m-auto px-4 md:max-w-7xl;
 }
+/* Hide arrows in Chrome, Safari, and Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 ul {
   list-style: disc;
