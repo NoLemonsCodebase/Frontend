@@ -45,17 +45,17 @@ export async function makeAnOfferAction(
     sale_price,
   };
 
-  const res = await fetch("https://nolemons-dev.onrender.com/user-offer/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json", // Set the content type to JSON
-    },
-    body: JSON.stringify(data),
-  });
+  // const res = await fetch("https://nolemons-dev.onrender.com/user-offer/", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json", // Set the content type to JSON
+  //   },
+  //   body: JSON.stringify(data),
+  // });
 
-  if (!res.ok) {
-    throw new Error(`Error: Something went wrong`);
-  }
+  // if (!res.ok) {
+  //   throw new Error(`Error: Something went wrong`);
+  // }
 
   await new Promise((res) => setTimeout(res, 3000));
   return { ...prevState, message: "successfully", error: "", nameErr: "" };
