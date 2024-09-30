@@ -45,7 +45,7 @@ export async function makeAnOfferAction(
     sale_price,
   };
 
-  const res = await fetch("https://nolemons-dev.onrender.com/user-offer", {
+  const res = await fetch("https://nolemons-dev.onrender.com/user-offer/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json", // Set the content type to JSON
