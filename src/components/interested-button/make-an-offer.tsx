@@ -153,7 +153,7 @@ function Error({ errorMessage }: any) {
 // ========================================================
 function OfferPriceFeilds({ inputStyle }: { inputStyle: string }) {
   const [price, setPrice] = useState<string>("");
-  const [currency, setCurrency] = useState<string>("USD");
+  const [currency, setCurrency] = useState<string>("AED");
   const [cAed, setCAed] = useState<string>("");
 
   function handlePrice(e: React.ChangeEvent<HTMLInputElement>) {
