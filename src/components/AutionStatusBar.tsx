@@ -18,6 +18,8 @@ export default function AutionStatusBar({
   const { auction: currentAuction, status, sale_price, currency } = carDetail;
   const is_comming = status == "created" || status == "unverified";
 
+  const cur_currency = currency == "AED" ? "AED" : "USD";
+
   return (
     <div className="rounded bg-black bg-opacity-80 flex-grow items-center">
       <ul className="flex items-center justify-between md:justify-normal  px-4 py-3">
@@ -52,7 +54,7 @@ export default function AutionStatusBar({
                 : t("car_page.high_bid")}
             </p>
             <p className="font-semibold ml-2 whitespace-nowrap">
-              {currency}{" "}
+              {cur_currency}{" "}
               {numeral(
                 status == "for_sale"
                   ? sale_price

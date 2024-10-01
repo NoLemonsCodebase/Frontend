@@ -40,7 +40,7 @@ export default function MultiQuestions({
   const styleLink =
     "group shadow flex basis-1/2 flex-col items-center justify-center gap-2 border px-4 py-3 rounded-xl";
   const styleColorIcon =
-    "absolute left-0 top-0 translate-y-[110%] rotate-45 transition-all duration-300 group-hover:translate-y-0 group-hover:rotate-0";
+    "absolute left-0 top-0 scale-0 transition-all duration-300 group-hover:scale-100 origin-bottom";
   const styleGrayIcon =
     "text-gray-600 transition-all duration-300 group-hover:scale-0";
   // ================================= ==================
@@ -62,7 +62,10 @@ export default function MultiQuestions({
         </div>
 
         <div className=" p-4 grid grid-cols-2 gap-2">
-          <button onClick={openMake} className={styleLink}>
+          <button
+            onClick={openMake}
+            className={`${styleLink} ${is_uae ? "col-span-2" : " col-span-1"}`}
+          >
             <div className=" relative overflow-hidden text-3xl md:text-4xl">
               <CiBadgeDollar className={`${styleColorIcon} text-green-600`} />
               <CiBadgeDollar className={styleGrayIcon} />
@@ -88,7 +91,7 @@ export default function MultiQuestions({
             <a
               href={`https://api.whatsapp.com/send/?phone=971566633668&text=${ask_a_question_text}`}
               target="_blank"
-              className={`${styleLink} col-span-2`}
+              className={styleLink}
             >
               <div className=" relative overflow-hidden text-3xl md:text-4xl">
                 <FaEye className={`${styleColorIcon} text-green-600`} />

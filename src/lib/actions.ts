@@ -1,7 +1,5 @@
 "use server";
 
-const UDS_TO_AED: number = 3.67;
-
 export async function makeAnOfferAction(
   prevState: any,
   formData: FormData
@@ -28,22 +26,16 @@ export async function makeAnOfferAction(
   if (offer && sale_price) {
     const sale_price_num = Number(sale_price);
     const offer_price_num = Number(offer_value);
-    let offer_price_AED = offer_price_num;
+    const present30 = (offer_price_num / 100) * 30;
 
-    if (currency == "USD") {
-      offer_price_AED = offer_price_AED * UDS_TO_AED;
-    }
-
-    const present30 = (offer_price_AED / 100) * 30;
-
-    if (offer_price_AED < sale_price_num - present30)
+    if (offer_price_num < sale_price_num - present30)
       return {
         ...prevState,
         error:
           "Your offer is too low, please submit an offer that is within 30% of the asking price",
       };
 
-    if (offer_price_AED > sale_price_num + present30)
+    if (offer_price_num > sale_price_num + present30)
       return {
         ...prevState,
         error:
