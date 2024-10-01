@@ -4,6 +4,7 @@ import { CiBadgeDollar } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
 import { IoCloseOutline } from "react-icons/io5";
 import { MdOutlineQuestionMark } from "react-icons/md";
+
 import XYAnim from "../anim/xy-anim";
 
 type Props = {
@@ -20,7 +21,8 @@ export default function MultiQuestions({
   openMake,
 }: Props) {
   useDisableScroll();
-  const { title, year } = carDetail;
+
+  const { title, year, category } = carDetail;
 
   const make_an_offer_text = encodeURIComponent(
     `Hi! I would like to make an offer for this ${title} ${year}`
@@ -29,6 +31,21 @@ export default function MultiQuestions({
   const ask_a_question_text = encodeURIComponent(
     `Hi! I would like to ask a question about this ${title} ${year}`
   );
+
+  const request_a_viewing_text = encodeURIComponent(
+    `Hi! I would like to request a viewing for this ${title} ${year}`
+  );
+
+  // ================== Style classes ==================
+  const styleLink =
+    "group shadow flex basis-1/2 flex-col items-center justify-center gap-2 border px-4 py-3 rounded-xl";
+  const styleColorIcon =
+    "absolute left-0 top-0 translate-y-[110%] rotate-45 transition-all duration-300 group-hover:translate-y-0 group-hover:rotate-0";
+  const styleGrayIcon =
+    "text-gray-600 transition-all duration-300 group-hover:scale-0";
+  // ================================= ==================
+
+  const is_uae = category == "uae";
 
   return (
     <div className="z-[21] fixed inset-0 bg-black/50 backdrop-blur-sm flex md:justify-center items-end md:items-center">
@@ -44,30 +61,44 @@ export default function MultiQuestions({
           </button>
         </div>
 
-        <div className=" p-4 flex gap-4">
-          <button
-            onClick={openMake}
-            className=" group shadow border flex flex-col basis-1/2 items-center gap-2 px-4 py-3 rounded-xl justify-center"
-          >
-            <CiBadgeDollar className=" text-3xl md:text-4xl bg-green-600 rounded-full text-white p-1 group-hover:scale-110 transition-all duration-300" />
+        <div className=" p-4 grid grid-cols-2 gap-2">
+          <button onClick={openMake} className={styleLink}>
+            <div className=" relative overflow-hidden text-3xl md:text-4xl">
+              <CiBadgeDollar className={`${styleColorIcon} text-green-600`} />
+              <CiBadgeDollar className={styleGrayIcon} />
+            </div>
             <span className=" md:text-xl text-gray-500">Make an offer</span>
           </button>
-          {/* <a
-            href={`https://api.whatsapp.com/send/?phone=971566633668&text=${make_an_offer_text}`}
-            target="_blank"
-            className="shadow flex items-center gap-3 border px-4 py-3 rounded-xl"
-          >
-            <CiBadgeDollar className=" text-xl" />
-            <span>Make an offer</span>
-          </a> */}
+
           <a
             href={`https://api.whatsapp.com/send/?phone=971566633668&text=${ask_a_question_text}`}
             target="_blank"
-            className=" group shadow flex basis-1/2 flex-col items-center justify-center gap-3 border px-4 py-3 rounded-xl"
+            className={styleLink}
           >
-            <MdOutlineQuestionMark className=" text-3xl md:text-4xl bg-green-600 rounded-full text-white p-1 group-hover:scale-110 transition-all duration-300" />
+            <div className=" relative overflow-hidden text-3xl md:text-4xl">
+              <MdOutlineQuestionMark
+                className={`${styleColorIcon} text-green-600`}
+              />
+              <MdOutlineQuestionMark className={styleGrayIcon} />
+            </div>
             <span className=" md:text-xl text-gray-500">Ask a question</span>
           </a>
+
+          {is_uae ? (
+            <a
+              href={`https://api.whatsapp.com/send/?phone=971566633668&text=${ask_a_question_text}`}
+              target="_blank"
+              className={`${styleLink} col-span-2`}
+            >
+              <div className=" relative overflow-hidden text-3xl md:text-4xl">
+                <FaEye className={`${styleColorIcon} text-green-600`} />
+                <FaEye className={styleGrayIcon} />
+              </div>
+              <span className=" md:text-xl text-gray-500 text-center">
+                Request a viewing
+              </span>
+            </a>
+          ) : null}
         </div>
       </XYAnim>
     </div>

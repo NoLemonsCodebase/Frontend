@@ -1,5 +1,7 @@
 "use server";
 
+const UDS_TO_AED: number = 3.67;
+
 export async function makeAnOfferAction(
   prevState: any,
   formData: FormData
@@ -12,6 +14,12 @@ export async function makeAnOfferAction(
   const car_id = formData.get("car_id");
   const currency = formData.get("currency");
 
+  //========= refactor some attributes
+  let offer_value = "";
+  if (offer && typeof offer == "string") {
+    offer_value = offer.split(",").join("");
+  }
+
   // validation name
   if (typeof name == "string" && !/^[a-zA-z ]+$/g.test(name))
     return { ...prevState, nameErr: "Invalid name" };
@@ -19,29 +27,36 @@ export async function makeAnOfferAction(
   // validation offer price
   if (offer && sale_price) {
     const sale_price_num = Number(sale_price);
-    const offer_price_num = Number(offer);
+    const offer_price_num = Number(offer_value);
+    let offer_price_AED = offer_price_num;
 
-    const present30 = (sale_price_num / 100) * 30;
-    if (offer_price_num < sale_price_num - present30)
+    if (currency == "USD") {
+      offer_price_AED = offer_price_AED * UDS_TO_AED;
+    }
+
+    const present30 = (offer_price_AED / 100) * 30;
+
+    if (offer_price_AED < sale_price_num - present30)
       return {
         ...prevState,
         error:
           "Your offer is too low, please submit an offer that is within 30% of the asking price",
       };
 
-    if (offer_price_num > sale_price_num + present30)
+    if (offer_price_AED > sale_price_num + present30)
       return {
         ...prevState,
         error:
           "Your offer is too high, please submit an offer that is within 30% of the asking price",
       };
   }
+
   const data = {
     name,
     phone,
-    car_id,
+    car_id: "67",
     currency,
-    offer,
+    offer: offer_value,
     sale_price,
   };
 
@@ -53,10 +68,20 @@ export async function makeAnOfferAction(
     body: JSON.stringify(data),
   });
 
+  const { status } = await res.json();
+
   if (!res.ok) {
-    throw new Error(`Error: Something went wrong`);
+    return {
+      ...prevState,
+      phoneErr: status || "somthing wrong",
+    };
   }
 
-  await new Promise((res) => setTimeout(res, 3000));
-  return { ...prevState, message: "successfully", error: "", nameErr: "" };
+  return {
+    ...prevState,
+    message: "successfully",
+    error: "",
+    nameErr: "",
+    phoneErr: "",
+  };
 }

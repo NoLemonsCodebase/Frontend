@@ -1,13 +1,12 @@
 import { makeAnOfferAction } from "@/lib/actions";
 import { ICar } from "@/lib/types";
+import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import { FaCommentsDollar } from "react-icons/fa";
+import { CiBadgeDollar } from "react-icons/ci";
 import { TbArrowBackUpDouble } from "react-icons/tb";
 import PhoneInput from "react-phone-input-2";
 import XYAnim from "../anim/xy-anim";
 import SuccessMessage from "./success-message";
-import { useState } from "react";
-import { CiBadgeDollar } from "react-icons/ci";
 
 type Props = {
   dirAnimation: string;
@@ -18,11 +17,13 @@ type Props = {
 const initialState: any = {
   message: "",
   nameErr: "",
+  phoneErr: "",
   error: "",
 };
 
-//
+//========= const var
 const PRICE_REGEX = /^[0-9,]+$/;
+const UDS_TO_AED: number = 3.67;
 
 export default function MakeAnOffer({
   carDetail,
@@ -100,29 +101,11 @@ export default function MakeAnOffer({
                     required: true,
                   }}
                 />
+                <Error errorMessage={state?.phoneErr} />
               </div>
 
               {/* Offer Price Field */}
-              <div className="mb-4 flex gap-4 items-center">
-                <OfferPriceFeild inputStyle={inputStyle} />
-                <div className=" flex-1">
-                  <label
-                    htmlFor="currency"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Currency:
-                  </label>
-                  <select
-                    defaultValue="AED"
-                    className={inputStyle}
-                    name="currency"
-                    id="currency"
-                  >
-                    <option value="AED">AED</option>
-                    <option value="USD">USD</option>
-                  </select>
-                </div>
-              </div>
+              <OfferPriceFeilds inputStyle={inputStyle} />
               <Error errorMessage={state?.error} />
 
               <input name="sale_price" value={sale_price} hidden readOnly />
@@ -168,8 +151,10 @@ function Error({ errorMessage }: any) {
 }
 
 // ========================================================
-function OfferPriceFeild({ inputStyle }: { inputStyle: string }) {
-  const [price, setPrice] = useState("");
+function OfferPriceFeilds({ inputStyle }: { inputStyle: string }) {
+  const [price, setPrice] = useState<string>("");
+  const [currency, setCurrency] = useState<string>("USD");
+  const [cAed, setCAed] = useState<string>("");
 
   function handlePrice(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -177,30 +162,62 @@ function OfferPriceFeild({ inputStyle }: { inputStyle: string }) {
       setPrice("");
       return;
     }
-
-    if (!PRICE_REGEX.test(value)) return;
-
+    if (!PRICE_REGEX.test(value) || value.length > 9) return;
     const num = Number(value.split(",").join(""));
     setPrice(num.toLocaleString());
   }
 
+  useEffect(() => {
+    if (price) {
+      const num = Number(price.replace(/,/g, "")); // Get the numerical value from the price
+
+      setCAed((num * UDS_TO_AED).toLocaleString());
+    } else setCAed("");
+  }, [price]);
+
   return (
-    <div>
-      <label
-        htmlFor="offer_price"
-        className="block text-sm font-medium text-gray-700"
-      >
-        Offer price:
-      </label>
-      <input
-        id="offer_price"
-        name="offer_price"
-        className={inputStyle}
-        placeholder="1000"
-        value={price}
-        onChange={handlePrice}
-        required
-      />
+    <div className="mb-4 flex gap-4 items-center">
+      <div>
+        <div className=" flex gap-2">
+          <label
+            htmlFor="offer_price"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Offer price:
+          </label>
+          {currency == "USD" && cAed ? (
+            <span className=" text-sm text-green-700">{cAed} (AED)</span>
+          ) : null}
+        </div>
+
+        <input
+          id="offer_price"
+          name="offer_price"
+          className={inputStyle}
+          placeholder="1,000"
+          value={price}
+          onChange={handlePrice}
+          required
+        />
+      </div>
+      <div className=" flex-1">
+        <label
+          htmlFor="currency"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Currency:
+        </label>
+        <select
+          value={currency}
+          className={inputStyle}
+          onChange={(e) => setCurrency(e.target.value)}
+          name="currency"
+          id="currency"
+        >
+          <option value="AED">AED</option>
+          <option value="USD">USD</option>
+        </select>
+      </div>
     </div>
   );
 }

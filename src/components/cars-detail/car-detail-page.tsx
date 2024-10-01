@@ -75,22 +75,22 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
 
   return (
     <section className=" our-container flex flex-col py-4 overflow-clip">
-      <div className="flex lg:hidden flex-wrap bg-white py-2 -mt-3 mb-3 z-10 gap-1 sticky top-14  border-b">
-        {status != "for_sale" ? (
-          <Fragment>
-            <AutionStatusBar carDetail={carDetail} />
-            <button
-              className="p-2 bg-green-400 rounded font-semibold flex flex-grow items-center justify-center"
-              onClick={scrollToTarget}
-            >
-              {status == "live" ? (
-                t("bid")
-              ) : (
-                <FaWhatsapp className=" text-xl text-white" />
-              )}
-            </button>
-          </Fragment>
-        ) : null}
+      <div className="flex lg:hidden flex-wrap bg-white py-2 -mt-3 mb-3 gap-1 border-b">
+        <AutionStatusBar carDetail={carDetail} />
+        {status == "for_sale" ? (
+          <InterestedButton carDetail={carDetail} />
+        ) : (
+          <button
+            className="p-2 bg-green-400 rounded basis-[30%]  font-semibold flex items-center justify-center"
+            onClick={scrollToTarget}
+          >
+            {status == "live" ? (
+              t("bid")
+            ) : (
+              <FaWhatsapp className=" text-xl text-white" />
+            )}
+          </button>
+        )}
       </div>
 
       {car_images_render && car_images_render.length > 2 ? (
@@ -107,9 +107,9 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           </h1>
         </div>
 
-        {status == "for_sale" ? (
+        {/* {status == "for_sale" ? (
           <InterestedButton carDetail={carDetail} />
-        ) : null}
+        ) : null} */}
       </div>
 
       {auctionEnded && status == "live" ? (
@@ -125,9 +125,11 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
         </p>
       ) : null}
 
-      {status != "for_sale" ? (
-        <div className="hidden lg:flex mt-4 space-x-4">
-          <AutionStatusBar carDetail={carDetail} />
+      <div className="hidden lg:flex mt-4 gap-4">
+        <AutionStatusBar carDetail={carDetail} />
+        {status == "for_sale" ? (
+          <InterestedButton carDetail={carDetail} />
+        ) : (
           <button
             className="p-2 bg-green-400 rounded basis-[30%]  font-semibold flex items-center justify-center"
             onClick={scrollToTarget}
@@ -138,8 +140,8 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
               <FaWhatsapp className=" text-xl text-white" />
             )}
           </button>
-        </div>
-      ) : null}
+        )}
+      </div>
 
       <div className="block md:hidden">
         <CarDetailList carDetail={carDetail} />

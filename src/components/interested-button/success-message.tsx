@@ -3,6 +3,7 @@ import useSoundCash from "@/lib/hooks/use-cash-sound";
 import { IoCloseOutline } from "react-icons/io5";
 import { MdOutlineDone } from "react-icons/md";
 import ZoomEffect from "../anim/zoom";
+
 export default function SuccessMessage({ onCloseMake }: any) {
   useSoundCash();
   return (
