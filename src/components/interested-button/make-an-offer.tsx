@@ -6,6 +6,8 @@ import { TbArrowBackUpDouble } from "react-icons/tb";
 import PhoneInput from "react-phone-input-2";
 import XYAnim from "../anim/xy-anim";
 import SuccessMessage from "./success-message";
+import { useState } from "react";
+import { CiBadgeDollar } from "react-icons/ci";
 
 type Props = {
   dirAnimation: string;
@@ -19,13 +21,16 @@ const initialState: any = {
   error: "",
 };
 
+//
+const PRICE_REGEX = /^[0-9,]+$/;
+
 export default function MakeAnOffer({
   carDetail,
   dirAnimation,
   closeMake,
 }: Props) {
   const [state, formAction] = useFormState(makeAnOfferAction, initialState);
-  const { id, title, sale_price } = carDetail;
+  const { id, title, year, sale_price } = carDetail;
 
   const inputStyle =
     "border outline-none ring-green-400 transition-all duration-300 focus:ring-2 block w-full p-2 mt-1 rounded-lg";
@@ -41,12 +46,12 @@ export default function MakeAnOffer({
         ) : (
           <div className="px-4 py-10 md:p-10">
             <div className="left-1/2 w-20 h-20 -top-10 -translate-x-1/2 absolute rounded-full bg-white p-2 ">
-              <FaCommentsDollar className=" m-auto text-5xl text-green-600 " />
+              <CiBadgeDollar className=" m-auto text-5xl text-green-600 " />
             </div>
 
             <div className=" flex items-start gap-4 mb-2">
               <div className=" font-semibold text-xl">
-                Make An Offer for {title}
+                Make an offer for {year} {title}
               </div>
               <button className=" border p-1 rounded-md" onClick={closeMake}>
                 <TbArrowBackUpDouble className="text-xl lg:text-2xl" />
@@ -54,7 +59,7 @@ export default function MakeAnOffer({
             </div>
 
             <div className=" font-semibold text-sm text-gray-500 ">
-              Asking Price: ${sale_price.toLocaleString()}{" "}
+              Asking price: AED {sale_price.toLocaleString()}
             </div>
 
             <form className=" mt-4" action={formAction}>
@@ -64,7 +69,7 @@ export default function MakeAnOffer({
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Enter Your Name:
+                  Enter your first and last name:
                 </label>
                 <input
                   type="text"
@@ -83,7 +88,7 @@ export default function MakeAnOffer({
                   htmlFor="phone"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Enter Your WhatsApp Number:
+                  Enter your whatsApp number:
                 </label>
                 <PhoneInput
                   specialLabel=""
@@ -99,22 +104,7 @@ export default function MakeAnOffer({
 
               {/* Offer Price Field */}
               <div className="mb-4 flex gap-4 items-center">
-                <div>
-                  <label
-                    htmlFor="offer_price"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Offer Price:
-                  </label>
-                  <input
-                    type="number"
-                    id="offer_price"
-                    name="offer_price"
-                    className={inputStyle}
-                    placeholder={`$${sale_price}`}
-                    required
-                  />
-                </div>
+                <OfferPriceFeild inputStyle={inputStyle} />
                 <div className=" flex-1">
                   <label
                     htmlFor="currency"
@@ -147,6 +137,7 @@ export default function MakeAnOffer({
   );
 }
 
+// ========================================================
 function ButtonSumbit() {
   const { pending } = useFormStatus();
 
@@ -163,6 +154,7 @@ function ButtonSumbit() {
   );
 }
 
+// ========================================================
 function Error({ errorMessage }: any) {
   return (
     <>
@@ -172,5 +164,43 @@ function Error({ errorMessage }: any) {
         </span>
       )}
     </>
+  );
+}
+
+// ========================================================
+function OfferPriceFeild({ inputStyle }: { inputStyle: string }) {
+  const [price, setPrice] = useState("");
+
+  function handlePrice(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    if (!value) {
+      setPrice("");
+      return;
+    }
+
+    if (!PRICE_REGEX.test(value)) return;
+
+    const num = Number(value.split(",").join(""));
+    setPrice(num.toLocaleString());
+  }
+
+  return (
+    <div>
+      <label
+        htmlFor="offer_price"
+        className="block text-sm font-medium text-gray-700"
+      >
+        Offer price:
+      </label>
+      <input
+        id="offer_price"
+        name="offer_price"
+        className={inputStyle}
+        placeholder="1000"
+        value={price}
+        onChange={handlePrice}
+        required
+      />
+    </div>
   );
 }

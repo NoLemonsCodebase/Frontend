@@ -29,9 +29,6 @@ export default function MultiQuestions({
   const ask_a_question_text = encodeURIComponent(
     `Hi! I would like to ask a question about this ${title} ${year}`
   );
-  const request_a_viewing_text = encodeURIComponent(
-    `Hi! I would like to request a viewing for this ${title} ${year}`
-  );
 
   return (
     <div className="z-[21] fixed inset-0 bg-black/50 backdrop-blur-sm flex md:justify-center items-end md:items-center">
@@ -47,13 +44,13 @@ export default function MultiQuestions({
           </button>
         </div>
 
-        <div className=" p-4 flex flex-col gap-4">
+        <div className=" p-4 flex gap-4">
           <button
             onClick={openMake}
-            className=" shadow border flex items-center gap-3 px-4 py-3 rounded-xl"
+            className=" group shadow border flex flex-col basis-1/2 items-center gap-2 px-4 py-3 rounded-xl justify-center"
           >
-            <CiBadgeDollar className=" text-xl" />
-            <span>Make an offer</span>
+            <CiBadgeDollar className=" text-3xl md:text-4xl bg-green-600 rounded-full text-white p-1 group-hover:scale-110 transition-all duration-300" />
+            <span className=" md:text-xl text-gray-500">Make an offer</span>
           </button>
           {/* <a
             href={`https://api.whatsapp.com/send/?phone=971566633668&text=${make_an_offer_text}`}
@@ -66,18 +63,10 @@ export default function MultiQuestions({
           <a
             href={`https://api.whatsapp.com/send/?phone=971566633668&text=${ask_a_question_text}`}
             target="_blank"
-            className="shadow flex items-center gap-3 border px-4 py-3 rounded-xl"
+            className=" group shadow flex basis-1/2 flex-col items-center justify-center gap-3 border px-4 py-3 rounded-xl"
           >
-            <MdOutlineQuestionMark className=" text-xl" />
-            <span>Ask a question</span>
-          </a>
-          <a
-            href={`https://api.whatsapp.com/send/?phone=971566633668&text=${request_a_viewing_text}`}
-            target="_blank"
-            className="shadow flex items-center gap-3 border px-4 py-3 rounded-xl"
-          >
-            <FaEye className=" text-xl" />
-            <span>Request a viewing</span>
+            <MdOutlineQuestionMark className=" text-3xl md:text-4xl bg-green-600 rounded-full text-white p-1 group-hover:scale-110 transition-all duration-300" />
+            <span className=" md:text-xl text-gray-500">Ask a question</span>
           </a>
         </div>
       </XYAnim>
