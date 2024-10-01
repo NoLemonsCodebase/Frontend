@@ -14,6 +14,7 @@ import "react-phone-input-2/lib/material.css";
 
 // icons
 import { FaWhatsapp } from "react-icons/fa";
+import InterestedButton from "./interested-button";
 
 export function BidSection({
   carDetail,
@@ -113,22 +114,18 @@ export function BidSection({
         ) : null}
 
         {status == "for_sale" && (
-          <>
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+          <div className=" hidden md:block">
+            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight mb-4">
               Want to buy this car?
             </h2>
-            <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
+            {/* <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
               Get in touch with our team.
             </p>
 
-            <Button
-              onClick={onEarlyAccessClick}
-              className="w-48 flex space-x-1"
-            >
-              <FaWhatsapp className=" text-lg" />
-              <p>Contact us</p>
-            </Button>
-          </>
+            <div className=" max-w-[200px]">
+            </div> */}
+            <InterestedButton carDetail={carDetail} />
+          </div>
         )}
         {status == "sold" && (
           <>

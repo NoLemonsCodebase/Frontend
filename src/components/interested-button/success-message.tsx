@@ -3,6 +3,7 @@ import useSoundCash from "@/lib/hooks/use-cash-sound";
 import { IoCloseOutline } from "react-icons/io5";
 import { MdOutlineDone } from "react-icons/md";
 import ZoomEffect from "../anim/zoom";
+
 export default function SuccessMessage({ onCloseMake }: any) {
   useSoundCash();
   return (
@@ -16,9 +17,11 @@ export default function SuccessMessage({ onCloseMake }: any) {
       <ZoomEffect dur={0.4}>
         <MdOutlineDone className=" mb-4 bg-green-100 rounded-full text-green-600 p-4 text-9xl mx-auto" />
       </ZoomEffect>
-      <p className=" uppercase mb-1 text-gray-600">Submition complete</p>
+      <p className=" uppercase mb-2 text-gray-600">Submission complete</p>
       <p className=" text-gray-400 text-center mb-6">
-        Thank you for submitting your offer
+        Thank you for submitting your offer.
+        <br /> The owner has been notified and will contact you directly if
+        interested.
       </p>
 
       <button

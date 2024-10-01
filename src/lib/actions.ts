@@ -12,6 +12,12 @@ export async function makeAnOfferAction(
   const car_id = formData.get("car_id");
   const currency = formData.get("currency");
 
+  //========= refactor some attributes
+  let offer_value = "";
+  if (offer && typeof offer == "string") {
+    offer_value = offer.split(",").join("");
+  }
+
   // validation name
   if (typeof name == "string" && !/^[a-zA-z ]+$/g.test(name))
     return { ...prevState, nameErr: "Invalid name" };
@@ -19,47 +25,55 @@ export async function makeAnOfferAction(
   // validation offer price
   if (offer && sale_price) {
     const sale_price_num = Number(sale_price);
-    const offer_price_num = Number(offer);
+    const offer_price_num = Number(offer_value);
+    const present30 = (offer_price_num / 100) * 30;
 
-    const present30 = (sale_price_num / 100) * 30;
     if (offer_price_num < sale_price_num - present30)
       return {
         ...prevState,
         error:
-          "Your offer is too low, please submit an offer that is within 30% of asking price",
+          "Your offer is too low, please submit an offer that is within 30% of the asking price",
       };
 
     if (offer_price_num > sale_price_num + present30)
       return {
         ...prevState,
         error:
-          "Your offer is too hight, please submit an offer that is within 30% of asking price",
+          "Your offer is too high, please submit an offer that is within 30% of the asking price",
       };
   }
+
   const data = {
     name,
     phone,
-    car_id,
+    car_id: "67",
     currency,
-    offer,
+    offer: offer_value,
     sale_price,
   };
 
-  // const res = await fetch (
-  //   "https://hook.eu2.make.com/k71nt4dic6n2yit9potwlwe75vwh7f85",
-  //   {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json", // Set the content type to JSON
-  //     },
-  //     body: JSON.stringify(data),
-  //   }
-  // );
+  const res = await fetch("https://nolemons-dev.onrender.com/user-offer/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", // Set the content type to JSON
+    },
+    body: JSON.stringify(data),
+  });
 
-  // if (!res.ok) {
-  //   throw new Error(`Error: Something went wrong`);
-  // }
+  const { status } = await res.json();
 
-  await new Promise((res) => setTimeout(res, 3000));
-  return { ...prevState, message: "successfully", error: "", nameErr: "" };
+  if (!res.ok) {
+    return {
+      ...prevState,
+      phoneErr: status || "somthing wrong",
+    };
+  }
+
+  return {
+    ...prevState,
+    message: "successfully",
+    error: "",
+    nameErr: "",
+    phoneErr: "",
+  };
 }
