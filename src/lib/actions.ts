@@ -46,7 +46,7 @@ export async function makeAnOfferAction(
   const data = {
     name,
     phone,
-    car_id: "67",
+    car_id,
     currency,
     offer: offer_value,
     sale_price,
