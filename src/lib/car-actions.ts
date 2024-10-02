@@ -9,20 +9,24 @@ export async function getCars({ category = "uae", search = "" }: Props) {
   try {
     if (category == "all") {
       const [uae_data, import_data] = await Promise.all([
-        fetchData(`${process.env.NO_LEMON_CARS}?search=${search}`),
-        fetchData(`${process.env.IMPORT_A_CAR}?search=${search}`),
+        fetchData(`${process.env.OUR_API}/api/v2/cars/?search=${search}`),
+        fetchData(
+          `${process.env.OUR_API}/parser/api/v1/cars/?search=${search}`
+        ),
       ]);
 
       return [...uae_data, ...import_data];
     }
 
     if (category == "uae") {
-      const uae_data = await fetchData(process.env.NO_LEMON_CARS ?? "");
+      const uae_data = await fetchData(`${process.env.OUR_API}/api/v2/cars/`);
       return uae_data;
     }
 
     if (category == "import-a-car") {
-      const import_data = await fetchData(process.env.IMPORT_A_CAR ?? "");
+      const import_data = await fetchData(
+        `${process.env.OUR_API}/parser/api/v1/cars/`
+      );
       return import_data;
     }
   } catch (e: any) {
@@ -31,12 +35,12 @@ export async function getCars({ category = "uae", search = "" }: Props) {
 }
 
 export async function getUaeCar(id: string) {
-  let req_url = process.env.NO_LEMON_CARS;
+  let req_url = `${process.env.OUR_API}/api/v2/cars/`;
 
   if (Number.isInteger(Number(id))) {
-    req_url = `${process.env.NO_LEMON_CARS}/${id}`;
+    req_url += id;
   } else {
-    req_url = `https://nolemons2.onrender.com/cars/by-route/${id}/`;
+    req_url = `${process.env.OUR_API}/cars/by-route/${id}/`;
   }
   const res = await fetch(req_url, { next: { revalidate: 0 } });
 
@@ -49,7 +53,7 @@ export async function getUaeCar(id: string) {
 }
 
 export async function getImportCar(id: string) {
-  const res = await fetch(`${process.env.IMPORT_A_CAR}/${id}`, {
+  const res = await fetch(`${process.env.OUR_API}/parser/api/v1/cars/${id}`, {
     next: { revalidate: 0 },
   });
 
