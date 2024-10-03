@@ -39,7 +39,7 @@ export default function CarCard({ carDetails }: ICarCardProps) {
   let singleCarUrl = `/cars/${url_route || id}`;
 
   if (isParsed) {
-    singleCarUrl = `/import_a_car/${id}`;
+    singleCarUrl = `/import-a-car/${url_route || id}`;
   }
 
   return (

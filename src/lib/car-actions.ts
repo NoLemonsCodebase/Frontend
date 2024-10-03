@@ -53,7 +53,15 @@ export async function getUaeCar(id: string) {
 }
 
 export async function getImportCar(id: string) {
-  const res = await fetch(`${process.env.OUR_API}/parser/api/v1/cars/${id}`, {
+  let req_url = `${process.env.OUR_API}/parser/api/v1/cars/`;
+
+  if (Number.isInteger(Number(id))) {
+    req_url += id;
+  } else {
+    req_url = `${process.env.OUR_API}/parser/by-route/${id}/`;
+  }
+
+  const res = await fetch(req_url, {
     next: { revalidate: 0 },
   });
 
