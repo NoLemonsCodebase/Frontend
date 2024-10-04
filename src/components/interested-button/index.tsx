@@ -33,18 +33,18 @@ export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
   return (
     <Fragment>
       <div className=" bg-white shadow-custom-top fixed lg:relative z-[11] lg:z-[10] bottom-0 left-0 px-4 py-3 lg:p-0 w-full lg:w-auto lg:ml-auto lg:basis-[30%] lg:shadow-none">
-        {/* <button
+        <button
           onClick={openQuestions}
           className=" bg-green-700 text-white rounded-lg w-full px-2 py-3"
         >
           I'm interested
-        </button> */}
-        <Link
+        </button>
+        {/* <Link
           href={`/cars/${intersted_link}/bid`}
           className=" bg-green-700 text-center text-white rounded-lg w-full px-2 py-3 block"
         >
           I'm interested
-        </Link>
+        </Link> */}
       </div>
 
       <AnimatePresence>
