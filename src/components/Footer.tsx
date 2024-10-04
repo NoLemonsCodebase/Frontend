@@ -13,7 +13,7 @@ interface IFooterProps {}
 function Footer(props: IFooterProps): React.ReactElement {
   return (
     <footer className="p-3 md:p-4">
-      <div className="rounded-2xl bg-black pt-10 pb-20 md:py-14">
+      <div className="rounded-2xl bg-black pt-10 pb-20 md:py-20">
         <div className=" our-container">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-10 md:pb-10">
             <div>

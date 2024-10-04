@@ -1,9 +1,12 @@
+import BidSteps from "@/components/bid-steps";
+import { getUaeCar } from "@/lib/car-actions";
+import { ICar } from "@/lib/types";
 import React from "react";
 
-export default function Bid({ params, searchParams }: any) {
+export default async function BidPage({ params }: any) {
   const { id, locale } = params;
 
-  console.log(id);
+  const data: ICar = await getUaeCar(id);
 
-  return <div>Bid</div>;
+  return <BidSteps carDetail={data} />;
 }
