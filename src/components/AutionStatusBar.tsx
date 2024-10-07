@@ -15,10 +15,16 @@ export default function AutionStatusBar({
   const t = useTranslations("default");
 
   // info we need from carDetail
-  const { auction: currentAuction, status, sale_price, currency } = carDetail;
+  const {
+    auction: currentAuction,
+    category,
+    status,
+    sale_price,
+    currency,
+  } = carDetail;
   const is_comming = status == "created" || status == "unverified";
 
-  const cur_currency = currency == "AED" ? "AED" : "USD";
+  const cur_currency = category == "uae" ? "AED" : "USD";
 
   return (
     <div className="rounded bg-black bg-opacity-80 flex-grow items-center">
