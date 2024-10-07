@@ -42,6 +42,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     accident_check_link,
     arabic_description_link,
     seller_whatsapp,
+    buyers_fee,
   } = carDetail;
 
   const is_parsed = Boolean(parsed_car_text_section);
@@ -106,6 +107,10 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     {
       title: t("market_value"),
       value: market_value,
+    },
+    {
+      title: "Buyers Fee",
+      value: buyers_fee,
     },
   ];
 

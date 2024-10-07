@@ -26,16 +26,15 @@ export async function makeAnOfferAction(
   if (offer && sale_price) {
     const sale_price_num = Number(sale_price);
     const offer_price_num = Number(offer_value);
-    const present30 = (offer_price_num / 100) * 30;
 
-    if (offer_price_num < sale_price_num - present30)
+    if (offer_price_num <= sale_price_num * 0.7)
       return {
         ...prevState,
         error:
           "Your offer is too low, please submit an offer that is within 30% of the asking price",
       };
 
-    if (offer_price_num > sale_price_num + present30)
+    if (offer_price_num >= sale_price_num * 1.3)
       return {
         ...prevState,
         error:
