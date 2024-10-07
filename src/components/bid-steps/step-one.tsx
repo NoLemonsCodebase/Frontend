@@ -40,11 +40,15 @@ const StepOneButton: React.FC<StepOneButtonProps> = ({
   subtitle,
   value,
 }) => {
-  const { buy, setBuy } = useSteps();
+  const { buy, setBuy, setStep } = useSteps();
 
+  function handleClick() {
+    setBuy(value);
+    setStep(1);
+  }
   return (
     <button
-      onClick={() => setBuy(value)}
+      onClick={handleClick}
       className={` text-left border p-8 rounded-md ${
         buy == value ? " border-black" : ""
       }`}

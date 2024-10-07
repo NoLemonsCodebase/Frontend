@@ -6,6 +6,9 @@ import StepOne from "./step-one";
 import { ICar } from "@/lib/types";
 import { StepsProvider } from "@/lib/context/steps-context";
 import StepTwo from "./setp-two";
+import StepThree from "./step-three";
+import StepFoure from "./step-foure";
+
 interface BidStepsProps {
   carDetail: ICar;
 }
@@ -42,7 +45,9 @@ const BidSteps: React.FC<BidStepsProps> = ({ carDetail }) => {
       </div>
       <StepsProvider>
         <StepOne />
-        <StepTwo />
+        <StepTwo salePrice={sale_price} />
+        <StepThree />
+        <StepFoure />
       </StepsProvider>
     </section>
   );
