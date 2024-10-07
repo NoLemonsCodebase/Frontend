@@ -15,10 +15,10 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
   }, []);
 
   const t = useTranslations("default.car_page");
-
+  console.log(carDetail);
   // extract field from carDetail
   const {
-    parsed_car_text_section,
+    category,
     location,
     vin,
     engine,
@@ -41,11 +41,9 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     carfax_report_link,
     accident_check_link,
     arabic_description_link,
-    seller_whatsapp,
+
     buyers_fee,
   } = carDetail;
-
-  const is_parsed = Boolean(parsed_car_text_section);
 
   const sections = [
     {
@@ -151,6 +149,8 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     },
   ];
 
+  // hide vin
+  const is_parsed = category == "import_a_car";
   let fields_render = sections;
   if (is_parsed) fields_render = sections.filter((_, idx) => idx !== 1);
 

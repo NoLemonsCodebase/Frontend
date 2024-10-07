@@ -1,6 +1,7 @@
 import { useSteps } from "@/lib/context/steps-context";
 import React from "react";
 import { FaCheck } from "react-icons/fa";
+import FormStrip from "./form-strip";
 
 export default function StepThree() {
   const { buy, step } = useSteps();
@@ -17,7 +18,6 @@ export default function StepThree() {
       >
         {isStep3 && <FaCheck />}
       </span>
-
       <div
         className={`text-3xl font-bold pl-4 ${
           isStep2 ? "opacity-100" : "opacity-20"
@@ -25,6 +25,7 @@ export default function StepThree() {
       >
         Step 3
       </div>
+      <FormStrip />
     </div>
   );
 }
