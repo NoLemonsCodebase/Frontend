@@ -41,14 +41,24 @@ const StepTwo: React.FC<StepTowProps> = ({ salePrice }) => {
 };
 
 const BuyItNow: React.FC<StepTowProps> = ({ salePrice }) => {
+  const { setStep } = useSteps();
+
   const price_render = salePrice.toLocaleString();
   return (
-    <div className="border p-8 rounded-md">
-      <p className=" mb-4 text-gray-600">Your buy it now price:</p>
-      <p className=" flex items-center gap-4 font-bold">
-        AED <span className=" text-3xl font-normal">{price_render}</span>
-      </p>
-    </div>
+    <>
+      <div className="border p-8 rounded-md">
+        <p className=" mb-4 text-gray-600">Your buy it now price:</p>
+        <p className=" flex items-center gap-4 font-bold">
+          AED <span className=" text-3xl font-normal">{price_render}</span>
+        </p>
+      </div>
+      <button
+        onClick={() => setStep(2)}
+        className="mt-16 border py-3 px-8  rounded-full text-xl font-semibold"
+      >
+        Next
+      </button>
+    </>
   );
 };
 

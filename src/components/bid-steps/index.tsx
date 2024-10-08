@@ -7,7 +7,6 @@ import { ICar } from "@/lib/types";
 import { StepsProvider } from "@/lib/context/steps-context";
 import StepTwo from "./setp-two";
 import StepThree from "./step-three";
-import StepFoure from "./step-foure";
 
 interface BidStepsProps {
   carDetail: ICar;
@@ -47,7 +46,6 @@ const BidSteps: React.FC<BidStepsProps> = ({ carDetail }) => {
         <StepOne />
         <StepTwo salePrice={sale_price} />
         <StepThree />
-        <StepFoure />
       </StepsProvider>
     </section>
   );
@@ -58,7 +56,7 @@ interface SellerInfoProps {
 }
 const SellerInfo: React.FC<SellerInfoProps> = ({ sale_price }) => {
   const sale_price_render = sale_price.toLocaleString("en-US");
-  const highest_offer = (sale_price - 5000).toLocaleString("en-US");
+  const highest_offer = (sale_price * 0.8).toLocaleString("en-US");
 
   return (
     <div className=" flex flex-col gap-4">
