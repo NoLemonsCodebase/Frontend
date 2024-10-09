@@ -44,6 +44,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   const car_images_render = is_parded ? parsed_car_image : car_image;
   const car_video_render = is_parded ? parsed_car_video : car_video;
   const lastAuction = auction;
+  const verified_render = verified && !is_parded;
 
   useEffect(() => {
     if (lastAuction) {
@@ -94,7 +95,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
       {car_images_render && car_images_render.length > 2 ? (
         <ImageCarousel
           carImages={car_images_render.map((img) => img.image)}
-          isVerified={verified}
+          isVerified={verified_render}
         />
       ) : null}
 
