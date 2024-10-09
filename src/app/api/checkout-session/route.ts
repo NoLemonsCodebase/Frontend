@@ -23,7 +23,6 @@ export async function POST(req: NextRequest) {
         url_after_complete,
       },
       return_url: `${root_url}/en/return?session_id={CHECKOUT_SESSION_ID}`,
-      // return_url: `http://localhost:3000`,
     });
 
     return NextResponse.json({ session });

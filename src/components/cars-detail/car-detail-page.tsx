@@ -39,12 +39,10 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
     category,
     parsed_car_video,
   } = carDetail;
+  const is_parded = category == "import_a_car";
 
-  const car_images_render =
-    category == "import_a_car" ? parsed_car_image : car_image;
-  const car_video_render =
-    category == "import_a_car" ? parsed_car_video : car_video;
-
+  const car_images_render = is_parded ? parsed_car_image : car_image;
+  const car_video_render = is_parded ? parsed_car_video : car_video;
   const lastAuction = auction;
 
   useEffect(() => {
@@ -72,7 +70,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   useEffect(() => {
     TrackPageView();
   }, []);
-
+  console.log(car_video_render);
   return (
     <section className=" our-container flex flex-col py-4 overflow-clip">
       <div className="flex lg:hidden flex-wrap bg-white py-2 -mt-3 mb-3 gap-1 border-b">
@@ -163,23 +161,37 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
               car_video_render?.map((video: any, index: number) => (
                 <Fragment key={index}>
                   <h2 className="text-xl font-bold my-4">{video.title}</h2>
-                  <div
-                    className={cn(
-                      "md:mr-20",
-                      video.aspect_ratio == "16:9"
-                        ? "aspect-w-16 aspect-h-10"
-                        : "aspect-w-4 aspect-h-7 max-h-64"
-                    )}
-                  >
-                    <iframe
-                      src={video.video}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share"
-                      allowFullScreen
+                  {is_parded ? (
+                    <div className=" w-full overflow-hidden aspect-[16/9]">
+                      <iframe
+                        src={`${video.video}?&modestbranding=0&rel=0`}
+                        className=" w-[300%] h-full ml-[-100%]"
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share"
+                        allowFullScreen
+                      >
+                        vedio 1
+                      </iframe>
+                    </div>
+                  ) : (
+                    <div
+                      className={cn(
+                        "md:mr-20",
+                        video.aspect_ratio == "16:9"
+                          ? "aspect-w-16 aspect-h-10"
+                          : "aspect-w-4 aspect-h-7 max-h-64"
+                      )}
                     >
-                      vedio 1
-                    </iframe>
-                  </div>
+                      <iframe
+                        src={video.video}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share"
+                        allowFullScreen
+                      >
+                        vedio 1
+                      </iframe>
+                    </div>
+                  )}
                 </Fragment>
               ))}
           </div>
