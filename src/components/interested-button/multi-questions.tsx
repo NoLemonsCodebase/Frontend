@@ -6,6 +6,8 @@ import { IoCloseOutline } from "react-icons/io5";
 import { MdOutlineQuestionMark } from "react-icons/md";
 
 import XYAnim from "../anim/xy-anim";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type Props = {
   dirAnimation: string;
@@ -21,6 +23,7 @@ export default function MultiQuestions({
   openMake,
 }: Props) {
   useDisableScroll();
+  const pathname = usePathname();
 
   const { title, year, category } = carDetail;
 
@@ -63,8 +66,20 @@ export default function MultiQuestions({
 
         <div className=" p-4 grid grid-cols-2 gap-2">
           {is_uae ? (
-            <button
-              onClick={openMake}
+            // <button
+            //   onClick={openMake}
+            //   className={`${styleLink} ${
+            //     is_uae ? "col-span-2" : " col-span-1"
+            //   }`}
+            // >
+            //   <div className=" relative overflow-hidden text-3xl md:text-4xl">
+            //     <CiBadgeDollar className={`${styleColorIcon} text-green-600`} />
+            //     <CiBadgeDollar className={styleGrayIcon} />
+            //   </div>
+            //   <span className=" md:text-xl text-gray-500">Make an offer</span>
+            // </button>
+            <Link
+              href={`${pathname}/bid`}
               className={`${styleLink} ${
                 is_uae ? "col-span-2" : " col-span-1"
               }`}
@@ -74,7 +89,7 @@ export default function MultiQuestions({
                 <CiBadgeDollar className={styleGrayIcon} />
               </div>
               <span className=" md:text-xl text-gray-500">Make an offer</span>
-            </button>
+            </Link>
           ) : (
             <a
               href={`https://api.whatsapp.com/send/?phone=971564404640&text=${make_an_offer_text}`}

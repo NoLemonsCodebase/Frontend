@@ -15,7 +15,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
   }, []);
 
   const t = useTranslations("default.car_page");
-  console.log(carDetail);
+
   // extract field from carDetail
   const {
     category,

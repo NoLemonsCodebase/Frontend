@@ -13,15 +13,13 @@ interface BidStepsProps {
 }
 
 const BidSteps: React.FC<BidStepsProps> = ({ carDetail }) => {
-  const [buy, setBuy] = useState("");
-
   const { year, title, main_image, sale_price } = carDetail;
 
   return (
     <section className=" py-20 px-4 max-w-2xl m-auto">
       <h1 className=" text-3xl font-semibold mb-4">Buy It Now</h1>
       <p className=" text-gray-600">
-        We’ll guide you through the offer process in just 4 easy steps.
+        We’ll guide you through the offer process in just 3 easy steps.
       </p>
 
       <div className=" my-10 border-b-2 pb-16 flex flex-col md:flex-row gap-8">
@@ -56,7 +54,7 @@ interface SellerInfoProps {
 }
 const SellerInfo: React.FC<SellerInfoProps> = ({ sale_price }) => {
   const sale_price_render = sale_price.toLocaleString("en-US");
-  const highest_offer = (sale_price * 0.8).toLocaleString("en-US");
+  const highest_offer = (sale_price * 0.7).toLocaleString("en-US");
 
   return (
     <div className=" flex flex-col gap-4">
