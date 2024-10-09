@@ -10,16 +10,29 @@ import React, {
 // Define the context type
 interface StepsContextType {
   buy: string;
+  name: string;
+  phone: string;
+  finalPrice: string;
   step: number;
-  setBuy: React.Dispatch<React.SetStateAction<string>>;
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  setBuy: React.Dispatch<React.SetStateAction<string>>;
+
+  setName: React.Dispatch<React.SetStateAction<string>>;
+  setPhone: React.Dispatch<React.SetStateAction<string>>;
+  setFinalPrice: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const defaultSteps = {
   buy: "", // initial value
   step: 1,
+  name: "",
+  phone: "",
+  finalPrice: "",
   setBuy: () => {}, // empty function as default
   setStep: () => {}, // empty function as default
+  setName: () => {},
+  setPhone: () => {},
+  setFinalPrice: () => {}, // empty function as default
 };
 
 // Create the context with the default value
@@ -30,11 +43,28 @@ interface StepsProviderProps {
 }
 
 export const StepsProvider: FC<StepsProviderProps> = ({ children }) => {
+  //===============
   const [buy, setBuy] = useState<string>("bid-offer");
+  const [name, setName] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [finalPrice, setFinalPrice] = useState<string>("");
   const [step, setStep] = useState<number>(1);
 
   return (
-    <StepsContext.Provider value={{ buy, setBuy, step, setStep }}>
+    <StepsContext.Provider
+      value={{
+        buy,
+        setBuy,
+        step,
+        setStep,
+        name,
+        setName,
+        phone,
+        setPhone,
+        finalPrice,
+        setFinalPrice,
+      }}
+    >
       {children}
     </StepsContext.Provider>
   );
