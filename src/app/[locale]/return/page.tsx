@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { redirect, usePathname, useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import SuccessMessage from "./seccess-message";
 
 export default function Return() {
