@@ -9,17 +9,14 @@ export async function POST(req: NextRequest) {
     const url_after_complete = req?.headers?.get("referer")?.slice(0, -4) || "";
 
     const body = await req.json(); // Parse the incoming request body as JSON
-    const { name, phone, finalPrice } = body;
+    const { prepare_data } = body;
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "setup",
       ui_mode: "embedded",
-
       metadata: {
-        name,
-        phone,
-        finalPrice,
+        ...prepare_data,
         url_after_complete,
       },
       return_url: `${root_url}/en/return?session_id={CHECKOUT_SESSION_ID}`,

@@ -1,51 +1,50 @@
 import { useSteps } from "@/lib/context/steps-context";
-import React, { useEffect, useState } from "react";
-import { FaCheck } from "react-icons/fa";
+import React, { useEffect } from "react";
 
+import CircleStep from "./circle-step";
+import NumStep from "./num-step";
 import StartBid from "./start-bid";
 import UserInfo from "./user-info";
 
-const TWO = 2;
-
 interface StepTowProps {
   salePrice: number;
+  currency: string;
 }
-const StepTwo: React.FC<StepTowProps> = ({ salePrice }) => {
-  const { buy, step, setStep } = useSteps();
+const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency }) => {
+  const { buy, curStep } = useSteps();
 
   const message =
     buy == "bid-offer"
       ? "Enter your offer amount."
       : "You agree to offer the asking price.";
 
-  const isStep2 = step == TWO;
+  const is_step_2 = curStep >= 2;
+  let box_style = `pl-4 pt-20  border-l-[3px] relative`;
+  if (is_step_2) box_style += ` border-green-300`;
+  else box_style += ` border-white`;
 
+  // =============== JSX ========================
   return (
-    <div className=" pl-4 pb-20 border-l-[3px] border-green-300 relative">
-      <span
-        className={`absolute ${
-          isStep2 ? "bg-green-300" : "bg-white"
-        } border-2 border-green-300 -left-3.5 -top-4 w-6 h-6 flex justify-center items-center text-black rounded-full`}
-      >
-        {isStep2 && <FaCheck />}
-      </span>
-
-      <div className=" text-3xl font-bold pl-4">Step 2</div>
-
-      <p className=" text-gray-700 my-6">{message}</p>
-      {buy == "bid-price" ? (
-        <BuyItNow salePrice={salePrice} />
-      ) : (
-        <StartBid salePrice={salePrice} />
+    <div className={box_style}>
+      <CircleStep position="top-20" step={3} />
+      <NumStep step={2} />
+      {is_step_2 && (
+        <div>
+          <p className=" text-gray-700 my-6">{message}</p>
+          {buy == "bid-price" ? (
+            <BuyItNow salePrice={salePrice} currency={currency} />
+          ) : (
+            <StartBid salePrice={salePrice} currency={currency} />
+          )}
+          <UserInfo />
+          <Next />
+        </div>
       )}
-
-      <UserInfo />
-      <Next />
     </div>
   );
 };
 
-const BuyItNow: React.FC<StepTowProps> = ({ salePrice }) => {
+const BuyItNow: React.FC<StepTowProps> = ({ salePrice, currency }) => {
   const { setFinalPrice } = useSteps();
   const price_render = salePrice.toLocaleString();
 
@@ -58,7 +57,8 @@ const BuyItNow: React.FC<StepTowProps> = ({ salePrice }) => {
       <div className="border p-8 rounded-md">
         <p className=" mb-4 text-gray-600">Your buy it now price:</p>
         <p className=" flex items-center gap-4 font-bold">
-          AED <span className=" text-3xl font-normal">{price_render}</span>
+          {currency}{" "}
+          <span className=" text-3xl font-normal">{price_render}</span>
         </p>
       </div>
     </>
@@ -68,14 +68,14 @@ const BuyItNow: React.FC<StepTowProps> = ({ salePrice }) => {
 // ========================================================
 
 function Next() {
-  const { finalPrice, name, phone, setStep } = useSteps();
+  const { finalPrice, name, phone, setCurStep } = useSteps();
 
   const disableButton =
     !Boolean(name) || !Boolean(phone) || !Boolean(finalPrice);
 
   return (
     <button
-      onClick={() => setStep(2)}
+      onClick={() => setCurStep(3)}
       disabled={disableButton}
       className={`mt-16 border py-3 px-8  rounded-full text-xl font-semibold disabled:cursor-not-allowed ${
         disableButton ? "opacity-50" : "opacity-100"
