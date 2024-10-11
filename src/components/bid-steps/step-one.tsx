@@ -12,16 +12,10 @@ export default function StepOne() {
 
       <p className=" text-gray-700 my-6">Select an offer option.</p>
       <div className=" flex flex-col gap-10">
+        <StepOneButton title="Buy It Now" value="bid-price" />
         <StepOneButton
-          title="Buy It Now at Asking Price"
-          subtitle="Your full price bid will end the listing immediately with you as the
-            winner."
-          value="bid-price"
-        />
-        <StepOneButton
-          title="Make a Starting Bid Offer Below Asking Price"
-          subtitle="The seller will review your offer. If they accept, the live auction
-            will commence."
+          title="Make an Offer"
+          subtitle="The seller will review your offer. If they accept, the car will be yours."
           value="bid-offer"
         />
       </div>
@@ -31,7 +25,7 @@ export default function StepOne() {
 
 interface StepOneButtonProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   value: string;
 }
 const StepOneButton: React.FC<StepOneButtonProps> = ({
@@ -48,11 +42,11 @@ const StepOneButton: React.FC<StepOneButtonProps> = ({
   return (
     <button
       onClick={handleClick}
-      className={` text-left border p-8 rounded-md ${
+      className={` text-left border p-6 rounded-md ${
         buy == value ? " border-black" : ""
       }`}
     >
-      <p className=" font-semibold mb-4">{title}</p>
+      <p className=" font-semibold">{title}</p>
       <span className=" text-gray-700">{subtitle}</span>
     </button>
   );

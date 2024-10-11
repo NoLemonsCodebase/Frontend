@@ -16,7 +16,7 @@ const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency }) => {
   const message =
     buy == "bid-offer"
       ? "Enter your offer amount."
-      : "You agree to offer the asking price.";
+      : "You agree to purchase the car at the asking price.";
 
   const is_step_2 = curStep >= 2;
   let box_style = `pl-4 pt-20  border-l-[3px] relative`;

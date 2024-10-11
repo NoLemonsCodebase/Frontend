@@ -11,7 +11,7 @@ import CircleStep from "./circle-step";
 import { ICar } from "@/lib/types";
 
 const stripePromise = loadStripe(
-  "pk_live_51JL5IsK7Uh3dA2avrcaKQsmpPwAVX6zC0Jt1VWes2KJEVT9QxjfkQ1Q7hMMMC9pmNEfbLEgiZtR1dbZjSVZwG4Sw00I8Ei9Fmq"
+  "pk_test_51JL5IsK7Uh3dA2av4dbj9UHxOR85jRY6JNpw3yX2KISMKgPzVnXMsTlQkEiO4K2CLSntNiCHnlJtAX1CVQhujPEn004D7AUAgS"
 );
 
 interface StepThreeProps {
@@ -42,7 +42,7 @@ const CheckOutStrip: React.FC<StepThreeProps> = ({ carDetail }) => {
   const [clientSecret, setClientSecret] = useState<string>("");
 
   const { name, phone, finalPrice } = useSteps();
-  const { id, title, year, main_image, sale_price, category } = carDetail;
+  const { id, title, year, main_image, sale_price, category, buyers_fee } = carDetail;
 
   // =============== prepare data for send to strip session ========
   const currency = category == "uae" ? "AED" : "USD";
@@ -56,6 +56,7 @@ const CheckOutStrip: React.FC<StepThreeProps> = ({ carDetail }) => {
     phone,
     finalPrice,
     currency,
+    buyers_fee
   };
 
   useEffect(() => {

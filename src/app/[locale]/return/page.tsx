@@ -87,7 +87,7 @@ function Complete({ session }: any) {
         }
         const message = await res.json();
       } catch (error) {
-        console.error("Error fetching session:", error);
+        console.error("Error sending data to slack:", error);
       }
     }
     SendMetaData();

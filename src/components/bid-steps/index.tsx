@@ -77,7 +77,7 @@ const SellerInfo: React.FC<SellerInfoProps> = ({ sale_price, currency }) => {
         </span>
       </div>
       <span className=" text-xs font-semibold mt-4 text-green-700">
-        Accepting starting bids
+        The owner is accepting offers
       </span>
     </div>
   );
@@ -95,7 +95,7 @@ function BackBtn() {
 
       <div className=" relative flex items-center gap-4 ">
         <IoIosArrowBack className="  text-xl" />
-        <span>back</span>
+        <span>Back</span>
       </div>
     </button>
   );

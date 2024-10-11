@@ -16,11 +16,12 @@ export default function SuccessMessage({ session }: any) {
       </ZoomEffect>
       <div className=" text-center mb-8">
         <p className=" text-gray-900 font-semibold text-2xl md:text-4xl mb-1">
-          Thank you <br /> your offer has been recieved.
+          Thank you <br /> Your offer has been submitted.
         </p>
-        <span className=" text-sm text-gray-400 block">
-          The owner has been notified and will contact you directly if
-          interested.
+        <span className=" text-sm text-gray-400 max-w-[350px] md:max-w-[400px] block m-auto">
+          The owner has been notified. If the offer is accepted the NoLemons
+          buyer fee will be held until the sale is complete. If the offer is
+          rejected you will not be charged any fees.
         </span>
       </div>
 
@@ -46,9 +47,14 @@ function OfferDetail({ session }: any) {
     finalPrice,
     sale_price,
     name,
+    buyers_fee,
   } = metadata;
 
   const sale_price_render = Number(sale_price).toLocaleString();
+  const buyer_fee_num = (
+    (Number(buyers_fee?.[0]) / 100) *
+    sale_price
+  ).toLocaleString("en-US");
 
   // date of verify credit card
   const timestamp = created;
@@ -61,9 +67,6 @@ function OfferDetail({ session }: any) {
 
   return (
     <div className=" border-t  border-t-gray-100 py-20">
-      <p className=" text-center text-2xl md:text-4xl mb-8 text-gray-600">
-        Offer Detail
-      </p>
       <div className=" flex justify-between items-center gap-4 mb-20">
         <div className="basis-[35%] rounded-lg overflow-hidden">
           <Image
@@ -81,28 +84,47 @@ function OfferDetail({ session }: any) {
       </div>
 
       <div className=" flex flex-col gap-2">
-        <OfferDetialItem title="Date" value={formattedDate} />
-        <OfferDetialItem
-          title="Asking Price"
-          value={`${currency} ${sale_price_render}`}
-        />
-        <OfferDetialItem title="Offer" value={`${currency} ${finalPrice}`} />
-        <OfferDetialItem title="Name" value={name} />
-        <OfferDetialItem title="Email" value={customer_details.email} />
-        <OfferDetialItem title="Phone" value={`+${phone}`} />
+        <div className={" overflow-x-scroll"}>
+          <table className="min-w-full divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-200">
+              {/* ====================== values fields ========================= */}
+              <OfferDetialItem title="Date" value={formattedDate} />
+              <OfferDetialItem
+                title="Asking Price"
+                value={`${currency} ${sale_price_render}`}
+              />
+
+              <OfferDetialItem
+                title="Offer"
+                value={`${currency} ${finalPrice}`}
+              />
+              <OfferDetialItem
+                title="Buyer Fee"
+                value={`${buyers_fee} (${currency} ${buyer_fee_num})`}
+              />
+              <OfferDetialItem title="Name" value={name} />
+              <OfferDetialItem title="Email" value={customer_details.email} />
+              <OfferDetialItem title="Phone" value={`+${phone}`} />
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
 }
 
-function OfferDetialItem({ title, value }: any) {
+function OfferDetialItem({ title, value }: any): any {
   return (
     <>
       {value && (
-        <div className=" flex justify-between">
-          <p className=" text-gray-500 font-semibold">{title}:</p>
-          <span className=" text-sm">{value}</span>
-        </div>
+        <tr className="flex justify-between">
+          <td className="py-2 whitespace-nowrap text-sm font-medium text-gray-900  ">
+            {title}:
+          </td>
+          <td className="py-2 whitespace-nowrap text-sm text-gray-500">
+            {value}
+          </td>
+        </tr>
       )}
     </>
   );
