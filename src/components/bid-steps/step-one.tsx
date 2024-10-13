@@ -15,7 +15,8 @@ export default function StepOne() {
         <StepOneButton title="Buy It Now" value="bid-price" />
         <StepOneButton
           title="Make an Offer"
-          subtitle="The seller will review your offer. If they accept, the car will be yours."
+          subtitle="The seller will review your offer."
+          moreTxt="If they accept, the car will be yours."
           value="bid-offer"
         />
       </div>
@@ -26,11 +27,13 @@ export default function StepOne() {
 interface StepOneButtonProps {
   title: string;
   subtitle?: string;
+  moreTxt?: string;
   value: string;
 }
 const StepOneButton: React.FC<StepOneButtonProps> = ({
   title,
   subtitle,
+  moreTxt,
   value,
 }) => {
   const { buy, setBuy, setCurStep } = useSteps();
@@ -47,7 +50,8 @@ const StepOneButton: React.FC<StepOneButtonProps> = ({
       }`}
     >
       <p className=" font-semibold">{title}</p>
-      <span className=" text-gray-700">{subtitle}</span>
+      <span className=" text-gray-700 block">{subtitle}</span>
+      <span className=" text-gray-700 block">{moreTxt}</span>
     </button>
   );
 };

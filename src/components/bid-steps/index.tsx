@@ -89,7 +89,7 @@ function BackBtn() {
   return (
     <button
       onClick={() => router.back()}
-      className="text-green-600 hover:text-white transition-colors duration-300  bg-green-100 rounded-md py-2 pr-4 pl-1 font-semibold mb-8  relative overflow-hidden group"
+      className="text-green-300 hover:text-white transition-colors duration-300  bg-green-100 rounded-md py-2 pr-4 pl-1 font-semibold mb-8  relative overflow-hidden group"
     >
       <span className=" absolute bg-green-600 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 scale-0 group-hover:scale-100  block w-28 h-28 scale-1 rounded-full"></span>
 

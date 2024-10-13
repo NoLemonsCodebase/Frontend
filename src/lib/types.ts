@@ -48,7 +48,7 @@ export type ICar = {
   year: number;
   description: string;
   sale_price: number;
-  buyers_fee: number;
+  buyers_fee: string;
   verified: boolean;
   status:
     | "created"

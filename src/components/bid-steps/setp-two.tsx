@@ -13,11 +13,6 @@ interface StepTowProps {
 const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency }) => {
   const { buy, curStep } = useSteps();
 
-  const message =
-    buy == "bid-offer"
-      ? "Enter your offer amount."
-      : "You agree to purchase the car at the asking price.";
-
   const is_step_2 = curStep >= 2;
   let box_style = `pl-4 pt-20  border-l-[3px] relative`;
   if (is_step_2) box_style += ` border-green-300`;
@@ -30,7 +25,7 @@ const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency }) => {
       <NumStep step={2} />
       {is_step_2 && (
         <div>
-          <p className=" text-gray-700 my-6">{message}</p>
+          <p className=" text-gray-700 my-6">Your offer:</p>
           {buy == "bid-price" ? (
             <BuyItNow salePrice={salePrice} currency={currency} />
           ) : (
@@ -55,7 +50,6 @@ const BuyItNow: React.FC<StepTowProps> = ({ salePrice, currency }) => {
   return (
     <>
       <div className="border p-8 rounded-md">
-        <p className=" mb-4 text-gray-600">Your buy it now price:</p>
         <p className=" flex items-center gap-4 font-bold">
           {currency}{" "}
           <span className=" text-3xl font-normal">{price_render}</span>

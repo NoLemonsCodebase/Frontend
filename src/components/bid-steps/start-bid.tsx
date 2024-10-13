@@ -73,7 +73,6 @@ const StartBid: React.FC<StepTowProps> = ({ salePrice, currency }) => {
   return (
     <>
       <div className="border p-8 rounded-md">
-        <p className=" mb-4 text-gray-600">Your buy it now price:</p>
         <div className="flex items-center flex-wrap gap-4 font-bold">
           {currency}{" "}
           <input
@@ -86,7 +85,7 @@ const StartBid: React.FC<StepTowProps> = ({ salePrice, currency }) => {
             required
           />
           <span className=" text-sm text-gray-700">
-            ({difference.toFixed(2)} %)
+            ({Math.round(difference)} %)
           </span>
         </div>
       </div>

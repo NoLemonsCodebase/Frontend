@@ -42,7 +42,8 @@ const CheckOutStrip: React.FC<StepThreeProps> = ({ carDetail }) => {
   const [clientSecret, setClientSecret] = useState<string>("");
 
   const { name, phone, finalPrice } = useSteps();
-  const { id, title, year, main_image, sale_price, category, buyers_fee } = carDetail;
+  const { id, title, year, main_image, sale_price, category, buyers_fee } =
+    carDetail;
 
   // =============== prepare data for send to strip session ========
   const currency = category == "uae" ? "AED" : "USD";
@@ -56,7 +57,7 @@ const CheckOutStrip: React.FC<StepThreeProps> = ({ carDetail }) => {
     phone,
     finalPrice,
     currency,
-    buyers_fee
+    buyers_fee,
   };
 
   useEffect(() => {
@@ -78,13 +79,29 @@ const CheckOutStrip: React.FC<StepThreeProps> = ({ carDetail }) => {
 
   const options = { clientSecret };
 
+  // ==========================
+
+  const buyer_fee_num = (
+    (Number(buyers_fee?.[0]) / 100) *
+    sale_price
+  ).toLocaleString("en-US");
+
   return (
     <div id="checkout" className=" mt-10">
       <div className=" max-w-sm">
-        <p className=" text-gray-500 text-sm mb-8 ">
-          Your card details will be securely saved for future payment
-          notifications related to your car purchases or auctions. No charges
-          will be made now. All information is safely encrypted.
+        <p className=" text-gray-500 text-sm mb-8">
+          Your details are securely encrypted and processed directly via Stripe
+          an international card payment gateway.
+          <br />
+          NoLemons does not process or store any credit or debit card
+          information. <br />
+          You will only be authorized (hold) for the{" "}
+          <span className=" font-bold mx-1">{buyers_fee}</span>
+          buyer fee
+          <span className=" font-bold mx-1">
+            {currency} {buyer_fee_num}
+          </span>{" "}
+          if an offer is accepted.
         </p>
 
         <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>

@@ -14,15 +14,26 @@ export default function SuccessMessage({ session }: any) {
       <ZoomEffect dur={0.4}>
         <MdOutlineDone className=" mb-4 bg-green-100 rounded-full text-green-600 p-4 text-7xl mx-auto" />
       </ZoomEffect>
-      <div className=" text-center mb-8">
-        <p className=" text-gray-900 font-semibold text-2xl md:text-4xl mb-1">
+      <div className="  mb-8">
+        <p className="text-center text-gray-900 font-semibold text-2xl md:text-4xl mb-4">
           Thank you <br /> Your offer has been submitted.
         </p>
-        <span className=" text-sm text-gray-400 max-w-[350px] md:max-w-[400px] block m-auto">
-          The owner has been notified. If the offer is accepted the NoLemons
-          buyer fee will be held until the sale is complete. If the offer is
-          rejected you will not be charged any fees.
-        </span>
+        <div className=" text-gray-400 ">
+          <p>
+            We have notified the owner.
+            <br />
+            Next steps ?
+          </p>
+
+          <ul className=" pl-4">
+            <li>
+              If the offer is accepted the NoLemons buyer fee will be held until
+              the sale is complete. Including signing the sale contract and
+              receiving the vehicle.
+            </li>
+            <li>If the offer is rejected you will not be charged any fees.</li>
+          </ul>
+        </div>
       </div>
 
       <OfferDetail session={session} />
@@ -67,8 +78,8 @@ function OfferDetail({ session }: any) {
 
   return (
     <div className=" border-t  border-t-gray-100 py-20">
-      <div className=" flex justify-between items-center gap-4 mb-20">
-        <div className="basis-[35%] rounded-lg overflow-hidden">
+      <div className=" flex flex-col gap-4 mb-20">
+        <div className="rounded-lg overflow-hidden">
           <Image
             className=" object-cover h-full"
             src={main_image}
@@ -78,8 +89,8 @@ function OfferDetail({ session }: any) {
             alt="main image"
           />
         </div>
-        <div className=" text-xl md:text-3xl basis-[65%]">
-          <span className=" font-bold">{car_year}</span> <br /> {title}
+        <div className=" text-xl md:text-3xl ">
+          <span className=" font-bold">{car_year}</span> {title}
         </div>
       </div>
 
