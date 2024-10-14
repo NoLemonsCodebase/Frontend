@@ -18,9 +18,9 @@ const BeeWidget = () => {
         },
       },
       showCta: true,
-      position: "left",
+      position: "right",
       spacing: "16px",
-      bottomSpacing: "24px",
+      bottomSpacing: "10px",
     };
 
     // Load external script

@@ -78,8 +78,8 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
           {children}
           <Footer />
         </NextIntlClientProvider>
-        <UpButton />
-        <BeeWidget/>
+        {/* <UpButton /> */}
+        <BeeWidget />
       </body>
       {/* google analytics */}
       <GoogleAnalytics gaId="G-5LKFJ76994" />

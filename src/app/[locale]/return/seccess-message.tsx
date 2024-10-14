@@ -12,14 +12,14 @@ export default function SuccessMessage({ session }: any) {
   return (
     <div className=" relative  max-w-xl m-auto px-4">
       <ZoomEffect dur={0.4}>
-        <MdOutlineDone className=" mb-4 bg-green-100 rounded-full text-green-600 p-4 text-7xl mx-auto" />
+        <MdOutlineDone className=" mb-4 bg-green-100 rounded-full text-green-600 p-4 text-7xl mx-auto " />
       </ZoomEffect>
       <div className="  mb-8">
         <p className="text-center text-gray-900 font-semibold text-2xl md:text-4xl mb-4">
           Thank you. <br /> Your offer has been submitted.
         </p>
         <div className=" text-gray-400 ">
-          <p>We have notified the owner. Next steps?</p>
+          <p className=" mb-2">We have notified the owner. Next steps?</p>
 
           <ul className=" pl-4">
             <li>

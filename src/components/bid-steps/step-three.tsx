@@ -90,16 +90,18 @@ const CheckOutStrip: React.FC<StepThreeProps> = ({ carDetail }) => {
     <div id="checkout" className=" mt-10">
       <div className=" max-w-sm">
         <div className=" text-gray-500 text-sm mb-8">
-          Your details are securely encrypted and processed directly via Stripe
-          an international card payment gateway.
-          <br />
+          <p className=" mb-2">
+            {" "}
+            Your details are securely encrypted and processed directly via
+            Stripe an international card payment gateway.
+          </p>
           NoLemons does not process or store any credit or debit card
           information.
-          <p className=" mt-4">
+          <p className=" mt-2">
             You will only be authorized (hold) for the{" "}
-            <span className=" font-bold mx-1">{buyers_fee}</span>
+            <span className=" font-bold mr-0.5">{buyers_fee}</span>
             buyer fee
-            <span className=" font-bold mx-1">
+            <span className=" font-bold ml-0.5">
               {currency} {buyer_fee_num}
             </span>{" "}
             if an offer is accepted.
