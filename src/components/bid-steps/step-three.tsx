@@ -89,20 +89,22 @@ const CheckOutStrip: React.FC<StepThreeProps> = ({ carDetail }) => {
   return (
     <div id="checkout" className=" mt-10">
       <div className=" max-w-sm">
-        <p className=" text-gray-500 text-sm mb-8">
+        <div className=" text-gray-500 text-sm mb-8">
           Your details are securely encrypted and processed directly via Stripe
           an international card payment gateway.
           <br />
           NoLemons does not process or store any credit or debit card
-          information. <br />
-          You will only be authorized (hold) for the{" "}
-          <span className=" font-bold mx-1">{buyers_fee}</span>
-          buyer fee
-          <span className=" font-bold mx-1">
-            {currency} {buyer_fee_num}
-          </span>{" "}
-          if an offer is accepted.
-        </p>
+          information.
+          <p className=" mt-4">
+            You will only be authorized (hold) for the{" "}
+            <span className=" font-bold mx-1">{buyers_fee}</span>
+            buyer fee
+            <span className=" font-bold mx-1">
+              {currency} {buyer_fee_num}
+            </span>{" "}
+            if an offer is accepted.
+          </p>
+        </div>
 
         <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
           <EmbeddedCheckout />

@@ -16,14 +16,10 @@ export default function SuccessMessage({ session }: any) {
       </ZoomEffect>
       <div className="  mb-8">
         <p className="text-center text-gray-900 font-semibold text-2xl md:text-4xl mb-4">
-          Thank you <br /> Your offer has been submitted.
+          Thank you. <br /> Your offer has been submitted.
         </p>
         <div className=" text-gray-400 ">
-          <p>
-            We have notified the owner.
-            <br />
-            Next steps ?
-          </p>
+          <p>We have notified the owner. Next steps?</p>
 
           <ul className=" pl-4">
             <li>
@@ -77,8 +73,8 @@ function OfferDetail({ session }: any) {
   });
 
   return (
-    <div className=" border-t  border-t-gray-100 py-20">
-      <div className=" flex flex-col gap-4 mb-20">
+    <div className=" border-t  border-t-gray-100 py-10">
+      <div className=" flex flex-col gap-4 mb-6">
         <div className="rounded-lg overflow-hidden">
           <Image
             className=" object-cover h-full"
@@ -90,7 +86,7 @@ function OfferDetail({ session }: any) {
           />
         </div>
         <div className=" text-xl md:text-3xl ">
-          <span className=" font-bold">{car_year}</span> {title}
+          {car_year} {title}
         </div>
       </div>
 
