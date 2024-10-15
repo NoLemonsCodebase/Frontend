@@ -9,8 +9,9 @@ import UserInfo from "./user-info";
 interface StepTowProps {
   salePrice: number;
   currency: string;
+  carId?: number;
 }
-const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency }) => {
+const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency, carId }) => {
   const { buy, curStep } = useSteps();
 
   const is_step_2 = curStep >= 2;
@@ -32,7 +33,7 @@ const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency }) => {
             <StartBid salePrice={salePrice} currency={currency} />
           )}
           <UserInfo />
-          <Next />
+          <Next salePrice={salePrice} currency={currency} carId={carId} />
         </div>
       )}
     </div>
@@ -61,15 +62,42 @@ const BuyItNow: React.FC<StepTowProps> = ({ salePrice, currency }) => {
 
 // ========================================================
 
-function Next() {
+const Next: React.FC<StepTowProps> = ({ salePrice, currency, carId }) => {
   const { finalPrice, name, phone, setCurStep } = useSteps();
 
   const disableButton =
     !Boolean(name) || !Boolean(phone) || !Boolean(finalPrice);
 
+  // prepare data to send it to the backend
+  const prepare_data = {
+    name,
+    phone: `+${phone}`,
+    car_id: carId,
+    currency,
+    offer: finalPrice.replaceAll(",", ""),
+    sale_price: salePrice,
+  };
+
+  async function sendDataHandler() {
+    try {
+      const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
+        method: "POST",
+        body: JSON.stringify(prepare_data),
+      });
+
+      if (!res.ok) {
+        throw new Error("somthing went wrong!!!!!!!!");
+      }
+
+      setCurStep(3);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <button
-      onClick={() => setCurStep(3)}
+      onClick={sendDataHandler}
       disabled={disableButton}
       className={`mt-16 border py-3 px-8  rounded-full text-xl font-semibold disabled:cursor-not-allowed ${
         disableButton ? "opacity-50" : "opacity-100"
@@ -78,6 +106,6 @@ function Next() {
       Next
     </button>
   );
-}
+};
 
 export default StepTwo;

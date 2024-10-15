@@ -16,7 +16,7 @@ interface BidStepsProps {
 }
 
 const BidSteps: React.FC<BidStepsProps> = ({ carDetail }) => {
-  const { year, title, main_image, sale_price, category } = carDetail;
+  const { id, year, title, main_image, sale_price, category } = carDetail;
   const currency = category == "uae" ? "AED" : "USD";
 
   return (
@@ -47,7 +47,7 @@ const BidSteps: React.FC<BidStepsProps> = ({ carDetail }) => {
       </div>
       <StepsProvider>
         <StepOne />
-        <StepTwo salePrice={sale_price} currency={currency} />
+        <StepTwo salePrice={sale_price} currency={currency} carId={id} />
         <StepThree carDetail={carDetail} />
       </StepsProvider>
     </section>
@@ -60,7 +60,7 @@ interface SellerInfoProps {
 }
 const SellerInfo: React.FC<SellerInfoProps> = ({ sale_price, currency }) => {
   const sale_price_render = sale_price.toLocaleString("en-US");
-  const highest_offer = (sale_price * 0.7).toLocaleString("en-US");
+  // const highest_offer = (sale_price * 0.7).toLocaleString("en-US");
 
   return (
     <div className=" flex flex-col gap-4">
@@ -70,12 +70,12 @@ const SellerInfo: React.FC<SellerInfoProps> = ({ sale_price, currency }) => {
           {currency} {sale_price_render}
         </span>
       </div>
-      <div className=" font-semibold">
+      {/* <div className=" font-semibold">
         <span className=" block mb-2 text-xs">Highest offer</span>
         <span className=" text-3xl">
           {currency} {highest_offer}
         </span>
-      </div>
+      </div> */}
       <span className=" text-xs font-semibold mt-4 text-green-700">
         The owner is accepting offers
       </span>
