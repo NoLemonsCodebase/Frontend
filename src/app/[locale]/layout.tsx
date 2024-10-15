@@ -11,6 +11,7 @@ import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/Footer";
 import UpButton from "@/components/up-button";
+import BeeWidget from "@/components/bee-widget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -77,7 +78,8 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
           {children}
           <Footer />
         </NextIntlClientProvider>
-        <UpButton />
+        {/* <UpButton /> */}
+        <BeeWidget />
       </body>
       {/* google analytics */}
       <GoogleAnalytics gaId="G-5LKFJ76994" />

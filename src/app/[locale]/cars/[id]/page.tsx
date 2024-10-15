@@ -10,7 +10,6 @@ type Props = {
   params: { id: string };
 };
 
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const data: ICar = await getUaeCar(params.id);
@@ -62,7 +61,7 @@ export default async function CarPage({ params, searchParams }: any) {
   const { id, locale } = params;
 
   const data: ICar = await getUaeCar(id);
-  
+
   return (
     <>
       <GtmTracking slug={id} />

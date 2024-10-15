@@ -21,13 +21,12 @@ export default function ChatWithUsBtn() {
     <Fragment>
       {showButton ? (
         <a
-          className="fixed z-10 bottom-0 right-4 h-8  text-white px-4 text-sm font-semibold flex items-center justify-center"
+          className="fixed z-10 bottom-4 left-4 h-12 w-12 rounded-full  text-white font-semibold flex items-center justify-center"
           style={{ background: "#15803D" }}
           href={`https://wa.me/971566633668?text=${text}`}
           target="_blank"
         >
-          {t("chat_with_us")}
-          <FaWhatsapp className=" text-xl ml-1" />
+          <FaWhatsapp className=" text-3xl" />
         </a>
       ) : null}
     </Fragment>

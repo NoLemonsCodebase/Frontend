@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 
 interface StepTowProps {
   salePrice: number;
+  currency: string;
 }
 
 //========= const var
 const PRICE_REGEX = /^[0-9,]+$/;
 
-const StartBid: React.FC<StepTowProps> = ({ salePrice }) => {
+const StartBid: React.FC<StepTowProps> = ({ salePrice, currency }) => {
   const { setFinalPrice } = useSteps();
 
   //==================
@@ -72,9 +73,8 @@ const StartBid: React.FC<StepTowProps> = ({ salePrice }) => {
   return (
     <>
       <div className="border p-8 rounded-md">
-        <p className=" mb-4 text-gray-600">Your buy it now price:</p>
         <div className="flex items-center flex-wrap gap-4 font-bold">
-          AED{" "}
+          {currency}{" "}
           <input
             id="offer_price"
             name="offer_price"
@@ -85,7 +85,7 @@ const StartBid: React.FC<StepTowProps> = ({ salePrice }) => {
             required
           />
           <span className=" text-sm text-gray-700">
-            ({difference.toFixed(2)} %)
+            ({Math.round(difference)} %)
           </span>
         </div>
       </div>

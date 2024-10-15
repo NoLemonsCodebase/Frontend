@@ -9,7 +9,7 @@ import { useWindowSize } from "@uidotdev/usehooks";
 import { AnimatePresence } from "framer-motion";
 import MultiQuestions from "./multi-questions";
 import MakeAnOffer from "./make-an-offer";
-import Link from "next/link";
+
 
 export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
   const [showQuestion, setShwoQuestions] = useState<boolean>(false);
@@ -39,12 +39,7 @@ export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
         >
           I'm interested
         </button>
-        {/* <Link
-          href={`/cars/${intersted_link}/bid`}
-          className=" bg-green-700 text-center text-white rounded-lg w-full px-2 py-3 block"
-        >
-          I'm interested
-        </Link> */}
+
       </div>
 
       <AnimatePresence>

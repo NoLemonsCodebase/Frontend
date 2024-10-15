@@ -302,7 +302,7 @@ button {
   outline: none;
 }
 .custom-phone-input:focus {
-  box-shadow: 0 0 0 2px #4ade80 !important;
+  box-shadow: 0 0 0 2px #4ade808e !important;
 }
 /* .custom-phone-input:hover {
   border: none !important;

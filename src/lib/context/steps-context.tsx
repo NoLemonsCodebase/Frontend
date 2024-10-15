@@ -13,8 +13,8 @@ interface StepsContextType {
   name: string;
   phone: string;
   finalPrice: string;
-  step: number;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
+  curStep: number;
+  setCurStep: React.Dispatch<React.SetStateAction<number>>;
   setBuy: React.Dispatch<React.SetStateAction<string>>;
 
   setName: React.Dispatch<React.SetStateAction<string>>;
@@ -24,12 +24,12 @@ interface StepsContextType {
 
 const defaultSteps = {
   buy: "", // initial value
-  step: 1,
+  curStep: 1,
   name: "",
   phone: "",
   finalPrice: "",
   setBuy: () => {}, // empty function as default
-  setStep: () => {}, // empty function as default
+  setCurStep: () => {}, // empty function as default
   setName: () => {},
   setPhone: () => {},
   setFinalPrice: () => {}, // empty function as default
@@ -44,19 +44,19 @@ interface StepsProviderProps {
 
 export const StepsProvider: FC<StepsProviderProps> = ({ children }) => {
   //===============
-  const [buy, setBuy] = useState<string>("bid-offer");
+  const [buy, setBuy] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [finalPrice, setFinalPrice] = useState<string>("");
-  const [step, setStep] = useState<number>(1);
+  const [curStep, setCurStep] = useState<number>(1);
 
   return (
     <StepsContext.Provider
       value={{
         buy,
         setBuy,
-        step,
-        setStep,
+        curStep,
+        setCurStep,
         name,
         setName,
         phone,

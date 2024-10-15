@@ -1,15 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { redirect, usePathname, useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import SuccessMessage from "./seccess-message";
 
 export default function Return() {
-  const [status, setStatus] = useState(null);
+  const [session, setSession] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [urlAfterComplete, setUrlAfterComplete] = useState("/");
 
   const search_params = useSearchParams();
-  const pathname = usePathname();
 
   useEffect(() => {
     if (!search_params) return; // Early return if search_params is not available
@@ -27,9 +25,7 @@ export default function Return() {
         }
 
         const { session } = await res.json();
-        setStatus(session.status);
-        setUrlAfterComplete(session.metadata.url_after_complete);
-        console.log(session);
+        setSession(session);
       } catch (error) {
         console.error("Error fetching session:", error);
       } finally {
@@ -39,13 +35,13 @@ export default function Return() {
     getSession(sessionId);
   }, []);
 
-  if (status === "open") {
+  if (session?.status === "open") {
     return redirect("/");
   }
 
   if (loading)
     return (
-      <section className=" py-20 md:py-40 ">
+      <section className=" py-20  ">
         <div className=" py-10 flex flex-col items-center justify-center gap-6">
           <div className="loader-sppiner relative"></div>
           <p className=" text-xl">loading...</p>
@@ -53,13 +49,49 @@ export default function Return() {
       </section>
     );
 
-  if (status === "complete") {
+  if (session?.status === "complete") {
     return (
-      <section className=" py-20 md:py-40 ">
-        <SuccessMessage urlAfterComplete={urlAfterComplete} />
+      <section className="py-20">
+        <Complete session={session} />
       </section>
     );
   }
 
   return null;
+}
+
+function Complete({ session }: any) {
+  // refactor meta for backend
+  const { metadata } = session;
+  const { phone, id, currency, finalPrice } = metadata;
+
+  const refactor_metadata = {
+    phone: `+${phone}`,
+    car_id: id,
+    currency,
+    offer: finalPrice.split(",").join(""),
+  };
+
+  useEffect(() => {
+    async function SendMetaData() {
+      try {
+        const res = await fetch(
+          `https://nolemons2.onrender.com/payment/completed-phone/`,
+          {
+            method: "POST",
+            body: JSON.stringify({ ...refactor_metadata }),
+          }
+        );
+        if (!res.ok) {
+          throw new Error("Something went wrong");
+        }
+        const message = await res.json();
+      } catch (error) {
+        console.error("Error sending data to slack:", error);
+      }
+    }
+    SendMetaData();
+  }, []);
+
+  return <SuccessMessage session={session} />;
 }

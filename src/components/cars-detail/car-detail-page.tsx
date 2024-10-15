@@ -71,7 +71,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   useEffect(() => {
     TrackPageView();
   }, []);
-  console.log(car_video_render);
+
   return (
     <section className=" our-container flex flex-col py-4 overflow-clip">
       <div className="flex lg:hidden flex-wrap bg-white py-2 -mt-3 mb-3 gap-1 border-b">

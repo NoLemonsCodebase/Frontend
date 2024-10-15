@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-const stripe = require("stripe")(
-  "sk_test_51JL5IsK7Uh3dA2avnQYplHSxoBlHLk8U8iig7OgXtjjvfZb1NjqdQUhzIf9dpLpm0Yx7DQKK9duoyV7Cee85LOAp003b0Gyb4p"
-);
+const stripe = require("stripe")(process.env.STRIP_SECRET_KEY);
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,17 +7,14 @@ export async function POST(req: NextRequest) {
     const url_after_complete = req?.headers?.get("referer")?.slice(0, -4) || "";
 
     const body = await req.json(); // Parse the incoming request body as JSON
-    const { name, phone, finalPrice } = body;
+    const { prepare_data } = body;
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "setup",
       ui_mode: "embedded",
-
       metadata: {
-        name,
-        phone,
-        finalPrice,
+        ...prepare_data,
         url_after_complete,
       },
       return_url: `${root_url}/en/return?session_id={CHECKOUT_SESSION_ID}`,

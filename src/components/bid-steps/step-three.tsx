@@ -6,38 +6,59 @@ import {
   EmbeddedCheckoutProvider,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import NumStep from "./num-step";
+import CircleStep from "./circle-step";
+import { ICar } from "@/lib/types";
 
 const stripePromise = loadStripe(
-  "pk_test_51JL5IsK7Uh3dA2av4dbj9UHxOR85jRY6JNpw3yX2KISMKgPzVnXMsTlQkEiO4K2CLSntNiCHnlJtAX1CVQhujPEn004D7AUAgS"
+  "pk_live_51JL5IsK7Uh3dA2avrcaKQsmpPwAVX6zC0Jt1VWes2KJEVT9QxjfkQ1Q7hMMMC9pmNEfbLEgiZtR1dbZjSVZwG4Sw00I8Ei9Fmq"
 );
 
-export default function StepThree() {
-  const { step } = useSteps();
-
-  const isStep2 = step == 2;
-
-  return (
-    <div className=" pl-4 pb-20 border-l-[3px] border-green-300 relative">
-      <span
-        className={`absolute border-2 border-green-300 bg-white -left-3.5 -top-4 w-6 h-6 flex justify-center items-center text-black rounded-full`}
-      ></span>
-      <div
-        className={`text-3xl font-bold pl-4 ${
-          isStep2 ? "opacity-100" : "opacity-20"
-        }`}
-      >
-        Step 3
-      </div>
-
-      {isStep2 && <CheckOutStrip />}
-    </div>
-  );
+interface StepThreeProps {
+  carDetail: ICar;
 }
 
-function CheckOutStrip() {
+const StepThree: React.FC<StepThreeProps> = ({ carDetail }) => {
+  const { curStep } = useSteps();
+
+  const is_step_3 = curStep == 3;
+  let box_style = `pl-4 pt-20  border-l-[3px] relative`;
+  if (is_step_3) box_style += ` border-green-300`;
+  else box_style += ` border-white`;
+
+  // ====================== JSX ====================
+  return (
+    <div className={box_style}>
+      <CircleStep step={4} position=" top-20" />
+      <NumStep step={3} />
+      {is_step_3 && <CheckOutStrip carDetail={carDetail} />}
+    </div>
+  );
+};
+
+export default StepThree;
+
+const CheckOutStrip: React.FC<StepThreeProps> = ({ carDetail }) => {
   const [clientSecret, setClientSecret] = useState<string>("");
 
   const { name, phone, finalPrice } = useSteps();
+  const { id, title, year, main_image, sale_price, category, buyers_fee } =
+    carDetail;
+
+  // =============== prepare data for send to strip session ========
+  const currency = category == "uae" ? "AED" : "USD";
+  const prepare_data = {
+    id,
+    title,
+    year,
+    main_image,
+    sale_price,
+    name,
+    phone,
+    finalPrice,
+    currency,
+    buyers_fee,
+  };
 
   useEffect(() => {
     async function fetchClientSecret() {
@@ -46,7 +67,7 @@ function CheckOutStrip() {
         headers: {
           "Content-Type": "application/json", // Added Content-Type header
         },
-        body: JSON.stringify({ name, phone, finalPrice }),
+        body: JSON.stringify({ prepare_data }),
       });
       const { session } = await res.json();
 
@@ -58,11 +79,39 @@ function CheckOutStrip() {
 
   const options = { clientSecret };
 
+  // ==========================
+
+  const buyer_fee_num = (
+    (Number(buyers_fee?.[0]) / 100) *
+    sale_price
+  ).toLocaleString("en-US");
+
   return (
     <div id="checkout" className=" mt-10">
-      <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
-        <EmbeddedCheckout />
-      </EmbeddedCheckoutProvider>
+      <div className=" max-w-sm">
+        <div className=" text-gray-500 text-sm mb-8">
+          <p className=" mb-2">
+            {" "}
+            Your details are securely encrypted and processed directly via
+            Stripe an international card payment gateway.
+          </p>
+          NoLemons does not process or store any credit or debit card
+          information.
+          <p className=" mt-2">
+            You will only be authorized (hold) for the{" "}
+            <span className=" font-bold mr-0.5">{buyers_fee}</span>
+            buyer fee
+            <span className=" font-bold ml-0.5">
+              {currency} {buyer_fee_num}
+            </span>{" "}
+            if an offer is accepted.
+          </p>
+        </div>
+
+        <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+          <EmbeddedCheckout />
+        </EmbeddedCheckoutProvider>
+      </div>
     </div>
   );
-}
+};
