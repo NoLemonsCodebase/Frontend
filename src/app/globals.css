@@ -307,3 +307,7 @@ button {
 /* .custom-phone-input:hover {
   border: none !important;
 } */
+
+#getbeeCtaWrapper {
+  z-index: 20 !important;
+}
