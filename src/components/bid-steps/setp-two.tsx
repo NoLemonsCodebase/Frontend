@@ -27,7 +27,7 @@ const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency, carId }) => {
       <NumStep step={2} />
       {is_step_2 && (
         <div className=" mt-6">
-          <RegectedOffer carId={carId} />
+          {/* <RegectedOffer carId={carId} /> */}
           <p className=" text-gray-700 my-6">Your offer:</p>
           {buy == "bid-price" ? (
             <BuyItNow salePrice={salePrice} currency={currency} />

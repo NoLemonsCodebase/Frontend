@@ -61,7 +61,8 @@ export default async function CarPage({ params, searchParams }: any) {
   const { id, locale } = params;
 
   const data: ICar = await getUaeCar(id);
-
+  // console.log(data);
+  // return null;
   return (
     <>
       <GtmTracking slug={id} />

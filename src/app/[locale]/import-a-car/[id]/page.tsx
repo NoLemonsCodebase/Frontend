@@ -1,3 +1,4 @@
+import BeeWidget from "@/components/bee-widget";
 import CarDetailPage from "@/components/cars-detail/car-detail-page";
 import GtmTracking from "@/components/gtm-tracking";
 import { getImportCar } from "@/lib/car-actions";

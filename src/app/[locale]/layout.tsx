@@ -78,6 +78,7 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
           {children}
           <Footer />
         </NextIntlClientProvider>
+
         {/* <UpButton /> */}
         <BeeWidget />
       </body>

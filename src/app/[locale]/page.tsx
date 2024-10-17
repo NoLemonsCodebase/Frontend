@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import BeeWidget from "@/components/bee-widget";
 import CarsPage from "@/components/cars-detail/cars-page";
 import CarsFilter from "@/components/cars-filter";
 import Search from "@/components/search";

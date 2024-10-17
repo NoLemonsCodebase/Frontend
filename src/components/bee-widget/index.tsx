@@ -1,7 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
 
-const BeeWidget = () => {
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+
+export default function BeeWidget() {
+  const pathname = usePathname();
+
   useEffect(() => {
     // Widget configuration
     window.getbeeWidgetConf = {
@@ -29,18 +33,38 @@ const BeeWidget = () => {
       script.type = "text/javascript";
       script.async = true;
       script.src = "https://iframe.getbee.com/dist/getbee.js";
-      document.body.appendChild(script);
+      const firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode?.insertBefore(script, firstScriptTag);
     };
 
+    // Check if document is already fully loaded
     if (document.readyState === "complete") {
       loadScript();
     } else {
-      window.addEventListener("load", loadScript);
-      return () => window.removeEventListener("load", loadScript);
+      window.addEventListener("load", loadScript, false);
     }
+
+    // Cleanup function to remove the event listener
+    return () => {
+      window.removeEventListener("load", loadScript);
+    };
   }, []);
 
-  return null; // No visible component, just loads the widget
-};
+  useEffect(() => {
+    const el = document.getElementById("getbeeCtaWrapper");
+    if (el && pathname.includes("/bid")) {
+      el.style.display = "none";
+      return;
+    }
 
-export default BeeWidget;
+    if (el) {
+      el.style.display = "table";
+
+      if (pathname.includes("/cars") || pathname.includes("/import-a-car")) {
+        el.style.bottom = "70px";
+      } else el.style.bottom = "10px";
+    }
+  }, [pathname]);
+
+  return null; // No visible component, just loads the widget
+}
