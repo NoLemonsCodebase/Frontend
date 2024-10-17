@@ -48,26 +48,32 @@ export default function CarCard({ carDetails }: ICarCardProps) {
       className="relative rounded-lg overflow-hidden shadow-xl cursor-pointer hover:bg-gray-100 flex flex-col p-3"
     >
       <div className="aspect-w-16 aspect-h-10 rounded-lg overflow-hidden">
-        <Image
-          src={main_image}
-          alt={title}
-          width={720}
-          height={500}
-          className="block object-cover"
-        />
+        {main_image && (
+          <Image
+            src={main_image}
+            alt={title}
+            width={720}
+            height={500}
+            className="block object-cover"
+          />
+        )}
       </div>
       <div className="p-4 pb-2 flex-1 flex flex-col">
         <h3 className="font-semibold text-lg">
           {year} {title}
         </h3>
+
         <div className="flex items-center gap-2 mt-0.5">
-          <Image
-            src={`https://flagcdn.com/w320/${country.toLowerCase()}.png`}
-            width={320}
-            height={215}
-            alt="location"
-            className=" max-w-[20px]"
-          />
+          {country && (
+            <Image
+              src={`https://flagcdn.com/w320/${country.toLowerCase()}.png`}
+              width={320}
+              height={215}
+              alt="location"
+              className=" max-w-[20px]"
+            />
+          )}
+
           <p className="text-sm text-zinc-500">{location}</p>
         </div>
         {status == "created" && (

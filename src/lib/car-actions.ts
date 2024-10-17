@@ -20,6 +20,7 @@ export async function getCars({ category = "uae", search = "" }: Props) {
 
     if (category == "uae") {
       const uae_data = await fetchData(`${process.env.OUR_API}/api/v2/cars/`);
+
       return uae_data;
     }
 
@@ -27,6 +28,7 @@ export async function getCars({ category = "uae", search = "" }: Props) {
       const import_data = await fetchData(
         `${process.env.OUR_API}/parser/api/v1/cars/`
       );
+
       return import_data;
     }
   } catch (e: any) {

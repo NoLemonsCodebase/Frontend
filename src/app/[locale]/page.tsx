@@ -23,6 +23,8 @@ export default async function Home({ searchParams }: { searchParams: any }) {
     (car) => car.category == "import_a_car" && car.status !== "deactivate"
   );
 
+  // console.log(cars);
+
   return (
     <main className="our-container">
       <Hero />
