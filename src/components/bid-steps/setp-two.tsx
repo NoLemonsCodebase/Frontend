@@ -5,6 +5,7 @@ import CircleStep from "./circle-step";
 import NumStep from "./num-step";
 import StartBid from "./start-bid";
 import UserInfo from "./user-info";
+import RegectedOffer from "./regected-offer";
 
 interface StepTowProps {
   salePrice: number;
@@ -25,7 +26,8 @@ const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency, carId }) => {
       <CircleStep position="top-20" step={3} />
       <NumStep step={2} />
       {is_step_2 && (
-        <div>
+        <div className=" mt-6">
+          {/* <RegectedOffer carId={carId} /> */}
           <p className=" text-gray-700 my-6">Your offer:</p>
           {buy == "bid-price" ? (
             <BuyItNow salePrice={salePrice} currency={currency} />

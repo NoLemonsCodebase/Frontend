@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import BeeWidget from "@/components/bee-widget";
 import CarsPage from "@/components/cars-detail/cars-page";
 import CarsFilter from "@/components/cars-filter";
 import Search from "@/components/search";
@@ -22,6 +23,8 @@ export default async function Home({ searchParams }: { searchParams: any }) {
   const is_exist_import_a_car = cars.some(
     (car) => car.category == "import_a_car" && car.status !== "deactivate"
   );
+
+  // console.log(cars);
 
   return (
     <main className="our-container">

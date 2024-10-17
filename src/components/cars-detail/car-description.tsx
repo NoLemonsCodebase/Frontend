@@ -49,12 +49,12 @@ export default function CarDescription({ carDetail }: { carDetail: ICar }) {
         <RichText content={car_text_section_arabic?.content} />
       ) : (
         <Fragment>
-          <RichText className="mt-2" content={carDetail.description} />
+          <RichText content={carDetail.description} />
           {text_section_render &&
             text_section_render.map((section: any, index: number) => (
               <Fragment key={index}>
                 <h2 className="text-2xl font-bold mt-8">{section.title}</h2>
-                <RichText className="mt-2" content={section.content} />
+                <RichText content={section.content} />
               </Fragment>
             ))}
         </Fragment>

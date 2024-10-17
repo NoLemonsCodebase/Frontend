@@ -45,7 +45,7 @@ const StepOneButton: React.FC<StepOneButtonProps> = ({
   return (
     <button
       onClick={handleClick}
-      className={` text-left border p-6 rounded-md ${
+      className={` text-left  border p-6 rounded-md ${
         buy == value ? " border-black" : ""
       }`}
     >

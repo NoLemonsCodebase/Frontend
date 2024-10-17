@@ -2,12 +2,12 @@
 import { FunctionComponent, useState, useEffect } from "react";
 // import * as React from "react";
 import createDomPurify from "dompurify";
-import cn from "classnames";
-import { cairo } from "@/lib/font";
+// import cn from "classnames";
+// import { cairo } from "@/lib/font";
 
 interface IRichTextProps {
   content: string;
-  className?: string;
+
   dir?: string;
 }
 
@@ -22,7 +22,7 @@ const cleanText = (text: string) => {
 
 const RichText: FunctionComponent<IRichTextProps> = ({
   content,
-  className,
+
   dir = "ltr",
 }) => {
   const [contentRender, setContentRender] = useState("");
@@ -30,10 +30,11 @@ const RichText: FunctionComponent<IRichTextProps> = ({
   useEffect(() => {
     setContentRender(cleanText(content));
   }, [content]);
+
   return (
     <div
+      className=""
       dir={dir}
-      className={cn("no-tailwindcss-base", className, cairo.className)}
       dangerouslySetInnerHTML={{
         __html: content,
       }}
