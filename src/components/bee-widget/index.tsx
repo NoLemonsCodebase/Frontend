@@ -5,6 +5,23 @@ import { useEffect } from "react";
 
 export default function BeeWidget() {
   const pathname = usePathname();
+  console.log(pathname);
+  useEffect(() => {
+    const el = document.getElementById("getbeeCtaWrapper");
+
+    if (el) {
+      if (pathname.includes("/bid") || pathname.includes("/sell-your-car")) {
+        el.style.display = "none";
+        return;
+      }
+
+      el.style.display = "table";
+
+      if (pathname.includes("/cars") || pathname.includes("/import-a-car")) {
+        el.style.bottom = "70px";
+      } else el.style.bottom = "10px";
+    }
+  }, [pathname]);
 
   useEffect(() => {
     // Widget configuration
@@ -44,27 +61,10 @@ export default function BeeWidget() {
       window.addEventListener("load", loadScript, false);
     }
 
-    // Cleanup function to remove the event listener
     return () => {
       window.removeEventListener("load", loadScript);
     };
   }, []);
-
-  useEffect(() => {
-    const el = document.getElementById("getbeeCtaWrapper");
-    if (el && pathname.includes("/bid")) {
-      el.style.display = "none";
-      return;
-    }
-
-    if (el) {
-      el.style.display = "table";
-
-      if (pathname.includes("/cars") || pathname.includes("/import-a-car")) {
-        el.style.bottom = "70px";
-      } else el.style.bottom = "10px";
-    }
-  }, [pathname]);
 
   return null; // No visible component, just loads the widget
 }
