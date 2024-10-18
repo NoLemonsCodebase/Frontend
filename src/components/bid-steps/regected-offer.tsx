@@ -37,9 +37,8 @@ export default function RegectedOffer({ carId, currency, salePrice }: any) {
   }, []);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-
   if (offers?.length == 0 || error) return null;
+
   return (
     <div className=" border border-gray-100  rounded-md">
       <button
