@@ -1,55 +1,96 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "../ui/table";
 import TableCell from "../ui/table-cell";
 
-export default function RegectedOffer({ carId }: any) {
+export default function RegectedOffer({ carId, currency, salePrice }: any) {
   const [openTable, setOpenTable] = useState("close");
-
-  const table_hight = openTable == "close" ? "h-0" : "h-[224px]";
+  const [offers, setOffer] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   function handleClick() {
     setOpenTable((pre) => (pre == "close" ? "open" : "close"));
   }
 
+  useEffect(() => {
+    // Fetch data when the component mounts
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://nolemons2.onrender.com/offer-list/${carId}`
+        );
+
+        if (!response.ok) {
+          throw new Error("Can't get regected offers");
+        }
+
+        const { offers } = await response.json();
+        setOffer(Object.entries(offers));
+      } catch (err) {
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false); // Turn off loading state
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
+  if (offers?.length == 0 || error) return null;
   return (
-    <div className=" border border-gray-100 p-4 rounded-md">
-      <div className=" flex justify-between items-center">
-        <p>View rejected offers</p>
-        <button onClick={handleClick} className=" text-3xl">
-          {openTable == "close" ? "+" : "-"}
-        </button>
-      </div>
-      <div
-        className={`overflow-x-scroll regected transition-all duration-500 ${table_hight}`}
+    <div className=" border border-gray-100  rounded-md">
+      <button
+        onClick={handleClick}
+        className=" flex justify-between p-4 items-center w-full"
       >
-        <div className="min-w-[480px] ">
-          <Table columns="grid-cols-[1fr_1fr_1fr]">
+        <p className=" font-semibold">View rejected offers</p>
+        <span className=" text-3xl block">
+          {openTable == "close" ? "+" : "-"}
+        </span>
+      </button>
+      {openTable == "open" && (
+        <div className={`px-4`}>
+          <Table columns="md:grid-cols-[1fr_1fr_1fr] grid-cols-[1fr_1fr]">
             <Table.Header>
               <TableCell>user</TableCell>
               <TableCell>amount</TableCell>
-              <TableCell>Difference (%)</TableCell>
+              <TableCell classes=" hidden md:block">Difference (%)</TableCell>
             </Table.Header>
 
             <Table.Body>
+              {offers.map((offer: any, idx: number) => (
+                <RowTable
+                  offer={offer}
+                  key={idx}
+                  salePrice={salePrice}
+                  currency={currency}
+                />
+              ))}
               <Table.Row>
-                <TableCell>+2011****5784</TableCell>
-                <TableCell>AED 539000</TableCell>
-                <TableCell>-10.2%</TableCell>
-              </Table.Row>
-              <Table.Row>
-                <TableCell>+2011****5784</TableCell>
-                <TableCell>AED 539000</TableCell>
-                <TableCell>-10.2%</TableCell>
-              </Table.Row>
-              <Table.Row>
-                <TableCell>+2011****5784</TableCell>
-                <TableCell>AED 539000</TableCell>
-                <TableCell>-10.2%</TableCell>
+                <TableCell>seller asking</TableCell>
+                <TableCell classes="font-semibold">
+                  ({currency}) {salePrice.toLocaleString()}
+                </TableCell>
               </Table.Row>
             </Table.Body>
           </Table>
         </div>
-      </div>
+      )}
     </div>
+  );
+}
+
+function RowTable({ offer, currency, salePrice }: any) {
+  const differ = ((offer[1] / salePrice) * 100 - 100).toFixed(0);
+
+  return (
+    <Table.Row>
+      <TableCell>{offer[0]}</TableCell>
+      <TableCell classes="font-semibold">{`(${currency}) ${offer[1].toLocaleString()}`}</TableCell>
+      <TableCell classes=" hidden md:block">{differ}%</TableCell>
+    </Table.Row>
   );
 }
