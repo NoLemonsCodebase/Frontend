@@ -64,7 +64,7 @@ function CheckOutForm({
 
   useEffect(() => {
     async function fetchClientSecret() {
-      const res = await fetch("/api/create-payment-intent", {
+      const res = await fetch("/api/payment-intent", {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Added Content-Type header

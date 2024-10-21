@@ -84,7 +84,7 @@ const Next: React.FC<StepTowProps> = ({ salePrice, currency, carId }) => {
     sale_price: salePrice,
   };
 
-  async function sendDataHandler() {
+  function sendDataHandler() {
     setCurStep(3);
     // try {
     //   const res = await fetch("https://nolemons2.onrender.com/user-offer/", {

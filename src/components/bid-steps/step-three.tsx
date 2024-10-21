@@ -29,7 +29,7 @@ const StepThree: React.FC<StepThreeProps> = ({ carDetail }) => {
   let box_style = `pl-4 pt-20  border-l-[3px] relative`;
   if (is_step_3) box_style += ` border-green-300`;
   else box_style += ` border-white`;
-
+  ///        ------------- test
   // ====================== JSX ====================
   return (
     <div className={box_style}>
@@ -42,8 +42,8 @@ const StepThree: React.FC<StepThreeProps> = ({ carDetail }) => {
       {is_step_3 && buy == "bid-price" && (
         <BidPrice stripePromise={stripePromise} carDetail={carDetail} />
       )}
-
-      {/* {is_step_3 && (
+      {/* 
+      {is_step_3 && (
         <CheckOutStrip stripePromise={stripePromise} carDetail={carDetail} />
       )} */}
     </div>
