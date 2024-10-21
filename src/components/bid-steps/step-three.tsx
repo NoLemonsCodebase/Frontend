@@ -35,17 +35,17 @@ const StepThree: React.FC<StepThreeProps> = ({ carDetail }) => {
     <div className={box_style}>
       <CircleStep step={4} position=" top-20" />
       <NumStep step={3} />
-      {/* {is_step_3 && buy == "bid-offer" && (
+      {is_step_3 && buy == "bid-offer" && (
         <CheckOutStrip stripePromise={stripePromise} carDetail={carDetail} />
       )}
 
       {is_step_3 && buy == "bid-price" && (
         <BidPrice stripePromise={stripePromise} carDetail={carDetail} />
-      )} */}
-
+      )}
+      {/* 
       {is_step_3 && (
         <CheckOutStrip stripePromise={stripePromise} carDetail={carDetail} />
-      )}
+      )} */}
     </div>
   );
 };
