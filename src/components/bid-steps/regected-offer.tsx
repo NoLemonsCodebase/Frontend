@@ -55,7 +55,7 @@ export default function RegectedOffer({ carId, currency, salePrice }: any) {
           <Table columns="md:grid-cols-[1fr_1fr_1fr] grid-cols-[1fr_1fr]">
             <Table.Header>
               <TableCell>user</TableCell>
-              <TableCell>amount</TableCell>
+              <TableCell>amount ({currency})</TableCell>
               <TableCell classes=" hidden md:block">Difference (%)</TableCell>
             </Table.Header>
 
@@ -71,7 +71,7 @@ export default function RegectedOffer({ carId, currency, salePrice }: any) {
               <Table.Row>
                 <TableCell>seller asking</TableCell>
                 <TableCell classes="font-semibold">
-                  ({currency}) {salePrice.toLocaleString()}
+                  {salePrice.toLocaleString()}
                 </TableCell>
               </Table.Row>
             </Table.Body>
@@ -88,7 +88,7 @@ function RowTable({ offer, currency, salePrice }: any) {
   return (
     <Table.Row>
       <TableCell>{offer[0]}</TableCell>
-      <TableCell classes="font-semibold">{`(${currency}) ${offer[1].toLocaleString()}`}</TableCell>
+      <TableCell classes="font-semibold">{offer[1].toLocaleString()}</TableCell>
       <TableCell classes=" hidden md:block">{differ}%</TableCell>
     </Table.Row>
   );

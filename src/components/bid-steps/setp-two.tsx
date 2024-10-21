@@ -85,20 +85,20 @@ const Next: React.FC<StepTowProps> = ({ salePrice, currency, carId }) => {
   };
 
   async function sendDataHandler() {
-    try {
-      const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
-        method: "POST",
-        body: JSON.stringify(prepare_data),
-      });
+    setCurStep(3);
+    // try {
+    //   const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
+    //     method: "POST",
+    //     body: JSON.stringify(prepare_data),
+    //   });
 
-      if (!res.ok) {
-        throw new Error("somthing went wrong!!!!!!!!");
-      }
+    //   if (!res.ok) {
+    //     throw new Error("somthing went wrong!!!!!!!!");
+    //   }
 
-      setCurStep(3);
-    } catch (err) {
-      console.error(err);
-    }
+    // } catch (err) {
+    //   console.error(err);
+    // }
   }
 
   return (

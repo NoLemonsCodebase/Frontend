@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 export default function BeeWidget() {
   const pathname = usePathname();
-  console.log(pathname);
+
   useEffect(() => {
     const el = document.getElementById("getbeeCtaWrapper");
 
