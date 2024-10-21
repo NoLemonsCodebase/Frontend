@@ -18,7 +18,6 @@ const StartBid: React.FC<StepTowProps> = ({ salePrice, currency }) => {
   const [error, setError] = useState<string>("");
 
   const lowest_price = salePrice * 0.7;
-  const highest_price = salePrice * 1.3;
 
   function handlePrice(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -49,9 +48,9 @@ const StartBid: React.FC<StepTowProps> = ({ salePrice, currency }) => {
       return;
     }
 
-    if (num >= highest_price) {
+    if (num > salePrice) {
       setError(
-        `Your offer is higher than the highest price of AED ${highest_price.toLocaleString(
+        `Your offer is higher than the asking price of AED ${salePrice.toLocaleString(
           "en-US"
         )}`
       );
@@ -82,7 +81,6 @@ const StartBid: React.FC<StepTowProps> = ({ salePrice, currency }) => {
             className=" border p-4 rounded-md max-w-[150px] focus:border-gray-500 outline-none"
             onChange={handlePrice}
             onBlur={handleBlure}
-            required
           />
           <span className=" text-sm text-gray-700">
             ({Math.round(difference)} %)

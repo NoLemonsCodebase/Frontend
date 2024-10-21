@@ -8,7 +8,7 @@ interface IBannerProps {}
 const RequestCar: React.FunctionComponent<IBannerProps> = (props) => {
   React.useEffect(() => {
     // window is accessible here.
-    // console.log("window.location", window.location.pathname);
+
   }, []);
   // 1) for urls starting with cars and for main page (userRouter of next.js)
   // 2) just plain tailwind code
