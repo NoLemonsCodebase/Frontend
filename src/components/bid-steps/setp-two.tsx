@@ -86,18 +86,18 @@ const Next: React.FC<StepsProps> = ({ carDetail }) => {
   // make request
   async function sendDataHandler() {
     setCurStep(3);
-    try {
-      const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
-        method: "POST",
-        body: JSON.stringify(prepare_data),
-      });
+    // try {
+    //   const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
+    //     method: "POST",
+    //     body: JSON.stringify(prepare_data),
+    //   });
 
-      if (!res.ok) {
-        throw new Error("somthing went wrong!!!!!!!!");
-      }
-    } catch (err) {
-      console.error(err);
-    }
+    //   if (!res.ok) {
+    //     throw new Error("somthing went wrong!!!!!!!!");
+    //   }
+    // } catch (err) {
+    //   console.error(err);
+    // }
   }
 
   return (

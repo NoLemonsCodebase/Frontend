@@ -9,14 +9,14 @@ import NumStep from "./num-step";
 import BidPrice from "./bid-price";
 
 // live mode key
-const stripePromise = loadStripe(
-  "pk_live_51JL5IsK7Uh3dA2avrcaKQsmpPwAVX6zC0Jt1VWes2KJEVT9QxjfkQ1Q7hMMMC9pmNEfbLEgiZtR1dbZjSVZwG4Sw00I8Ei9Fmq"
-);
+// const stripePromise = loadStripe(
+//   "pk_live_51JL5IsK7Uh3dA2avrcaKQsmpPwAVX6zC0Jt1VWes2KJEVT9QxjfkQ1Q7hMMMC9pmNEfbLEgiZtR1dbZjSVZwG4Sw00I8Ei9Fmq"
+// );
 
 //  test key
-// const stripePromise = loadStripe(
-//   "pk_test_51JL5IsK7Uh3dA2av4dbj9UHxOR85jRY6JNpw3yX2KISMKgPzVnXMsTlQkEiO4K2CLSntNiCHnlJtAX1CVQhujPEn004D7AUAgS"
-// );
+const stripePromise = loadStripe(
+  "pk_test_51JL5IsK7Uh3dA2av4dbj9UHxOR85jRY6JNpw3yX2KISMKgPzVnXMsTlQkEiO4K2CLSntNiCHnlJtAX1CVQhujPEn004D7AUAgS"
+);
 
 interface StepThreeProps {
   carDetail: ICar;
