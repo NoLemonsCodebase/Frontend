@@ -5,6 +5,9 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 
 const domain_images = [
+  "www.elferspot.com",
+  "www.builtforbackroads.com",
+  "www.kickdown.com",
   "nolemons.ae",
   "nolemons.co",
   "i.postimg.cc",
