@@ -165,7 +165,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
                   {is_parded ? (
                     <div className=" w-full overflow-hidden aspect-[16/9]">
                       <iframe
-                        src={`${video.video}?&modestbranding=0&rel=0`}
+                        src={`${video.video}?controls=0&modestbranding=1&rel=0&showinfo=0&autohide=1`}
                         className=" w-[300%] h-full ml-[-100%]"
                         title={video.title}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share"

@@ -8,7 +8,6 @@ export async function POST(req: NextRequest) {
   try {
     const { amount, currency } = await req.json();
 
-    console.log(amount, currency);
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency,
@@ -16,7 +15,6 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ clientSecret: paymentIntent.client_secret });
-    // return NextResponse.json({ test: "slkjdf" });
   } catch (error) {
     console.error("Internal Error:", error);
     // Handle other errors (e.g., network issues, parsing errors)
