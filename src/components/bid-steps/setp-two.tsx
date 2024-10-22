@@ -83,7 +83,7 @@ const Next: React.FC<StepsProps> = ({ carDetail }) => {
     offer: finalPrice.replaceAll(",", ""),
     sale_price,
   };
-
+  // make request
   async function sendDataHandler() {
     setCurStep(3);
     try {
