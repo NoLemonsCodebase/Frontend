@@ -39,6 +39,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
     category,
     parsed_car_video,
   } = carDetail;
+
   const is_parded = category == "import_a_car";
 
   const car_images_render = is_parded ? parsed_car_image : car_image;
@@ -92,7 +93,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
         )}
       </div>
 
-      {car_images_render && car_images_render.length > 2 ? (
+      {car_images_render && car_images_render.length > 1 ? (
         <ImageCarousel
           carImages={car_images_render.map((img) => img.image)}
           isVerified={verified_render}
@@ -105,10 +106,6 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
             {year} {title}
           </h1>
         </div>
-
-        {/* {status == "for_sale" ? (
-          <InterestedButton carDetail={carDetail} />
-        ) : null} */}
       </div>
 
       {auctionEnded && status == "live" ? (

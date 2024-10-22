@@ -16,29 +16,12 @@ const domain_images = [
 ];
 
 const nextConfig = {
-  env: {
-    NEXT_PUBLIC_BUILDER_API_KEY: "058aa1afd2c8466e86b2644bee2e9f4a",
-  },
   images: {
     remotePatterns: domain_images.map((domain) => ({
       protocol: "https",
       hostname: domain,
       pathname: "**",
     })),
-  },
-  redirects: async () => {
-    return [
-      // {
-      //   source: "/cayman-gt4",
-      //   destination: "/cars/22",
-      //   permanent: false,
-      // },
-      // {
-      //   source: "/cars/auction",
-      //   destination: "/cars/22",
-      //   permanent: false,
-      // },
-    ];
   },
 };
 

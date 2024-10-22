@@ -1,6 +1,5 @@
 import { useSteps } from "@/lib/context/steps-context";
 import React from "react";
-import { FaCheck } from "react-icons/fa";
 
 interface NumStepProps {
   step: number;

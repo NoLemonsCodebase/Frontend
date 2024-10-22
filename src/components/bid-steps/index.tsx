@@ -11,13 +11,12 @@ import StepThree from "./step-three";
 import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from "next/navigation";
 
-interface BidStepsProps {
+interface StepsProps {
   carDetail: ICar;
 }
 
-const BidSteps: React.FC<BidStepsProps> = ({ carDetail }) => {
-  const { id, year, title, main_image, sale_price, category } = carDetail;
-  const currency = category == "uae" ? "AED" : "USD";
+const BidSteps: React.FC<StepsProps> = ({ carDetail }) => {
+  const {  year, title, main_image } = carDetail;
 
   return (
     <section className=" py-10 pb-20 px-4 max-w-2xl m-auto">
@@ -42,25 +41,22 @@ const BidSteps: React.FC<BidStepsProps> = ({ carDetail }) => {
           <div className="mb-8 font-semibold">
             {year} {title}
           </div>
-          <SellerInfo currency={currency} sale_price={sale_price} />
+          <SellerInfo carDetail={carDetail} />
         </div>
       </div>
       <StepsProvider>
         <StepOne />
-        <StepTwo salePrice={sale_price} currency={currency} carId={id} />
+        <StepTwo carDetail={carDetail} />
         <StepThree carDetail={carDetail} />
       </StepsProvider>
     </section>
   );
 };
 
-interface SellerInfoProps {
-  sale_price: number;
-  currency: string;
-}
-const SellerInfo: React.FC<SellerInfoProps> = ({ sale_price, currency }) => {
+const SellerInfo: React.FC<StepsProps> = ({ carDetail }) => {
+  const { currency, sale_price } = carDetail;
+
   const sale_price_render = sale_price.toLocaleString("en-US");
-  // const highest_offer = (sale_price * 0.7).toLocaleString("en-US");
 
   return (
     <div className=" flex flex-col gap-4">
@@ -70,12 +66,7 @@ const SellerInfo: React.FC<SellerInfoProps> = ({ sale_price, currency }) => {
           {currency} {sale_price_render}
         </span>
       </div>
-      {/* <div className=" font-semibold">
-        <span className=" block mb-2 text-xs">Highest offer</span>
-        <span className=" text-3xl">
-          {currency} {highest_offer}
-        </span>
-      </div> */}
+
       <span className=" text-xs font-semibold mt-4 text-green-700">
         The owner is accepting offers
       </span>

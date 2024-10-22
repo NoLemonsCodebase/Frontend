@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Table from "../ui/table";
 import TableCell from "../ui/table-cell";
+import { ICar } from "@/lib/types";
 
-export default function RegectedOffer({ carId, currency, salePrice }: any) {
+interface StepsProps {
+  carDetail: ICar;
+}
+
+const RegectedOffer: React.FC<StepsProps> = ({ carDetail }) => {
+  const { currency, id: carId, sale_price } = carDetail;
+
   const [openTable, setOpenTable] = useState("close");
   const [offers, setOffer] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -64,14 +71,14 @@ export default function RegectedOffer({ carId, currency, salePrice }: any) {
                 <RowTable
                   offer={offer}
                   key={idx}
-                  salePrice={salePrice}
+                  salePrice={sale_price}
                   currency={currency}
                 />
               ))}
               <Table.Row>
                 <TableCell>seller asking</TableCell>
                 <TableCell classes="font-semibold">
-                  {salePrice.toLocaleString()}
+                  {sale_price.toLocaleString()}
                 </TableCell>
               </Table.Row>
             </Table.Body>
@@ -80,7 +87,9 @@ export default function RegectedOffer({ carId, currency, salePrice }: any) {
       )}
     </div>
   );
-}
+};
+
+export default RegectedOffer;
 
 function RowTable({ offer, currency, salePrice }: any) {
   const differ = ((offer[1] / salePrice) * 100 - 100).toFixed(0);

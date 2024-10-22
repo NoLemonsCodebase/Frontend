@@ -15,16 +15,9 @@ export default function AutionStatusBar({
   const t = useTranslations("default");
 
   // info we need from carDetail
-  const {
-    auction: currentAuction,
-    category,
-    status,
-    sale_price,
-    currency,
-  } = carDetail;
-  const is_comming = status == "created" || status == "unverified";
+  const { auction: currentAuction, status, sale_price, currency } = carDetail;
 
-  const cur_currency = category == "uae" ? "AED" : "USD";
+  const is_comming = status == "created" || status == "unverified";
 
   return (
     <div className="rounded bg-black bg-opacity-80 flex-grow items-center">
@@ -55,7 +48,7 @@ export default function AutionStatusBar({
         {status == "for_sale" && (
           <li className="flex items-center  text-white">
             <p className="font-semibold ml-2 whitespace-nowrap">
-              {cur_currency} {numeral(sale_price).format("0,0")}
+              {currency} {numeral(sale_price).format("0,0")}
             </p>
           </li>
         )}
@@ -67,7 +60,7 @@ export default function AutionStatusBar({
               {t("car_page.high_bid")}
             </p>
             <p className="font-semibold ml-2 whitespace-nowrap">
-              {cur_currency}{" "}
+              {currency}{" "}
               {numeral(currentAuction?.latest_bid || 0).format("0,0")}
             </p>
           </li>

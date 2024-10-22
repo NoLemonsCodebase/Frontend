@@ -6,13 +6,13 @@ import NumStep from "./num-step";
 import StartBid from "./start-bid";
 import UserInfo from "./user-info";
 import RegectedOffer from "./regected-offer";
+import { ICar } from "@/lib/types";
 
-interface StepTowProps {
-  salePrice: number;
-  currency: string;
-  carId?: number;
+interface StepsProps {
+  carDetail: ICar;
 }
-const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency, carId }) => {
+
+const StepTwo: React.FC<StepsProps> = ({ carDetail }) => {
   const { buy, curStep } = useSteps();
 
   const is_step_2 = curStep >= 2;
@@ -27,32 +27,31 @@ const StepTwo: React.FC<StepTowProps> = ({ salePrice, currency, carId }) => {
       <NumStep step={2} />
       {is_step_2 && (
         <div className=" mt-6">
-          <RegectedOffer
-            carId={carId}
-            salePrice={salePrice}
-            currency={currency}
-          />
+          <RegectedOffer carDetail={carDetail} />
           <p className=" text-gray-700 my-6">Your offer:</p>
           {buy == "bid-price" ? (
-            <BuyItNow salePrice={salePrice} currency={currency} />
+            <BuyItNow carDetail={carDetail} />
           ) : (
-            <StartBid salePrice={salePrice} currency={currency} />
+            <StartBid carDetail={carDetail} />
           )}
           <UserInfo />
-          <Next salePrice={salePrice} currency={currency} carId={carId} />
+          <Next carDetail={carDetail} />
         </div>
       )}
     </div>
   );
 };
 
-const BuyItNow: React.FC<StepTowProps> = ({ salePrice, currency }) => {
+const BuyItNow: React.FC<StepsProps> = ({ carDetail }) => {
   const { setFinalPrice } = useSteps();
-  const price_render = salePrice.toLocaleString();
+
+  const { sale_price, currency } = carDetail;
+
+  const price_render = sale_price.toLocaleString();
 
   useEffect(() => {
     setFinalPrice(price_render);
-  }, [salePrice]);
+  }, [sale_price]);
 
   return (
     <>
@@ -68,8 +67,9 @@ const BuyItNow: React.FC<StepTowProps> = ({ salePrice, currency }) => {
 
 // ========================================================
 
-const Next: React.FC<StepTowProps> = ({ salePrice, currency, carId }) => {
+const Next: React.FC<StepsProps> = ({ carDetail }) => {
   const { finalPrice, name, phone, setCurStep } = useSteps();
+  const { sale_price, currency, id: carId } = carDetail;
 
   const disableButton =
     !Boolean(name) || !Boolean(phone) || !Boolean(finalPrice);
@@ -81,23 +81,23 @@ const Next: React.FC<StepTowProps> = ({ salePrice, currency, carId }) => {
     car_id: carId,
     currency,
     offer: finalPrice.replaceAll(",", ""),
-    sale_price: salePrice,
+    sale_price,
   };
 
   async function sendDataHandler() {
     setCurStep(3);
-    try {
-      const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
-        method: "POST",
-        body: JSON.stringify(prepare_data),
-      });
+    // try {
+    //   const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
+    //     method: "POST",
+    //     body: JSON.stringify(prepare_data),
+    //   });
 
-      if (!res.ok) {
-        throw new Error("somthing went wrong!!!!!!!!");
-      }
-    } catch (err) {
-      console.error(err);
-    }
+    //   if (!res.ok) {
+    //     throw new Error("somthing went wrong!!!!!!!!");
+    //   }
+    // } catch (err) {
+    //   console.error(err);
+    // }
   }
 
   return (
