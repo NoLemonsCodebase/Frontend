@@ -39,41 +39,41 @@
 //           right: ["slideshow", "thumbs", "close"],
 //         },
 //       },
-//       // Toolbar: {
-//       //   display: {
-//       //     left: ["infobar"],
-//       //     middle: ["facebook", "b", "d", "c"],
-//       //     right: ["close"],
-//       //   },
-//       //   enabled: true,
-//       //   // absolute: true,
-//       //   items: {
-//       //     facebook: {
-//       //       tpl: `<button class="f-button" >mohamed atef</button>`,
-//       //       click: ({ instance }) => {
-//       //         instance.jumpTo(50);
-//       //       },
-//       //     },
-//       //     b: {
-//       //       tpl: `<button class="" >mohamed atef</button>`,
-//       //       click: ({ instance }) => {
-//       //         instance.jumpTo(50);
-//       //       },
-//       //     },
-//       //     c: {
-//       //       tpl: `<button class="" >mohamed atef</button>`,
-//       //       click: ({ instance }) => {
-//       //         instance.jumpTo(50);
-//       //       },
-//       //     },
-//       //     d: {
-//       //       tpl: `<button class="" >mohamed atef</button>`,
-//       //       click: ({ instance }) => {
-//       //         instance.jumpTo(50);
-//       //       },
-//       //     },
-//       //   },
-//       // },
+// Toolbar: {
+//   display: {
+//     left: ["infobar"],
+//     middle: ["facebook", "b", "d", "c"],
+//     right: ["close"],
+//   },
+//   enabled: true,
+// absolute: true,
+//   items: {
+//     facebook: {
+//       tpl: `<button class="f-button" >mohamed atef</button>`,
+//       click: ({ instance }) => {
+//         instance.jumpTo(50);
+//       },
+//     },
+//     b: {
+//       tpl: `<button class="" >mohamed atef</button>`,
+//       click: ({ instance }) => {
+//         instance.jumpTo(50);
+//       },
+//     },
+//     c: {
+//       tpl: `<button class="" >mohamed atef</button>`,
+//       click: ({ instance }) => {
+//         instance.jumpTo(50);
+//       },
+//     },
+//     d: {
+//       tpl: `<button class="" >mohamed atef</button>`,
+//       click: ({ instance }) => {
+//         instance.jumpTo(50);
+//       },
+//     },
+//   },
+// },
 //     };
 
 //     NativeFancybox.bind(container, delegate, options);

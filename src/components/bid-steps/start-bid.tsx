@@ -1,23 +1,23 @@
 import { useSteps } from "@/lib/context/steps-context";
+import { ICar } from "@/lib/types";
 import { useEffect, useState } from "react";
 
-interface StepTowProps {
-  salePrice: number;
-  currency: string;
+interface StepsProps {
+  carDetail: ICar;
 }
 
 //========= const var
 const PRICE_REGEX = /^[0-9,]+$/;
 
-const StartBid: React.FC<StepTowProps> = ({ salePrice, currency }) => {
+const StartBid: React.FC<StepsProps> = ({ carDetail }) => {
   const { setFinalPrice } = useSteps();
-
+  const { sale_price, currency } = carDetail;
   //==================
   const [price, setPrice] = useState<string>("");
   const [difference, setDifference] = useState<number>(0);
   const [error, setError] = useState<string>("");
 
-  const lowest_price = salePrice * 0.7;
+  const lowest_price = sale_price * 0.7;
 
   function handlePrice(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -35,7 +35,7 @@ const StartBid: React.FC<StepTowProps> = ({ salePrice, currency }) => {
     const value = e.target.value;
     const num = Number(value.split(",").join(""));
 
-    const persentage = (num / salePrice) * 100;
+    const persentage = (num / sale_price) * 100;
     setDifference(persentage - 100);
 
     if (num <= lowest_price) {
@@ -48,9 +48,9 @@ const StartBid: React.FC<StepTowProps> = ({ salePrice, currency }) => {
       return;
     }
 
-    if (num > salePrice) {
+    if (num > sale_price) {
       setError(
-        `Your offer is higher than the asking price of AED ${salePrice.toLocaleString(
+        `Your offer is higher than the asking price of AED ${sale_price.toLocaleString(
           "en-US"
         )}`
       );
@@ -64,7 +64,7 @@ const StartBid: React.FC<StepTowProps> = ({ salePrice, currency }) => {
   }
 
   useEffect(() => {
-    const salePriceToLcalString = salePrice.toLocaleString("en-US");
+    const salePriceToLcalString = sale_price.toLocaleString("en-US");
     setPrice(salePriceToLcalString);
     setFinalPrice(salePriceToLcalString);
   }, []);

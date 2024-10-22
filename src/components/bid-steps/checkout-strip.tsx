@@ -19,11 +19,18 @@ const CheckOutStrip: React.FC<CheckOutStripProps> = ({
   const [clientSecret, setClientSecret] = useState<string>("");
 
   const { name, phone, finalPrice } = useSteps();
-  const { id, title, year, main_image, sale_price, category, buyers_fee } =
-    carDetail;
+  const {
+    id,
+    title,
+    year,
+    main_image,
+    sale_price,
+
+    buyers_fee,
+    currency,
+  } = carDetail;
 
   // =============== prepare data for send to strip session ========
-  const currency = category == "uae" ? "AED" : "USD";
   const prepare_data = {
     id,
     title,
@@ -47,7 +54,7 @@ const CheckOutStrip: React.FC<CheckOutStripProps> = ({
         body: JSON.stringify({ prepare_data }),
       });
       const { session } = await res.json();
-
+      console.log(session);
       setClientSecret(session.client_secret);
     }
 

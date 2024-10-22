@@ -7,7 +7,6 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { Stripe } from "@stripe/stripe-js";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface CheckOutStripProps {
@@ -19,16 +18,7 @@ const BidPrice: React.FC<CheckOutStripProps> = ({
   carDetail,
   stripePromise,
 }) => {
-  const {
-    id,
-    title,
-    year,
-    main_image,
-    sale_price,
-    currency,
-    category,
-    buyers_fee,
-  } = carDetail;
+  const { sale_price, currency } = carDetail;
 
   return (
     <Elements
@@ -39,28 +29,25 @@ const BidPrice: React.FC<CheckOutStripProps> = ({
         currency: currency.toLowerCase(),
       }}
     >
-      <CheckOutForm amount={sale_price} currency={currency} />
+      <CheckOutForm carDetail={carDetail} />
     </Elements>
   );
-
-  // return <p>sdf</p>;
 };
 
 export default BidPrice;
 
-function CheckOutForm({
-  amount,
-  currency,
-}: {
-  amount: number;
-  currency: string;
-}) {
-  const pathname = usePathname();
+interface CheckOutFormProps {
+  carDetail: ICar;
+}
+
+const CheckOutForm: React.FC<CheckOutFormProps> = ({ carDetail }) => {
   const strip = useStripe();
   const elements = useElements();
   const [error, setError] = useState<string | undefined>("");
   const [clientSecret, setClientSecret] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+
+  const { sale_price, currency, buyers_fee } = carDetail;
 
   useEffect(() => {
     async function fetchClientSecret() {
@@ -70,7 +57,7 @@ function CheckOutForm({
           "Content-Type": "application/json", // Added Content-Type header
         },
         body: JSON.stringify({
-          amount: convertToSubCurrency(amount),
+          amount: convertToSubCurrency(sale_price),
           currency,
         }),
       });
@@ -115,18 +102,43 @@ function CheckOutForm({
     return <p className=" my-4">loading...</p>;
   }
 
+  const buyer_fee_num = (
+    (Number(buyers_fee?.[0]) / 100) *
+    sale_price
+  ).toLocaleString("en-US");
+
   return (
-    <form onSubmit={handleSubmit} className=" max-w-sm mt-10">
-      {clientSecret && <PaymentElement />}
-      {error && <div>{error}</div>}
-      <button
-        disabled={!strip || loading}
-        className=" bg-green-600 w-full text-white font-semibold py-3 rounded-md mt-4"
-      >
-        {!loading
-          ? `Pay ${amount.toLocaleString()} ${currency}`
-          : "processing..."}
-      </button>
-    </form>
+    <div className="max-w-sm mt-10">
+      <div className=" text-gray-500 text-sm mb-8">
+        <p className=" mb-2">
+          {" "}
+          Your details are securely encrypted and processed directly via Stripe
+          an international card payment gateway.
+        </p>
+        NoLemons does not process or store any credit or debit card information.
+        {/* <p className=" mt-2">
+          You will only be authorized (hold) for the{" "}
+          <span className=" font-bold mr-0.5">{buyers_fee}</span>
+          buyer fee
+          <span className=" font-bold ml-0.5">
+            {currency} {buyer_fee_num}
+          </span>{" "}
+          if an offer is accepted.
+        </p> */}
+      </div>
+      <form className=" border py-4 rounded-md px-2" onSubmit={handleSubmit}>
+        <span className=" block text-center mb-6 font-bold text-2xl">
+          Pay {buyer_fee_num} {currency}
+        </span>
+        {clientSecret && <PaymentElement />}
+        {error && <div>{error}</div>}
+        <button
+          disabled={!strip || loading}
+          className=" bg-green-600 w-full text-white font-semibold py-3 rounded-md mt-4"
+        >
+          {!loading ? `Pay ${buyer_fee_num} ${currency}` : "processing..."}
+        </button>
+      </form>
+    </div>
   );
-}
+};

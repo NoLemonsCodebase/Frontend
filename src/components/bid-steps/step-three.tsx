@@ -42,8 +42,8 @@ const StepThree: React.FC<StepThreeProps> = ({ carDetail }) => {
       {is_step_3 && buy == "bid-price" && (
         <BidPrice stripePromise={stripePromise} carDetail={carDetail} />
       )}
-      {/* 
-      {is_step_3 && (
+
+      {/* {is_step_3 && (
         <CheckOutStrip stripePromise={stripePromise} carDetail={carDetail} />
       )} */}
     </div>

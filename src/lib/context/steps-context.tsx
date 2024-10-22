@@ -28,11 +28,11 @@ const defaultSteps = {
   name: "",
   phone: "",
   finalPrice: "",
-  setBuy: () => {}, // empty function as default
-  setCurStep: () => {}, // empty function as default
+  setBuy: () => {},
+  setCurStep: () => {},
   setName: () => {},
   setPhone: () => {},
-  setFinalPrice: () => {}, // empty function as default
+  setFinalPrice: () => {},
 };
 
 // Create the context with the default value
