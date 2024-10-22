@@ -8,6 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { Stripe } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
+import { CiBadgeDollar } from "react-icons/ci";
 
 interface CheckOutStripProps {
   carDetail: ICar;
@@ -112,23 +113,23 @@ const CheckOutForm: React.FC<CheckOutFormProps> = ({ carDetail }) => {
       <div className=" text-gray-500 text-sm mb-8">
         <p className=" mb-2">
           {" "}
+          Please note offers are final. If you withdraw your offer we will not
+          be able to refund the buyer fee.
+        </p>
+        <p>
           Your details are securely encrypted and processed directly via Stripe
           an international card payment gateway.
         </p>
-        NoLemons does not process or store any credit or debit card information.
-        {/* <p className=" mt-2">
-          You will only be authorized (hold) for the{" "}
-          <span className=" font-bold mr-0.5">{buyers_fee}</span>
-          buyer fee
-          <span className=" font-bold ml-0.5">
-            {currency} {buyer_fee_num}
-          </span>{" "}
-          if an offer is accepted.
-        </p> */}
       </div>
-      <form className=" border py-4 rounded-md px-2" onSubmit={handleSubmit}>
-        <span className=" block text-center mb-6 font-bold text-2xl">
-          Pay {buyer_fee_num} {currency}
+      <form
+        className=" border pb-8 pt-2 rounded-md px-2"
+        onSubmit={handleSubmit}
+      >
+        <div className=" text-green-600 text-6xl mb-2 ">
+          <CiBadgeDollar className=" mx-auto" />
+        </div>
+        <span className=" block text-center mb-4 font-bold text-xl max-w-[300px] m-auto">
+          Pay NoLemons Buyer Fee of {currency} {buyer_fee_num}
         </span>
         {clientSecret && <PaymentElement />}
         {error && <div>{error}</div>}
@@ -136,7 +137,7 @@ const CheckOutForm: React.FC<CheckOutFormProps> = ({ carDetail }) => {
           disabled={!strip || loading}
           className=" bg-green-600 w-full text-white font-semibold py-3 rounded-md mt-4"
         >
-          {!loading ? `Pay ${buyer_fee_num} ${currency}` : "processing..."}
+          {!loading ? `Pay ${currency} ${buyer_fee_num} ` : "processing..."}
         </button>
       </form>
     </div>
