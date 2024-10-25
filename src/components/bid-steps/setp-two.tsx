@@ -69,7 +69,7 @@ const BuyItNow: React.FC<StepsProps> = ({ carDetail }) => {
 
 const Next: React.FC<StepsProps> = ({ carDetail }) => {
   const { finalPrice, name, phone, setCurStep } = useSteps();
-  const { sale_price, currency, id: carId } = carDetail;
+  const { sale_price, currency, id: carId, category } = carDetail;
 
   const disableButton =
     !Boolean(name) || !Boolean(phone) || !Boolean(finalPrice);
@@ -79,6 +79,7 @@ const Next: React.FC<StepsProps> = ({ carDetail }) => {
     name,
     phone: `+${phone}`,
     car_id: carId,
+    category,
     currency,
     offer: finalPrice.replaceAll(",", ""),
     sale_price,
