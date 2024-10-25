@@ -69,7 +69,7 @@ const BuyItNow: React.FC<StepsProps> = ({ carDetail }) => {
 
 const Next: React.FC<StepsProps> = ({ carDetail }) => {
   const { finalPrice, name, phone, setCurStep } = useSteps();
-  const { sale_price, currency, id: carId } = carDetail;
+  const { sale_price, currency, id: carId, category } = carDetail;
 
   const disableButton =
     !Boolean(name) || !Boolean(phone) || !Boolean(finalPrice);
@@ -79,6 +79,7 @@ const Next: React.FC<StepsProps> = ({ carDetail }) => {
     name,
     phone: `+${phone}`,
     car_id: carId,
+    category,
     currency,
     offer: finalPrice.replaceAll(",", ""),
     sale_price,
@@ -86,18 +87,18 @@ const Next: React.FC<StepsProps> = ({ carDetail }) => {
   // make request
   async function sendDataHandler() {
     setCurStep(3);
-    // try {
-    //   const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
-    //     method: "POST",
-    //     body: JSON.stringify(prepare_data),
-    //   });
+    try {
+      const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
+        method: "POST",
+        body: JSON.stringify(prepare_data),
+      });
 
-    //   if (!res.ok) {
-    //     throw new Error("somthing went wrong!!!!!!!!");
-    //   }
-    // } catch (err) {
-    //   console.error(err);
-    // }
+      if (!res.ok) {
+        throw new Error("somthing went wrong!!!!!!!!");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return (
