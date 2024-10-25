@@ -104,7 +104,7 @@ export default function MultiQuestions({
             <span className=" md:text-xl text-gray-500">Make an offer</span>
           </Link>
           <a
-            href={`https://api.whatsapp.com/send/?phone=971566633668&text=${ask_a_question_text}`}
+            href={`https://api.whatsapp.com/send/?phone=971585133668&text=${ask_a_question_text}`}
             target="_blank"
             className={styleLink}
           >
