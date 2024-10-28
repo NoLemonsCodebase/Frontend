@@ -8,31 +8,6 @@ export default function BeeWidget() {
   const [predictPageLoad, setPredictPageLoad] = useState<number>(0);
 
   useEffect(() => {
-    const el = document.getElementById("getbeeCtaWrapper");
-    if (el) {
-      if (
-        pathname.includes("/bid") ||
-        pathname.includes("/sell-your-car") ||
-        pathname.includes("/request-a-car")
-      ) {
-        // to hide the button
-        el.style.opacity = "0";
-        el.style.pointerEvents = "none";
-        el.style.visibility = "hidden";
-        return;
-      }
-      // to display the button
-      el.style.opacity = "100";
-      el.style.pointerEvents = "all";
-      el.style.visibility = "visible";
-
-      if (pathname.includes("/cars") || pathname.includes("/import-a-car")) {
-        el.style.bottom = "70px";
-      } else el.style.bottom = "10px";
-    }
-  }, [pathname, predictPageLoad]);
-
-  useEffect(() => {
     // Widget configuration
     window.getbeeWidgetConf = {
       tenant: "nolemons",
@@ -77,6 +52,28 @@ export default function BeeWidget() {
       window.removeEventListener("load", loadScript);
     };
   }, []);
+
+  useEffect(() => {
+    const el = document.getElementById("getbeeCtaWrapper");
+    if (el) {
+      if (
+        pathname.includes("/bid") ||
+        pathname.includes("/sell-your-car") ||
+        pathname.includes("/request-a-car")
+      ) {
+        // to hide the button
+        el.style.display = "none";
+        // console.log("HI");
+      } else {
+        //to display the button
+        el.style.display = "table";
+      }
+
+      if (pathname.includes("/cars") || pathname.includes("/import-a-car")) {
+        el.style.bottom = "70px";
+      } else el.style.bottom = "10px";
+    }
+  }, [pathname, predictPageLoad]);
 
   return null; // No visible component, just loads the widget
 }
