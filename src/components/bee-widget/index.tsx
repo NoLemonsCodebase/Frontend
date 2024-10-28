@@ -10,12 +10,22 @@ export default function BeeWidget() {
   useEffect(() => {
     const el = document.getElementById("getbeeCtaWrapper");
     if (el) {
-      if (pathname.includes("/bid") || pathname.includes("/sell-your-car")) {
-        el.style.display = "none";
+      if (
+        pathname.includes("/bid") ||
+        pathname.includes("/sell-your-car") ||
+        pathname.includes("/request-a-car")
+      ) {
+        // to hide the button
+        el.style.opacity = "0";
+        el.style.pointerEvents = "none";
+        el.style.visibility = "hidden";
         return;
       }
+      // to display the button
+      el.style.opacity = "100";
+      el.style.pointerEvents = "all";
+      el.style.visibility = "visible";
 
-      el.style.display = "table";
       if (pathname.includes("/cars") || pathname.includes("/import-a-car")) {
         el.style.bottom = "70px";
       } else el.style.bottom = "10px";
