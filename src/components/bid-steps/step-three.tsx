@@ -8,7 +8,7 @@ import CircleStep from "./circle-step";
 import NumStep from "./num-step";
 import BidPrice from "./bid-price";
 
-// ? live mode key
+// // ? live mode key
 const stripePromise = loadStripe(
   "pk_live_51JL5IsK7Uh3dA2avrcaKQsmpPwAVX6zC0Jt1VWes2KJEVT9QxjfkQ1Q7hMMMC9pmNEfbLEgiZtR1dbZjSVZwG4Sw00I8Ei9Fmq"
 );

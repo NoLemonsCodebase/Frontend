@@ -1,14 +1,14 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function BeeWidget() {
   const pathname = usePathname();
+  const [predictPageLoad, setPredictPageLoad] = useState<number>(0);
 
   useEffect(() => {
     const el = document.getElementById("getbeeCtaWrapper");
-
     if (el) {
       if (pathname.includes("/bid") || pathname.includes("/sell-your-car")) {
         el.style.display = "none";
@@ -16,12 +16,11 @@ export default function BeeWidget() {
       }
 
       el.style.display = "table";
-
       if (pathname.includes("/cars") || pathname.includes("/import-a-car")) {
         el.style.bottom = "70px";
       } else el.style.bottom = "10px";
     }
-  }, [pathname]);
+  }, [pathname, predictPageLoad]);
 
   useEffect(() => {
     // Widget configuration
@@ -52,6 +51,9 @@ export default function BeeWidget() {
       script.src = "https://iframe.getbee.com/dist/getbee.js";
       const firstScriptTag = document.getElementsByTagName("script")[0];
       firstScriptTag.parentNode?.insertBefore(script, firstScriptTag);
+      script.onload = () => {
+        setPredictPageLoad((p) => p + 1);
+      };
     };
 
     // Check if document is already fully loaded
