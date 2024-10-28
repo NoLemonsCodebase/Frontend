@@ -189,28 +189,14 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                   {title}:
                 </td>
                 <td className="py-2 whitespace-nowrap  text-sm text-gray-500">
-                  {link.includes("pdf") ? (
-                    <Fancybox>
-                      <a
-                        href={link}
-                        data-fancybox
-                        data-type="pdf"
-                        className="text-blue-500 flex  hover:text-blue-700"
-                      >
-                        {t("open_report")}
-                        <LiaExternalLinkAltSolid className=" text-xl ml-1" />
-                      </a>
-                    </Fancybox>
-                  ) : (
-                    <a
-                      href={link}
-                      target="_blank"
-                      className="text-blue-500 flex  hover:text-blue-700"
-                    >
-                      {t("open_report")}
-                      <LiaExternalLinkAltSolid className=" text-xl ml-1" />
-                    </a>
-                  )}
+                  <a
+                    href={link}
+                    target="_blank"
+                    className="text-blue-500 flex  hover:text-blue-700"
+                  >
+                    {t("open_report")}
+                    <LiaExternalLinkAltSolid className=" text-xl ml-1" />
+                  </a>
                 </td>
               </tr>
             ) : null
@@ -223,17 +209,14 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
                 الوصف (باللغة العربية)
               </td>
               <td className="py-2 whitespace-nowrap  text-sm text-gray-500">
-                <Fancybox>
-                  <a
-                    href={arabicReport}
-                    data-fancybox
-                    data-type="pdf"
-                    className="text-blue-500 flex  hover:text-blue-700"
-                  >
-                    <span>افتح الملف</span>
-                    <LiaExternalLinkAltSolid className=" text-xl ml-1" />
-                  </a>
-                </Fancybox>
+                <a
+                  href={arabicReport}
+                  target="_blank"
+                  className="text-blue-500 flex  hover:text-blue-700"
+                >
+                  <span>افتح الملف</span>
+                  <LiaExternalLinkAltSolid className=" text-xl ml-1" />
+                </a>
               </td>
             </tr>
           ) : null}
