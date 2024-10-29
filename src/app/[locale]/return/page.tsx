@@ -6,7 +6,6 @@ import SuccessMessage from "./seccess-message";
 export default function Return() {
   const [session, setSession] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-
   const search_params = useSearchParams();
 
   useEffect(() => {

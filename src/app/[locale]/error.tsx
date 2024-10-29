@@ -1,5 +1,6 @@
 "use client"; // Error boundaries must be Client Components
 
+import { sendErrorMessageToSlack } from "@/lib/car-actions";
 import { useEffect } from "react";
 
 export default function Error({
@@ -11,11 +12,12 @@ export default function Error({
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error);
+    // sendErrorMessageToSlack(error.message);
+    console.log(error.message);
   }, [error]);
 
   return (
-    <main className="flex justify-center items-center flex-col gap-6 py-20">
+    <main className="flex justify-center items-center flex-col gap-6 py-20 max-w-2xl m-auto text-center">
       <h1 className="text-3xl font-semibold">Something went wrong!</h1>
       <p className="text-lg">{error.message}!</p>
 

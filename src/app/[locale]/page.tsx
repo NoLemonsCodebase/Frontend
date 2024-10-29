@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import BeeWidget from "@/components/bee-widget";
+
 import CarsPage from "@/components/cars-detail/cars-page";
 import CarsFilter from "@/components/cars-filter";
 import Search from "@/components/search";
@@ -29,6 +29,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
       <Hero />
       <div className=" flex flex-wrap flex-col-reverse md:flex-row gap-6 md:justify-between  md:mb-10 mb-6 ">
         {is_exist_import_a_car && <CarsFilter />}
+
         <Search />
       </div>
 

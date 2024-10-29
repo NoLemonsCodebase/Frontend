@@ -7,6 +7,7 @@ import StartBid from "./start-bid";
 import UserInfo from "./user-info";
 import RegectedOffer from "./regected-offer";
 import { ICar } from "@/lib/types";
+import { sendErrorMessageToSlack } from "@/lib/car-actions";
 
 interface StepsProps {
   carDetail: ICar;
@@ -92,12 +93,10 @@ const Next: React.FC<StepsProps> = ({ carDetail }) => {
         method: "POST",
         body: JSON.stringify(prepare_data),
       });
-
-      if (!res.ok) {
-        throw new Error("somthing went wrong!!!!!!!!");
-      }
-    } catch (err) {
-      console.error(err);
+    } catch (e: any) {
+      sendErrorMessageToSlack(
+        `Something went wrong with capturing the user's details in step 2. Error Message => ${e.message}`
+      );
     }
   }
 
