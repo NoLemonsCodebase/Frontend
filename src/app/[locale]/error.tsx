@@ -12,7 +12,7 @@ export default function Error({
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    // sendErrorMessageToSlack(error.message);
+    sendErrorMessageToSlack(error.message);
     console.log(error.message);
   }, [error]);
 
