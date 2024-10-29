@@ -46,8 +46,8 @@ export default function CarsFilter() {
       {categories.map((filter) => (
         <button
           key={filter.value}
-          onClick={handleFilter.bind(null, filter.value)}
-          className={`px-3 py-1.5 gap-2 shadow-md transition-colors duration-500 flex items-center rounded-md ${
+          onClick={() => handleFilter(filter.value)}
+          className={` px-3 py-1.5 gap-2 shadow-md transition-colors duration-500 flex items-center rounded-md ${
             curr_active == filter.value ? " bg-[#262626]" : ""
           } ${
             is_search &&
@@ -68,7 +68,7 @@ export default function CarsFilter() {
             </div>
           )}
           <span
-            className={`transition-colors duration-500 ${
+            className={`transition-colors duration-500  ${
               curr_active == filter.value ? " text-white" : ""
             }`}
           >

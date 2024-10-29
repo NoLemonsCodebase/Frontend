@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             hour12: true,
           })}`
         : data.status == "created"
-        ? `Coming soon: ${data.year} ${data.title}`
-        : `For sale: ${data.year} ${data.title}`;
+          ? `Coming soon: ${data.year} ${data.title}`
+          : `For sale: ${data.year} ${data.title}`;
 
     return {
       title: `${data.title} ${data.year}`,
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CarPage({ params, searchParams }: any) {
-  const { id, locale } = params;
+  const { id } = params;
 
   const data: ICar = await getUaeCar(id);
 

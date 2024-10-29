@@ -8,19 +8,17 @@ type Props = {
 export async function getCars({ category = "uae", search = "" }: Props) {
   try {
     if (category == "all") {
-      const [uae_data, import_data] = await Promise.all([
-        fetchData(`${process.env.OUR_API}/api/v2/cars/?search=${search}`),
-        fetchData(
-          `${process.env.OUR_API}/parser/api/v1/cars/?search=${search}`
-        ),
-      ]);
-
+      const uae_data = await fetchData(
+        `${process.env.OUR_API}/api/v2/cars/?search=${search}`
+      );
+      const import_data = await fetchData(
+        `${process.env.OUR_API}/parser/api/v1/cars/?search=${search}`
+      );
       return [...uae_data, ...import_data];
     }
 
     if (category == "uae") {
       const uae_data = await fetchData(`${process.env.OUR_API}/api/v2/cars/`);
-
       return uae_data;
     }
 
@@ -32,51 +30,68 @@ export async function getCars({ category = "uae", search = "" }: Props) {
       return import_data;
     }
   } catch (e: any) {
-    throw new Error("Oops! Something went wrong");
+    throw new Error(
+      `Something went wrong with server!! Error Message => ${e.message}`
+    );
   }
 }
 
 export async function getUaeCar(id: string) {
   let req_url = `${process.env.OUR_API}/api/v2/cars/`;
 
-  if (Number.isInteger(Number(id))) {
-    req_url += id;
-  } else {
-    req_url = `${process.env.OUR_API}/cars/by-route/${id}/`;
-  }
-  const res = await fetch(req_url, { next: { revalidate: 0 } });
+  try {
+    if (Number.isInteger(Number(id))) {
+      req_url += id;
+    } else {
+      req_url = `${process.env.OUR_API}/cars/by-route/${id}/`;
+    }
+    const res = await fetch(req_url, { next: { revalidate: 0 } });
 
-  if (!res.status || res.status !== 200) {
-    throw new Error("Car not found");
+    const data = res.json();
+    return data;
+  } catch (e: any) {
+    throw new Error(
+      `Somthing went wrong with this car ${id} Error Message => ${e.message}`
+    );
   }
-
-  const data = res.json();
-  return data;
 }
 
 export async function getImportCar(id: string) {
   let req_url = `${process.env.OUR_API}/parser/api/v1/cars/`;
 
-  if (Number.isInteger(Number(id))) {
-    req_url += id;
-  } else {
-    req_url = `${process.env.OUR_API}/parser/by-route/${id}/`;
+  try {
+    if (Number.isInteger(Number(id))) {
+      req_url += id;
+    } else {
+      req_url = `${process.env.OUR_API}/parser/by-route/${id}/`;
+    }
+
+    const res = await fetch(req_url, {
+      next: { revalidate: 0 },
+    });
+
+    const data = res.json();
+    return data;
+  } catch (e: any) {
+    throw new Error(
+      `Somthing went wrong with this car ${id} Error Message => ${e.message}`
+    );
   }
-
-  const res = await fetch(req_url, {
-    next: { revalidate: 0 },
-  });
-
-  if (!res.status || res.status !== 200) {
-    throw new Error("Car not found");
-  }
-
-  const data = res.json();
-  return data;
 }
 
 async function fetchData(url: string) {
   const res = await fetch(url, { next: { revalidate: 0 } });
   const data = res.json();
   return data;
+}
+
+export async function sendErrorMessageToSlack(message: string) {
+  const url_slack =
+    "https://hooks.slack.com/services/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";
+  const res = await fetch(url_slack, {
+    method: "POST",
+    body: JSON.stringify({
+      text: message,
+    }),
+  });
 }
