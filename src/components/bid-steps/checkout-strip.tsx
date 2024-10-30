@@ -25,7 +25,6 @@ const CheckOutStrip: React.FC<CheckOutStripProps> = ({
     year,
     main_image,
     sale_price,
-
     buyers_fee,
     currency,
   } = carDetail;
@@ -54,7 +53,7 @@ const CheckOutStrip: React.FC<CheckOutStripProps> = ({
         body: JSON.stringify({ prepare_data }),
       });
       const { session } = await res.json();
-      console.log(session);
+
       setClientSecret(session.client_secret);
     }
 

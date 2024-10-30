@@ -1,7 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { redirect, useSearchParams } from "next/navigation";
-import SuccessMessage from "./seccess-message";
+
+import StripCompleteMessage from "@/components/stripe-complete-message";
+import ZoomEffect from "@/components/anim/zoom";
+import { MdOutlineDone } from "react-icons/md";
 
 export default function Return() {
   const [session, setSession] = useState<any>(null);
@@ -51,46 +54,34 @@ export default function Return() {
   if (session?.status === "complete") {
     return (
       <section className="py-20">
-        <Complete session={session} />
+        <div className=" relative  max-w-xl m-auto px-4">
+          <ZoomEffect dur={0.4}>
+            <MdOutlineDone className=" mb-4 bg-green-100 rounded-full text-green-600 p-4 text-7xl mx-auto " />
+          </ZoomEffect>
+          <div className="  mb-8">
+            <p className="text-center text-gray-900 font-semibold text-2xl md:text-4xl mb-4">
+              Thank you. <br /> Your offer has been submitted.
+            </p>
+            <div className=" text-gray-400 ">
+              <p className=" mb-2">We have notified the owner. Next steps?</p>
+
+              <ul className=" pl-4">
+                <li>
+                  If the offer is accepted the NoLemons buyer fee will be held
+                  until the sale is complete. Including signing the sale
+                  contract and receiving the vehicle.
+                </li>
+                <li>
+                  If the offer is rejected you will not be charged any fees.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <StripCompleteMessage session={session} />
+        </div>
       </section>
     );
   }
 
   return null;
-}
-
-function Complete({ session }: any) {
-  // refactor meta for backend
-  const { metadata } = session;
-  const { phone, id, currency, finalPrice } = metadata;
-
-  const refactor_metadata = {
-    phone: `+${phone}`,
-    car_id: id,
-    currency,
-    offer: finalPrice.split(",").join(""),
-  };
-
-  useEffect(() => {
-    async function SendMetaData() {
-      try {
-        const res = await fetch(
-          `https://nolemons2.onrender.com/payment/completed-phone/`,
-          {
-            method: "POST",
-            body: JSON.stringify({ ...refactor_metadata }),
-          }
-        );
-        if (!res.ok) {
-          throw new Error("Something went wrong");
-        }
-        const message = await res.json();
-      } catch (error) {
-        console.error("Error sending data to slack:", error);
-      }
-    }
-    SendMetaData();
-  }, []);
-
-  return <SuccessMessage session={session} />;
 }

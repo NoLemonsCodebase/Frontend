@@ -1,3 +1,4 @@
+import { useSteps } from "@/lib/context/steps-context";
 import convertToSubCurrency from "@/lib/convertToSubCurrency";
 import { ICar } from "@/lib/types";
 import {
@@ -7,6 +8,8 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { Stripe } from "@stripe/stripe-js";
+import { usePathname } from "next/navigation";
+
 import { useEffect, useState } from "react";
 import { CiBadgeDollar } from "react-icons/ci";
 
@@ -42,15 +45,27 @@ interface CheckOutFormProps {
 }
 
 const CheckOutForm: React.FC<CheckOutFormProps> = ({ carDetail }) => {
+  // *========================= Strip
   const strip = useStripe();
   const elements = useElements();
   const [error, setError] = useState<string | undefined>("");
   const [clientSecret, setClientSecret] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const { sale_price, currency, buyers_fee } = carDetail;
+  // *========================= url after complete payment
+  const [hostname, setHostname] = useState<string>("https://www.nolemons.co");
+  const pathname = usePathname();
+  const url_after_complete = pathname?.slice(0, -4) || "";
+
+  const { name, phone, finalPrice } = useSteps();
+  const { id, title, year, main_image, sale_price, buyers_fee, currency } =
+    carDetail;
 
   useEffect(() => {
+    if (typeof window !== undefined) {
+      setHostname(window.location.origin);
+    }
+
     async function fetchClientSecret() {
       const res = await fetch("/api/payment-intent", {
         method: "POST",
@@ -88,7 +103,7 @@ const CheckOutForm: React.FC<CheckOutFormProps> = ({ carDetail }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: "https://nolemons-dev.vercel.app/en/payment-success",
+        return_url: `${hostname}/en/payment-success?id=${id}&title=${title}&year=${year}&main_image=${main_image}&sale_price=${sale_price}&buyers_fee=${buyers_fee}&currency=${currency}&name=${name}&phone=${phone}&finalPrice=${finalPrice}&url_after_complete=${url_after_complete}`,
       },
     });
 
