@@ -88,19 +88,19 @@ const Next: React.FC<StepsProps> = ({ carDetail }) => {
   // make request
   async function sendDataHandler() {
     setCurStep(3);
-    try {
-      const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
-        method: "POST",
-        body: JSON.stringify(prepare_data),
-      });
-      if (!res.ok) {
-        throw new Error(
-          "Something went wrong with capturing the user's details in step 2."
-        );
-      }
-    } catch (e: any) {
-      sendErrorMessageToSlack(e.message);
-    }
+    // try {
+    //   const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
+    //     method: "POST",
+    //     body: JSON.stringify(prepare_data),
+    //   });
+    //   if (!res.ok) {
+    //     throw new Error(
+    //       "Something went wrong with capturing the user's details in step 2."
+    //     );
+    //   }
+    // } catch (e: any) {
+    //   sendErrorMessageToSlack(e.message);
+    // }
   }
 
   return (
