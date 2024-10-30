@@ -59,7 +59,8 @@ export default function BeeWidget() {
       if (
         pathname.includes("/bid") ||
         pathname.includes("/sell-your-car") ||
-        pathname.includes("/request-a-car")
+        pathname.includes("/request-a-car") ||
+        pathname.includes("/payment-success")
       ) {
         // to hide the button
         el.style.display = "none";

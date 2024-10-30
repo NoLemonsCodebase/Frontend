@@ -1,34 +1,33 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { FaWhatsapp } from "react-icons/fa";
 import { usePathname } from "next/navigation";
-import { Fragment } from "react";
-
-interface IIndexProps {}
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function ChatWithUsBtn() {
-  const t = useTranslations("default.home_page");
   const text = encodeURIComponent(
     "Hi I am from Nolemons website. Could you please tell me:"
   );
-  // get path url after [local] route
+
   const pathname = usePathname();
-  const url = pathname.split("/").at(2) || "";
-  // Don't show whatsapp button in single car detail
-  const showButton = url != "cars";
+
+  //  Don't show whatsapp button in bid page detail
+
+  let whatsup_style: string = "";
+
+  if (pathname.includes("/bid") || pathname.includes("/payment-success")) {
+    whatsup_style = "pointer-events-none opacity-0";
+  } else {
+    whatsup_style = "pointer-events-auto opacity-100";
+  }
+
   return (
-    <Fragment>
-      {showButton ? (
-        <a
-          className="fixed z-10 bottom-4 left-4 h-12 w-12 rounded-full  text-white font-semibold flex items-center justify-center"
-          style={{ background: "#15803D" }}
-          href={`https://wa.me/971566633668?text=${text}`}
-          target="_blank"
-        >
-          <FaWhatsapp className=" text-3xl" />
-        </a>
-      ) : null}
-    </Fragment>
+    <a
+      className={`fixed z-10 bottom-4 left-4 h-12 w-12 rounded-full transition-all duration-500 text-white flex items-center justify-center ${whatsup_style}`}
+      style={{ background: "#15803D" }}
+      href={`https://wa.me/971566633668?text=${text}`}
+      target="_blank"
+    >
+      <FaWhatsapp className=" text-3xl" />
+    </a>
   );
 }
