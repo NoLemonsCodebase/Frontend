@@ -1,4 +1,5 @@
 import CarDetailPage from "@/components/cars-detail/car-detail-page";
+import ChatWithUsBtn from "@/components/chat-with-us-btn";
 import GtmTracking from "@/components/gtm-tracking";
 import { getUaeCar } from "@/lib/car-actions";
 import { ICar } from "@/lib/types";
@@ -66,6 +67,10 @@ export default async function CarPage({ params, searchParams }: any) {
     <>
       <GtmTracking slug={id} />
       <CarDetailPage carDetail={data} utms={searchParams} />
+      <ChatWithUsBtn
+        text={`Hi, I have a question about this ${data.title}`}
+        number="971585133668"
+      />
     </>
   );
 }

@@ -74,7 +74,6 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
         <NextIntlClientProvider messages={messages}>
           <RequestCar />
           <Navbar />
-          <ChatWithUsBtn />
           {children}
           <Footer />
         </NextIntlClientProvider>

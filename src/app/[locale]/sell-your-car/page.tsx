@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import SellYouCarAr from "./sell-you-car-ar";
 import { Fragment, useState } from "react";
 import { IoLanguage } from "react-icons/io5";
+import ChatWithUsBtn from "@/components/chat-with-us-btn";
 interface ISellYourCarPageProps {}
 
 const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
@@ -16,21 +17,6 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
 
   const switchArabic = () => setLan("ar");
   const switchEnglish = () => setLan("en");
-
-  // const [name, setName] = React.useState("");
-  // const [description, setDescription] = React.useState("");
-
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-
-  //   const text = encodeURIComponent(
-  //     `Hello! I'm ${name} and I want to sell my car.\nHere's a small description:\n${description}`
-  //   );
-  //   window.open(
-  //     `https://api.whatsapp.com/send/?phone=971566633668&text=${text}`,
-  //     "_blank"
-  //   );
-  // };
 
   return (
     <div className="max-w-xl mx-auto px-4">
@@ -67,6 +53,7 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
       ) : (
         <SellYouCarAr />
       )}
+      <ChatWithUsBtn text="Hi, I have a question." number="971585133668" />
     </div>
   );
 };

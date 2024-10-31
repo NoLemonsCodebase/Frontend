@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 
 import CarsPage from "@/components/cars-detail/cars-page";
 import CarsFilter from "@/components/cars-filter";
+import ChatWithUsBtn from "@/components/chat-with-us-btn";
 import Search from "@/components/search";
 import Loader from "@/components/ui/loader";
 import { getCars } from "@/lib/car-actions";
@@ -35,6 +36,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
       <Suspense key={cat} fallback={<Loader pb="pb-[400px]" />}>
         <CarsPage category={cat} search={query} />
       </Suspense>
+      <ChatWithUsBtn text="Hi, I have a question." number="971585133668" />
     </main>
   );
 }
