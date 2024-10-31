@@ -19,9 +19,9 @@ const OurImage: React.FC<OurImageProps> = ({
   classes = "",
 }) => {
   function handleError(e: any) {
-    // sendErrorMessageToSlack(
-    //   `Something is wrong with loading this image => ${e.target.alt}!!!`
-    // );
+    sendErrorMessageToSlack(
+      `Something is wrong with loading this image => ${e.target.alt}!!!`
+    );
   }
 
   return (
