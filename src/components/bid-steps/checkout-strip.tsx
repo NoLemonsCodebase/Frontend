@@ -1,3 +1,4 @@
+import { sendErrorMessageToSlack } from "@/lib/car-actions";
 import { useSteps } from "@/lib/context/steps-context";
 import { ICar } from "@/lib/types";
 import {
@@ -19,15 +20,8 @@ const CheckOutStrip: React.FC<CheckOutStripProps> = ({
   const [clientSecret, setClientSecret] = useState<string>("");
 
   const { name, phone, finalPrice } = useSteps();
-  const {
-    id,
-    title,
-    year,
-    main_image,
-    sale_price,
-    buyers_fee,
-    currency,
-  } = carDetail;
+  const { id, title, year, main_image, sale_price, buyers_fee, currency } =
+    carDetail;
 
   // =============== prepare data for send to strip session ========
   const prepare_data = {
@@ -52,9 +46,16 @@ const CheckOutStrip: React.FC<CheckOutStripProps> = ({
         },
         body: JSON.stringify({ prepare_data }),
       });
-      const { session } = await res.json();
+      const data = await res.json();
 
-      setClientSecret(session.client_secret);
+      if (!res.ok) {
+        sendErrorMessageToSlack(
+          `${data.error} | name: ${name} | phone: ${phone} | carId: ${id}`
+        );
+        return;
+      }
+
+      setClientSecret(data?.session.client_secret);
     }
 
     fetchClientSecret();

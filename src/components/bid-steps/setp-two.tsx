@@ -1,13 +1,13 @@
 import { useSteps } from "@/lib/context/steps-context";
 import React, { useEffect } from "react";
 
+import { captureingDataOfBuyer } from "@/lib/buyer-actions";
+import { ICar } from "@/lib/types";
 import CircleStep from "./circle-step";
 import NumStep from "./num-step";
+import RegectedOffer from "./regected-offer";
 import StartBid from "./start-bid";
 import UserInfo from "./user-info";
-import RegectedOffer from "./regected-offer";
-import { ICar } from "@/lib/types";
-import { sendErrorMessageToSlack } from "@/lib/car-actions";
 
 interface StepsProps {
   carDetail: ICar;
@@ -88,19 +88,7 @@ const Next: React.FC<StepsProps> = ({ carDetail }) => {
   // make request
   async function sendDataHandler() {
     setCurStep(3);
-    // try {
-    //   const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
-    //     method: "POST",
-    //     body: JSON.stringify(prepare_data),
-    //   });
-    //   if (!res.ok) {
-    //     throw new Error(
-    //       "Something went wrong with capturing the user's details in step 2."
-    //     );
-    //   }
-    // } catch (e: any) {
-    //   sendErrorMessageToSlack(e.message);
-    // }
+    await captureingDataOfBuyer(prepare_data);
   }
 
   return (

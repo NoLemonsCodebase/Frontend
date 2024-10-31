@@ -10,7 +10,6 @@ import { AnimatePresence } from "framer-motion";
 import MultiQuestions from "./multi-questions";
 import MakeAnOffer from "./make-an-offer";
 
-
 export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
   const [showQuestion, setShwoQuestions] = useState<boolean>(false);
   const [showMake, setShwoMake] = useState<boolean>(false);
@@ -29,7 +28,7 @@ export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
     dir_animation = width >= 1024 ? "rtl" : "btu";
   }
   const { url_route, id } = carDetail;
-  const intersted_link = url_route || id;
+
   return (
     <Fragment>
       <div className=" bg-white shadow-custom-top fixed lg:relative z-[11] lg:z-[10] bottom-0 left-0 px-4 py-3 lg:p-0 w-full lg:w-auto lg:ml-auto lg:basis-[30%] lg:shadow-none">
@@ -39,7 +38,6 @@ export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
         >
           I'm interested
         </button>
-
       </div>
 
       <AnimatePresence>

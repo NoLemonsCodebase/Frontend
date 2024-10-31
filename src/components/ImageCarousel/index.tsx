@@ -1,23 +1,24 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
-import Image from "next/image";
 import { useWindowSize } from "@uidotdev/usehooks";
-import Loader from "../ui/loader";
+import Image from "next/image";
 import { FaCheck } from "react-icons/fa";
-import { useTranslations } from "next-intl";
 import Fancybox from "../fancybox";
+import Loader from "../ui/loader";
+import OurImage from "../our-image";
 //============
-interface IImageCarouselProps {
+interface ImageCarouselProps {
   carImages: string[];
   isVerified: boolean;
+  title: string;
 }
 
-export default function ImageCarousel({
+const ImageCarousel: React.FC<ImageCarouselProps> = ({
+  title,
   carImages,
   isVerified,
-}: IImageCarouselProps) {
+}) => {
   const { width } = useWindowSize();
-  const t = useTranslations("default.car_page");
 
   //memoize images and previewImages
   const all_images = useMemo(() => carImages, [carImages]);
@@ -54,9 +55,9 @@ export default function ImageCarousel({
           data-src="#nolemons-img-0"
           className="rounded-md overflow-hidden lg:basis-[70%] relative"
         >
-          <Image
+          <OurImage
             src={all_images[0]}
-            alt="main image"
+            alt={`image 1 of car ${title}`}
             width={1110}
             height={740}
           />
@@ -64,10 +65,8 @@ export default function ImageCarousel({
             <div className="flex items-start absolute bottom-2 right-2">
               <span className="inline-flex items-center py-1 px-1.5 md:py-2 md:px-3 rounded-md text-sm font-medium bg-opacity-40 bg-black text-white">
                 <FaCheck className=" mr-2 bg-green-500 text-[20px] p-1 rounded-md text-white" />
-                {t("verified")}
-                <span className="hidden xl:block ml-0.5">
-                  {t("by_nolemons")}
-                </span>
+                verified
+                <span className="hidden xl:block ml-0.5">by NoLemons</span>
               </span>
             </div>
           )}
@@ -81,10 +80,10 @@ export default function ImageCarousel({
               data-src={`#nolemons-img-${idx + 1}`}
               className="rounded-md overflow-hidden relative cursor-pointer"
             >
-              <Image
-                className=" w-full h-full object-cover"
+              <OurImage
+                classes=" w-full h-full object-cover"
                 src={img}
-                alt="prev image"
+                alt={`image ${idx + 1} of car ${title}`}
                 width={1110}
                 height={740}
               />
@@ -119,15 +118,17 @@ export default function ImageCarousel({
           id={`nolemons-img-${idx}`}
         >
           <div className="loader-sppiner absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2"></div>
-          <Image
+          <OurImage
             src={img}
-            alt={`nolemons-${idx}`}
+            alt={`image ${idx} of car ${title}`}
             width={1110}
             height={740}
-            className=" relative"
+            classes=" relative"
           />
         </div>
       ))}
     </Fancybox>
   );
-}
+};
+
+export default ImageCarousel;

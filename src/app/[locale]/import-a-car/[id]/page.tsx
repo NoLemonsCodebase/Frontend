@@ -1,4 +1,3 @@
-import BeeWidget from "@/components/bee-widget";
 import CarDetailPage from "@/components/cars-detail/car-detail-page";
 import GtmTracking from "@/components/gtm-tracking";
 import { getImportCar } from "@/lib/car-actions";
@@ -10,7 +9,7 @@ type Props = {
 };
 
 export default async function ParsedCarPage({ params, searchParams }: Props) {
-  const { id, locale } = params;
+  const { id } = params;
 
   const data: ICar = await getImportCar(id);
 

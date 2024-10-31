@@ -1,3 +1,4 @@
+import { sendErrorMessageToSlack } from "@/lib/car-actions";
 import { useSteps } from "@/lib/context/steps-context";
 import convertToSubCurrency from "@/lib/convertToSubCurrency";
 import { ICar } from "@/lib/types";
@@ -78,7 +79,12 @@ const CheckOutForm: React.FC<CheckOutFormProps> = ({ carDetail }) => {
         }),
       });
       const data = await res.json();
-
+      if (!res.ok) {
+        sendErrorMessageToSlack(
+          `${data.error} | name: ${name} | phone: ${phone} | carId: ${id}`
+        );
+        return;
+      }
       setClientSecret(data.clientSecret);
     }
 

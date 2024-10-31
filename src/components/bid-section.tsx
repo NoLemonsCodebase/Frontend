@@ -118,12 +118,6 @@ export function BidSection({
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight mb-4">
               Want to buy this car?
             </h2>
-            {/* <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
-              Get in touch with our team.
-            </p>
-
-            <div className=" max-w-[200px]">
-            </div> */}
             <InterestedButton carDetail={carDetail} />
           </div>
         )}

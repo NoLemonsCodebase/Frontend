@@ -95,6 +95,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
 
       {car_images_render && car_images_render.length > 1 ? (
         <ImageCarousel
+          title={title}
           carImages={car_images_render.map((img) => img.image)}
           isVerified={verified_render}
         />
