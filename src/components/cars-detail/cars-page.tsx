@@ -5,15 +5,15 @@ import TrackPageViewCom from "../track-page-view";
 import { getCars } from "@/lib/car-actions";
 import NoFoundCars from "../no-found-cars";
 
-type Props = {
+type CarsPageProps = {
   category: string;
   search: string;
 };
 
-export default async function CarsPage({ category, search }: Props) {
+const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
   // fetch cars based on filter & search
   const cars: ICar[] = await getCars({ category, search });
-  const cars_render = cars.filter((car) => car.status != "deactivate");
+  const cars_render: ICar[] = cars.filter((car) => car.status != "deactivate");
   if (cars_render.length == 0) return <NoFoundCars />;
 
   return (
@@ -26,4 +26,6 @@ export default async function CarsPage({ category, search }: Props) {
       </div>
     </section>
   );
-}
+};
+
+export default CarsPage;

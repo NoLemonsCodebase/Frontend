@@ -30,8 +30,8 @@ export async function getCars({ category = "uae", search = "" }: Props) {
       return import_data;
     }
   } catch (e: any) {
-    throw new Error(
-      `Something went wrong with server!! Error Message => ${e.message}`
+    sendErrorMessageToSlack(
+      `Something went wrong with the main server!! Error Message => ${e.message}`
     );
   }
 }
@@ -46,12 +46,14 @@ export async function getUaeCar(id: string) {
       req_url = `${process.env.OUR_API}/cars/by-route/${id}/`;
     }
     const res = await fetch(req_url, { next: { revalidate: 0 } });
-
+    if (!res.ok) {
+      throw new Error(`this car ${id} is Not found!!`);
+    }
     const data = res.json();
     return data;
   } catch (e: any) {
-    throw new Error(
-      `Somthing went wrong with this car ${id} Error Message => ${e.message}`
+    sendErrorMessageToSlack(
+      `Somthing went wrong with single car page Error Message => ${e.message}`
     );
   }
 }
@@ -70,18 +72,22 @@ export async function getImportCar(id: string) {
       next: { revalidate: 0 },
     });
 
+    if (!res.ok) {
+      throw new Error(`this car ${id} is Not found!!`);
+    }
+
     const data = res.json();
     return data;
   } catch (e: any) {
-    throw new Error(
-      `Somthing went wrong with this car ${id} Error Message => ${e.message}`
+    sendErrorMessageToSlack(
+      `Somthing went wrong with single car page Error Message => ${e.message}`
     );
   }
 }
 
 async function fetchData(url: string) {
   const res = await fetch(url, { next: { revalidate: 0 } });
-  const data = res.json();
+  const data = await res.json();
   return data;
 }
 

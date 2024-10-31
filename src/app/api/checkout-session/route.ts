@@ -28,10 +28,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ session });
   } catch (error) {
-    console.error("Internal Error:", error);
     // Handle other errors (e.g., network issues, parsing errors)
     return NextResponse.json(
-      { error: `Internal Server Error: ${error}` },
+      { error: `Stripe internal Server Error: ${error}` },
       { status: 500 }
     );
   }
@@ -49,7 +48,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     console.error("Internal Error:", error);
 
     return NextResponse.json(
-      { error: `Internal Server Error: ${error}` },
+      { error: `Stripe internal Server Error: ${error}` },
       { status: 500 }
     );
   }

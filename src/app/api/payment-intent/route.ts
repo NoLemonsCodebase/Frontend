@@ -1,4 +1,3 @@
-import { sendErrorMessageToSlack } from "@/lib/car-actions";
 import { NextRequest, NextResponse } from "next/server";
 
 const stripe = require("stripe")(process.env.STRIP_SECRET_KEY);
@@ -27,9 +26,9 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Internal Error:", error);
     // Handle other errors (e.g., network issues, parsing errors)
-    sendErrorMessageToSlack("Dev Test Internal Error with strip gateway");
+
     return NextResponse.json(
-      { error: `Internal Server Error: ${error}` },
+      { error: `Stripe internal Server Error: ${error}` },
       { status: 500 }
     );
   }
