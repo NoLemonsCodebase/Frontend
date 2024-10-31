@@ -1,12 +1,13 @@
 "use client";
 
+import { useWindowSize } from "@uidotdev/usehooks";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function BeeWidget() {
   const pathname = usePathname();
   const [predictPageLoad, setPredictPageLoad] = useState<number>(0);
-
+  const { width } = useWindowSize();
   useEffect(() => {
     // Widget configuration
     window.getbeeWidgetConf = {
@@ -71,7 +72,11 @@ export default function BeeWidget() {
         el.style.display = "table";
       }
 
-      if (pathname.includes("/cars") || pathname.includes("/import-a-car")) {
+      if (
+        (pathname.includes("/cars") || pathname.includes("/import-a-car")) &&
+        width &&
+        width < 768
+      ) {
         el.style.bottom = "70px";
       } else el.style.bottom = "10px";
     }
