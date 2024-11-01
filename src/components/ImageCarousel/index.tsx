@@ -118,12 +118,12 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
           id={`nolemons-img-${idx}`}
         >
           <div className="loader-sppiner absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2"></div>
-          <OurImage
+          <Image
             src={img}
             alt={`image ${idx} of car ${title}`}
             width={1110}
             height={740}
-            classes=" relative"
+            className=" relative"
           />
         </div>
       ))}
