@@ -30,7 +30,7 @@ export async function getCars({ category = "uae", search = "" }: Props) {
       return import_data;
     }
   } catch (e: any) {
-    sendErrorMessageToSlack(
+    await sendErrorMessageToSlack(
       `Something went wrong with the main server!! Error Message => ${e.message}`
     );
   }
@@ -52,7 +52,7 @@ export async function getUaeCar(id: string) {
     const data = res.json();
     return data;
   } catch (e: any) {
-    sendErrorMessageToSlack(
+    await sendErrorMessageToSlack(
       `Somthing went wrong with single car page Error Message => ${e.message}`
     );
   }
@@ -79,7 +79,7 @@ export async function getImportCar(id: string) {
     const data = res.json();
     return data;
   } catch (e: any) {
-    sendErrorMessageToSlack(
+    await sendErrorMessageToSlack(
       `Somthing went wrong with single car page Error Message => ${e.message}`
     );
   }

@@ -42,7 +42,7 @@ export default function CarsFilter() {
   }, []);
 
   return (
-    <div className=" flex gap-4 self-center">
+    <div className=" flex gap-4 ">
       {categories.map((filter) => (
         <button
           key={filter.value}

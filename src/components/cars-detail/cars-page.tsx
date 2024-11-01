@@ -14,11 +14,13 @@ const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
   // fetch cars based on filter & search
   const cars: ICar[] = await getCars({ category, search });
   const cars_render: ICar[] = cars.filter((car) => car.status != "deactivate");
-  if (cars_render.length == 0) return <NoFoundCars />;
+  const cars_len = cars_render.length;
+  if (cars_len == 0) return <NoFoundCars />;
 
   return (
-    <section className="pb-40">
+    <section className="pb-40 pt-8 md:pt-10">
       <TrackPageViewCom />
+      <div className="md:mb-4 mb-2 md:text-xl">({cars_len}) Cars Found</div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {cars_render.map((car, idx) => {
           return <CarCard key={idx} carDetails={car} />;
