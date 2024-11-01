@@ -35,7 +35,7 @@ export default function Search() {
       <input
         value={value}
         onChange={addQuery}
-        className=" w-full text-gray-800 rounded-full py-2 pl-10 outline-none ring-gray-700/50 transition-all duration-300 focus:ring-2 md:py-2 md:pl-14 search-shadow"
+        className=" w-full text-gray-800 rounded-md py-2 pl-10 outline-none ring-gray-700/50 transition-all duration-300 focus:ring-2 md:py-2 md:pl-14 search-shadow"
         placeholder="search for a car..."
       />
       <BiSearch className="absolute left-3 text-gray-700 top-1/2 -translate-y-1/2 md:left-4 md:text-2xl" />

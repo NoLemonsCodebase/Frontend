@@ -56,7 +56,7 @@ const CarCard: React.FC<ICarCardProps> = ({ carDetails }) => {
         {main_image && (
           <OurImage
             src={main_image}
-            alt={title}
+            alt={`main_image of ${title}`}
             width={720}
             height={500}
             classes="block object-cover"
