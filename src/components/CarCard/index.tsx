@@ -11,6 +11,7 @@ import TimeLeft from "./time-left";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdOutlineAccessTime } from "react-icons/md";
 import OurImage from "../our-image";
+import Image from "next/image";
 
 interface ICarCardProps {
   carDetails: ICar;
@@ -70,12 +71,12 @@ const CarCard: React.FC<ICarCardProps> = ({ carDetails }) => {
 
         <div className="flex items-center gap-2 mt-0.5">
           {country && (
-            <OurImage
+            <Image
               src={`https://flagcdn.com/w320/${country.toLowerCase()}.png`}
               width={320}
               height={215}
-              alt={`flag of ${country}`}
-              classes=" max-w-[20px]"
+              alt={country}
+              className=" max-w-[20px]"
             />
           )}
 
