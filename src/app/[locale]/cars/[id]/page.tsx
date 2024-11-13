@@ -69,7 +69,7 @@ export default async function CarPage({ params, searchParams }: any) {
       <CarDetailPage carDetail={data} utms={searchParams} />
       <ChatWithUsBtn
         text={`Hi, I have a question about this ${data.title}`}
-        number="971585133668"
+        number="971566633668"
       />
     </>
   );

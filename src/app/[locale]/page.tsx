@@ -37,7 +37,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
       <Suspense key={cat} fallback={<Loader pb="pb-[400px]" />}>
         <CarsPage category={cat} search={query} />
       </Suspense>
-      <ChatWithUsBtn text="Hi, I have a question." number="971585133668" />
+      <ChatWithUsBtn text="Hi, I have a question." number="971566633668" />
     </main>
   );
 }
