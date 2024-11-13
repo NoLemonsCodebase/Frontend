@@ -2,6 +2,7 @@
 
 import { sendErrorMessageToSlack } from "@/lib/car-actions";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 interface OurImageProps {
   src: string;
@@ -18,9 +19,13 @@ const OurImage: React.FC<OurImageProps> = ({
   alt,
   classes = "",
 }) => {
+  // Get the current pathname
+
+  const pathname = usePathname();
+
   async function handleError(e: any) {
     await sendErrorMessageToSlack(
-      `Something went wrong with loading this image => ${e.target.alt}!!!`
+      `Something went wrong with loading this image => ${e.target.alt}!!! URL ===> https://nolemons.co${pathname}`
     );
   }
 
