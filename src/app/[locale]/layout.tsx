@@ -1,6 +1,4 @@
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-
-import ChatWithUsBtn from "@/components/chat-with-us-btn";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import Navbar from "@/components/navbar";
 import RequestCar from "@/components/RequestCar";
@@ -11,7 +9,6 @@ import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/Footer";
 import UpButton from "@/components/up-button";
-import BeeWidget from "@/components/bee-widget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -78,8 +75,7 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
           <Footer />
         </NextIntlClientProvider>
 
-        {/* <UpButton /> */}
-        <BeeWidget />
+        <UpButton />
       </body>
       {/* google analytics */}
       <GoogleAnalytics gaId="G-5LKFJ76994" />
