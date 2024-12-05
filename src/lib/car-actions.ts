@@ -7,28 +7,30 @@ type Props = {
 
 export async function getCars({ category = "uae", search = "" }: Props) {
   try {
-    if (category == "all") {
-      const uae_data = await fetchData(
-        `${process.env.OUR_API}/api/v2/cars/?search=${search}`
-      );
-      const import_data = await fetchData(
-        `${process.env.OUR_API}/parser/api/v1/cars/?search=${search}`
-      );
-      return [...uae_data, ...import_data];
-    }
+    // if (category == "all") {
+    //   const uae_data = await fetchData(
+    //     `${process.env.OUR_API}/api/v2/cars/?search=${search}`
+    //   );
+    //   const import_data = await fetchData(
+    //     `${process.env.OUR_API}/parser/api/v1/cars/?search=${search}`
+    //   );
+    //   return [...uae_data, ...import_data];
+    // }
 
-    if (category == "uae") {
-      const uae_data = await fetchData(`${process.env.OUR_API}/api/v2/cars/`);
-      return uae_data;
-    }
+    // if (category == "uae") {
+    const uae_data = await fetchData(
+      `${process.env.OUR_API}/api/v2/cars/?search=${search}`
+    );
+    return uae_data;
+    // }
 
-    if (category == "import-a-car") {
-      const import_data = await fetchData(
-        `${process.env.OUR_API}/parser/api/v1/cars/`
-      );
+    // if (category == "import-a-car") {
+    //   const import_data = await fetchData(
+    //     `${process.env.OUR_API}/parser/api/v1/cars/`
+    //   );
 
-      return import_data;
-    }
+    //   return import_data;
+    // }
   } catch (e: any) {
     await sendErrorMessageToSlack(
       `Something went wrong with the main server!! Error Message => ${e.message}`

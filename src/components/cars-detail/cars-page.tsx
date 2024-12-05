@@ -18,7 +18,7 @@ const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
   if (cars_len == 0) return <NoFoundCars />;
 
   return (
-    <section className="pb-40 pt-8 md:pt-10">
+    <section className="pb-40 pt-4 md:pt-8">
       <TrackPageViewCom />
       <div className="md:mb-4 mb-2 md:text-xl">({cars_len}) Cars Found</div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
