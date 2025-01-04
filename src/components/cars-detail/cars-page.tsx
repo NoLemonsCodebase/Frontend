@@ -4,6 +4,7 @@ import CarCard from "../CarCard";
 import TrackPageViewCom from "../track-page-view";
 import { getCars } from "@/lib/car-actions";
 import NoFoundCars from "../no-found-cars";
+import { shuffleArray } from "@/lib/utils";
 
 type CarsPageProps = {
   category: string;
@@ -15,6 +16,8 @@ const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
   const cars: ICar[] = await getCars({ category, search });
   const cars_render: ICar[] = cars.filter((car) => car.status != "deactivate");
   const cars_len = cars_render.length;
+
+  if (category == "import-a-car") shuffleArray(cars_render);
   if (cars_len == 0) return <NoFoundCars />;
 
   return (
