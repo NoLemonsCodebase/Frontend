@@ -18,7 +18,7 @@ export default function Search() {
 
     if (debouncedValue) {
       params.set("query", debouncedValue);
-      // params.set("cat", "all");
+      params.set("cat", "all");
     } else {
       params.delete("query");
     }
