@@ -3,6 +3,7 @@
 import Link from "next/link";
 import * as React from "react";
 import { FaRegBell } from "react-icons/fa";
+import { MdCelebration } from "react-icons/md";
 interface IBannerProps {}
 
 const RequestCar: React.FunctionComponent<IBannerProps> = (props) => {
@@ -12,10 +13,11 @@ const RequestCar: React.FunctionComponent<IBannerProps> = (props) => {
   // 1) for urls starting with cars and for main page (userRouter of next.js)
   // 2) just plain tailwind code
   return (
-    <div className="bg-[#FEFCE8] xl:hidden py-3 px-4 text-center">
+    <div className="bg-[#FEFCE8] sticky top-0 z-[11]  py-3 px-4 text-center">
       <div className="flex items-center justify-center gap-4 flex-wrap">
         {/* <FaRegBell className="mr-2 text-xl" /> */}
-        <p className="text-sm font-medium text-gray-900">
+        <p className="text-sm font-medium text-gray-900 flex items-center gap-1">
+          <MdCelebration />
           We’ve partnered with Collecting Cars
         </p>
         <a
