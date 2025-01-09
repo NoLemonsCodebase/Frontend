@@ -81,7 +81,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
           <InterestedButton carDetail={carDetail} />
         ) : (
           <button
-            className="p-2 bg-green-400 rounded basis-[30%]  font-semibold flex items-center justify-center"
+            className="p-2 bg-green-400 rounded basis-full md:basis-[30%]  font-semibold flex items-center justify-center"
             onClick={scrollToTarget}
           >
             {status == "live" ? (
@@ -122,7 +122,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
         </p>
       ) : null}
 
-      <div className="hidden lg:flex mt-4 gap-4">
+      <div className="hidden lg:flex  mt-4 gap-4">
         <AutionStatusBar carDetail={carDetail} />
         {status == "for_sale" ? (
           <InterestedButton carDetail={carDetail} />

@@ -26,7 +26,14 @@ export default function AutionStatusBar({
           {status != "for_sale" && <ClockIcon className="w-5 h-5 mr-1" />}
           {is_comming && (
             <p className="font-semibold whitespace-nowrap">
-              {t("statuses.coming_soon")}
+              Coming soon on{" "}
+              <a
+                target="_blank"
+                className=" underline text-blue-300"
+                href="https://collectingcars.com/buy"
+              >
+                Collecting Cars
+              </a>
             </p>
           )}
           {status == "sold" && (

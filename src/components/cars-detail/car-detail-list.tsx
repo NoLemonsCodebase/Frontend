@@ -108,7 +108,7 @@ const CarDetailList: React.FC<{ isCard?: boolean; carDetail: any }> = ({
     },
     {
       title: "Buyers Fee",
-      value: buyers_fee,
+      value: "6%",
     },
   ];
 
