@@ -17,16 +17,15 @@ const RequestCar: React.FunctionComponent<IBannerProps> = (props) => {
       <div className="flex items-center justify-center gap-4 flex-wrap">
         {/* <FaRegBell className="mr-2 text-xl" /> */}
         <p className="text-sm font-medium text-gray-900 flex items-center gap-1">
-          <MdCelebration />
-          We’ve partnered with Collecting Cars
+          We’ve partnered with
+          <a
+            className=" font-semibold  text-blue-400 underline "
+            href="https://collectingcars.com/buy?refinementList%5BlistingStage%5D%5B0%5D=live&refinementList%5BregionCode%5D%5B0%5D=Middle%20East"
+            target="_blank"
+          >
+            Collecting Cars
+          </a>
         </p>
-        <a
-          className=" inline-flex items-center rounded-md px-4 py-2 xl:hidden text-sm font-medium bg-green-700 text-white shadow-sm transition-colors hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 "
-          href="https://collectingcars.com/buy?refinementList%5BlistingStage%5D%5B0%5D=live&refinementList%5BregionCode%5D%5B0%5D=Middle%20East"
-          target="_blank"
-        >
-          Bid Now
-        </a>
       </div>
     </div>
   );
