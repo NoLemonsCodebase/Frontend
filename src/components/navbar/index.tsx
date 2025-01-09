@@ -100,7 +100,7 @@ export default function Navbar() {
   const { width } = useWindowSize();
 
   return (
-    <nav className="sticky top-[60px] md:top-[44px] z-[11] bg-white shadow">
+    <nav className="sticky top-[44px] z-[11] bg-white shadow">
       <div className="our-container  flex justify-between items-center">
         <Link href="/">
           <Image
