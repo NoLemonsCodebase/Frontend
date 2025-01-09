@@ -16,7 +16,7 @@ const RequestCar: React.FunctionComponent<IBannerProps> = (props) => {
       <div className="flex items-center justify-center gap-4 flex-wrap">
         {/* <FaRegBell className="mr-2 text-xl" /> */}
         <p className="text-sm font-medium text-gray-900">
-          We’ve partnered with Collecting Car
+          We’ve partnered with Collecting Cars
         </p>
         <a
           className=" inline-flex items-center rounded-md px-4 py-2 xl:hidden text-sm font-medium bg-green-700 text-white shadow-sm transition-colors hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 "
