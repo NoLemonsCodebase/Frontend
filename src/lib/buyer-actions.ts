@@ -3,7 +3,7 @@ import { sendErrorMessageToSlack } from "./car-actions";
 export async function captureingDataOfBuyer(prepare_data: any) {
   const { name, phone, car_id } = prepare_data;
   try {
-    const res = await fetch("https://nolemons2.onrender.com/user-offer/", {
+    const res = await fetch("https://nolemons-dev.onrender.com/user-offer/", {
       method: "POST",
       body: JSON.stringify(prepare_data),
     });

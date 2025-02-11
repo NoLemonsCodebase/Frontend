@@ -19,7 +19,7 @@ export default function StripCompleteMessage({ session }: any) {
     async function SendMetaData() {
       try {
         const res = await fetch(
-          `https://nolemons2.onrender.com/payment/completed-phone555/`,
+          `https://nolemons-dev.onrender.com/payment/completed-phone555/`,
           {
             method: "POST",
             body: JSON.stringify({ ...refactor_metadata }),
