@@ -14,7 +14,11 @@ type CarsPageProps = {
 const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
   // fetch cars based on filter & search
   const cars: ICar[] = await getCars({ category, search });
-  const cars_render: ICar[] = cars.filter((car) => car.status != "deactivate");
+  const cars_render: ICar[] = cars.filter(
+    (car) =>
+      car.status != "deactivate" &&
+      car.url_route != "2019-BMW--M2-Competition--8550"
+  );
   const cars_len = cars_render.length;
 
   if (category == "import-a-car") shuffleArray(cars_render);
@@ -26,7 +30,9 @@ const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
       <div className="md:mb-4 mb-2 md:text-xl">({cars_len}) Cars Found</div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {cars_render.map((car, idx) => {
-          return <CarCard key={idx} carDetails={car} />;
+          return idx < 50 && car.status != "created" ? (
+            <CarCard key={idx} carDetails={car} />
+          ) : null;
         })}
       </div>
     </section>
