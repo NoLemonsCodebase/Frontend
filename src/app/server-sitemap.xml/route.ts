@@ -4,7 +4,7 @@ import { getServerSideSitemap, ISitemapField } from "next-sitemap";
 
 
 export async function GET(request: Request) {
-  const res = await fetch("https://nolemons2.onrender.com/api/v2/cars/", {
+  const res = await fetch("https://nolemons-dev.onrender.com/api/v2/cars/", {
     next: { revalidate: 0 },
   });
 
