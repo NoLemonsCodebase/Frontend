@@ -56,7 +56,7 @@ export function BidSection({
 
     TrackBidViaWA(phone);
 
-    const url_request = `https://nolemons2.onrender.com/auction-following/`;
+    const url_request = `https://nolemons2.onrender.com/auction-following/${utm_string}`;
 
     const res = await fetch(url_request, {
       method: "POST",

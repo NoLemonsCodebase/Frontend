@@ -24,7 +24,7 @@ const RegectedOffer: React.FC<StepsProps> = ({ carDetail }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://nolemons-dev.onrender.com/offer-list/${carId}`
+          `https://nolemons2.onrender.com/offer-list/${carId}`
         );
 
         if (!response.ok) {

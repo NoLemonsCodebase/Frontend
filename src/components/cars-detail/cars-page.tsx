@@ -11,15 +11,20 @@ type CarsPageProps = {
   search: string;
 };
 
+const hideFromHomePage: string[] = [
+  "2019-BMW--M2-Competition--8550",
+  "2022-Lexus-ES-250-X315",
+  "2020-Porsche-Taycan-X667",
+];
+
 const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
   // fetch cars based on filter & search
   const cars: ICar[] = await getCars({ category, search });
 
   const cars_render: ICar[] = cars.filter(
-    (car) =>
-      car.status != "deactivate" &&
-      car.url_route != "2019-BMW--M2-Competition--8550"
+    (car) => !hideFromHomePage.includes(car.url_route ?? "none")
   );
+
   const cars_len = cars_render.length;
 
   if (category == "import-a-car") shuffleArray(cars_render);
