@@ -32,7 +32,7 @@ export default function AuctionTimeLeft({
     const interval = setInterval(fetchLatestBid, 3000);
 
     return () => clearInterval(interval);
-  }, [carId]);
-  console.log(timeRender);
+  }, [timeEnding]);
+
   return <TimeLeft timeEnding={timeRender} />;
 }
