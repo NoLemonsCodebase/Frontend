@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import numeral from "numeral";
 import TimeLeft from "../CarCard/time-left";
 import AuctionBid from "./AuctionBid";
+import AuctionTimeLeft from "./AuctionTimeLeft";
 
 interface IAutionStatusBarProps {
   carDetail: ICar;
@@ -54,18 +55,22 @@ export default function AuctionStatusBar({
               {t("statuses.for_sale")}
             </p>
           )}
+
+          {status == "for_sale" && (
+            <li className="flex items-center  text-white">
+              <p className="font-semibold ml-2 whitespace-nowrap">
+                {currency} {numeral(sale_price).format("0,0")}
+              </p>
+            </li>
+          )}
+
           {status == "live" && currentAuction && (
-            <TimeLeft timeEnding={currentAuction?.time_ending} />
+            <AuctionTimeLeft
+              carId={id}
+              timeEnding={currentAuction?.time_ending}
+            />
           )}
         </li>
-
-        {status == "for_sale" && (
-          <li className="flex items-center  text-white">
-            <p className="font-semibold ml-2 whitespace-nowrap">
-              {currency} {numeral(sale_price).format("0,0")}
-            </p>
-          </li>
-        )}
 
         {status == "live" && (
           <li className="flex items-center  text-white">
