@@ -1,5 +1,5 @@
 "use client";
-import AutionStatusBar from "@/components/AutionStatusBar";
+
 import { BidSection } from "@/components/bid-section";
 import { TrackGetEarlyAccessClick, TrackPageView } from "@/lib/services/pixels";
 import { ICar } from "@/lib/types";
@@ -15,6 +15,7 @@ import CarDescription from "./car-description";
 import InterestedButton from "../interested-button";
 
 import ImageCarousel from "../ImageCarousel";
+import AuctionStatusBar from "../AuctionStatusBar";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -76,7 +77,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   return (
     <section className=" our-container flex flex-col py-4 overflow-clip">
       <div className="flex lg:hidden flex-wrap bg-white py-2 -mt-3 mb-3 gap-1 border-b">
-        <AutionStatusBar carDetail={carDetail} />
+        <AuctionStatusBar carDetail={carDetail} />
         {status == "for_sale" ? (
           <InterestedButton carDetail={carDetail} />
         ) : (
@@ -123,7 +124,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
       ) : null}
 
       <div className="hidden lg:flex  mt-4 gap-4">
-        <AutionStatusBar carDetail={carDetail} />
+        <AuctionStatusBar carDetail={carDetail} />
         {status == "for_sale" ? (
           <InterestedButton carDetail={carDetail} />
         ) : (

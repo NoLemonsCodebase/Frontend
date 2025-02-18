@@ -2,20 +2,27 @@ import { ICar } from "@/lib/types";
 import { ArrowUpIcon, ClockIcon } from "@radix-ui/react-icons";
 import { useTranslations } from "next-intl";
 import numeral from "numeral";
-import TimeLeft from "./CarCard/time-left";
+import TimeLeft from "../CarCard/time-left";
+import AuctionBid from "./AuctionBid";
 
 interface IAutionStatusBarProps {
   carDetail: ICar;
 }
 
-export default function AutionStatusBar({
+export default function AuctionStatusBar({
   carDetail,
 }: IAutionStatusBarProps): JSX.Element {
   // for translation
   const t = useTranslations("default");
 
   // info we need from carDetail
-  const { auction: currentAuction, status, sale_price, currency } = carDetail;
+  const {
+    auction: currentAuction,
+    status,
+    sale_price,
+    currency,
+    id,
+  } = carDetail;
 
   const is_comming = status == "created" || status == "unverified";
 
@@ -66,10 +73,7 @@ export default function AutionStatusBar({
             <p className="opacity-7 hidden sm:block">
               {t("car_page.high_bid")}
             </p>
-            <p className="font-semibold ml-2 whitespace-nowrap">
-              {currency}{" "}
-              {numeral(currentAuction?.latest_bid || 0).format("0,0")}
-            </p>
+            <AuctionBid carId={id} currency={currency} />
           </li>
         )}
 
