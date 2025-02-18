@@ -20,8 +20,7 @@ export default function AuctionTimeLeft({
 
         if (!response.ok) throw new Error("Failed to fetch bid");
         const data = await response.json();
-        console.log("fetch", data.end_time);
-        setTimeRender(data.end_time);
+        setTimeRender(`${data.end_time.slice(0, -1)}+04:00`);
       } catch (error) {
         console.error("Error fetching bid:", error);
       }
@@ -32,7 +31,7 @@ export default function AuctionTimeLeft({
     const interval = setInterval(fetchLatestBid, 3000);
 
     return () => clearInterval(interval);
-  }, [timeEnding]);
+  }, [carId]);
 
   return <TimeLeft timeEnding={timeRender} />;
 }
