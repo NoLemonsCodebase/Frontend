@@ -15,7 +15,8 @@ import CarDescription from "./car-description";
 import InterestedButton from "../interested-button";
 
 import ImageCarousel from "../ImageCarousel";
-import AuctionStatusBar from "../AuctionStatusBar";
+import StatusBar from "../StatusBar";
+import AuctionDate from "../StatusBar/AuctionDate";
 
 interface ICarPageProps {
   carDetail: ICar;
@@ -29,6 +30,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   const t = useTranslations("default.car_page");
 
   const {
+    id,
     title,
     year,
     auction,
@@ -77,7 +79,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   return (
     <section className=" our-container flex flex-col py-4 overflow-clip">
       <div className="flex lg:hidden flex-wrap bg-white py-2 -mt-3 mb-3 gap-1 border-b">
-        <AuctionStatusBar carDetail={carDetail} />
+        <StatusBar carDetail={carDetail} />
         {status == "for_sale" ? (
           <InterestedButton carDetail={carDetail} />
         ) : (
@@ -111,20 +113,21 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
       </div>
 
       {auctionEnded && status == "live" ? (
-        <p className="text-sm text-gray-500 font-semibold">
-          {`${t("ending")} ${endDatetime?.toLocaleString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-            hour12: true,
-          })}`}
-        </p>
-      ) : null}
+        <AuctionDate endDatetime={endDatetime} carId={id} />
+      ) : // <p className="text-sm text-gray-500 font-semibold">
+      //   {`Sale ends ${endDatetime?.toLocaleString("en-US", {
+      //     month: "short",
+      //     day: "numeric",
+      //     year: "numeric",
+      //     hour: "numeric",
+      //     minute: "numeric",
+      //     hour12: true,
+      //   })}`}
+      // </p>
+      null}
 
       <div className="hidden lg:flex  mt-4 gap-4">
-        <AuctionStatusBar carDetail={carDetail} />
+        <StatusBar carDetail={carDetail} />
         {status == "for_sale" ? (
           <InterestedButton carDetail={carDetail} />
         ) : (

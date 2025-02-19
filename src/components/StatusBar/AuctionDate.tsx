@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
-import TimeLeft from "../CarCard/time-left";
 
-export default function AuctionTimeLeft({
+export default function AuctionDate({
+  endDatetime,
   carId,
-  timeEnding,
 }: {
+  endDatetime: Date | null;
   carId: number;
-  timeEnding: string;
 }) {
-  const [timeRender, setTimeRender] = useState<string>(timeEnding);
-
+  const [endAuction, setEndAuction] = useState<Date | null>(endDatetime);
   useEffect(() => {
     // Function to fetch the latest bid
     const fetchLatestBid = async () => {
@@ -20,7 +18,8 @@ export default function AuctionTimeLeft({
 
         if (!response.ok) throw new Error("Failed to fetch bid");
         const data = await response.json();
-        setTimeRender(`${data.end_time.slice(0, -1)}+04:00`);
+        console.log(data.end_time);
+        setEndAuction(new Date(`${data.end_time.slice(0, -1)}+04:00`));
       } catch (error) {
         console.error("Error fetching bid:", error);
       }
@@ -33,5 +32,16 @@ export default function AuctionTimeLeft({
     return () => clearInterval(interval);
   }, [carId]);
 
-  return <TimeLeft timeEnding={timeRender} />;
+  return (
+    <p className="text-sm text-gray-500 font-semibold">
+      {`Sale ends ${endAuction?.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      })}`}
+    </p>
+  );
 }

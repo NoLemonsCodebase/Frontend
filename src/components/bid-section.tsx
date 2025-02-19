@@ -24,6 +24,7 @@ export function BidSection({
   utms: any;
 }) {
   const [phone, setPhone] = useState("");
+  const [successPhone, setSuccessPhone] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
@@ -71,6 +72,8 @@ export function BidSection({
       }),
     });
     if (res.ok) {
+      setSuccessPhone((prev) => phone);
+      setPhone("");
       setSent(true);
     } else {
       setError(
@@ -100,7 +103,7 @@ export function BidSection({
       id="bid-section"
     >
       <div className="h-1 bg-gray-500 bg-opacity-40 w-9/12 my-12 md:mb-12 mx-auto" />
-      <div className="container flex flex-col items-center justify-center gap-4 px-4 text-center md:px-6">
+      <div className="container flex flex-col items-center justify-center gap-4 text-center md:px-6">
         {createdOrUnverfied ? (
           <>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
@@ -156,18 +159,26 @@ export function BidSection({
               </p>
             </div>
             <div>
-              <form onSubmit={onSubmitHandler}>
+              <form className=" relative" onSubmit={onSubmitHandler}>
                 <PhoneInput
                   buttonStyle={{
                     textAlign: "left",
                   }}
+                  inputStyle={{
+                    padding: "12px 12px 12px 58px;",
+                    width: "320px",
+                  }}
+                  inputClass=" hover:!border-[#cacaca] focus:!border-[#4ad493] focus:!shadow-[0_0_0_1px_#4ad493]"
                   preferredCountries={["sa", "ae", "qa", "kw", "bh", "om"]}
                   country={"ae"}
                   value={phone}
                   onChange={handlePhoneChange}
                 />
-                <Button className=" mt-5" type="submit" disabled={loading}>
-                  {loading && (
+                <Button
+                  className=" absolute w-24 top-0 bottom-0 right-0 "
+                  type="submit"
+                >
+                  {loading ? (
                     <svg
                       width="20"
                       height="20"
@@ -178,22 +189,20 @@ export function BidSection({
                     >
                       <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
                     </svg>
+                  ) : (
+                    "Submit"
                   )}
-                  Continue on WhatsApp{" "}
                 </Button>
               </form>
             </div>
             {sent && !error && !loading && (
-              <div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                  Thank you!
-                </h2>
-                <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                  You will now receive a message on WhatsApp to submit your
-                  offer at this number:{" "}
-                  <span className="font-semibold text-black">+{phone}</span>
-                </p>
-              </div>
+              <p className="mx-auto max-w-[600px] text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed ">
+                Thank you! You will now receive a message on WhatsApp to submit
+                your offer at this number:
+                <span className="font-semibold text-black">
+                  +{successPhone}
+                </span>
+              </p>
             )}
           </>
         )}
