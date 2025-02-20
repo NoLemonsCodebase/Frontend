@@ -47,8 +47,8 @@ export default function AuctionBid({
     <>
       {currentAuction && <TimeLeft timeEnding={timeRender} />}
       {/* <ArrowUpIcon className="w-5 h-5 mr-1 hidden sm:block" /> */}
-      <p className="opacity-7 hidden sm:block">Current Offer</p>
-      <p className="font-semibold ml-2 whitespace-nowrap">
+      <p className="opacity-7 ml-2 hidden sm:block">Current Offer</p>
+      <p className="font-semibold ml-2 flex-grow md:flex-none flex justify-end whitespace-nowrap">
         {currency} {numeral(currentBid).format("0,0")}
       </p>
       {numberOfBid > 1 && (

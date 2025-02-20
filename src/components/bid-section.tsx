@@ -77,7 +77,7 @@ export function BidSection({
       setSent(true);
     } else {
       setError(
-        "Please enter a valid Whatsapp number to submit an offer or follow the auction."
+        "Please enter a valid Whatsapp number to submit an offer or follow the sale."
       );
     }
 
