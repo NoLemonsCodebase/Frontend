@@ -17,6 +17,7 @@ export default function AuctionBid({
   const [timeRender, setTimeRender] = useState<string | undefined>(
     currentAuction?.time_ending
   );
+  const [numberOfBid, setNumberOfBid] = useState<number>(0);
 
   useEffect(() => {
     // Function to fetch the latest bid
@@ -30,6 +31,7 @@ export default function AuctionBid({
         const data = await response.json();
         setCurrentBid(data.bid);
         setTimeRender(`${data.end_time.slice(0, -1)}+04:00`);
+        setNumberOfBid(data.number_of_bids);
       } catch (error) {
         console.error("Error fetching bid:", error);
       }
@@ -44,12 +46,17 @@ export default function AuctionBid({
   return (
     <>
       {currentAuction && <TimeLeft timeEnding={timeRender} />}
-
-      <ArrowUpIcon className="w-5 h-5 mr-1 hidden sm:block" />
+      {/* <ArrowUpIcon className="w-5 h-5 mr-1 hidden sm:block" /> */}
       <p className="opacity-7 hidden sm:block">Current Offer</p>
       <p className="font-semibold ml-2 whitespace-nowrap">
         {currency} {numeral(currentBid).format("0,0")}
       </p>
+      {numberOfBid > 1 && (
+        <div className="basis-auto hidden md:flex items-center space-x-2 text-white">
+          <p className="opacity-70 ml-2">Offers</p>
+          <p className="font-semibold">{numberOfBid}</p>
+        </div>
+      )}
     </>
   );
 }

@@ -27,8 +27,8 @@ export default function StatusBar({
 
   return (
     <div className="rounded bg-black bg-opacity-80 flex-grow items-center">
-      <ul className="flex items-center justify-between md:justify-normal  px-4 py-3">
-        <li className=" flex items-center text-white">
+      <div className="flex items-center justify-between md:justify-normal  px-4 py-3">
+        <div className=" flex items-center text-white">
           {status != "for_sale" && <ClockIcon className="w-5 h-5 mr-1" />}
           {is_comming && (
             <p className="font-semibold whitespace-nowrap">
@@ -74,17 +74,17 @@ export default function StatusBar({
               currentAuction={currentAuction}
             />
           )}
-        </li>
+        </div>
 
-        {currentAuction &&
+        {/* {currentAuction &&
           status == "live" &&
           currentAuction.number_of_bids > 1 && (
-            <li className="basis-auto hidden md:flex items-center space-x-2 text-white">
-              <p className="opacity-70 ml-2">{t("car_page.bids")}</p>
+            <div className="basis-auto hidden md:flex items-center space-x-2 text-white">
+              <p className="opacity-70 ml-2">Offers</p>
               <p className="font-semibold">{currentAuction.number_of_bids}</p>
-            </li>
-          )}
-      </ul>
+            </div>
+          )} */}
+      </div>
     </div>
   );
 }
