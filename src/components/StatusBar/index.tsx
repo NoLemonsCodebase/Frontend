@@ -55,11 +55,9 @@ export default function StatusBar({
           )}
 
           {status == "for_sale" && (
-            <li className="flex items-center  text-white">
-              <p className="font-semibold ml-2 whitespace-nowrap">
-                {currency} {numeral(sale_price).format("0,0")}
-              </p>
-            </li>
+            <p className="font-semibold ml-2 whitespace-nowrap">
+              {currency} {numeral(sale_price).format("0,0")}
+            </p>
           )}
 
           {/* {status == "live" && currentAuction && (
