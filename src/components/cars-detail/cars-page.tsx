@@ -20,9 +20,6 @@ const hideFromHomePage: string[] = [
 const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
   // fetch cars based on filter & search
   const cars: ICar[] = await getCars({ category, search });
-  console.log(cars);
-
-  return null
   const cars_render: ICar[] = cars.filter(
     (car) => !hideFromHomePage.includes(car.url_route ?? "none")
   );
