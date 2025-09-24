@@ -1,12 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { useTranslations, useLocale } from "next-intl";
-import { Button } from "@/components/ui/button";
-import SellYouCarAr from "./sell-you-car-ar";
-import { Fragment, useState } from "react";
-import { IoLanguage } from "react-icons/io5";
 import ChatWithUsBtn from "@/components/chat-with-us-btn";
+import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { IoLanguage } from "react-icons/io5";
+import SellYouCarAr from "./sell-you-car-ar";
 interface ISellYourCarPageProps {}
 
 const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
@@ -17,7 +16,9 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
 
   const switchArabic = () => setLan("ar");
   const switchEnglish = () => setLan("en");
-
+  const encodedMessage = encodeURIComponent(
+    "Hi Emmanuel, I want to sell my car. Here are the full details:"
+  );
   return (
     <div className="max-w-xl mx-auto px-4">
       <SwitherButton
@@ -43,12 +44,12 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
           <div className="w-full border-b pt-4" />
           <p className="pt-4">{t("text_s_2")}</p>
 
-          <Link
+          <a
             target="_blank"
-            href="https://nw60ssq5era.typeform.com/to/CN1PoETZ/"
+            href={`https://wa.me/971585133668?text=${encodedMessage}`}
           >
             <Button className="w-full md:text-xl py-3 mt-1">Sell my car</Button>
-          </Link>
+          </a>
         </div>
       ) : (
         <SellYouCarAr />

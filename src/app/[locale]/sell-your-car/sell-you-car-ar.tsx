@@ -16,10 +16,7 @@ export default function SellYouCarAr() {
       </p>
       <div className="flex flex-col space-y-2">
         <h3 className="text-xl font-bold">1) عدم البيع = لا رسوم</h3>
-        <p>
-          نعرض سيارتك مجانًا، ولفترة محدودة فقط، برسوم بائع (3%) من السعر
-          النهائي، وإن لم تُبَع السيارة؛ فلا رسوم عليك، ولا مخاطرة في الأمر.
-        </p>
+        <p>نعرض سيارتك مجانًا.</p>
       </div>
       <div className="flex flex-col space-y-2">
         <h3 className="text-xl font-bold">2) نحن بجانبك</h3>
