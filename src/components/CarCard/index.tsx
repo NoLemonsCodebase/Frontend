@@ -99,7 +99,7 @@ const CarCard: React.FC<ICarCardProps> = ({ carDetails }) => {
           </h4>
         )}
 
-        {is_sold && (
+        {is_sold && sale_price > 0 && (
           <h4 className="font-semibold text-base mt-auto">
             {`${currency} ${numeral(sale_price).format("0,0")}`}
           </h4>

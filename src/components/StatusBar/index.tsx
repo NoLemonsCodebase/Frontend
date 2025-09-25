@@ -44,8 +44,9 @@ export default function StatusBar({
           )}
           {status == "sold" && (
             <p className="font-semibold whitespace-nowrap">
-              {t("statuses.car_was_sold")} {" | "} {currency}{" "}
-              {numeral(sale_price).format("0,0")}
+              {t("statuses.car_was_sold")}
+              {sale_price > 0 &&
+                " | " + currency + " " + numeral(sale_price).format("0,0")}
             </p>
           )}
           {status == "for_sale" && (
