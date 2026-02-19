@@ -9,6 +9,7 @@ import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 import Footer from "@/components/Footer";
 import UpButton from "@/components/up-button";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -76,6 +77,7 @@ export default function LocaleLayout({ children, params: { locale } }: any) {
         </NextIntlClientProvider>
 
         <UpButton />
+        <ChatWidget />
       </body>
       {/* google analytics */}
       <GoogleAnalytics gaId="G-5LKFJ76994" />
