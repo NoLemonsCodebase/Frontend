@@ -7,7 +7,7 @@ interface StepsProps {
   carDetail: ICar;
 }
 
-const RegectedOffer: React.FC<StepsProps> = ({ carDetail }) => {
+const RejectedOffer: React.FC<StepsProps> = ({ carDetail }) => {
   const { currency, id: carId, sale_price } = carDetail;
 
   const [openTable, setOpenTable] = useState("close");
@@ -24,11 +24,11 @@ const RegectedOffer: React.FC<StepsProps> = ({ carDetail }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://nolemons2.onrender.com/offer-list/${carId}`
+          `${process.env.NEXT_PUBLIC_OUR_API}/offer-list/${carId}`
         );
 
         if (!response.ok) {
-          throw new Error("Can't get regected offers");
+          throw new Error("Can't get rejected offers");
         }
 
         const { offers } = await response.json();
@@ -89,7 +89,7 @@ const RegectedOffer: React.FC<StepsProps> = ({ carDetail }) => {
   );
 };
 
-export default RegectedOffer;
+export default RejectedOffer;
 
 function RowTable({ offer, currency, salePrice }: any) {
   const differ = ((offer[1] / salePrice) * 100 - 100).toFixed(0);

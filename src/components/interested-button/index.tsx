@@ -11,15 +11,15 @@ import MultiQuestions from "./multi-questions";
 import MakeAnOffer from "./make-an-offer";
 
 export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
-  const [showQuestion, setShwoQuestions] = useState<boolean>(false);
-  const [showMake, setShwoMake] = useState<boolean>(false);
+  const [showQuestion, setShowQuestions] = useState<boolean>(false);
+  const [showMake, setShowMake] = useState<boolean>(false);
 
-  const openQuestions = () => setShwoQuestions(true);
-  const closeQuestions = () => setShwoQuestions(false);
+  const openQuestions = () => setShowQuestions(true);
+  const closeQuestions = () => setShowQuestions(false);
 
   //============
-  const openMake = () => setShwoMake(true);
-  const closeMake = () => setShwoMake(false);
+  const openMake = () => setShowMake(true);
+  const closeMake = () => setShowMake(false);
 
   // set direction of animation
   const { width } = useWindowSize();

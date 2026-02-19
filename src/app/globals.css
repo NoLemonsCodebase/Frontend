@@ -311,6 +311,6 @@ button {
 #getbeeCtaWrapper {
   z-index: 20 !important;
 }
-.regected::-webkit-scrollbar {
+.rejected::-webkit-scrollbar {
   display: none;
 }

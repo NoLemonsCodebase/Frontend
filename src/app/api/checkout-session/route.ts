@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const stripe = require("stripe")(process.env.STRIP_SECRET_KEY);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 // const stripe = require("stripe")(
 //   "sk_test_51JL5IsK7Uh3dA2avnQYplHSxoBlHLk8U8iig7OgXtjjvfZb1NjqdQUhzIf9dpLpm0Yx7DQKK9duoyV7Cee85LOAp003b0Gyb4p"

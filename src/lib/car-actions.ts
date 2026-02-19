@@ -38,6 +38,7 @@ export async function getCars({ category = "uae", search = "" }: Props) {
     await sendErrorMessageToSlack(
       `Something went wrong with the main server!! Error Message => ${e.message}`
     );
+    throw e;
   }
 }
 
@@ -54,12 +55,13 @@ export async function getUaeCar(id: string) {
     if (!res.ok) {
       throw new Error(`this car ${id} is Not found!!`);
     }
-    const data = res.json();
+    const data = await res.json();
     return data;
   } catch (e: any) {
     await sendErrorMessageToSlack(
-      `Somthing went wrong with single car page Error Message => ${e.message}`
+      `Something went wrong with single car page Error Message => ${e.message}`
     );
+    throw e;
   }
 }
 
@@ -81,17 +83,21 @@ export async function getImportCar(id: string) {
       throw new Error(`this car ${id} is Not found!!`);
     }
 
-    const data = res.json();
+    const data = await res.json();
     return data;
   } catch (e: any) {
     await sendErrorMessageToSlack(
-      `Somthing went wrong with single car page Error Message => ${e.message}`
+      `Something went wrong with single car page Error Message => ${e.message}`
     );
+    throw e;
   }
 }
 
 async function fetchData(url: string) {
   const res = await fetch(url, { next: { revalidate: 0 } });
+  if (!res.ok) {
+    throw new Error(`Fetch failed: ${res.status} ${res.statusText}`);
+  }
   const data = await res.json();
   return data;
 }

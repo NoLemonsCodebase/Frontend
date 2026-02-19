@@ -18,7 +18,7 @@ const RequestACar: React.FunctionComponent<IRequestACarProps> = (props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const url_request = "https://nolemons2.onrender.com/request-car/";
+    const url_request = `${process.env.NEXT_PUBLIC_OUR_API}/request-car/`;
     const res = fetch(url_request, {
       method: "POST",
       body: JSON.stringify({
