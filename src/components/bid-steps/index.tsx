@@ -5,7 +5,7 @@ import Image from "next/image";
 import StepOne from "./step-one";
 import { ICar } from "@/lib/types";
 import { StepsProvider } from "@/lib/context/steps-context";
-import StepTwo from "./setp-two";
+import StepTwo from "./step-two";
 import StepThree from "./step-three";
 
 import { IoIosArrowBack } from "react-icons/io";

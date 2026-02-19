@@ -24,7 +24,7 @@ export default function AuctionBid({
     const fetchLatestBid = async () => {
       try {
         const response = await fetch(
-          `https://nolemons2.onrender.com/api/v1/current-bid/${carId}`
+          `${process.env.NEXT_PUBLIC_OUR_API}/api/v1/current-bid/${carId}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch bid");

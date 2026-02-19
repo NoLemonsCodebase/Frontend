@@ -5,7 +5,7 @@ import { captureingDataOfBuyer } from "@/lib/buyer-actions";
 import { ICar } from "@/lib/types";
 import CircleStep from "./circle-step";
 import NumStep from "./num-step";
-import RegectedOffer from "./regected-offer";
+import RejectedOffer from "./rejected-offer";
 import StartBid from "./start-bid";
 import UserInfo from "./user-info";
 
@@ -28,7 +28,7 @@ const StepTwo: React.FC<StepsProps> = ({ carDetail }) => {
       <NumStep step={2} />
       {is_step_2 && (
         <div className=" mt-6">
-          <RegectedOffer carDetail={carDetail} />
+          <RejectedOffer carDetail={carDetail} />
           <p className=" text-gray-700 my-6">Your offer:</p>
           {buy == "bid-price" ? (
             <BuyItNow carDetail={carDetail} />

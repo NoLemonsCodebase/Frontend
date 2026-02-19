@@ -2,9 +2,18 @@ import { ICar } from "@/lib/types";
 import { getServerSideSitemap, ISitemapField } from "next-sitemap";
 
 export async function GET(request: Request) {
-  const res = await fetch("https://nolemons2.onrender.com/api/v2/cars/", {
+  const apiUrl = process.env.OUR_API ?? "";
+  if (!apiUrl) {
+    return getServerSideSitemap([]);
+  }
+
+  const res = await fetch(`${apiUrl}/api/v2/cars/`, {
     next: { revalidate: 0 },
   });
+
+  if (!res.ok) {
+    return new Response("Failed to fetch cars for sitemap", { status: 502 });
+  }
 
   const cars: ICar[] = await res.json();
 

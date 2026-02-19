@@ -59,12 +59,17 @@ export async function makeAnOfferAction(
     body: JSON.stringify(data),
   });
 
-  const { status } = await res.json();
-
   if (!res.ok) {
+    let status = "Something went wrong";
+    try {
+      const body = await res.json();
+      status = (body as { status?: string }).status || status;
+    } catch {
+      // response body may not be JSON
+    }
     return {
       ...prevState,
-      phoneErr: status || "somthing wrong",
+      phoneErr: status,
     };
   }
 

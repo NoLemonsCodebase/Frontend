@@ -1,13 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const stripe = require("stripe")(process.env.STRIP_SECRET_KEY);
-
-// const stripe = require("stripe")(
-//   "sk_test_51JL5IsK7Uh3dA2avnQYplHSxoBlHLk8U8iig7OgXtjjvfZb1NjqdQUhzIf9dpLpm0Yx7DQKK9duoyV7Cee85LOAp003b0Gyb4p"
-// );
+function getStripe() {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error("STRIPE_SECRET_KEY is not set");
+  }
+  return require("stripe")(key);
+}
 
 export async function POST(req: NextRequest) {
   try {
+    const stripe = getStripe();
     const root_url = req?.headers.get("origin");
     const url_after_complete = req?.headers?.get("referer")?.slice(0, -4) || "";
 
@@ -28,7 +31,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ session });
   } catch (error) {
-    // Handle other errors (e.g., network issues, parsing errors)
+    if (error instanceof Error && error.message === "STRIPE_SECRET_KEY is not set") {
+      return NextResponse.json({ error: "Stripe not configured" }, { status: 500 });
+    }
     return NextResponse.json(
       { error: `Stripe internal Server Error: ${error}` },
       { status: 500 }
@@ -38,6 +43,7 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
+    const stripe = getStripe();
     const url = new URL(req.url);
     const sesstionId = url.searchParams.get("session_id");
 
@@ -46,7 +52,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
     return NextResponse.json({ session });
   } catch (error) {
     console.error("Internal Error:", error);
-
+    if (error instanceof Error && error.message === "STRIPE_SECRET_KEY is not set") {
+      return NextResponse.json({ error: "Stripe not configured" }, { status: 500 });
+    }
     return NextResponse.json(
       { error: `Stripe internal Server Error: ${error}` },
       { status: 500 }
