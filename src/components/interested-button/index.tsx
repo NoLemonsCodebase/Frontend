@@ -36,7 +36,7 @@ export default function InterestedButton({ carDetail }: { carDetail: ICar }) {
           onClick={openQuestions}
           className=" bg-green-700 text-white rounded-lg w-full px-2 py-3"
         >
-          I'm interested
+          I&apos;m interested
         </button>
       </div>
 

@@ -3,6 +3,10 @@ import { getServerSideSitemap, ISitemapField } from "next-sitemap";
 
 export async function GET(request: Request) {
   const apiUrl = process.env.OUR_API ?? "";
+  if (!apiUrl) {
+    return getServerSideSitemap([]);
+  }
+
   const res = await fetch(`${apiUrl}/api/v2/cars/`, {
     next: { revalidate: 0 },
   });
