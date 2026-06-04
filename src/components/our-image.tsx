@@ -25,7 +25,7 @@ const OurImage: React.FC<OurImageProps> = ({
 
   async function handleError(e: any) {
     await sendErrorMessageToSlack(
-      `Something went wrong with loading this image => ${e.target.alt}!!! URL ===> https://nolemons.co${pathname}`
+      `Something went wrong with loading this image => ${e.target.alt}!!! URL ===> https://nolemons.co${pathname}`,
     );
   }
 
