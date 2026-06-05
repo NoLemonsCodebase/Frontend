@@ -12,7 +12,7 @@ export async function makeAnOfferAction(
   const car_id = formData.get("car_id");
   const currency = formData.get("currency");
 
-  //========= refactor some attributes
+  //========= refactor some attributes and values
   let offer_value = "";
   if (offer && typeof offer == "string") {
     offer_value = offer.split(",").join("");
