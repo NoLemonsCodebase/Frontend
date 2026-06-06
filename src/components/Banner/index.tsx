@@ -35,7 +35,7 @@ const Banner: React.FunctionComponent<IBannerProps> = (props) => {
     // console.log("window.location", window.location.pathname);
   }, []);
   // 1) for urls starting with cars and for main page (userRouter of next.js)
-  // 2) just plain tailwind code
+  // 2) just plain tailwind code!
   return  <div className="bg-yellow-50">
             <div className="py-2 md:py-3 lg:py-4">
               <div className="container flex items-center justify-center px-4 md:px-4">
