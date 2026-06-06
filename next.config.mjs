@@ -6,6 +6,7 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
   images: {
+    unoptimized: true,
     remotePatterns: [{ protocol: "https", hostname: "**", pathname: "**" }],
   },
 };
