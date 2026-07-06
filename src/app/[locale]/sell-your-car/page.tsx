@@ -32,7 +32,7 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
             {t("sell_your_car")}
           </h2>
           <p>{t("text_s_1")}</p>
-          {Array.from({ length: 7 }).map((_, index) => (
+          {Array.from({ length: 6 }).map((_, index) => (
             <div className="flex flex-col space-y-2" key={index}>
               <h3 className="text-xl font-bold">{`${index + 1}) ${t(
                 `item_${index + 1}_title`
