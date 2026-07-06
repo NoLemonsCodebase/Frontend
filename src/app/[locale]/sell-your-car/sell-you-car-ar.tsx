@@ -15,32 +15,28 @@ export default function SellYouCarAr() {
         وجود الفوائد التالية:
       </p>
       <div className="flex flex-col space-y-2">
-        <h3 className="text-xl font-bold">1) عدم البيع = لا رسوم</h3>
-        <p>نعرض سيارتك مجانًا.</p>
-      </div>
-      <div className="flex flex-col space-y-2">
-        <h3 className="text-xl font-bold">2) نحن بجانبك</h3>
+        <h3 className="text-xl font-bold">1) نحن بجانبك</h3>
         <p>
           يُدرك فريق نوليمنز (NoLemons) أن سيارتك مميزة؛ ولهذا نجتهد في بيعها
           بأعلى سعر ممكن.
         </p>
       </div>
       <div className="flex flex-col space-y-2">
-        <h3 className="text-xl font-bold">3) راحة البال</h3>
+        <h3 className="text-xl font-bold">2) راحة البال</h3>
         <p>
           بما أننا حلقة الوصل الوحيدة؛ فإننا سنجيب عن كل الأسئلة إلى نهاية
           المزاد، ولن تُزعجك الاتصالات الليلية ورسائل &quot;السعر النهائي&quot; مجدداً.
         </p>
       </div>{" "}
       <div className="flex flex-col space-y-2">
-        <h3 className="text-xl font-bold">4) تصوير احترافي </h3>
+        <h3 className="text-xl font-bold">3) تصوير احترافي </h3>
         <p>
           لدينا أفضل المصورين لتصوير أكثر من 100 صورة و 4 فيديوهات حتى يرى
           المشترون كل شيء قبل اتخاذ القرار.
         </p>
       </div>{" "}
       <div className="flex flex-col space-y-2">
-        <h3 className="text-xl font-bold">5) فحص شامل</h3>
+        <h3 className="text-xl font-bold">4) فحص شامل</h3>
         <p>
           يُعطي الفحص المسبق من قِبَل المتخصصين صورةً شاملة عن سيارتك، مما يُشجع
           المشترين في الداخل والخارج على المزايدة على سيارتك. معنا، سترتاح من
@@ -48,7 +44,7 @@ export default function SellYouCarAr() {
         </p>
       </div>{" "}
       <div className="flex flex-col space-y-2">
-        <h3 className="text-xl font-bold">6) نُسَوِّق سيارتك للراغبين فقط</h3>
+        <h3 className="text-xl font-bold">5) نُسَوِّق سيارتك للراغبين فقط</h3>
         <p>
           سيكتب فريقنا وصف سيارتك الذي يشمل تاريخها، والصيانة السابقة وسجلاتها؛
           لنميزها عن الإعلانات الأخرى، وبعدها ستُعرض السيارة أونلاين لمحبي
@@ -56,7 +52,7 @@ export default function SellYouCarAr() {
         </p>
       </div>{" "}
       <div className="flex flex-col space-y-2">
-        <h3 className="text-xl font-bold">7) المشترون الدوليون</h3>
+        <h3 className="text-xl font-bold">6) المشترون الدوليون</h3>
         <p>
           تُباع 50% من سياراتنا دوليًا، فقد صدَّرنا سيارات إلى الخليج وخارجه
           لمزايدين من الإمارات، والسعودية، والكويت، وقطر، والبحرين، وعمان. كما

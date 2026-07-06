@@ -28,7 +28,7 @@ const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
 
   if (category == "import-a-car") shuffleArray(cars_render);
   if (cars_len == 0) return <NoFoundCars />;
-
+console.log(cars)
   return (
     <section className="pb-40 pt-4 md:pt-8">
       <TrackPageViewCom />
