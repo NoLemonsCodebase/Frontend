@@ -20,6 +20,7 @@ const hideFromHomePage: string[] = [
 const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
   // fetch cars based on filter & search
   const cars: ICar[] = await getCars({ category, search });
+  
   const cars_render: ICar[] = cars.filter(
     (car) => !hideFromHomePage.includes(car.url_route ?? "none")
   );
@@ -28,7 +29,6 @@ const CarsPage: React.FC<CarsPageProps> = async ({ category, search }) => {
 
   if (category == "import-a-car") shuffleArray(cars_render);
   if (cars_len == 0) return <NoFoundCars />;
-console.log(cars)
   return (
     <section className="pb-40 pt-4 md:pt-8">
       <TrackPageViewCom />

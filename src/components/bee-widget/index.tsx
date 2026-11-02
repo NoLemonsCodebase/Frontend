@@ -66,7 +66,6 @@ export default function BeeWidget() {
       ) {
         // to hide the button
         el.style.display = "none";
-        // console.log("HI");
       } else {
         //to display the button
         el.style.display = "table";

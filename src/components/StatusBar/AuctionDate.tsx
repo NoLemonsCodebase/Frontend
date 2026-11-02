@@ -18,7 +18,6 @@ export default function AuctionDate({
 
         if (!response.ok) throw new Error("Failed to fetch bid");
         const data = await response.json();
-        console.log(data.end_time);
         setEndAuction(new Date(`${data.end_time.slice(0, -1)}+04:00`));
       } catch (error) {
         console.error("Error fetching bid:", error);

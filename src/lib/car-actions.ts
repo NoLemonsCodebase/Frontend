@@ -95,6 +95,7 @@ export async function getImportCar(id: string) {
 
 async function fetchData(url: string) {
   const res = await fetch(url, { next: { revalidate: 0 } });
+
   if (!res.ok) {
     throw new Error(`Fetch failed: ${res.status} ${res.statusText}`);
   }
