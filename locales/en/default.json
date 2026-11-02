@@ -4,7 +4,11 @@
     "days": "days",
     "get_early_access": "Get early access",
     "unverified": "Get early access",
-    "upcoming": "Upcoming"
+    "upcoming": "Upcoming",
+    "live": "Live",
+    "current_bid": "Current bid",
+    "sold_for": "Sold for",
+    "view": "View"
   },
   "car_page": {
     "location": "Location",

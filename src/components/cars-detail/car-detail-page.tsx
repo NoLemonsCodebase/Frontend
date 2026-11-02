@@ -58,7 +58,7 @@ export default function CarDetailPage({ carDetail, utms }: ICarPageProps) {
   }, []);
 
   const text = encodeURIComponent(`Hello! I'm interested in ${title} ${year}`);
-  const whatsAppLink = `https://api.whatsapp.com/send/?phone=971566633668&text=${text}`;
+  const whatsAppLink = `https://api.whatsapp.com/send/?phone=971564404640&text=${text}`;
 
   const scrollToTarget = () => {
     if (status == "created") {

@@ -3,7 +3,11 @@
     "day": "يوم",
     "days": "أيام",
     "get_early_access": "الحصول على الوصول المبكر",
-    "upcoming": "القادمة"
+    "upcoming": "القادمة",
+    "live": "مباشر",
+    "current_bid": "المزايدة الحالية",
+    "sold_for": "بيعت بـ",
+    "view": "عرض"
   },
   "car_page": {
     "bid": "قدم عرضا",
@@ -55,6 +59,7 @@
     "coming_soon": "قريباً",
     "for_sale": "للبيع",
     "sold": "مُباع",
-    "upcoming": "القادمة"
+    "upcoming": "القادمة",
+    "verifying": "قيد التحقق"
   }
 }

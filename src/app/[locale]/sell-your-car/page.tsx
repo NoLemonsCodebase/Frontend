@@ -46,7 +46,7 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
 
           <a
             target="_blank"
-            href={`https://wa.me/971585133668?text=${encodedMessage}`}
+            href={`https://wa.me/971564404640?text=${encodedMessage}`}
           >
             <Button className="w-full md:text-xl py-3 mt-1">Sell my car</Button>
           </a>
@@ -54,7 +54,7 @@ const SellYourCarPage: React.FunctionComponent<ISellYourCarPageProps> = (
       ) : (
         <SellYouCarAr />
       )}
-      <ChatWithUsBtn text="Hi, I have a question." number="971585133668" />
+      <ChatWithUsBtn text="Hi, I have a question." number="971564404640" />
     </div>
   );
 };

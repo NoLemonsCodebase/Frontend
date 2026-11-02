@@ -90,7 +90,7 @@ export function BidSection({
     );
     TrackGetEarlyAccessClick();
     window.open(
-      `https://api.whatsapp.com/send/?phone=971566633668&text=${text}`,
+      `https://api.whatsapp.com/send/?phone=971564404640&text=${text}`,
       "_blank"
     );
   };
